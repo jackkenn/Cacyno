@@ -14,6 +14,8 @@ public class TimeController {
     @GetMapping("/")
     public String time(){return "The time is " + formattedTime;}
 
-    @GetMapping("/{timezone}")
-    public String time(@PathVariable String timezone){return "The time is " + formattedTime + " in " + timezone;}
+    @GetMapping("/{City}/{State}")
+    public String time(@PathVariable String City, @PathVariable String State){return "The time is " + formattedTime + " in " + City + ", " + State;}
+
+
 }
