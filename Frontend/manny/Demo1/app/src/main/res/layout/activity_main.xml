@@ -22,4 +22,20 @@
             android:layout_marginTop="473dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="18dp" android:layout_marginStart="18dp" android:layout_marginEnd="18dp"
             android:layout_marginRight="18dp" app:layout_constraintEnd_toEndOf="parent"/>
+
+    <Button
+        android:id="@+id/log2"
+        android:layout_width="375dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="532dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginRight="18dp"
+        android:text="@string/Login"
+        app:backgroundTint="#C8102E "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
