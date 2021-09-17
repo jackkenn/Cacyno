@@ -7,30 +7,19 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
     <ImageView
-            android:layout_width="665dp"
+            android:layout_width="1000dp"
             android:layout_height="1241dp" app:srcCompat="@drawable/new_project_transparent"
             android:id="@+id/imageView"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.733"/>
+            app:layout_constraintVertical_bias="0.729" android:contentDescription="@string/main_logo"/>
     <Button
-            android:text="Login"
+            android:text="@string/Login"
             android:layout_width="375dp"
             android:layout_height="wrap_content" android:id="@+id/log"
+            app:backgroundTint="#C8102E "
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="434dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="18dp" android:layout_marginStart="18dp" app:backgroundTint="#C8102E "
-            android:layout_marginEnd="18dp" android:layout_marginRight="18dp"
-            app:layout_constraintEnd_toEndOf="parent"
-    />
-    <Button
-            android:text="register"
-            android:layout_width="375dp"
-            android:layout_height="wrap_content" android:id="@+id/button2"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="524dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="20dp" android:layout_marginStart="20dp" app:backgroundTint="#F1BE48"
-            android:layout_marginEnd="16dp" android:layout_marginRight="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-    />
+            android:layout_marginTop="473dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="18dp" android:layout_marginStart="18dp" android:layout_marginEnd="18dp"
+            android:layout_marginRight="18dp" app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
