@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Demo1</string>
-    <string name="Login">Login</string>
-    <string name="main_logo">Main Logo</string>
+    <string name="Login_button">Login</string>
+    <string name="main_logo_image">Main Logo</string>
+    <string name="settings_button">Settings Button</string>
+    <string name="PlayCreate_game_button">Play/Create Game</string>
 </resources>
