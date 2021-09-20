@@ -6,14 +6,21 @@
                                                    android:layout_height="match_parent"
 >
     <Button
-            android:id="@+id/btnLogOut2"
+            android:id="@+id/btnPlayCreate"
             android:layout_width="375dp"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:text="@string/PlayCreate_game_button"
-            app:backgroundTint="#C8102E" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="545dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="18dp" android:layout_marginStart="18dp"/>
+            app:backgroundTint="#C8102E"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="536dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="9dp" android:layout_marginStart="9dp" android:layout_marginEnd="9dp"
+            android:layout_marginRight="9dp" app:layout_constraintEnd_toEndOf="parent"/>
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" app:srcCompat="@drawable/backgroundhome" android:id="@+id/imageView2"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" android:contentDescription="@string/homeBackground_image"/>
     <ImageButton
             android:layout_width="100dp"
             android:layout_height="100dp" app:srcCompat="@drawable/settingsbuttonshadow"

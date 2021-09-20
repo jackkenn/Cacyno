@@ -4,4 +4,5 @@
     <string name="main_logo_image">Main Logo</string>
     <string name="settings_button">Settings Button</string>
     <string name="PlayCreate_game_button">Play/Create Game</string>
+    <string name="homeBackground_image">home background</string>
 </resources>
