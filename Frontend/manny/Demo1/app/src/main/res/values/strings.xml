@@ -5,4 +5,7 @@
     <string name="settings_button">Settings Button</string>
     <string name="PlayCreate_game_button">Play/Create Game</string>
     <string name="homeBackground_image">home background</string>
+    <string name="welcomeBack_image">welcome back!</string>
+    <string name="currentUsername">%name%</string>
+    <string name="currentUser_image">current user:</string>
 </resources>
