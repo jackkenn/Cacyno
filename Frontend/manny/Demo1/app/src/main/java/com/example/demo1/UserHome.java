@@ -15,7 +15,7 @@ public class UserHome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_screen);
-        settings = (ImageButton) findViewById(R.id.settings_button);
+        settings = (ImageButton) findViewById(R.id.settings);
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

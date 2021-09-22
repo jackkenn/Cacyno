@@ -8,4 +8,7 @@
     <string name="welcomeBack_image">welcome back!</string>
     <string name="currentUsername">%name%</string>
     <string name="currentUser_image">current user:</string>
+    <string name="leaderboard_button">leaderboard button</string>
+    <string name="money_sign_home">money sign</string>
+    <string name="caCYno_home">caCYno name home</string>
 </resources>
