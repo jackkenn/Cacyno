@@ -1,14 +1,14 @@
-package com.example.demo.model;
+package com.example.user.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.UUID;
 
-public class DemoModel {
+public class userModel {
     private final UUID _id;
     private final String _name;
 
-    public DemoModel(@JsonProperty("id") UUID _id,@JsonProperty("name") String _name) {
+    public userModel(@JsonProperty("id") UUID _id, @JsonProperty("name") String _name) {
         this._id = _id;
         this._name = _name;
     }
