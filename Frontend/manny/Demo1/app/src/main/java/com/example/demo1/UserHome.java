@@ -21,13 +21,14 @@ public class UserHome extends AppCompatActivity {
     private ImageButton settings;
     private TextView money;
     private RequestQueue res;
-
+    private TextView username;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_screen);
         settings = (ImageButton) findViewById(R.id.settings);
         money = (TextView) findViewById(R.id.moneyRequest);
+        username = (TextView) findViewById(R.id.currentUser);
         res = Volley.newRequestQueue(this);
         JSONParse();
         settings.setOnClickListener(new View.OnClickListener() {
@@ -40,7 +41,7 @@ public class UserHome extends AppCompatActivity {
     }
 
     /**
-     * getting money amount from test server
+     * getting money amount and username from test server
      */
     private void JSONParse(){
         /**
@@ -53,8 +54,10 @@ public class UserHome extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
                 try {
-                    String responseJson = response.getString("amount");
-                    money.append(responseJson);
+                    String responseAmount = response.getString("amount");
+                    String responseUsername = response.getString("name");
+                    money.append(responseAmount);
+                    username.append(responseUsername);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

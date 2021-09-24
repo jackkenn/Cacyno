@@ -29,13 +29,6 @@
             android:id="@+id/current_user_text"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
             android:contentDescription="@string/currentUser_image"/>
-    <TextView
-            android:text="@string/currentUsername"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/currentUser"
-            android:translationY="-1dp" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="785dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="153dp" android:layout_marginStart="153dp"/>
     <ImageButton
             android:layout_width="70dp"
             android:layout_height="70dp" app:srcCompat="@drawable/settings_white" android:id="@+id/settings"
@@ -61,9 +54,18 @@
             android:layout_marginStart="67dp" android:translationX="1dp"
             android:contentDescription="@string/PlayCreate_game_button"/>
     <TextView
-            android:layout_width="204dp"
-            android:layout_height="154dp" android:id="@+id/moneyRequest"
+            android:layout_width="271dp"
+            android:layout_height="109dp" android:id="@+id/moneyRequest"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="326dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="94dp" android:layout_marginStart="94dp"/>
+            android:layout_marginTop="292dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="92dp" android:layout_marginStart="92dp" android:textColor="@color/white"
+            android:fontFamily="@font/aqua" android:textSize="75sp"/>
+    <TextView
+            android:layout_width="130dp"
+            android:layout_height="43dp" android:id="@+id/currentUser"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="708dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="168dp" android:layout_marginStart="168dp"
+            android:textColor="@color/white" android:fontFamily="@font/aqua"
+            android:textSize="20sp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
