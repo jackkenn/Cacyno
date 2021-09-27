@@ -62,7 +62,7 @@
             android:fontFamily="@font/aqua" android:textSize="75sp"/>
     <TextView
             android:layout_width="130dp"
-            android:layout_height="43dp" android:id="@+id/currentUser"
+            android:layout_height="match_parent" android:id="@+id/currentUser"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="708dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="168dp" android:layout_marginStart="168dp"
