@@ -10,6 +10,8 @@ create table user (
 	id binary(16) unique not null,
     username varchar(50) not null,
     money int,
+    displayname bool,
+    mutechat bool,
     primary key(id)
 );
 
