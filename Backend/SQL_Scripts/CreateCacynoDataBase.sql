@@ -7,7 +7,7 @@ create database cacyno;
 use cacyno;
 drop table user;
 create table user (
-	id binary(16) unique not null,
+	id varchar(50) unique not null,
     username varchar(50) not null,
     money int,
     displayname bool,
