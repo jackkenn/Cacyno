@@ -27,13 +27,13 @@ public class UserController {
     }
 
     @GetMapping(path = "{id}")
-    public User getUserById(@PathVariable("id") UUID id) {
+    public User getUserById(@PathVariable("id") String id) {
         return _userRepo.findById(id)
                 .orElse(null);
     }
 
     @DeleteMapping(path="{id}")
-    public void deleteUser(@PathVariable("id") UUID id) {
+    public void deleteUser(@PathVariable("id") String id) {
         _userRepo.deleteById(id);
     }
 

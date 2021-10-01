@@ -1,7 +1,6 @@
 package com._2_ug_1.cacyno.user;
 
 import javax.persistence.*;
-import java.util.UUID;
 
 @Entity
 @Table(name="user")
@@ -9,17 +8,17 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private UUID id;
+    private String id;
     @Column(name = "username")
     private String username;
     @Column(name = "money")
     private int money;
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(String id) {
         this.id = id;
     }
 
