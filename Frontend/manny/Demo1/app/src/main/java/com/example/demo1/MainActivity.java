@@ -1,5 +1,7 @@
 package com.example.demo1;
 
+import android.os.AsyncTask;
+import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,10 +13,21 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.*;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.DataOutputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -55,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
                                         "SignUp unsuccessful: " + task.getException().getMessage(),
                                         Toast.LENGTH_SHORT).show();
                             } else {
+                                volleyPost();
                                 startActivity(new Intent(MainActivity.this, UserHome.class));
                             }
                         }
@@ -71,6 +85,28 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(I);
             }
         });
+    }
+
+    public void volleyPost() {
+        String postUrl = "http://coms-309-046.cs.iastate.edu:8080/user";
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        JSONObject postData = new JSONObject();
+        try {
+            postData.put("id", FirebaseAuth.getInstance().getCurrentUser().getUid());
+            postData.put("username", "");
+            postData.put("money", "1000");
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, postUrl, postData, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                System.out.println(response);
+            }
+        }, error -> error.printStackTrace());
+        requestQueue.add(jsonObjectRequest);
     }
 
 
