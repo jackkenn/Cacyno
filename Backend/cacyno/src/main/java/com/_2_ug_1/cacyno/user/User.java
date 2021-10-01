@@ -3,10 +3,9 @@ package com._2_ug_1.cacyno.user;
 import javax.persistence.*;
 
 @Entity
-@Table(name="user")
+@Table(name = "user")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private String id;
     @Column(name = "username")
