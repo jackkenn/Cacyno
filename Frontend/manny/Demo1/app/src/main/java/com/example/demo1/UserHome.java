@@ -2,6 +2,7 @@ package com.example.demo1;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -44,18 +45,15 @@ public class UserHome extends AppCompatActivity {
      * getting money amount and username from test server
      */
     private void JSONParse(){
-        /**
-         * replace this url with server
-         */
-        String url = "https://b673cace-52ff-44cd-98d1-644e53a719da.mock.pstmn.io/money/";
+        String url = "http://coms-309-046.cs.iastate.edu:8080/user/31303031-0000-0000-0000-000000000000";
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
 
             @Override
             public void onResponse(JSONObject response) {
                 try {
-                    String responseAmount = response.getString("amount");
-                    String responseUsername = response.getString("name");
+                    String responseAmount = response.getString("money");
+                    String responseUsername = response.getString("username");
                     money.append(responseAmount);
                     username.append(responseUsername);
                 } catch (JSONException e) {
@@ -65,7 +63,7 @@ public class UserHome extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                Log.e("FUCK", error.toString());
             }
         });
         res.add(request);

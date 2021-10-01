@@ -2,6 +2,6 @@
 <resources>
     <style name="SeekBarColor"
            parent="Widget.AppCompat.SeekBar">
-        <item name="colorAccent">"#E40000"</item>
+        <item name="colorAccent">@color/white</item>
     </style>
 </resources>
