@@ -4,21 +4,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @RequestMapping("/user")
 @RestController
 public class UserController {
     @Autowired
     IUserRepo _userRepo;
+
     @Autowired
     public UserController(IUserRepo _userRepo) {
         this._userRepo = _userRepo;
     }
 
     @PostMapping
-    public void saveUser(@RequestBody User user) {
-        _userRepo.save(user);
+    public User saveUser(@RequestBody User user) {
+        return _userRepo.save(user);
     }
 
     @GetMapping
@@ -32,13 +32,13 @@ public class UserController {
                 .orElse(null);
     }
 
-    @DeleteMapping(path="{id}")
+    @DeleteMapping(path = "{id}")
     public void deleteUser(@PathVariable("id") String id) {
         _userRepo.deleteById(id);
     }
 
-    @PutMapping(path="{id}")
-    public void updateUser(@RequestBody User user) {
-        _userRepo.save(user);
+    @PutMapping
+    public User updateUser(@RequestBody User user) {
+        return _userRepo.save(user);
     }
 }
