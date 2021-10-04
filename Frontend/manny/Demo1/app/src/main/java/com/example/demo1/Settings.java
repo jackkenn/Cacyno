@@ -16,6 +16,7 @@ public class Settings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_screen);
         back = (ImageButton) findViewById(R.id.settings_back);
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -23,5 +24,6 @@ public class Settings extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 }

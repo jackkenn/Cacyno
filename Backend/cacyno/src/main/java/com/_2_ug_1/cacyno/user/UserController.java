@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequestMapping("/user")
 @RestController
@@ -39,6 +40,13 @@ public class UserController {
 
     @PutMapping
     public User updateUser(@RequestBody User user) {
+        return _userRepo.save(user);
+    }
+
+    @PutMapping(path = "{id}")
+    public User updateName(@PathVariable(value = "id")String id, @RequestBody User user){
+        User current = _userRepo.findById(id).get();
+        current.setUsername(user.getUsername());
         return _userRepo.save(user);
     }
 }

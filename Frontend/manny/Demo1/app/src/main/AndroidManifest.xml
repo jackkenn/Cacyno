@@ -21,6 +21,7 @@
         <activity android:name=".ActivityLogin"/>
         <activity android:name=".UserHome"/>
         <activity android:name=".Settings"/>
+        <activity android:name=".Username"/>
     </application>
 
 </manifest>
