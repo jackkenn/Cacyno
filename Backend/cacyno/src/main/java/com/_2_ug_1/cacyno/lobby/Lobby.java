@@ -23,5 +23,5 @@ public class Lobby{
 
     public boolean getActive(){return active;}
 
-    public void setActive(){this.active = active;}
+    public void setActive(boolean active){this.active = active;}
 }
