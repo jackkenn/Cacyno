@@ -1,4 +1,4 @@
-package com._2_ug_1.lobby;
+package com._2_ug_1.cacyno.lobby;
 
 import javax.persistence.*;
 

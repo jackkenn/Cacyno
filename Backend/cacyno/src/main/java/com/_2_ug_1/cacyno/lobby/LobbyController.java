@@ -8,12 +8,12 @@ import java.util.Optional;
 
 @RequestMapping("/lobby")
 @RestController
-@public class LobbyController{
+public class LobbyController{
     @Autowired
     ILobbyRepo _lobbyRepo;
 
     @Autowired
-    public LobbyController(ILobbyController _lobbyRepo){
+    public LobbyController(ILobbyRepo _lobbyRepo){
         this._lobbyRepo = _lobbyRepo;
     }
 
@@ -23,7 +23,7 @@ import java.util.Optional;
     }
 
     @GetMapping
-    public List<Lobby> get All(){
+    public List<Lobby> getAll(){
         return _lobbyRepo.findAll();
     }
 
@@ -38,11 +38,4 @@ import java.util.Optional;
 
     @PutMapping
     public Lobby updateLobby(@RequestBody Lobby lobby){return _lobbyRepo.save(lobby);}
-
-    @PutMapping(path = "{id}")
-    public Lobby updateName(@PathVariable(value = "id") String id, @RequestBody Lobby lobby){
-        Lobby current = _lobbyRepo.findById(id).get();
-        current.setLobbyname(lobby.getLobbyname());
-        return _lobbyRepo.save(lobby)
-    }
 }
