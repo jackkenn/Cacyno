@@ -47,7 +47,7 @@ android-build:
   tags:
    - android_tag
   script:
-    - cd Frontend
+    - cd Frontend/manny/Demo1
     - ./gradlew build
   artifacts:
     paths:
@@ -62,6 +62,6 @@ android-test:
   tags:
    - android_tag
   script:
-    - cd Frontend
+    - cd Frontend/manny/Demo1
     - ./gradlew test
 
