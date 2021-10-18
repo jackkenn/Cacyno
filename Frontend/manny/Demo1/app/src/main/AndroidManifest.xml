@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ActivityLogin"/>
+        <activity android:name=".LobbySelector"/>
         <activity android:name=".UserHome"/>
         <activity android:name=".Settings"/>
         <activity android:name=".Username"/>
