@@ -24,10 +24,12 @@ public class UserHome extends AppCompatActivity {
     private TextView money;
     private RequestQueue res;
     private TextView username;
+    private ImageButton play_create_but;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_screen);
+        play_create_but = findViewById(R.id.play_create_but);
         settings = (ImageButton) findViewById(R.id.settings);
         money = (TextView) findViewById(R.id.moneyRequest);
         username = (TextView) findViewById(R.id.currentUser);
@@ -40,7 +42,17 @@ public class UserHome extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        play_create_but.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent I = new Intent(UserHome.this, LobbySelector.class);
+                startActivity(I);
+            }
+        });
     }
+
+
 
     /**
      * getting money amount and username from test server
