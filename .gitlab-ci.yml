@@ -1,7 +1,10 @@
 # Example  .gitlab-ci.yml file
 stages:
-  - maventry
-  - androidtry
+  - mavenbuild
+  - maventest
+  - mavenDeploy
+  - androidbuild
+  - androidtest
 
 maven-build:
   stage: mavenbuild
