@@ -1,5 +1,7 @@
 package com._2_ug_1.cacyno.user;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import javax.persistence.*;
 
 @Entity
@@ -12,6 +14,8 @@ public class User {
     private String username;
     @Column(name = "money")
     private int money;
+    @Column(name = "displayname")
+    private Boolean displayname;
 
     public String getId() {
         return id;
@@ -35,5 +39,13 @@ public class User {
 
     public void setMoney(int money) {
         this.money = money;
+    }
+
+    public Boolean getDisplayname(){
+        return displayname;
+    }
+
+    public void setDisplayname(Boolean displayname){
+        this.displayname = displayname;
     }
 }
