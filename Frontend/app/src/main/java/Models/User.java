@@ -25,11 +25,12 @@ public class User {
     String username="";
     String id="";
     int money;
-    //Boolean displayName;
-    public User(String username, String id, int money){
+    Boolean displayName;
+    public User(String username, String id, int money, Boolean displayName){
         this.username = username;
         this.id = id;
         this.money = money;
+        this.displayName = displayName;
     }
     public JSONObject usertoJSON(){
         JSONObject postData = new JSONObject();
@@ -37,6 +38,7 @@ public class User {
             postData.put("id", id);
             postData.put("username", username);
             postData.put("money", money);
+            postData.put("displayname", displayName);
         }
         catch(JSONException e){
             e.printStackTrace();
@@ -49,6 +51,7 @@ public class User {
             money = Integer.parseInt(response.getString("money"));
             username = response.getString("username");
             id = response.getString("id");
+            displayName = Boolean.parseBoolean(response.getString("displayname"));
         }catch (JSONException e){
             System.out.println("unable to get data");
         }
@@ -64,7 +67,7 @@ public class User {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.e("ERROR", error.toString());
+                Log.e("ERROR_FROM_APPEND", error.toString());
             }
         });
         requestQueue.add(request);

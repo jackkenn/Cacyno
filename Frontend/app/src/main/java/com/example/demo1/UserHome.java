@@ -2,6 +2,7 @@ package com.example.demo1;
 
 import Models.User;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -22,6 +23,7 @@ import org.json.JSONObject;
 
 public class UserHome extends AppCompatActivity {
     private ImageButton settings;
+    private ImageButton play;
     private TextView money;
     private RequestQueue res;
     private TextView username;
@@ -34,6 +36,7 @@ public class UserHome extends AppCompatActivity {
         settings = (ImageButton) findViewById(R.id.settings);
         money = (TextView) findViewById(R.id.moneyRequest);
         username = (TextView) findViewById(R.id.currentUser);
+        play = (ImageButton) findViewById(R.id.play_create_but);
         res = Volley.newRequestQueue(this);
         appendUser();
         settings.setOnClickListener(new View.OnClickListener() {
@@ -41,6 +44,13 @@ public class UserHome extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(UserHome.this, Settings.class);
                 startActivity(intent);
+            }
+        });
+        play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent I = new Intent(UserHome.this, LobbySelector.class);
+                startActivity(I);
             }
         });
     }

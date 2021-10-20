@@ -26,22 +26,24 @@ public class Settings extends AppCompatActivity {
     private ImageButton logout;
     private Switch displayName;
     private User user;
-    private RequestQueue res;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_screen);
         user = new User();
-        res = Volley.newRequestQueue(this);
         user.appendUser(this);
         back = (ImageButton) findViewById(R.id.settings_back);
         apply = (ImageButton) findViewById(R.id.apply_button);
         username = (TextView) findViewById(R.id.editTextTextPersonName);
         logout = (ImageButton) findViewById(R.id.logout_but);
         displayName = (Switch) findViewById(R.id.display_name_toggle);
+        if(user.getDisplayName())
+            displayName.toggle();
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                setDisplayName();
                 Intent intent = new Intent(Settings.this, UserHome.class);
                 startActivity(intent);
             }
@@ -59,7 +61,8 @@ public class Settings extends AppCompatActivity {
                     username.requestFocus();
                 }
                 else{
-                    setUsername(input);
+                    user.setUsername(input);
+                    setUsername();
                     Intent I = new Intent(Settings.this, UserHome.class);
                     startActivity(I);
                 }
@@ -69,22 +72,22 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 FirebaseAuth.getInstance().signOut();
+                setDisplayName();
                 Intent I = new Intent(Settings.this, ActivityLogin.class);
                 startActivity(I);
                 Toast.makeText(Settings.this, "User logged out", Toast.LENGTH_SHORT).show();
             }
         });
-        displayName.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        displayName.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                    //setDisplayName(b);
+            public void onClick(View view) {
+                user.setDisplayName(!user.getDisplayName());
             }
         });
     }
-    public void setUsername(String username) {
+    public void setUsername(){
         String postUrl = "http://coms-309-046.cs.iastate.edu:8080/user";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        user.setUsername(username);
         JSONObject postData = user.usertoJSON();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PUT, postUrl, postData, new Response.Listener<JSONObject>() {
             @Override
@@ -94,13 +97,11 @@ public class Settings extends AppCompatActivity {
         }, error -> error.printStackTrace());
         requestQueue.add(jsonObjectRequest);
     }
-    /*
-    public void setDisplayName(Boolean b) {
-        String postUrl = "http://coms-309-046.cs.iastate.edu:8080/user";
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        //user.setDisplayName(b);
-        JSONObject postData = user.usertoJSON();
 
+    public void setDisplayName() {
+        String postUrl = "http://coms-309-046.cs.iastate.edu:8080/user";
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        JSONObject postData = user.usertoJSON();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PUT, postUrl, postData, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -109,5 +110,5 @@ public class Settings extends AppCompatActivity {
         }, error -> error.printStackTrace());
         requestQueue.add(jsonObjectRequest);
     }
-    */
+
 }

@@ -1,12 +1,10 @@
 package com.example.demo1;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
+import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -22,14 +20,23 @@ public class LobbySelector extends AppCompatActivity {
         layout = findViewById(R.id.linear);
         scroll = findViewById(R.id.scroll);
 
+
         for(int i=0; i<10; i++) {
-            Button button = new Button(this.getApplicationContext());
-            button.setText("" + i);
-            layout.addView(button);
+            TableRow row = new TableRow(this.getApplicationContext());
+            ImageView lobbyBut = new ImageView(this.getApplicationContext());
+            ImageButton joinBut = new ImageButton(this.getApplicationContext());
+            ImageButton specBut = new ImageButton(this.getApplicationContext());
+
+            setLobby(lobbyBut);
+
+            layout.addView(row, i);
         }
 
         //TODO api call
 
+
+    }
+    private void setLobby(ImageView but){
 
     }
 }

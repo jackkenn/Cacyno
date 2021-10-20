@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
             postData.put("id", FirebaseAuth.getInstance().getCurrentUser().getUid());
             postData.put("username", "");
             postData.put("money", "1000");
+            postData.put("displayname", false);
 
         } catch (JSONException e) {
             e.printStackTrace();
