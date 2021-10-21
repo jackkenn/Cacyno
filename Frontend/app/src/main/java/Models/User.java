@@ -61,7 +61,6 @@ public class User {
             username = response.getString("username");
             id = response.getString("id");
             displayName = Boolean.parseBoolean(response.getString("displayname"));
-            System.out.println(displayName + "JSONtoUser");
         }catch (JSONException e){
             System.out.println("unable to get data");
         }

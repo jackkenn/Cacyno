@@ -17,7 +17,6 @@ import com.android.volley.toolbox.Volley;
 import com.google.firebase.auth.FirebaseAuth;
 import org.json.JSONException;
 import org.json.JSONObject;
-import com.example.demo1.api.getUser;
 
 public class Settings extends AppCompatActivity {
     private ImageButton back;
