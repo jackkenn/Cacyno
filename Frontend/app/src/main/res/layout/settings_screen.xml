@@ -14,12 +14,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="new username"
             android:ems="10"
             android:id="@+id/editTextTextPersonName"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="72dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="56dp" android:layout_marginStart="56dp"/>
+            android:layout_marginLeft="56dp" android:layout_marginStart="56dp" android:hint="new username"/>
     <ImageButton
             android:layout_width="62dp"
             android:layout_height="45dp" app:srcCompat="@drawable/backarrow_but" android:id="@+id/settings_back"
@@ -34,4 +33,30 @@
             app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="43dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="274dp"
             android:layout_marginStart="274dp" android:contentDescription="@string/apply_button"/>
+    <TextView
+            android:text="display name"
+            android:layout_width="230dp"
+            android:layout_height="79dp" android:id="@+id/textView2"
+            android:fontFamily="@font/aqua" android:textColor="@color/white"
+            android:textSize="25dp" app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="330dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="44dp"
+            android:layout_marginStart="44dp"/>
+    <Switch
+            android:layout_width="143dp"
+            android:layout_height="97dp"
+            android:fontFamily="@font/aqua"
+            android:id="@+id/display_name_toggle" android:scaleX="2" android:scaleY="2"
+            android:textScaleX="0" android:paddingRight="50dp"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="297dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="413dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="204dp"
+            android:layout_marginStart="204dp" app:layout_constraintVertical_bias="0.0" android:checked="false"/>
+    <ImageButton
+            android:layout_width="277dp"
+            android:layout_height="120dp" app:srcCompat="@drawable/logout_but" android:id="@+id/logout_but"
+            android:background="@android:color/transparent" android:scaleType="fitCenter"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="616dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="71dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="58dp"
+            android:layout_marginStart="58dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

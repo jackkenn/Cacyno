@@ -1,6 +1,8 @@
 package com.example.demo1;
 
+import Models.User;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,29 +23,32 @@ import org.json.JSONObject;
 
 public class UserHome extends AppCompatActivity {
     private ImageButton settings;
+    private ImageButton play;
     private TextView money;
     private RequestQueue res;
     private TextView username;
-    private ImageButton play_create_but;
+    private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_screen);
-        play_create_but = findViewById(R.id.play_create_but);
+        user = new User();
         settings = (ImageButton) findViewById(R.id.settings);
         money = (TextView) findViewById(R.id.moneyRequest);
         username = (TextView) findViewById(R.id.currentUser);
+        play = (ImageButton) findViewById(R.id.play_create_but);
         res = Volley.newRequestQueue(this);
-        JSONParse();
+        appendUser();
+        user.setDisplayName(getIntent().getBooleanExtra("displayname", false));
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(UserHome.this, Settings.class);
+                intent.putExtra("displayname", user.getDisplayName());
                 startActivity(intent);
             }
         });
-
-        play_create_but.setOnClickListener(new View.OnClickListener() {
+        play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent I = new Intent(UserHome.this, LobbySelector.class);
@@ -51,32 +56,22 @@ public class UserHome extends AppCompatActivity {
             }
         });
     }
-
-
-
     /**
-     * getting money amount and username from test server
+     * getting money amount and username from server
      */
-    private void JSONParse(){
+    public void appendUser(){
         String url = "http://coms-309-046.cs.iastate.edu:8080/user/" + FirebaseAuth.getInstance().getCurrentUser().getUid();
-
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-
             @Override
             public void onResponse(JSONObject response) {
-                try {
-                    String responseAmount = response.getString("money");
-                    String responseUsername = response.getString("username");
-                    money.append(responseAmount);
-                    username.append(responseUsername);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                user.JSONtoUser(response);
+                money.append(user.getMoney()+"");
+                username.append(user.getUsername());
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.e("FUCK", error.toString());
+                Log.e("ERROR", error.toString());
             }
         });
         res.add(request);

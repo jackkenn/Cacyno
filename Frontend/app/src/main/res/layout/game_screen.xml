@@ -7,14 +7,14 @@
                                                    android:gravity="center"
                                                    android:background="#62D126"
                                                    android:id="@+id/linearLayout" tools:ignore="ExtraText">
-  <!--
+<!--
     <EditText
             android:layout_width="84dp"
             android:layout_height="0dp"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/editTextNumber2" tools:layout_editor_absoluteY="66dp"
-            tools:layout_editor_absoluteX="224dp"/>
+            android:id="@+id/editTextNumber2" tools:layout_editor_absoluteY="80dp"
+            tools:layout_editor_absoluteX="225dp"/>
     <EditText
             android:layout_width="84dp"
             android:layout_height="0dp"
@@ -92,5 +92,18 @@
             android:ems="10"
             android:id="@+id/editTextNumber" tools:layout_editor_absoluteY="367dp"
             tools:layout_editor_absoluteX="641dp" android:visibility="gone"/>
+    <ImageView
+            android:layout_width="176dp"
+            android:layout_height="89dp" app:srcCompat="@drawable/cardexample" android:id="@+id/imageView5"
+            tools:layout_editor_absoluteY="5dp" tools:layout_editor_absoluteX="156dp" android:scaleType="fitCenter"/>
+    <ImageView
+            android:layout_width="176dp"
+            android:layout_height="89dp" app:srcCompat="@drawable/cardexample" android:id="@+id/imageView6"
+            tools:layout_editor_absoluteY="5dp" tools:layout_editor_absoluteX="215dp" android:scaleType="fitCenter"/>
+    <TextView
+            android:text="$1000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/textView" tools:layout_editor_absoluteY="96dp"
+            tools:layout_editor_absoluteX="231dp" android:fontFamily="@font/aqua" android:textColor="@color/white"/>
 -->
 </androidx.constraintlayout.widget.ConstraintLayout>

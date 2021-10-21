@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        startActivity(new Intent(MainActivity.this, LobbySelector.class));
         firebaseAuth = FirebaseAuth.getInstance();
         emailId = findViewById(R.id.ETemail);
         passwd = findViewById(R.id.ETpassword);
@@ -86,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
             postData.put("id", FirebaseAuth.getInstance().getCurrentUser().getUid());
             postData.put("username", "");
             postData.put("money", "1000");
+            postData.put("displayname", false);
 
         } catch (JSONException e) {
             e.printStackTrace();
