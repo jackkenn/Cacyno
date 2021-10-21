@@ -1,7 +1,5 @@
 package com._2_ug_1.cacyno.user;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
 import javax.persistence.*;
 
 @Entity
