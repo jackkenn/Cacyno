@@ -25,8 +25,9 @@ public class User {
     String username="";
     String id="";
     int money;
-    Boolean displayName;
-    public User(String username, String id, int money, Boolean displayName){
+    boolean displayName;
+
+    public User(String username, String id, int money, boolean displayName){
         this.username = username;
         this.id = id;
         this.money = money;
@@ -46,12 +47,21 @@ public class User {
         return postData;
     }
 
+    public boolean getDisplayName() {
+        return displayName;
+    }
+
+    public void setDisplayName(boolean b){
+        this.displayName = b;
+    }
+
     public void JSONtoUser(JSONObject response){
         try {
             money = Integer.parseInt(response.getString("money"));
             username = response.getString("username");
             id = response.getString("id");
             displayName = Boolean.parseBoolean(response.getString("displayname"));
+            System.out.println(displayName + "JSONtoUser");
         }catch (JSONException e){
             System.out.println("unable to get data");
         }

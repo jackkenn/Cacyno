@@ -54,7 +54,7 @@ public class Username extends AppCompatActivity {
         });
     }
     public void volleyPost() {
-        String postUrl = "http://coms-309-046.cs.iastate.edu:8080/user/" + FirebaseAuth.getInstance().getCurrentUser().getUid();
+        String postUrl = "http://coms-309-046.cs.iastate.edu:8080/user";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         System.out.println(user.usertoJSON().toString());
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PUT, postUrl, user.usertoJSON(), new Response.Listener<JSONObject>() {

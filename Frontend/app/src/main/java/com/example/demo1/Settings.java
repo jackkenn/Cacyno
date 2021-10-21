@@ -38,13 +38,16 @@ public class Settings extends AppCompatActivity {
         username = (TextView) findViewById(R.id.editTextTextPersonName);
         logout = (ImageButton) findViewById(R.id.logout_but);
         displayName = (Switch) findViewById(R.id.display_name_toggle);
-        if(user.getDisplayName())
-            displayName.toggle();
+        displayName.setOnCheckedChangeListener(null);
+
+        if(getIntent().getBooleanExtra("displayname", false))
+            displayName.setChecked(true);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 setDisplayName();
                 Intent intent = new Intent(Settings.this, UserHome.class);
+                intent.putExtra("displayname", user.getDisplayName());
                 startActivity(intent);
             }
         });
@@ -102,6 +105,7 @@ public class Settings extends AppCompatActivity {
         String postUrl = "http://coms-309-046.cs.iastate.edu:8080/user";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         JSONObject postData = user.usertoJSON();
+        System.out.println(user.getDisplayName() + "setDisplayname");
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PUT, postUrl, postData, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {

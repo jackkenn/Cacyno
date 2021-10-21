@@ -39,10 +39,12 @@ public class UserHome extends AppCompatActivity {
         play = (ImageButton) findViewById(R.id.play_create_but);
         res = Volley.newRequestQueue(this);
         appendUser();
+        user.setDisplayName(getIntent().getBooleanExtra("displayname", false));
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(UserHome.this, Settings.class);
+                intent.putExtra("displayname", user.getDisplayName());
                 startActivity(intent);
             }
         });
