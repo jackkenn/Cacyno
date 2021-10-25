@@ -1,6 +1,5 @@
 package com._2_ug_1.cacyno.game;
 
-import com._2_ug_1.cacyno.players.Players;
 
 import javax.persistence.*;
 @Entity
