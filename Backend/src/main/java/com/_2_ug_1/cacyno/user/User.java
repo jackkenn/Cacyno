@@ -28,7 +28,7 @@ public class User {
     private boolean isSpectator;
     @OneToOne(targetEntity = Game.class)
     @JoinColumn(name = "game_id")
-    private Game game;
+    private Game game_id;
 
 
     public String getId() {
@@ -83,7 +83,7 @@ public class User {
 
     public void setIsSpectator(boolean isSpectator){this.isSpectator = isSpectator;}
 
-    public Game getGame() {return game;}
+    public Game getGame() {return game_id;}
 
-    public void setGame(Game game){this.game = game;}
+    public void setGame(Game game_id){this.game_id = game_id;}
 }
