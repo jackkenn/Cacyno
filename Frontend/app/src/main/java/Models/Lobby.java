@@ -20,6 +20,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
+import interfaces.ServerCallback;
 import lombok.Getter;
 import lombok.Setter;
 import org.json.JSONArray;
@@ -55,7 +56,7 @@ public class Lobby extends AppCompatActivity {
         Gson gson = new GsonBuilder().addDeserializationExclusionStrategy(ex).addSerializationExclusionStrategy(ex).create();
         return gson.fromJson(response.toString(), lobbylist);
     }
-    public void calltoServer(Context con, ArrayList<Lobby> list){
+    public void calltoServer(Context con, ArrayList<Lobby> list, ServerCallback callback){
         String url = "http://coms-309-046.cs.iastate.edu:8080/lobby";
         RequestQueue requestQueue = Volley.newRequestQueue(con);
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
@@ -63,6 +64,7 @@ public class Lobby extends AppCompatActivity {
             @Override
             public void onResponse(JSONArray response) {
                 list.addAll(JSONtolist(response));
+                callback.onSuccess(response);
                 System.out.println(list.size());
             }
         }, new Response.ErrorListener() {
