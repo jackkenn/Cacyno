@@ -1,6 +1,6 @@
 start transaction;
 
-create user if not exists 'admin'@'localhost' identified by 'password!';
+create user if not exists 'admin'@'localhost' identified by 'password';
 grant all privileges on *.* to 'admin'@'localhost';
 
 use cacyno;
