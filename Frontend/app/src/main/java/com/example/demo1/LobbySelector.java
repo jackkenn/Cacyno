@@ -8,6 +8,7 @@ import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
@@ -22,28 +23,21 @@ public class LobbySelector extends AppCompatActivity {
     private ScrollView scroll;
     private LinearLayout layout;
     private static int i;
-    @RequiresApi(api = Build.VERSION_CODES.O)
+    //@RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lobby_selector_screen);
-        layout = findViewById(R.id.linear);
-        scroll = findViewById(R.id.scroll);
         Lobby lb = new Lobby();
         ArrayList<Lobby> list = new ArrayList<>();
         lb.calltoServer(this, list);
-
-        for(int i = 0; i < 10; i++) {
-
-            TableRow row = new TableRow(this);
-
-            setRow(row, "jack's lobby");
-
-            layout.addView(row);
-            System.out.println("added");
+        layout = findViewById(R.id.linear);
+        scroll = findViewById(R.id.scroll);
+        System.out.println(list.size() + " after append");
+        for(Lobby i : list){
+            View row = getLayoutInflater().inflate(R.layout.lobby_row, layout);
+            System.out.println(i.toString());
         }
-
-        //TODO api call
 
 
     }
@@ -59,16 +53,15 @@ public class LobbySelector extends AppCompatActivity {
         TextView name = new TextView(this);
 
         setLobby(lob);
-        row.addView(lob);
-        setTextView(name, lobbyName);
-        row.addView(name);
-        row.invalidate();
         setJoin(join);
         setSpec(spectate);
-        row.invalidate();
+        setTextView(name, lobbyName);
 
+        row.addView(lob);
         row.addView(join);
         row.addView(spectate);
+        setTextView(name, lobbyName);
+        row.addView(name);
     }
 
     private void setLobby(ImageView but){
@@ -79,9 +72,10 @@ public class LobbySelector extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void setTextView(TextView view, String text){
-        view.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
+        view.setLayoutParams(new TableRow.LayoutParams(getResources().getDimensionPixelSize(R.dimen.textbox_width), getResources().getDimensionPixelSize(R.dimen.textbox_height)));
         view.setText(text);
         view.setTextSize(19);
+        view.setGravity(Gravity.CENTER_VERTICAL);
         view.setTypeface(getResources().getFont(R.font.aqua));
         view.setTextColor(getResources().getColor(R.color.lobbytext));
         view.setTranslationX(getResources().getDimensionPixelSize(R.dimen.translation));
@@ -92,6 +86,7 @@ public class LobbySelector extends AppCompatActivity {
         but.setLayoutParams(new TableRow.LayoutParams(getResources().getDimensionPixelSize(R.dimen.join_width), getResources().getDimensionPixelSize(R.dimen.join_height)));
         but.setBackgroundColor(Color.TRANSPARENT);
         but.setScaleType(ImageView.ScaleType.FIT_CENTER);
+
     }
 
     private void setSpec(ImageButton but){
