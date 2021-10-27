@@ -2,25 +2,13 @@ package com.example.demo1;
 
 import Models.Lobby;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.media.Image;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.*;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import com.google.android.material.tabs.TabLayout;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.gson.annotations.SerializedName;
 import interfaces.ServerCallback;
 import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -46,8 +34,13 @@ public class LobbySelector extends AppCompatActivity{
 
             @Override
             public void onSuccess(JSONArray response){
+                int index = 1;
                 for(Lobby i : list) {
                     View row = getLayoutInflater().inflate(R.layout.lobby_row, layout);
+                    TextView name = findViewById(R.id.lobbyname);
+                    name.setId(index);
+                    index++;
+                    name.setText(i.getLobbyname());
                 }
             }
         });
