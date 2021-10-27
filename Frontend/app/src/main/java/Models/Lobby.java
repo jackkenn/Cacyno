@@ -49,7 +49,6 @@ public class Lobby extends AppCompatActivity {
         this.active = active;
     }
 
-    //@RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private ArrayList<Lobby> JSONtolist(JSONArray response){
         Type lobbylist = new TypeToken<ArrayList<Lobby>>(){}.getType();
         Exclude ex = new Exclude();
@@ -60,7 +59,6 @@ public class Lobby extends AppCompatActivity {
         String url = "http://coms-309-046.cs.iastate.edu:8080/lobby";
         RequestQueue requestQueue = Volley.newRequestQueue(con);
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
-            //@RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onResponse(JSONArray response) {
                 list.addAll(JSONtolist(response));

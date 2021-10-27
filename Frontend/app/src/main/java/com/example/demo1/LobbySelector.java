@@ -19,7 +19,6 @@ public class LobbySelector extends AppCompatActivity{
     ArrayList<Lobby> list;
     private ImageButton refresh;
     private ImageButton back;
-    ArrayList<Lobby> lobbies;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -30,17 +29,19 @@ public class LobbySelector extends AppCompatActivity{
         refresh = constraintLayout.findViewById(R.id.refresh);
         Lobby lb = new Lobby();
         list = new ArrayList<>();
+        /*
+          wait for lobbies to be appended to list to display on screen
+         */
         lb.calltoServer(this, list, new ServerCallback(){
-
             @Override
             public void onSuccess(JSONArray response){
-                int index = 1;
+                int indexForId = 1;
                 for(Lobby i : list) {
-                    View row = getLayoutInflater().inflate(R.layout.lobby_row, layout);
-                    TextView name = findViewById(R.id.lobbyname);
-                    name.setId(index);
-                    index++;
-                    name.setText(i.getLobbyname());
+                    View newLobbbyRow = getLayoutInflater().inflate(R.layout.lobby_row, layout);
+                    TextView lobbyName = findViewById(R.id.lobbyname);
+                    lobbyName.setId(indexForId);
+                    indexForId++;
+                    lobbyName.setText(i.getLobbyname());
                 }
             }
         });
