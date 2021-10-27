@@ -5,7 +5,7 @@ grant all privileges on *.* to 'admin'@'localhost';
 drop database if exists cacyno;
 create database cacyno;
 use cacyno;
-drop table user;
+drop table if exists user;
 create table user (
 	id varchar(50) unique not null,
     username varchar(50) not null,
