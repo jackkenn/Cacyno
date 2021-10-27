@@ -16,19 +16,21 @@ public class User {
     private int money;
     @Column(name = "displayname")
     private Boolean displayname;
-    @Column
+    @Column(name = "current_game_money")
     private int current_game_money;
-    @Column
+    @Column(name = "card1")
     private int card1;
-    @Column
+    @Column(name = "card2")
     private int card2;
-    @Column
+    @Column(name = "folded")
     private boolean folded;
-    @Column
+    @Column(name = "hasPlayed")
+    private boolean hasPlayed;
+    @Column(name = "isSpectator")
     private boolean isSpectator;
-    @OneToOne(targetEntity = Game.class)
-    @JoinColumn(name = "game_id")
-    private Game game_id;
+    @ManyToOne(targetEntity = Game.class)
+    @JoinColumn(name = "gameId")
+    private Game gameId;
 
 
     public String getId() {
@@ -55,35 +57,67 @@ public class User {
         this.money = money;
     }
 
-    public Boolean getDisplayname(){
+    public Boolean getDisplayname() {
         return displayname;
     }
 
-    public void setDisplayname(Boolean displayname){
+    public void setDisplayname(Boolean displayname) {
         this.displayname = displayname;
     }
 
-    public int getCurrent_game_money(){return current_game_money;}
+    public int getCurrent_game_money() {
+        return current_game_money;
+    }
 
-    public void setCurrent_game_money(int current_game_money){this.current_game_money = current_game_money;}
+    public void setCurrent_game_money(int current_game_money) {
+        this.current_game_money = current_game_money;
+    }
 
-    public int getCard1(){return card1;}
+    public int getCard1() {
+        return card1;
+    }
 
-    public void setCard1(int card1){this.card1 = card1;}
+    public void setCard1(int card1) {
+        this.card1 = card1;
+    }
 
-    public int getCard2(){return card2;}
+    public int getCard2() {
+        return card2;
+    }
 
-    public void setCard2(int card2){this.card2 = card2;}
+    public void setCard2(int card2) {
+        this.card2 = card2;
+    }
 
-    public boolean getFolded(){return folded;}
+    public boolean getFolded() {
+        return folded;
+    }
 
-    public void setFolded(boolean folded){this.folded = folded;}
+    public void setFolded(boolean folded) {
+        this.folded = folded;
+    }
 
-    public boolean getIsSpectator() {return isSpectator;}
+    public boolean getIsSpectator() {
+        return isSpectator;
+    }
 
-    public void setIsSpectator(boolean isSpectator){this.isSpectator = isSpectator;}
+    public void setIsSpectator(boolean isSpectator) {
+        this.isSpectator = isSpectator;
+    }
 
-    public Game getGame() {return game_id;}
+    public Game getGame() {
+        return gameId;
+    }
 
-    public void setGame(Game game_id){this.game_id = game_id;}
+    public void setGame(Game gameId) {
+        this.gameId = gameId;
+    }
+
+    public boolean isHasPlayed() {
+        return hasPlayed;
+    }
+
+    public void setHasPlayed(boolean hasPlayed) {
+        this.hasPlayed = hasPlayed;
+    }
 }
