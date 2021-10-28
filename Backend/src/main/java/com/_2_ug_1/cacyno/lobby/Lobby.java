@@ -2,9 +2,9 @@ package com._2_ug_1.cacyno.lobby;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "lobby")
-public class Lobby{
+@Entity(name = "Lobby")
+@Table(name = "game")
+public class Lobby {
     @Id
     @Column(name = "id")
     private String id;
@@ -13,15 +13,27 @@ public class Lobby{
     @Column(name = "active")
     private boolean active;
 
-    public String getId(){return id;}
+    public String getId() {
+        return id;
+    }
 
-    public void setId(String id){this.id = id;}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-    public String getLobbyname(){return lobbyname;}
+    public String getLobbyname() {
+        return lobbyname;
+    }
 
-    public void setLobbyname(String lobbyname){this.lobbyname = lobbyname;}
+    public void setLobbyname(String lobbyname) {
+        this.lobbyname = lobbyname;
+    }
 
-    public boolean getActive(){return active;}
+    public boolean getActive() {
+        return active;
+    }
 
-    public void setActive(boolean active){this.active = active;}
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 }
