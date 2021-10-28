@@ -26,8 +26,12 @@ public class User {
     private boolean folded;
     @Column(name = "hasPlayed")
     private boolean hasPlayed;
+    @Column(name = "position")
+    private int position;
     @Column(name = "isSpectator")
     private boolean isSpectator;
+    @Column(name = "bet")
+    private int bet;
     @ManyToOne(targetEntity = Game.class)
     @JoinColumn(name = "gameId")
     private Game gameId;
@@ -113,11 +117,27 @@ public class User {
         this.gameId = gameId;
     }
 
-    public boolean isHasPlayed() {
+    public int getBet() {
+        return bet;
+    }
+
+    public void setBet(int bet) {
+        this.bet = bet;
+    }
+
+    public boolean getHasPlayed() {
         return hasPlayed;
     }
 
     public void setHasPlayed(boolean hasPlayed) {
         this.hasPlayed = hasPlayed;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
     }
 }

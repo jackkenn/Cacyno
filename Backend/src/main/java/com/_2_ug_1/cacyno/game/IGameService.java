@@ -9,5 +9,6 @@ public interface IGameService {
     List<Game> findAll();
     Game findById(String id);
     void deleteById(String id);
-    Game GameInit(String gameId);
+    Game gameInit(String gameId);
+    Game play(String gameId, String userId, int bet);
 }

@@ -43,7 +43,12 @@ public class GameController {
 
     @GetMapping(path = "init/{id}")
     public Game initGameById(@PathVariable("id") String id) {
-        return _gameService.GameInit(id);
+        return _gameService.gameInit(id);
+    }
+
+    @GetMapping(path = "play/{gameId}/{userId}/{bet}") //bet -1 to fold, TODO: edge check
+    public Game userPlay(@PathVariable("gameId") String gameId, @PathVariable("userId") String userId, @PathVariable("bet") int bet) {
+        return _gameService.play(gameId, userId, bet);
     }
 
 }
