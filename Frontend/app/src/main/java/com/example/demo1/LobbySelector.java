@@ -4,10 +4,13 @@ import Models.Lobby;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.*;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import interfaces.ServerCallback;
+import interfaces.ILobby;
 import org.json.JSONArray;
 
 import java.util.ArrayList;
@@ -32,7 +35,7 @@ public class LobbySelector extends AppCompatActivity{
         /*
           wait for lobbies to be appended to list to display on screen
          */
-        lb.calltoServer(this, list, new ServerCallback(){
+        lb.calltoServer(this, list, new ILobby(){
             @Override
             public void onSuccess(JSONArray response){
                 int indexForId = 1;
@@ -54,7 +57,7 @@ public class LobbySelector extends AppCompatActivity{
 
                 layout.removeAllViews();
                 list.removeAll(list);
-                lb.calltoServer(view.getContext(), list, new ServerCallback(){
+                lb.calltoServer(view.getContext(), list, new ILobby(){
                     @Override
                     public void onSuccess(JSONArray response){
                         for(Lobby i : list) {

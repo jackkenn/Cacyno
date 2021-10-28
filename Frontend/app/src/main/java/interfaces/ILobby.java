@@ -3,7 +3,7 @@ package interfaces;
 import org.json.JSONArray;
 
 
-public interface ServerCallback {
+public interface ILobby {
 
     void onSuccess(JSONArray result);
 }
