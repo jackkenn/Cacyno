@@ -7,49 +7,60 @@
                                                    android:gravity="center"
                                                    android:background="#62D126"
                                                    android:id="@+id/linearLayout" tools:ignore="ExtraText">
-<!--
+
     <EditText
             android:layout_width="84dp"
             android:layout_height="0dp"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/editTextNumber2" tools:layout_editor_absoluteY="80dp"
-            tools:layout_editor_absoluteX="225dp"/>
+            android:id="@+id/editTextNumber2"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="80dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="225dp" android:layout_marginStart="225dp"/>
     <EditText
             android:layout_width="84dp"
             android:layout_height="0dp"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/editTextNumber6" tools:layout_editor_absoluteY="125dp"
-            tools:layout_editor_absoluteX="28dp"/>
+            android:id="@+id/editTextNumber6"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="125dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="28dp" android:layout_marginStart="28dp"/>
     <EditText
             android:layout_width="84dp"
             android:layout_height="0dp"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/editTextNumber3" tools:layout_editor_absoluteY="66dp"
-            tools:layout_editor_absoluteX="430dp"/>
+            android:id="@+id/editTextNumber3"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="66dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="430dp" android:layout_marginStart="430dp"/>
     <EditText
             android:layout_width="84dp"
             android:layout_height="0dp"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/editTextNumber7" tools:layout_editor_absoluteY="268dp"
-            tools:layout_editor_absoluteX="631dp"/>
+            android:id="@+id/editTextNumber7"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="268dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="631dp" android:layout_marginStart="631dp"/>
     <EditText
             android:layout_width="84dp"
             android:layout_height="0dp"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/editTextNumber4" tools:layout_editor_absoluteY="111dp"
-            tools:layout_editor_absoluteX="619dp"/>
+            android:id="@+id/editTextNumber4"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="111dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="619dp" android:layout_marginStart="619dp"/>
     <EditText
             android:layout_width="84dp"
             android:layout_height="0dp"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/editTextNumber5" tools:layout_editor_absoluteY="322dp"
-            tools:layout_editor_absoluteX="28dp" android:visibility="gone"/>
+            android:id="@+id/editTextNumber5"
+            android:visibility="gone" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
     <Button
             android:text="Raise"
             android:layout_width="105dp"
@@ -62,8 +73,8 @@
             android:layout_width="105dp"
             android:layout_height="42dp" android:id="@+id/button2"
             app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="344dp"
-            app:layout_constraintStart_toStartOf="parent" android:layo-ut_marginLeft="408dp"
-            android:layout_marginStart="408dp" app:backgroundTint="#E40000"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:backgroundTint="#E40000" android:layout_marginLeft="408dp"/>
     <Button
             android:text="Fold"
             android:layout_width="105dp"
@@ -90,20 +101,30 @@
             android:layout_height="0dp"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/editTextNumber" tools:layout_editor_absoluteY="367dp"
-            tools:layout_editor_absoluteX="641dp" android:visibility="gone"/>
-    <ImageView
-            android:layout_width="176dp"
-            android:layout_height="89dp" app:srcCompat="@drawable/cardexample" android:id="@+id/imageView5"
-            tools:layout_editor_absoluteY="5dp" tools:layout_editor_absoluteX="156dp" android:scaleType="fitCenter"/>
-    <ImageView
-            android:layout_width="176dp"
-            android:layout_height="89dp" app:srcCompat="@drawable/cardexample" android:id="@+id/imageView6"
-            tools:layout_editor_absoluteY="5dp" tools:layout_editor_absoluteX="215dp" android:scaleType="fitCenter"/>
+            android:id="@+id/editTextNumber"
+            android:visibility="gone" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+<!--    <ImageView-->
+<!--            android:layout_width="176dp"-->
+<!--            android:layout_height="89dp" app:srcCompat="@drawable/cardexample" android:id="@+id/imageView5"-->
+<!--            android:scaleType="fitCenter"-->
+<!--            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="5dp"-->
+<!--            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="156dp"-->
+<!--            android:layout_marginStart="156dp"/>-->
+<!--    <ImageView-->
+<!--            android:layout_width="176dp"-->
+<!--            android:layout_height="89dp" app:srcCompat="@drawable/cardexample" android:id="@+id/imageView6"-->
+<!--            android:scaleType="fitCenter"-->
+<!--            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="5dp"-->
+<!--            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="215dp"-->
+<!--            android:layout_marginStart="215dp"/>-->
     <TextView
             android:text="$1000"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/textView" tools:layout_editor_absoluteY="96dp"
-            tools:layout_editor_absoluteX="231dp" android:fontFamily="@font/aqua" android:textColor="@color/white"/>
--->
+            android:layout_height="wrap_content" android:id="@+id/textView"
+            android:fontFamily="@font/aqua" android:textColor="@color/white"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="96dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="231dp"
+            android:layout_marginStart="231dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
