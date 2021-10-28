@@ -41,8 +41,8 @@ public class GameController {
         return _gameService.findById(id);
     }
 
-    @GetMapping(path = "{init}")
-    public Game initGameById(@PathVariable("init") String id) {
+    @GetMapping(path = "init/{id}")
+    public Game initGameById(@PathVariable("id") String id) {
         return _gameService.GameInit(id);
     }
 

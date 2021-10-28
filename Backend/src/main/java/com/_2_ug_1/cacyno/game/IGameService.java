@@ -4,7 +4,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component("IGameService")
 public interface IGameService {
     Game save(Game game);
     List<Game> findAll();

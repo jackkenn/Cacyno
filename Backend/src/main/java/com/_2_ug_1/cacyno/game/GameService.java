@@ -3,11 +3,13 @@ package com._2_ug_1.cacyno.game;
 import com._2_ug_1.cacyno.user.IUserRepo;
 import com._2_ug_1.cacyno.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+@Component("IGameService")
 public class GameService implements IGameService {
     @Autowired
     private IGameRepo _gameRepo;
@@ -22,10 +24,18 @@ public class GameService implements IGameService {
 
     @Override
     public Game GameInit(String gameId) {
-        Game game = _gameRepo.getById(gameId);
-        List<User> users = _userRepo.getAllByGameId(gameId);
+        Game game = null;
+        List<User> users = null;
+        try {
+            game = _gameRepo.AsyncGetById(gameId).get();
+            users = _userRepo.getAllByGameId(gameId).get();
+        } catch (Exception e) {
+            System.out.println(e.getStackTrace());
+        }
+        if(game == null || users == null) {
+            return null; //handle this better
+        }
         Deck deck = new Deck();
-
         game.setRound(0);
         for (User u : deck.Deal(users)) {
             u.setHasPlayed(false);
