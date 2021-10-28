@@ -8,6 +8,90 @@
                                                    android:background="#62D126"
                                                    android:id="@+id/linearLayout" tools:ignore="ExtraText">
 
+    <ImageView
+            android:layout_width="32dp"
+            android:layout_height="60dp" tools:srcCompat="@tools:sample/avatars" android:id="@+id/imageView18"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="208dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="631dp" android:layout_marginStart="631dp"/>
+    <ImageView
+            android:layout_width="32dp"
+            android:layout_height="60dp" tools:srcCompat="@tools:sample/avatars" android:id="@+id/imageView19"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="208dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="671dp" android:layout_marginStart="671dp"/>
+    <ImageView
+            android:layout_width="32dp"
+            android:layout_height="60dp" tools:srcCompat="@tools:sample/avatars" android:id="@+id/imageView16"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="51dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="620dp" android:layout_marginStart="620dp"/>
+    <ImageView
+            android:layout_width="32dp"
+            android:layout_height="60dp" tools:srcCompat="@tools:sample/avatars" android:id="@+id/imageView17"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="51dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="660dp" android:layout_marginStart="660dp"/>
+    <ImageView
+            android:layout_width="32dp"
+            android:layout_height="60dp" tools:srcCompat="@tools:sample/avatars" android:id="@+id/imageView14"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="16dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="430dp" android:layout_marginStart="430dp"/>
+    <ImageView
+            android:layout_width="32dp"
+            android:layout_height="60dp" tools:srcCompat="@tools:sample/avatars" android:id="@+id/imageView15"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="16dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="462dp" android:layout_marginStart="462dp"/>
+    <ImageView
+            android:layout_width="32dp"
+            android:layout_height="60dp" tools:srcCompat="@tools:sample/avatars" android:id="@+id/imageView13"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="16dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="265dp" android:layout_marginStart="265dp"/>
+    <ImageView
+            android:layout_width="32dp"
+            android:layout_height="60dp" tools:srcCompat="@tools:sample/avatars" android:id="@+id/imageView11"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="65dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="36dp" android:layout_marginStart="36dp"/>
+    <ImageView
+            android:layout_width="44dp"
+            android:layout_height="53dp" tools:srcCompat="@tools:sample/avatars" android:id="@+id/imageView12"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="66dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="68dp" android:layout_marginStart="68dp"/>
+    <ImageView
+            android:layout_width="32dp"
+            android:layout_height="60dp" tools:srcCompat="@tools:sample/avatars" android:id="@+id/imageView9"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="20dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="225dp" android:layout_marginStart="225dp"/>
+    <EditText
+            android:layout_width="133dp"
+            android:layout_height="86dp"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/editTextNumber9"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="316dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="16dp" android:layout_marginStart="16dp"/>
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" tools:srcCompat="@tools:sample/avatars" android:id="@+id/imageView8"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="277dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="275dp" android:layout_marginStart="275dp"/>
+    <EditText
+            android:layout_width="84dp"
+            android:layout_height="0dp"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/editTextNumber8"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="368dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="640dp" android:layout_marginStart="640dp"/>
     <EditText
             android:layout_width="84dp"
             android:layout_height="0dp"
@@ -104,27 +188,31 @@
             android:id="@+id/editTextNumber"
             android:visibility="gone" app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
-<!--    <ImageView-->
-<!--            android:layout_width="176dp"-->
-<!--            android:layout_height="89dp" app:srcCompat="@drawable/cardexample" android:id="@+id/imageView5"-->
-<!--            android:scaleType="fitCenter"-->
-<!--            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="5dp"-->
-<!--            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="156dp"-->
-<!--            android:layout_marginStart="156dp"/>-->
-<!--    <ImageView-->
-<!--            android:layout_width="176dp"-->
-<!--            android:layout_height="89dp" app:srcCompat="@drawable/cardexample" android:id="@+id/imageView6"-->
-<!--            android:scaleType="fitCenter"-->
-<!--            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="5dp"-->
-<!--            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="215dp"-->
-<!--            android:layout_marginStart="215dp"/>-->
-    <TextView
-            android:text="$1000"
+    <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/textView"
-            android:fontFamily="@font/aqua" android:textColor="@color/white"
-            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="96dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="231dp"
-            android:layout_marginStart="231dp"/>
+            android:layout_height="wrap_content" tools:srcCompat="@tools:sample/avatars" android:id="@+id/imageView7"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="268dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="149dp" android:layout_marginStart="149dp"/>
+    <ImageButton
+            android:layout_width="124dp"
+            android:layout_height="67dp" app:srcCompat="@drawable/backarrow_but" android:id="@+id/imageButton2"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="3dp" app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="6dp"
+            android:layout_marginStart="6dp"/>
+    <!--    <ImageView-->
+    <!--            android:layout_width="176dp"-->
+    <!--            android:layout_height="89dp" app:srcCompat="@drawable/cardexample" android:id="@+id/imageView5"-->
+    <!--            android:scaleType="fitCenter"-->
+    <!--            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="5dp"-->
+    <!--            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="156dp"-->
+    <!--            android:layout_marginStart="156dp"/>-->
+    <!--    <ImageView-->
+    <!--            android:layout_width="176dp"-->
+    <!--            android:layout_height="89dp" app:srcCompat="@drawable/cardexample" android:id="@+id/imageView6"-->
+    <!--            android:scaleType="fitCenter"-->
+    <!--            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="5dp"-->
+    <!--            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="215dp"-->
+    <!--            android:layout_marginStart="215dp"/>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
