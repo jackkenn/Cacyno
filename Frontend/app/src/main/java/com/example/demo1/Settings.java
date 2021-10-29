@@ -20,8 +20,8 @@ import org.json.JSONObject;
 
 public class Settings extends AppCompatActivity {
     private ImageButton back;
-    private ImageButton apply;
-    private TextView username;
+    public ImageButton apply;
+    public TextView username;
     private ImageButton logout;
     private Switch displayName;
     private User user;

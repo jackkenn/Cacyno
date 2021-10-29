@@ -42,15 +42,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String emailID = emailId.getText().toString();
                 String paswd = passwd.getText().toString();
-                if (emailID.isEmpty()) {
-                    emailId.setError("Provide your Email first!");
-                    emailId.requestFocus();
-                } else if (paswd.isEmpty()) {
-                    passwd.setError("Set your password");
-                    passwd.requestFocus();
-                } else if (emailID.isEmpty() && paswd.isEmpty()) {
-                    Toast.makeText(MainActivity.this, "Fields Empty!", Toast.LENGTH_SHORT).show();
-                } else if (!(emailID.isEmpty() && paswd.isEmpty())) {
+                if(checkFields(emailID, paswd))
+                {
                     firebaseAuth.createUserWithEmailAndPassword(emailID, paswd).addOnCompleteListener(MainActivity.this, new OnCompleteListener() {
                         @Override
                         public void onComplete(@NonNull Task task) {
@@ -102,5 +95,24 @@ public class MainActivity extends AppCompatActivity {
         requestQueue.add(jsonObjectRequest);
     }
 
+
+
+    boolean checkFields(String emailID, String paswd) {
+        if (emailID.isEmpty()) {
+            emailId.setError("Provide your Email first!");
+            emailId.requestFocus();
+            return false;
+        } else if (paswd.isEmpty()) {
+            passwd.setError("Set your password");
+            passwd.requestFocus();
+            return false;
+        } else if (emailID.isEmpty() && paswd.isEmpty()) {
+            Toast.makeText(MainActivity.this, "Fields Empty!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
 
 }

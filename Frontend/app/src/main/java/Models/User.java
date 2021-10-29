@@ -33,6 +33,7 @@ public class User {
         this.money = money;
         this.displayName = displayName;
     }
+
     public JSONObject usertoJSON(){
         JSONObject postData = new JSONObject();
         try {
