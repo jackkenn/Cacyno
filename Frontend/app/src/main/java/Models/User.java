@@ -18,31 +18,18 @@ import org.json.JSONObject;
 
 @Setter
 @Getter
-@NoArgsConstructor
 public class User {
     String username="";
     String id="";
     int money;
     boolean displayName;
+    UserOperations ops;
 
-    public User(String username, String id, int money, boolean displayName){
-        this.username = username;
-        this.id = id;
-        this.money = money;
-        this.displayName = displayName;
+    public User(){
+        ops = new UserOperations();
     }
     public JSONObject usertoJSON(){
-        JSONObject postData = new JSONObject();
-        try {
-            postData.put("id", id);
-            postData.put("username", username);
-            postData.put("money", money);
-            postData.put("displayname", displayName);
-        }
-        catch(JSONException e){
-            e.printStackTrace();
-        }
-        return postData;
+        return ops.usertoJSON(this);
     }
 
     public boolean getDisplayName() {
@@ -54,14 +41,7 @@ public class User {
     }
 
     public void JSONtoUser(JSONObject response){
-        try {
-            money = Integer.parseInt(response.getString("money"));
-            username = response.getString("username");
-            id = response.getString("id");
-            displayName = Boolean.parseBoolean(response.getString("displayname"));
-        }catch (JSONException e){
-            Log.e("ERROR: JSON->USER", e.toString());
-        }
+       ops.JSONtoUser(response, this);
     }
     public void getUser(Context con, IUser callback, String id){
         String url = "http://coms-309-046.cs.iastate.edu:8080/user/" + id;
