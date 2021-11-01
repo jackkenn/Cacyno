@@ -5,5 +5,7 @@ import org.json.JSONArray;
 
 public interface ILobby {
 
-    void onSuccess(JSONArray result);
+    int onSuccess();
+
+    int onError();
 }
