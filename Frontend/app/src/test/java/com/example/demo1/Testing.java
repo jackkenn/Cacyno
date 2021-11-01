@@ -9,6 +9,7 @@ import org.mockito.Mock;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -24,13 +25,18 @@ public class Testing {
     @Mock
     JSONObject obj = mock(JSONObject.class);
 
+
+
+
     @Test
     public void LobbyFromJSONObjectTest() throws JSONException {
         LobbyOperations ops = new LobbyOperations();
-        when(obj.getString("active")).thenReturn("1");
+        when(obj.getString("id")).thenReturn("9999");
+        when(obj.getString("active")).thenReturn(String.valueOf(true));
         when(obj.getString("lobbyname")).thenReturn("Caden's Lobby");
 
         ops.JSONtoLobby(obj, lobby);
+        assertEquals("9999", lobby.getId());
         assertTrue(lobby.getActive());
         assertEquals("Caden's Lobby", lobby.getLobbyname());
     }
@@ -38,14 +44,17 @@ public class Testing {
     @Test
     public void LobbyToJSONObjectTest() throws JSONException {
         Lobby lobby = mock(Lobby.class);
+        when(lobby.getId()).thenReturn("9999");
         when(lobby.getActive()).thenReturn(Boolean.valueOf("1"));
         when(lobby.getLobbyname()).thenReturn("Caden's Lobby");
         JSONObject tester = new JSONObject();
 
-        tester.put("1", lobby.getActive());
-        tester.put("Caden's Lobby", lobby.getLobbyname());
+        tester.put("id", lobby.getId());
+        tester.put("active", lobby.getActive());
+        tester.put("lobbyname", lobby.getLobbyname());
 
         LobbyOperations ops = new LobbyOperations();
+        assertEquals(tester.getString("id"), ops.lobbyToJSON(lobby).getString("id"));
         assertEquals(tester.getBoolean("active"), ops.lobbyToJSON(lobby).getBoolean("active"));
         assertEquals(tester.get("lobbyname"), ops.lobbyToJSON(lobby).get("lobbyname"));
     }

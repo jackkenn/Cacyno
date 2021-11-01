@@ -30,7 +30,7 @@ import java.util.ArrayList;
 
 @Setter
 @Getter
-public class Lobby extends AppCompatActivity {
+public class Lobby {
     @SerializedName("id")
     String id = "";
     @SerializedName("lobbyname")

@@ -10,6 +10,7 @@ public class LobbyOperations {
 
     public void JSONtoLobby(JSONObject response, Lobby lobby){
         try {
+            lobby.setId(response.getString("id"));
             lobby.setActive(Boolean.parseBoolean(response.getString("active")));
             lobby.setLobbyname(response.getString("lobbyname"));
         }catch (JSONException e){
@@ -21,6 +22,7 @@ public class LobbyOperations {
     public JSONObject lobbyToJSON(Lobby lobby){
         JSONObject postData = new JSONObject();
         try {
+            postData.put("id", lobby.getId());
             postData.put("active", lobby.getActive());
             postData.put("lobbyname", lobby.getLobbyname());
         }
