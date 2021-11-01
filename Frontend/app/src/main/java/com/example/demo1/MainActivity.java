@@ -1,37 +1,32 @@
 package com.example.demo1;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
+import Models.User;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.android.volley.*;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
     public EditText emailId, passwd;
     Button btnSignUp;
     TextView signIn;
     FirebaseAuth firebaseAuth;
+    User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        startActivity(new Intent(MainActivity.this, LobbySelector.class));
+        user = new User();
         firebaseAuth = FirebaseAuth.getInstance();
         emailId = findViewById(R.id.ETemail);
         passwd = findViewById(R.id.ETpassword);
@@ -53,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                                         "SignUp unsuccessful: " + task.getException().getMessage(),
                                         Toast.LENGTH_SHORT).show();
                             } else {
-                                volleyPost();
+                                user.firstTimeAppend(MainActivity.this);
                                 startActivity(new Intent(MainActivity.this, Username.class));
                             }
                         }
@@ -70,29 +65,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(I);
             }
         });
-    }
-
-    public void volleyPost() {
-        String postUrl = "http://coms-309-046.cs.iastate.edu:8080/user";
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        JSONObject postData = new JSONObject();
-        try {
-            postData.put("id", FirebaseAuth.getInstance().getCurrentUser().getUid());
-            postData.put("username", "");
-            postData.put("money", "1000");
-            postData.put("displayname", false);
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, postUrl, postData, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                System.out.println(response);
-            }
-        }, error -> error.printStackTrace());
-        requestQueue.add(jsonObjectRequest);
     }
 
 

@@ -2,9 +2,7 @@ package Models;
 
 
 import android.content.Context;
-import android.os.Build;
 import android.util.Log;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -13,14 +11,13 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.demo1.R;
 import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
-import interfaces.ServerCallback;
+import interfaces.ILobby;
 import lombok.Getter;
 import lombok.Setter;
 import org.json.JSONArray;
@@ -55,7 +52,7 @@ public class Lobby extends AppCompatActivity {
         Gson gson = new GsonBuilder().addDeserializationExclusionStrategy(ex).addSerializationExclusionStrategy(ex).create();
         return gson.fromJson(response.toString(), lobbylist);
     }
-    public void calltoServer(Context con, ArrayList<Lobby> list, ServerCallback callback){
+    public void calltoServer(Context con, ArrayList<Lobby> list, ILobby callback){
         String url = "http://coms-309-046.cs.iastate.edu:8080/lobby";
         RequestQueue requestQueue = Volley.newRequestQueue(con);
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
