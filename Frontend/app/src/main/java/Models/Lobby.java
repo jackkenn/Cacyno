@@ -110,6 +110,7 @@ public class Lobby extends AppCompatActivity {
                 Log.e("ERROR GETTING LOBBY", error.toString());
             }
         });
+        requestQueue.add(request);
     }
     private JSONObject LobbyToJSON(){
         JSONObject data = new JSONObject();
@@ -117,7 +118,6 @@ public class Lobby extends AppCompatActivity {
             data.put("id", id);
             data.put("lobbyname", lobbyname);
             data.put("active", active);
-
         }catch (JSONException e){
             Log.e("ERROR lobby->JSON", e.toString());
             e.printStackTrace();
@@ -138,7 +138,25 @@ public class Lobby extends AppCompatActivity {
                 Log.e("ERROR sending lobbyTOdb", error.toString());
             }
         });
+        requestQueue.add(request);
     }
+    public void newLobby(Context con){
+        String url = "http://coms-309-046.cs.iastate.edu:8080/lobby";
+        RequestQueue requestQueue = Volley.newRequestQueue(con);
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, LobbyToJSON(), new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("ERROR sending lobbyTOdb", error.toString());
+            }
+        });
+        requestQueue.add(request);
+    }
+
 
 
 
