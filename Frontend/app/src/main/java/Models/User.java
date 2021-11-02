@@ -1,4 +1,5 @@
 package Models;
+
 import android.content.Context;
 import android.util.Log;
 import com.android.volley.Request;
@@ -8,43 +9,30 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.firebase.auth.FirebaseAuth;
-import lombok.AllArgsConstructor;
+import interfaces.IUser;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.sql.SQLOutput;
-import java.util.UUID;
-
 @Setter
 @Getter
-@NoArgsConstructor
 public class User {
     String username="";
     String id="";
     int money;
     boolean displayName;
+    UserOperations ops;
+    int current_game_money;
 
-    public User(String username, String id, int money, boolean displayName){
-        this.username = username;
-        this.id = id;
-        this.money = money;
-        this.displayName = displayName;
+
+    public User(){
+        ops = new UserOperations();
     }
+
     public JSONObject usertoJSON(){
-        JSONObject postData = new JSONObject();
-        try {
-            postData.put("id", id);
-            postData.put("username", username);
-            postData.put("money", money);
-            postData.put("displayname", displayName);
-        }
-        catch(JSONException e){
-            e.printStackTrace();
-        }
-        return postData;
+        return ops.usertoJSON(this);
     }
 
     public boolean getDisplayName() {
@@ -56,29 +44,64 @@ public class User {
     }
 
     public void JSONtoUser(JSONObject response){
-        try {
-            money = Integer.parseInt(response.getString("money"));
-            username = response.getString("username");
-            id = response.getString("id");
-            displayName = Boolean.parseBoolean(response.getString("displayname"));
-        }catch (JSONException e){
-            System.out.println("unable to get data");
-        }
+       ops.JSONtoUser(response, this);
     }
-    public void appendUser(Context con){
-        String url = "http://coms-309-046.cs.iastate.edu:8080/user/" + FirebaseAuth.getInstance().getCurrentUser().getUid();
+    public void getUser(Context con, IUser callback, String id){
+        String url = "http://coms-309-046.cs.iastate.edu:8080/user/" + id;
         RequestQueue requestQueue = Volley.newRequestQueue(con);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 JSONtoUser(response);
+                callback.onSuccess();
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.e("ERROR_FROM_APPEND", error.toString());
+                callback.onError();
             }
         });
         requestQueue.add(request);
+    }
+    public void updateUser(Context con, IUser callback){
+        String postUrl = "http://coms-309-046.cs.iastate.edu:8080/user";
+        RequestQueue requestQueue = Volley.newRequestQueue(con);
+        System.out.println(usertoJSON().toString());
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PUT, postUrl, usertoJSON(), new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                System.out.println(response);
+                callback.onSuccess();
+            }
+        },  new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("ERROR: UPDATING", error.toString());
+                callback.onError();
+            }
+        });
+        requestQueue.add(jsonObjectRequest);
+    }
+    public void firstTimeAppend(Context con){
+        String postUrl = "http://coms-309-046.cs.iastate.edu:8080/user";
+        RequestQueue requestQueue = Volley.newRequestQueue(con);
+        JSONObject postData = new JSONObject();
+        try {
+            postData.put("id", FirebaseAuth.getInstance().getCurrentUser().getUid());
+            postData.put("username", "");
+            postData.put("money", "1000");
+            postData.put("displayname", false);
+            postData.put("current_game_money", 0);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, postUrl, postData, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                System.out.println(response);
+            }
+        }, error -> error.printStackTrace());
+        requestQueue.add(jsonObjectRequest);
     }
 }

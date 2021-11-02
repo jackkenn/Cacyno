@@ -23,6 +23,7 @@
         <activity android:name=".UserHome"/>
         <activity android:name=".Settings"/>
         <activity android:name=".Username"/>
+        <activity android:name=".CreateGame"/>
     </application>
 
 </manifest>
