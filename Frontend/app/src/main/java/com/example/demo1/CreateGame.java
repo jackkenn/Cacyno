@@ -2,11 +2,14 @@ package com.example.demo1;
 
 import Models.Lobby;
 import Models.User;
+import Utilities.GameChecker;
+import Utilities.GameCreation;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import interfaces.IUser;
@@ -16,19 +19,19 @@ import java.util.Objects;
 public class CreateGame extends AppCompatActivity {
     private TextView lobbyname;
     private TextView moneyAmount;
-    private ImageButton create;
-    private ImageButton back;
     private User user;
     private IUser callback;
+    private GameCreation gameCreation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_game);
         lobbyname = findViewById(R.id.create_lobbyname);
         moneyAmount = findViewById(R.id.game_money);
-        back = findViewById(R.id.back_create_game);
-        create = findViewById(R.id.createNewGame);
+        ImageButton back = findViewById(R.id.back_create_game);
+        ImageButton create = findViewById(R.id.createNewGame);
         user = new User();
+        gameCreation = new GameCreation(new GameChecker());
         callback = new IUser() {
             @Override
             public int onSuccess() {
@@ -46,37 +49,21 @@ public class CreateGame extends AppCompatActivity {
             public void onClick(View view) {
                 String lobbyInput = lobbyname.getText().toString();
                 String money = moneyAmount.getText().toString();
-                if(lobbyInput.isEmpty()){
-                    lobbyname.setError("please provide lobby name");
-                    lobbyname.requestFocus();
-                }
-                if(lobbyInput.length() > 12){
-                    lobbyname.setError("only 12 characters max please");
-                    lobbyname.requestFocus();
-                }
-                if(money.isEmpty()){
-                    moneyAmount.setError("please provide amount");
-                    moneyAmount.requestFocus();
-                }
-                if(money.matches(".*[a-z].*")){
-                    moneyAmount.setError("only digits please");
-                    moneyAmount.requestFocus();
-                }
-                if(money.charAt(0) == '0'){
-                    moneyAmount.setError("real amount of money");
-                    moneyAmount.requestFocus();
-                }
-                else{
+                if(gameCreation.createGame(lobbyInput, money, lobbyname, moneyAmount, CreateGame.this, user)) {
                     Lobby newLobby = new Lobby();
                     newLobby.setLobbyname(lobbyInput);
                     newLobby.setActive(true);
-                    newLobby.setId(getIntent().getIntExtra("nextid", 1)+"");
+                    newLobby.setId(getIntent().getIntExtra("nextid", 1) + "");
+                    newLobby.newLobby(CreateGame.this);
                     user.setCurrent_game_money(Integer.parseInt(money));
                     user.updateUser(CreateGame.this, callback);
-                    newLobby.newLobby(CreateGame.this);
                     Intent intent = new Intent(CreateGame.this, LobbySelector.class);
                     startActivity(intent);
                 }
+                else{
+                    Toast.makeText(CreateGame.this, "NO", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
         back.setOnClickListener(new View.OnClickListener() {
