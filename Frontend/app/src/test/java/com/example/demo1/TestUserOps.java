@@ -44,12 +44,13 @@ public class TestUserOps {
         when(obj.getString("money")).thenReturn("1000");
         when(obj.getString("id")).thenReturn("123");
         when(obj.getString("displayname")).thenReturn("false");
-
+        when(obj.getString("current_game_money")).thenReturn("0");
         ops.JSONtoUser(obj, user);
         assertFalse(user.getDisplayName());
         assertEquals("manny", user.getUsername());
         assertEquals(1000, user.getMoney());
         assertEquals("123", user.getId());
+        assertEquals(0, user.getCurrent_game_money());
 
     }
     @Test
@@ -59,18 +60,20 @@ public class TestUserOps {
         when(user.getMoney()).thenReturn(1000);
         when(user.getId()).thenReturn("123");
         when(user.getDisplayName()).thenReturn(false);
+        when(user.getCurrent_game_money()).thenReturn(0);
         JSONObject tester = new JSONObject();
 
         tester.put("id", user.getId());
         tester.put("username", user.getUsername());
         tester.put("money", user.getMoney());
         tester.put("displayname", user.getDisplayName());
-
+        tester.put("current_game_money", user.getCurrent_game_money());
         UserOperations ops = new UserOperations();
         assertEquals(tester.getString("username"), ops.usertoJSON(user).getString("username"));
         assertEquals(tester.get("money"), ops.usertoJSON(user).get("money"));
         assertEquals(tester.getString("id"), ops.usertoJSON(user).getString("id"));
         assertEquals(tester.get("displayname"), ops.usertoJSON(user).get("displayname"));
+        assertEquals(tester.get("current_game_money"), ops.usertoJSON(user).get("current_game_money"));
     }
 
 
