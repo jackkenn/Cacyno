@@ -63,7 +63,7 @@ public class LobbySelector extends AppCompatActivity{
                 list.removeAll(list);
                 lb.calltoServer(view.getContext(), list, new ILobby(){
                     @Override
-                    public void onSuccess(JSONArray response){
+                    public int onSuccess(){
                         int indexForId = 1;
                         for(Lobby i : list) {
                             View row = getLayoutInflater().inflate(R.layout.lobby_row, layout);
@@ -73,6 +73,11 @@ public class LobbySelector extends AppCompatActivity{
                             lobbyName.setText(i.getLobbyname());
                             nextId = indexForId;
                         }
+                        return 0;
+                    }
+                    @Override
+                    public int onError(){
+                        return -1;
                     }
                 });
             }
@@ -84,7 +89,6 @@ public class LobbySelector extends AppCompatActivity{
                 startActivity(new Intent(LobbySelector.this, UserHome.class));
             }
         });
-
         creategame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -93,8 +97,6 @@ public class LobbySelector extends AppCompatActivity{
                 startActivity(intent);
             }
         });
-
-
     }
 
 

@@ -18,6 +18,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
 import interfaces.ILobby;
+import interfaces.IUser;
 import lombok.Getter;
 import lombok.Setter;
 import org.json.JSONArray;
@@ -29,7 +30,7 @@ import java.util.ArrayList;
 
 @Setter
 @Getter
-public class Lobby extends AppCompatActivity {
+public class Lobby {
     @SerializedName("id")
     String id = "";
     @SerializedName("lobbyname")
@@ -37,13 +38,36 @@ public class Lobby extends AppCompatActivity {
     @SerializedName("active")
     boolean active;
 
-    public Lobby(){}
+    LobbyOperations ops;
+
+    public Lobby(){
+        ops = new LobbyOperations();
+    }
 
     public boolean getActive(){
         return active;
     }
     public void setActive(boolean active){
         this.active = active;
+    }
+
+
+    public void getUser(Context con, ILobby callback, String id){
+        String url = "http://coms-309-046.cs.iastate.edu:8080/lobby/" + id;
+        RequestQueue requestQueue = Volley.newRequestQueue(con);
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                JSONtoLobby(response);
+                callback.onSuccess();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                callback.onError();
+            }
+        });
+        requestQueue.add(request);
     }
 
     private ArrayList<Lobby> JSONtolist(JSONArray response){
@@ -59,7 +83,7 @@ public class Lobby extends AppCompatActivity {
             @Override
             public void onResponse(JSONArray response) {
                 list.addAll(JSONtolist(response));
-                callback.onSuccess(response);
+                callback.onSuccess();
                 System.out.println(list.size());
             }
         }, new Response.ErrorListener() {
@@ -87,14 +111,7 @@ public class Lobby extends AppCompatActivity {
         }
     }
     private void JSONtoLobby(JSONObject response){
-        try{
-            id = response.getString("id");
-            active = Boolean.getBoolean(response.getString("active"));
-            lobbyname = response.getString("lobbyname");
-        }catch(JSONException e){
-            Log.e("ERROR JSON->lobby", e.toString());
-            e.printStackTrace();
-        }
+        ops.JSONtoLobby(response, this);
     }
     public void calltoServer(Context con, String id){
         String url = "http://coms-309-046.cs.iastate.edu:8080/lobby/"+id;
@@ -110,19 +127,10 @@ public class Lobby extends AppCompatActivity {
                 Log.e("ERROR GETTING LOBBY", error.toString());
             }
         });
-        requestQueue.add(request);
     }
     private JSONObject LobbyToJSON(){
-        JSONObject data = new JSONObject();
-        try {
-            data.put("id", id);
-            data.put("lobbyname", lobbyname);
-            data.put("active", active);
-        }catch (JSONException e){
-            Log.e("ERROR lobby->JSON", e.toString());
-            e.printStackTrace();
-        }
-        return data;
+        return ops.lobbyToJSON(this);
+
     }
     public void updateLobby(Context con){
         String url = "http://coms-309-046.cs.iastate.edu:8080/lobby";
@@ -138,25 +146,7 @@ public class Lobby extends AppCompatActivity {
                 Log.e("ERROR sending lobbyTOdb", error.toString());
             }
         });
-        requestQueue.add(request);
     }
-    public void newLobby(Context con){
-        String url = "http://coms-309-046.cs.iastate.edu:8080/lobby";
-        RequestQueue requestQueue = Volley.newRequestQueue(con);
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, LobbyToJSON(), new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e("ERROR sending lobbyTOdb", error.toString());
-            }
-        });
-        requestQueue.add(request);
-    }
-
 
 
 

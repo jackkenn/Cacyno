@@ -30,6 +30,7 @@ public class User {
     public User(){
         ops = new UserOperations();
     }
+
     public JSONObject usertoJSON(){
         return ops.usertoJSON(this);
     }
