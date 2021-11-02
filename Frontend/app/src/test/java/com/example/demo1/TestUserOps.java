@@ -2,25 +2,15 @@ package com.example.demo1;
 
 import Models.User;
 import Models.UserOperations;
-import android.content.Context;
-import android.os.Bundle;
-import androidx.recyclerview.widget.ItemTouchHelper;
-import interfaces.IUser;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.MockedConstruction;
 
-
-import java.net.ConnectException;
-import org.mockito.Mockito;
-
-
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
