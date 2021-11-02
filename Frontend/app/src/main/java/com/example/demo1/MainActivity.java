@@ -2,6 +2,7 @@ package com.example.demo1;
 
 import Models.User;
 import Utilities.AccountChecker;
+import Utilities.AccountCreation;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -23,24 +24,26 @@ public class MainActivity extends AppCompatActivity{
     FirebaseAuth firebaseAuth;
     User user;
     AccountChecker accountChecker;
-
+    AccountCreation accountCreation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         user = new User();
         accountChecker = new AccountChecker();
+        accountCreation = new AccountCreation();
         firebaseAuth = FirebaseAuth.getInstance();
         emailId = findViewById(R.id.ETemail);
         passwd = findViewById(R.id.ETpassword);
         btnSignUp = findViewById(R.id.btnSignUp);
         signIn = findViewById(R.id.TVSignIn);
+        Toast toast = null;
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String emailID = emailId.getText().toString();
                 String paswd = passwd.getText().toString();
-                if (accountChecker.checkEmail(emailID, emailId) && accountChecker.checkPassword(paswd, passwd)) {
+                if (accountCreation.createAccount(emailID, paswd, emailId, passwd, MainActivity.this)) {
                     firebaseAuth.createUserWithEmailAndPassword(emailID, paswd).addOnCompleteListener(MainActivity.this, new OnCompleteListener() {
                         @Override
                         public void onComplete(@NonNull Task task) {
@@ -50,6 +53,7 @@ public class MainActivity extends AppCompatActivity{
                                         "SignUp unsuccessful: " + task.getException().getMessage(),
                                         Toast.LENGTH_SHORT).show();
                             } else {
+                                Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_SHORT).show();
                                 user.firstTimeAppend(MainActivity.this);
                                 startActivity(new Intent(MainActivity.this, Username.class));
                             }

@@ -2,6 +2,10 @@ package com.example.demo1;
 
 import Models.Lobby;
 import Models.LobbyOperations;
+import Utilities.AccountChecker;
+import Utilities.AccountCreation;
+import android.content.Context;
+import android.widget.EditText;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
@@ -25,8 +29,11 @@ public class Testing {
     @Mock
     JSONObject obj = mock(JSONObject.class);
 
+    @Mock
+    EditText editText = mock(EditText.class);
 
-
+    @Mock
+    Context context = mock(Context.class);
 
     @Test
     public void LobbyFromJSONObjectTest() throws JSONException {
@@ -60,7 +67,28 @@ public class Testing {
     }
 
     @Test
-    public void TestUsername() {
+    public void TestAccountCreationWrong() {
+        AccountChecker accountChecker = mock(AccountChecker.class);
+        when(accountChecker.checkEmail("", editText)).thenReturn(false);
+        when(accountChecker.checkPassword("", editText)).thenReturn(false);
 
+
+
+        AccountCreation accountCreation = new AccountCreation();
+
+        assertFalse(accountCreation.createAccount("", "", editText, editText, context));
+    }
+
+    @Test
+    public void TestAccountCreationRight() {
+        AccountChecker accountChecker = mock(AccountChecker.class);
+        when(accountChecker.checkEmail("asdf@gmail.com", editText)).thenReturn(true);
+        when(accountChecker.checkPassword("asdfasdf", editText)).thenReturn(true);
+
+
+
+        AccountCreation accountCreation = new AccountCreation();
+
+        assertTrue(accountCreation.createAccount("asdf@gmail.com", "asdfasdf", editText, editText, context));
     }
 }
