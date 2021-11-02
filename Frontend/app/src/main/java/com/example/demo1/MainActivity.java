@@ -1,6 +1,7 @@
 package com.example.demo1;
 
 import Models.User;
+import Utilities.AccountChecker;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -21,12 +22,14 @@ public class MainActivity extends AppCompatActivity{
     TextView signIn;
     FirebaseAuth firebaseAuth;
     User user;
+    AccountChecker accountChecker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         user = new User();
+        accountChecker = new AccountChecker();
         firebaseAuth = FirebaseAuth.getInstance();
         emailId = findViewById(R.id.ETemail);
         passwd = findViewById(R.id.ETpassword);
@@ -37,8 +40,7 @@ public class MainActivity extends AppCompatActivity{
             public void onClick(View view) {
                 String emailID = emailId.getText().toString();
                 String paswd = passwd.getText().toString();
-                if(checkFields(emailID, paswd))
-                {
+                if (accountChecker.checkEmail(emailID, emailId) && accountChecker.checkPassword(paswd, passwd)) {
                     firebaseAuth.createUserWithEmailAndPassword(emailID, paswd).addOnCompleteListener(MainActivity.this, new OnCompleteListener() {
                         @Override
                         public void onComplete(@NonNull Task task) {
@@ -67,24 +69,5 @@ public class MainActivity extends AppCompatActivity{
         });
     }
 
-
-
-    boolean checkFields(String emailID, String paswd) {
-        if (emailID.isEmpty()) {
-            emailId.setError("Provide your Email first!");
-            emailId.requestFocus();
-            return false;
-        } else if (paswd.isEmpty()) {
-            passwd.setError("Set your password");
-            passwd.requestFocus();
-            return false;
-        } else if (emailID.isEmpty() && paswd.isEmpty()) {
-            Toast.makeText(MainActivity.this, "Fields Empty!", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        else {
-            return true;
-        }
-    }
 
 }

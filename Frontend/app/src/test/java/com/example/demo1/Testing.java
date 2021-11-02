@@ -58,4 +58,9 @@ public class Testing {
         assertEquals(tester.getBoolean("active"), ops.lobbyToJSON(lobby).getBoolean("active"));
         assertEquals(tester.get("lobbyname"), ops.lobbyToJSON(lobby).get("lobbyname"));
     }
+
+    @Test
+    public void TestUsername() {
+
+    }
 }
