@@ -54,6 +54,7 @@ public class Settings extends AppCompatActivity {
                 user.updateUser(Settings.this, callback);
                 Intent intent = new Intent(Settings.this, UserHome.class);
                 intent.putExtra("displayname", user.getDisplayName());
+                intent.putExtra("username", user.getUsername());
                 startActivity(intent);
             }
         });

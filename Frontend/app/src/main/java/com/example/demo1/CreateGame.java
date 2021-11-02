@@ -50,7 +50,7 @@ public class CreateGame extends AppCompatActivity {
                     lobbyname.setError("please provide lobby name");
                     lobbyname.requestFocus();
                 }
-                else if(lobbyInput.length() > 12){
+                if(lobbyInput.length() > 12){
                     lobbyname.setError("only 12 characters max please");
                     lobbyname.requestFocus();
                 }
@@ -58,11 +58,11 @@ public class CreateGame extends AppCompatActivity {
                     moneyAmount.setError("please provide amount");
                     moneyAmount.requestFocus();
                 }
-                else if(money.matches(".*[a-z].*")){
+                if(money.matches(".*[a-z].*")){
                     moneyAmount.setError("only digits please");
                     moneyAmount.requestFocus();
                 }
-                else if(money.charAt(0) == '0'){
+                if(money.charAt(0) == '0'){
                     moneyAmount.setError("real amount of money");
                     moneyAmount.requestFocus();
                 }

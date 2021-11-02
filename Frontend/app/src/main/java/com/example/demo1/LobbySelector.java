@@ -40,7 +40,7 @@ public class LobbySelector extends AppCompatActivity{
          */
         lb.calltoServer(this, list, new ILobby(){
             @Override
-            public void onSuccess(JSONArray response){
+            public int onSuccess(){
                 int indexForId = 1;
                 for(Lobby i : list) {
                     View newLobbbyRow = getLayoutInflater().inflate(R.layout.lobby_row, layout);
@@ -50,6 +50,11 @@ public class LobbySelector extends AppCompatActivity{
                     lobbyName.setText(i.getLobbyname());
                     nextId = indexForId;
                 }
+                return 0;
+            }
+            @Override
+            public int onError(){
+                return -1;
             }
         });
         layout = findViewById(R.id.linear);

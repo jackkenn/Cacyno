@@ -52,6 +52,7 @@ public class Username extends AppCompatActivity {
                     user.setUsername(input);
                     user.updateUser(Username.this, callback);
                     Intent I = new Intent(Username.this, UserHome.class);
+                    I.putExtra("username", input);
                     startActivity(I);
                 }
             }
