@@ -27,12 +27,12 @@ public class UserHome extends AppCompatActivity {
         money = findViewById(R.id.moneyRequest);
         username = findViewById(R.id.currentUser);
         play = findViewById(R.id.play_create_but);
+        username.append(getIntent().getStringExtra("username"));
         user = new User();
         callback = new IUser() {
             @Override
             public int onSuccess() {
                 Log.e("SUCCESS GETTING USER ", user.getUsername());
-                username.append(user.getUsername());
                 money.append(user.getMoney()+"");
                 return 0;
             }

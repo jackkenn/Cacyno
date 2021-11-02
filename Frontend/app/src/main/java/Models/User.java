@@ -24,6 +24,8 @@ public class User {
     int money;
     boolean displayName;
     UserOperations ops;
+    int current_game_money;
+
 
     public User(){
         ops = new UserOperations();
@@ -89,6 +91,7 @@ public class User {
             postData.put("username", "");
             postData.put("money", "1000");
             postData.put("displayname", false);
+            postData.put("current_game_money", 0);
 
         } catch (JSONException e) {
             e.printStackTrace();

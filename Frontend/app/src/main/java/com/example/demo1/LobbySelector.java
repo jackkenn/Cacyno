@@ -22,6 +22,8 @@ public class LobbySelector extends AppCompatActivity{
     ArrayList<Lobby> list;
     private ImageButton refresh;
     private ImageButton back;
+    private ImageButton creategame;
+    private int nextId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -30,6 +32,7 @@ public class LobbySelector extends AppCompatActivity{
         constraintLayout = findViewById(R.id.constraintLayout);
         back = findViewById(R.id.back);
         refresh = constraintLayout.findViewById(R.id.refresh);
+        creategame = findViewById(R.id.create);
         Lobby lb = new Lobby();
         list = new ArrayList<>();
         /*
@@ -45,6 +48,7 @@ public class LobbySelector extends AppCompatActivity{
                     lobbyName.setId(indexForId);
                     indexForId++;
                     lobbyName.setText(i.getLobbyname());
+                    nextId = indexForId;
                 }
                 return 0;
             }
@@ -65,8 +69,14 @@ public class LobbySelector extends AppCompatActivity{
                 lb.calltoServer(view.getContext(), list, new ILobby(){
                     @Override
                     public int onSuccess(){
+                        int indexForId = 1;
                         for(Lobby i : list) {
                             View row = getLayoutInflater().inflate(R.layout.lobby_row, layout);
+                            TextView lobbyName = findViewById(R.id.lobbyname);
+                            lobbyName.setId(indexForId);
+                            indexForId++;
+                            lobbyName.setText(i.getLobbyname());
+                            nextId = indexForId;
                         }
                         return 0;
                     }
@@ -82,6 +92,14 @@ public class LobbySelector extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(LobbySelector.this, UserHome.class));
+            }
+        });
+        creategame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LobbySelector.this, CreateGame.class);
+                intent.putExtra("nextid", nextId);
+                startActivity(intent);
             }
         });
     }

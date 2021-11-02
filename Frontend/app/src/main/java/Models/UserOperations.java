@@ -14,6 +14,7 @@ public class UserOperations {
             user.setUsername(response.getString("username"));
             user.setId(response.getString("id"));
             user.setDisplayName(Boolean.parseBoolean(response.getString("displayname")));
+            user.setCurrent_game_money(Integer.parseInt(response.getString("current_game_money")));
         }catch (JSONException e){
             Log.e("ERROR: JSON->USER", e.toString());
         }
@@ -27,6 +28,7 @@ public class UserOperations {
             postData.put("username", user.getUsername());
             postData.put("money", user.getMoney());
             postData.put("displayname", user.getDisplayName());
+            postData.put("current_game_money", user.getCurrent_game_money());
         }
         catch(JSONException e){
             e.printStackTrace();
