@@ -123,37 +123,6 @@ public class Test_UserOps_GameCreation {
         assertFalse(game.createGame("new lobby", "1d00", lobby, money, context, user));
     }
 
-    @Test
-    public void gameCreateMoneyCheck2(){
-        GameChecker gameChecker = mock(GameChecker.class);
-        User user = mock(User.class);
-
-        when(user.getMoney()).thenReturn(100);
-        when(user.getUsername()).thenReturn("manny");
-
-        when(gameChecker.checkLobbyName("new lobby", lobby)).thenReturn(true);
-        when(gameChecker.checkMoneyAmount("0100", money, user)).thenReturn(false);
-
-        GameCreation game = new GameCreation(gameChecker);
-
-        assertFalse(game.createGame("new lobby", "1d00", lobby, money, context, user));
-    }
-
-    @Test
-    public void gameCreateMoneyCheck3(){
-        GameChecker gameChecker = mock(GameChecker.class);
-        User user = mock(User.class);
-
-        when(user.getMoney()).thenReturn(0);
-        when(user.getUsername()).thenReturn("manny");
-
-        when(gameChecker.checkLobbyName("new lobby", lobby)).thenReturn(true);
-        when(gameChecker.checkMoneyAmount("100", money, user)).thenReturn(false);
-
-        GameCreation game = new GameCreation(gameChecker);
-
-        assertFalse(game.createGame("new lobby", "1d00", lobby, money, context, user));
-    }
 
     @Test
     public void gameCreateCorrect(){
@@ -169,6 +138,49 @@ public class Test_UserOps_GameCreation {
         GameCreation game = new GameCreation(gameChecker);
 
         assertTrue(game.createGame("new lobby", "100", lobby, money, context, user));
+    }
+
+    @Test
+    public void testingMoneyInputCases(){
+        GameChecker gameChecker = new GameChecker();
+
+        User user = mock(User.class);
+
+        when(user.getMoney()).thenReturn(200);
+        when(user.getUsername()).thenReturn("manny");
+        /**
+         testing not enough money but lobby name is correct
+         */
+        assertFalse(gameChecker.checkMoneyAmount("300", money, user));
+        /**
+         * testing letters in money
+         */
+        assertFalse(gameChecker.checkMoneyAmount("1d00", money, user));
+        /**
+         * testing money starting with 0
+         */
+        assertFalse(gameChecker.checkMoneyAmount("0100", money, user));
+        /**
+         * testing right amount
+         */
+        assertTrue(gameChecker.checkMoneyAmount("200", money, user));
+        assertTrue(gameChecker.checkMoneyAmount("150", money, user));
+    }
+    @Test
+    public void testingLobbyNameInputCases(){
+        GameChecker gameChecker = new GameChecker();
+        /**
+         * testing empty string
+         */
+        assertFalse(gameChecker.checkLobbyName("", lobby));
+        /**
+         * testing longer than 12
+         */
+        assertFalse(gameChecker.checkLobbyName("thislobbynameislonger", lobby));
+        /**
+         * testing correct format
+         */
+        assertTrue(gameChecker.checkLobbyName("manny lobby", lobby));
     }
 
 

@@ -48,6 +48,10 @@ public class Username extends AppCompatActivity {
                     username.setError("Please provide username");
                     username.requestFocus();
                 }
+                else if(input.length() > 9){
+                    username.setError("please make shorter than 10 characters");
+                    username.requestFocus();
+                }
                 else{
                     user.setUsername(input);
                     user.updateUser(Username.this, callback);
