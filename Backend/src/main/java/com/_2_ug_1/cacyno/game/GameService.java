@@ -47,7 +47,7 @@ public class GameService implements IGameService {
             u.setHasPlayed(false);
             _userRepo.save(u);
         }
-        return _gameRepo.saveAndFlush(deck.DealPublicCards(game));
+        return _gameRepo.save(deck.DealPublicCards(game));
     }
 
     @Override
