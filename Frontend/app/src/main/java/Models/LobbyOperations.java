@@ -6,7 +6,7 @@ import org.json.JSONObject;
 
 public class LobbyOperations {
     /**
-     * contructor for new lobby operations for a lobby
+     * Constructor for new lobby operations for a lobby
      */
     public LobbyOperations(){}
 
