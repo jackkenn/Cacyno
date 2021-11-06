@@ -5,9 +5,16 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class LobbyOperations {
-
+    /**
+     * contructor for new lobby operations for a lobby
+     */
     public LobbyOperations(){}
 
+    /**
+     * this method handles a JSONObject and attempts to append all data from JSONObject to a lobby object
+     * @param response the lobby JSONObject from endpoint
+     * @param lobby the lobby object that will contain info from JSONObject
+     */
     public void JSONtoLobby(JSONObject response, Lobby lobby){
         try {
             lobby.setId(response.getString("id"));
@@ -19,6 +26,11 @@ public class LobbyOperations {
 
     }
 
+    /**
+     * this method handles when a lobby object needs to be translated into a JSONObject
+     * @param lobby the lobby object that will be translated
+     * @return a JSONObject that contains info of lobby object
+     */
     public JSONObject lobbyToJSON(Lobby lobby){
         JSONObject postData = new JSONObject();
         try {

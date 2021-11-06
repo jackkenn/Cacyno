@@ -34,6 +34,7 @@ public class UserHome extends AppCompatActivity {
             public int onSuccess() {
                 Log.e("SUCCESS GETTING USER ", user.getUsername());
                 money.append(user.getMoney()+"");
+                username.append(user.getUsername());
                 return 0;
             }
             @Override
@@ -47,6 +48,7 @@ public class UserHome extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(UserHome.this, Settings.class);
                 intent.putExtra("displayname", user.getDisplayName());
+                intent.putExtra("username", user.getUsername());
                 startActivity(intent);
             }
         });

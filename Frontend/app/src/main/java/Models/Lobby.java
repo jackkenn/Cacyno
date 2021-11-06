@@ -40,46 +40,58 @@ public class Lobby {
 
     LobbyOperations ops;
 
+    /**
+     * constructs a new lobby with new operations for this lobby
+     */
     public Lobby(){
         ops = new LobbyOperations();
     }
 
+    /**
+     * this method gives whether the lobby is currently active or not
+     * @return true or false depending on if the lobby is active
+     */
     public boolean getActive(){
         return active;
     }
+
+    /**
+     * this method sets the lobby to be active or not active
+     * @param active true if game is created, false if game ended
+     */
     public void setActive(boolean active){
         this.active = active;
     }
 
-
-    public void getUser(Context con, ILobby callback, String id){
-        String url = "http://coms-309-046.cs.iastate.edu:8080/lobby/" + id;
-        RequestQueue requestQueue = Volley.newRequestQueue(con);
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                JSONtoLobby(response);
-                callback.onSuccess();
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                callback.onError();
-            }
-        });
-        requestQueue.add(request);
-    }
-
+    /**
+     * this method takes the JSONArray and uses Gson to append all lobbies instances from JSONArray and adds to a
+     * list of lobby objects
+     * @param response the response from the endpoint called
+     * @return a list of current lobby objects
+     */
     private ArrayList<Lobby> JSONtolist(JSONArray response){
         Type lobbylist = new TypeToken<ArrayList<Lobby>>(){}.getType();
         Exclude ex = new Exclude();
         Gson gson = new GsonBuilder().addDeserializationExclusionStrategy(ex).addSerializationExclusionStrategy(ex).create();
         return gson.fromJson(response.toString(), lobbylist);
     }
+
+    /**
+     * this method is called when the user opens "lobby selector" screen to view lobbies to join. Makes a volley
+     * request to endpoint to grab JSONArray of lobby instances
+     * @param con the current Android context of this view
+     * @param list the list that will contain all lobby objects.
+     * @param callback this is the interface that is used to handle if the lobbies are adding to list successfully or
+     *                 an error occured
+     */
     public void calltoServer(Context con, ArrayList<Lobby> list, ILobby callback){
         String url = "http://coms-309-046.cs.iastate.edu:8080/lobby";
         RequestQueue requestQueue = Volley.newRequestQueue(con);
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            /**
+             * this method is called when the call to endpoint is successful
+             * @param response the response from endpoint
+             */
             @Override
             public void onResponse(JSONArray response) {
                 list.addAll(JSONtolist(response));
@@ -87,6 +99,10 @@ public class Lobby {
                 System.out.println(list.size());
             }
         }, new Response.ErrorListener() {
+            /**
+             * this method is called when the call to the endpoint is not successful and error has occurred
+             * @param error the Volley error that has occurred
+             */
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e("ERROR GETTING LOBBIES", error.toString());
@@ -110,18 +126,37 @@ public class Lobby {
             return true;
         }
     }
+
+    /**
+     * this method is called when the JSONObject needs to be transferred to a lobby object.
+     * @param response the JSONObject from the endpoint called
+     */
     private void JSONtoLobby(JSONObject response){
         ops.JSONtoLobby(response, this);
     }
+
+    /**
+     * this method is called when needed to get a lobby from all lobby instances with id
+     * @param con the current Android context of this view
+     * @param id the unqiue id of lobby
+     */
     public void calltoServer(Context con, String id){
         String url = "http://coms-309-046.cs.iastate.edu:8080/lobby/"+id;
         RequestQueue requestQueue = Volley.newRequestQueue(con);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            /**
+             * this method is called when the call to endpoint is successful
+             * @param response the response from endpoint
+             */
             @Override
             public void onResponse(JSONObject response) {
                 JSONtoLobby(response);
             }
         }, new Response.ErrorListener() {
+            /**
+             * this method is called when the call to the endpoint is not successful and error has occurred
+             * @param error the Volley error that has occurred
+             */
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e("ERROR GETTING LOBBY", error.toString());
@@ -129,19 +164,33 @@ public class Lobby {
         });
         requestQueue.add(request);
     }
+    /**
+     * this method is called when the lobby object needs to translate into a JSONObject to append to endpoint
+     * @return a JSONObject that contains this lobby object instance
+     */
     private JSONObject LobbyToJSON(){
         return ops.lobbyToJSON(this);
-
     }
+
+    /**
+     * this method is called when needing to update this lobby instance in the database
+     * @param con the current Android context of this view
+     */
     public void updateLobby(Context con){
         String url = "http://coms-309-046.cs.iastate.edu:8080/lobby";
         RequestQueue requestQueue = Volley.newRequestQueue(con);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, LobbyToJSON(), new Response.Listener<JSONObject>() {
+            /**
+             * this method is called when the call/append to endpoint is successful
+             * @param response the response from endpoint
+             */
             @Override
-            public void onResponse(JSONObject response) {
-
-            }
+            public void onResponse(JSONObject response) {}
         }, new Response.ErrorListener() {
+            /**
+             * this method is called when the call to the endpoint is not successful and error has occurred
+             * @param error the Volley error that has occurred
+             */
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e("ERROR sending lobbyTOdb", error.toString());
@@ -149,15 +198,28 @@ public class Lobby {
         });
         requestQueue.add(request);
     }
+
+    /**
+     * this method is called when a new game is created and the lobby needs to be added to the database
+     * @param con the current Android context of this view
+     */
     public void newLobby(Context con){
         String url = "http://coms-309-046.cs.iastate.edu:8080/lobby";
         RequestQueue requestQueue = Volley.newRequestQueue(con);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, LobbyToJSON(), new Response.Listener<JSONObject>() {
+            /**
+             * this method is called when the call/append to database is successful
+             * @param response the response from endpoint
+             */
             @Override
             public void onResponse(JSONObject response) {
 
             }
         }, new Response.ErrorListener() {
+            /**
+             * this method is called when the call to the endpoint is not successful and error has occurred
+             * @param error the Volley error that has occurred
+             */
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e("ERROR sending lobbyTOdb", error.toString());

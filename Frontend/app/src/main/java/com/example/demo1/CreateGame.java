@@ -33,11 +33,19 @@ public class CreateGame extends AppCompatActivity {
         user = new User();
         gameCreation = new GameCreation(new GameChecker());
         callback = new IUser() {
+            /**
+             * if user is successfully transferred from endpoint to a user object
+             * @return int 0 for success
+             */
             @Override
             public int onSuccess() {
                 return 0;
             }
 
+            /**
+             * if the current user is not successfully transferred from endpoint to a user object
+             * @return int -1 for error
+             */
             @Override
             public int onError() {
                 return -1;
@@ -45,6 +53,12 @@ public class CreateGame extends AppCompatActivity {
         };
         user.getUser(this, callback, Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid());
         create.setOnClickListener(new View.OnClickListener() {
+            /**
+             * when the create button is clicked, this method will check the text fields for "lobby name" and
+             * "money willing to bet" for any input errors or not enough funds. If successful, this method will send you
+             * to a game screen view.
+             * @param view the current view of this device
+             */
             @Override
             public void onClick(View view) {
                 String lobbyInput = lobbyname.getText().toString();
@@ -67,6 +81,10 @@ public class CreateGame extends AppCompatActivity {
             }
         });
         back.setOnClickListener(new View.OnClickListener() {
+            /**
+             * when the back button is clicked, this method simply takes you back to the list of lobbies available
+             * @param view the current view of this device
+             */
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(CreateGame.this, LobbySelector.class);

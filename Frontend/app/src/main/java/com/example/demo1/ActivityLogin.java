@@ -47,6 +47,10 @@ public class ActivityLogin extends AppCompatActivity {
             }
         };
         signup.setOnClickListener(new View.OnClickListener() {
+            /**
+             * When the sign up button is pressed, this method will send you to a page to sign up
+             * @param view the current view on device
+             */
             @Override
             public void onClick(View view) {
                 Intent I = new Intent(ActivityLogin.this, MainActivity.class);
@@ -54,6 +58,12 @@ public class ActivityLogin extends AppCompatActivity {
             }
         });
         btnLogIn.setOnClickListener(new View.OnClickListener() {
+            /**
+             * When the log in button is clicked, the email text field and password textfield are checked to see
+             * if there is exist an user with those credentials. If text fields are in correct format, the method will call onComplete method
+             * within Firebase to handle log in.
+             * @param view the current view on device
+             */
             @Override
             public void onClick(View view) {
                 String userEmail = loginEmailId.getText().toString();
@@ -68,6 +78,10 @@ public class ActivityLogin extends AppCompatActivity {
                     Toast.makeText(ActivityLogin.this, "Fields Empty!", Toast.LENGTH_SHORT).show();
                 } else if (!(userEmail.isEmpty() && userPaswd.isEmpty())) {
                     firebaseAuth.signInWithEmailAndPassword(userEmail, userPaswd).addOnCompleteListener(ActivityLogin.this, new OnCompleteListener() {
+                        /**
+                         * if the user is logged in succesfully then the method will send you to the user home page.
+                         * @param task the task that needs to be handled by Firebase to authorize or not
+                         */
                         @Override
                         public void onComplete(@NonNull Task task) {
                             if (!task.isSuccessful()) {
@@ -85,6 +99,9 @@ public class ActivityLogin extends AppCompatActivity {
 
     }
 
+    /**
+     * when this page starts, firebase will create a listener
+     */
     @Override
     protected void onStart() {
         super.onStart();
