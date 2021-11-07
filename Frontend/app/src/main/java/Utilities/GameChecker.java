@@ -4,7 +4,12 @@ import Models.User;
 import android.widget.TextView;
 
 public class GameChecker {
-
+    /**
+     * this method is used to check all cases of input for a lobby name when creating a new game.
+     * @param name the text that was inputted
+     * @param nameView the text view that is used for lobby name
+     * @return true if lobby name passes cases, false if lobby name is in a wrong format
+     */
     public boolean checkLobbyName(String name, TextView nameView){
         if(name.isEmpty()){
             nameView.setError("please provide lobby name");
@@ -19,6 +24,14 @@ public class GameChecker {
         return true;
     }
 
+    /**
+     * this method is used to check all cases of input for a amount of money wanting to bet when creating a new game.
+     * @param money the amount of money that was inputted in string format
+     * @param moneyView the text view that is used for inputting the amount of money
+     * @param user the current user that is tring to create a game
+     * @return true if amount of money passes all cases, false if amount money is in wrong format or user
+     * does not have enough funds to bet inputted amount
+     */
     public boolean checkMoneyAmount(String money, TextView moneyView, User user){
         if(money.isEmpty())
         {

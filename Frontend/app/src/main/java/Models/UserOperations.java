@@ -8,6 +8,11 @@ public class UserOperations {
 
     public UserOperations(){}
 
+    /**
+     * Turns the given JSONObject into a user Object
+     * @param response the given JSONObejct
+     * @param user the user object to put the fields in
+     */
     public void JSONtoUser(JSONObject response, User user){
         try {
             user.setMoney(Integer.parseInt(response.getString("money")));
@@ -21,6 +26,11 @@ public class UserOperations {
 
     }
 
+    /**
+     * turns the given User into a JSONObject
+     * @param user
+     * @return
+     */
     public JSONObject usertoJSON(User user){
         JSONObject postData = new JSONObject();
         try {
