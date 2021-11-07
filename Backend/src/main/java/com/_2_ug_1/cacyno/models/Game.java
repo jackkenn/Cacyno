@@ -1,5 +1,7 @@
-package com._2_ug_1.cacyno.game;
+package com._2_ug_1.cacyno.models;
 
+
+import io.swagger.annotations.Api;
 
 import javax.persistence.*;
 

@@ -1,6 +1,4 @@
-package com._2_ug_1.cacyno.user;
-
-import com._2_ug_1.cacyno.game.Game;
+package com._2_ug_1.cacyno.models;
 
 import javax.persistence.*;
 

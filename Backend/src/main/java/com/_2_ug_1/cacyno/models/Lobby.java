@@ -1,4 +1,4 @@
-package com._2_ug_1.cacyno.lobby;
+package com._2_ug_1.cacyno.models;
 
 import javax.persistence.*;
 

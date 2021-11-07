@@ -1,9 +1,7 @@
-package com._2_ug_1.cacyno.lobby;
+package com._2_ug_1.cacyno.repos;
 
+import com._2_ug_1.cacyno.models.Lobby;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.Optional;
-import java.util.UUID;
 
 public interface ILobbyRepo extends JpaRepository<Lobby, String> {
 }

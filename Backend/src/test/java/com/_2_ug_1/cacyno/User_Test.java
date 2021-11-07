@@ -1,15 +1,14 @@
 package com._2_ug_1.cacyno;
 
-import com._2_ug_1.cacyno.game.Game;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
-import com._2_ug_1.cacyno.user.User;
-import com._2_ug_1.cacyno.user.IUserRepo;
-import com._2_ug_1.cacyno.user.UserController;
+import com._2_ug_1.cacyno.models.User;
+import com._2_ug_1.cacyno.repos.IUserRepo;
+import com._2_ug_1.cacyno.controllers.UserController;
 
 import java.util.ArrayList;
 import java.util.Optional;

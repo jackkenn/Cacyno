@@ -1,10 +1,11 @@
-package com._2_ug_1.cacyno.lobby;
+package com._2_ug_1.cacyno.controllers;
 
+import com._2_ug_1.cacyno.models.Lobby;
+import com._2_ug_1.cacyno.repos.ILobbyRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RequestMapping("/lobby")
 @RestController

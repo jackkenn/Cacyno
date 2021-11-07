@@ -1,7 +1,9 @@
-package com._2_ug_1.cacyno.game;
+package com._2_ug_1.cacyno.services;
 
-import com._2_ug_1.cacyno.user.IUserRepo;
-import com._2_ug_1.cacyno.user.User;
+import com._2_ug_1.cacyno.models.Game;
+import com._2_ug_1.cacyno.models.User;
+import com._2_ug_1.cacyno.repos.IGameRepo;
+import com._2_ug_1.cacyno.repos.IUserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -1,6 +1,6 @@
-package com._2_ug_1.cacyno.game;
+package com._2_ug_1.cacyno.services;
 
-import org.springframework.stereotype.Component;
+import com._2_ug_1.cacyno.models.Game;
 
 import java.util.List;
 
