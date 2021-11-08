@@ -22,7 +22,6 @@ public class GameController {
      * constructs a new GameController serviced by GameService
      *
      * @param _gameService The GameService that interfaces between the sql table, game logic and user
-     * @return a new GameController object
      */
     @Autowired
     public GameController(IGameService _gameService) {
@@ -115,8 +114,9 @@ public class GameController {
      *
      * @param gameId the Id of the game the user is attempting to play on
      * @param userId the Id of the user in the game attempting to make a play
-     * @param bet    Determins the play the user will make in the game. Bet < 0: the user will fold, Bet = 0: the user
-     *               will check, Bet > 0 and valid: the user will spend some of their in game money to bet
+     * @param bet Determins the play the user will make in the game. Bet less than 0: the user will fold,
+     * Bet equals 0: the user will check, Bet greater than 0 and valid: the user will spend some of their in
+     * game money to bet.
      * @return the updated game if the user is in the game, it is their turn and
      * they made a valid bet, if the game is not found, user is not found, or move is invalid
      * then it will return null
