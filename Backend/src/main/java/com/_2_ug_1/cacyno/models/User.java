@@ -1,33 +1,48 @@
 package com._2_ug_1.cacyno.models;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 
+@Api(value = "User", description = "User Entity that holds the data of the Users")
 @Entity
 @Table(name = "user")
 public class User {
+    @ApiModelProperty(notes = "The id of the user", name = "id")
     @Id
     @Column(name = "id")
     private String id;
+    @ApiModelProperty(notes = "the name of the user", name = "username")
     @Column(name = "username")
     private String username;
+    @ApiModelProperty(notes = "the amount of money the user has", name = "money")
     @Column(name = "money")
     private int money;
+    @ApiModelProperty(notes = "The name of the user that is displayed", name = "displayname")
     @Column(name = "displayname")
     private Boolean displayname;
+    @ApiModelProperty(notes = "the amount of money that the user has in the current game that they are playing", name = "current_game_money")
     @Column(name = "current_game_money")
     private int current_game_money;
+    @ApiModelProperty(notes = "keeps track of the first card the user is holding", name = "card1")
     @Column(name = "card1")
     private int card1;
+    @ApiModelProperty(notes = "keeps track of the second card the user is holding", name = "card2")
     @Column(name = "card2")
     private int card2;
+    @ApiModelProperty(notes = "keeps track if the user has folded or not", name = "folded")
     @Column(name = "folded")
     private boolean folded;
+    @ApiModelProperty(notes = "keeps track if the user has played their turn yet that round", name = "hasPlayed")
     @Column(name = "hasPlayed")
     private boolean hasPlayed;
     @Column(name = "position")
     private int position;
+    @ApiModelProperty(notes = "keeps track if the user is a spectator or a player in the game", name = "isSpectator")
     @Column(name = "isSpectator")
     private boolean isSpectator;
+    @ApiModelProperty(notes = "holds the amount of how much the user is betting that round", name = "bet")
     @Column(name = "bet")
     private int bet;
     @ManyToOne(targetEntity = Game.class)
