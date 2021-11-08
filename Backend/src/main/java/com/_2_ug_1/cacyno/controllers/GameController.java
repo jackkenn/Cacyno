@@ -20,7 +20,7 @@ public class GameController {
 
     @Autowired
     /**
-     * 
+     *
      */
     public GameController(IGameService _gameService) {
         this._gameService = _gameService;

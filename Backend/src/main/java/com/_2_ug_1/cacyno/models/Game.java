@@ -5,6 +5,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
+
 @Api(value = "Game", description = "Game Entity that holds the data of the game state")
 @Entity(name = "Game")
 @Table(name = "game")
