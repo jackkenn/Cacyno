@@ -1,11 +1,10 @@
-package com._2_ug_1.cacyno.game;
+package com._2_ug_1.cacyno.repos;
 
-import com._2_ug_1.cacyno.user.User;
+import com._2_ug_1.cacyno.models.Game;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.scheduling.annotation.Async;
 
-import java.util.List;
 import java.util.concurrent.Future;
 
 public interface IGameRepo extends JpaRepository<Game, String> {
