@@ -11,11 +11,17 @@ import java.util.List;
 
 @RequestMapping("/game")
 @RestController
+/**
+ * The GameController class is a class that allows the front end to call and change things in the game table
+ */
 public class GameController {
     @Autowired
     IGameService _gameService;
 
     @Autowired
+    /**
+     * 
+     */
     public GameController(IGameService _gameService) {
         this._gameService = _gameService;
     }
