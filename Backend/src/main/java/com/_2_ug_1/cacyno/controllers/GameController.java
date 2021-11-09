@@ -19,9 +19,9 @@ public class GameController {
     IGameService _gameService;
 
     /**
-     * constructs a new GameController serviced by GameService
+     * constructs a new GameController
      *
-     * @param _gameService The GameService that interfaces between the sql table, game logic and user
+     * @param _gameService The GameService that interfaces between the database, game logic and user
      */
     @Autowired
     public GameController(IGameService _gameService) {
@@ -67,8 +67,8 @@ public class GameController {
     /**
      * updates a game in the database by matching the ids
      *
-     * @param game the game that will replace the old game
-     * @return the uppdated game
+     * @param game the game that will replace the old game in the database
+     * @return the updated game
      */
     @ApiOperation(value = "updateGame", notes = "Replaces the game with an id equal to the given games id with the" +
             "given game. Returns the updated game or null if no game could be found")
@@ -81,7 +81,7 @@ public class GameController {
     /**
      * gets the game with the specified id
      *
-     * @param id the id of the requested id
+     * @param id the id of the requested game
      * @return a game that has the same id as specified
      */
     @ApiOperation(value = "getGameById", notes = "Returns the game with and id equal to id. Returns null if no game" +

@@ -19,6 +19,11 @@ public class GameService implements IGameService {
     @Autowired
     private IUserRepo _userRepo;
 
+    /**
+     * constructer for gameService
+     * @param _gameRepo interface to pull the games from the database
+     * @param _userRepo interface to pull the user from the database
+     */
     @Autowired
     public GameService(IGameRepo _gameRepo, IUserRepo _userRepo) {
         this._gameRepo = _gameRepo;
