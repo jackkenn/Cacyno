@@ -51,6 +51,8 @@ public class LobbySelector extends AppCompatActivity{
                 for(Lobby i : list) {
                     View newLobbbyRow = getLayoutInflater().inflate(R.layout.lobby_row, layout);
                     TextView lobbyName = findViewById(R.id.lobbyname);
+                    ImageButton joinBut = findViewById(R.id.join);
+                    ImageButton spectate = findViewById(R.id.spectate);
                     lobbyName.setId(indexForId);
                     indexForId++;
                     lobbyName.setText(i.getLobbyname());

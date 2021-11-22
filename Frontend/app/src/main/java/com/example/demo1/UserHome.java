@@ -56,6 +56,7 @@ public class UserHome extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent I = new Intent(UserHome.this, LobbySelector.class);
+                I.putExtra("username", user.getUsername());
                 startActivity(I);
             }
         });
