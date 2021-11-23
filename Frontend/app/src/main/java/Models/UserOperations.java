@@ -20,6 +20,14 @@ public class UserOperations {
             user.setId(response.getString("id"));
             user.setDisplayName(Boolean.parseBoolean(response.getString("displayname")));
             user.setCurrent_game_money(Integer.parseInt(response.getString("current_game_money")));
+            user.set_spectator(Boolean.parseBoolean(response.getString("isSpectator")));
+            user.setGameId(response.getString("game"));
+            user.setCard1(Integer.parseInt(response.getString("card1")));
+            user.setCard2(Integer.parseInt(response.getString("card2")));
+            user.setFolded(Boolean.parseBoolean(response.getString("folded")));
+            user.setBet(Integer.parseInt(response.getString("bet")));
+            user.setPosition(Integer.parseInt(response.getString("position")));
+            user.setHas_played(Boolean.parseBoolean(response.getString("hasPlayed")));
         }catch (JSONException e){
             Log.e("ERROR: JSON->USER", e.toString());
         }
@@ -39,6 +47,14 @@ public class UserOperations {
             postData.put("money", user.getMoney());
             postData.put("displayname", user.getDisplayName());
             postData.put("current_game_money", user.getCurrent_game_money());
+            postData.put("bet", user.getBet());
+            postData.put("card1", user.getCard1());
+            postData.put("card2", user.getCard2());
+            postData.put("folded", user.getFolded());
+            postData.put("isSpecatator", user.getIs_spectator());
+            postData.put("position", user.getPosition());
+            postData.put("game", user.getGameId());
+            postData.put("hasPlayed", user.getHas_played());
         }
         catch(JSONException e){
             e.printStackTrace();

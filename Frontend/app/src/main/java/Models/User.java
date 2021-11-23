@@ -25,7 +25,14 @@ public class User {
     boolean displayName;
     UserOperations ops;
     int current_game_money;
-
+    boolean is_spectator;
+    String gameId = "";
+    int bet;
+    int card1;
+    int card2;
+    boolean folded;
+    boolean has_played;
+    int position;
     /**
      * Constructor for making a new User
      */
@@ -55,6 +62,27 @@ public class User {
      */
     public void setDisplayName(boolean b){
         this.displayName = b;
+    }
+    /**
+     * gets folded
+     * @return folded
+     */
+    public boolean getFolded(){
+        return folded;
+    }
+    /**
+     * gets is_spectator
+     * @return is_spectator
+     */
+    public boolean getIs_spectator(){
+        return is_spectator;
+    }
+    /**
+     * gets has_played
+     * @return has_played
+     */
+    public boolean getHas_played() {
+        return has_played;
     }
 
     /**
@@ -128,7 +156,13 @@ public class User {
             postData.put("money", "1000");
             postData.put("displayname", false);
             postData.put("current_game_money", 0);
-
+            postData.put("bet", 0);
+            postData.put("card1", 0);
+            postData.put("card2", 0);
+            postData.put("folded", false);
+            postData.put("hasPlayed", false);
+            postData.put("isSpectator", false);
+            postData.put("position", 0);
         } catch (JSONException e) {
             e.printStackTrace();
         }

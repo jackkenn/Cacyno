@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import interfaces.IUser;
 
+import java.util.Objects;
+
 
 public class Username extends AppCompatActivity {
     private TextView username;
@@ -32,7 +34,7 @@ public class Username extends AppCompatActivity {
                 return -1;
             }
         };
-        user.getUser(this, callback, FirebaseAuth.getInstance().getCurrentUser().getUid());
+        user.getUser(this, callback, Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid());
         username = (TextView) findViewById(R.id.username);
         apply = (ImageButton) findViewById(R.id.apply_but);
         apply.setOnClickListener(new View.OnClickListener() {

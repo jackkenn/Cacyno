@@ -1,8 +1,10 @@
 package com.example.demo1;
 
 import Models.Lobby;
+import Models.User;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -10,7 +12,9 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import com.google.firebase.auth.FirebaseAuth;
 import interfaces.ILobby;
+import interfaces.IUser;
 
 import java.util.ArrayList;
 
@@ -23,6 +27,7 @@ public class LobbySelector extends AppCompatActivity{
     private ImageButton back;
     private ImageButton creategame;
     private int nextId;
+    private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -34,7 +39,19 @@ public class LobbySelector extends AppCompatActivity{
         creategame = findViewById(R.id.create);
         Lobby lb = new Lobby();
         list = new ArrayList<>();
-        String user = getIntent().getStringExtra("username");
+        user = new User();
+        user.getUser(this, new IUser() {
+            @Override
+            public int onSuccess() {
+                Log.e("SUCCESS GETTING USER ", user.getUsername());
+                return 0;
+            }
+            @Override
+            public int onError(){
+                return -1;
+            }
+        }, FirebaseAuth.getInstance().getCurrentUser().getUid());
+        String userName = getIntent().getStringExtra("username");
         /*
           wait for lobbies to be appended to list to display on screen
          */
@@ -47,16 +64,58 @@ public class LobbySelector extends AppCompatActivity{
              */
             @Override
             public int onSuccess(){
-                int indexForId = 1;
+                int indexForNameId = 1;
+                int indexForJoinId = 1000;
+                int indexForSpectateId = 10000;
                 for(Lobby i : list) {
                     View newLobbbyRow = getLayoutInflater().inflate(R.layout.lobby_row, layout);
                     TextView lobbyName = findViewById(R.id.lobbyname);
-                    ImageButton joinBut = findViewById(R.id.join);
-                    ImageButton spectate = findViewById(R.id.spectate);
-                    lobbyName.setId(indexForId);
-                    indexForId++;
+                    lobbyName.setId(indexForNameId);
                     lobbyName.setText(i.getLobbyname());
-                    nextId = indexForId;
+                    ImageButton joinBut = findViewById(R.id.join);
+                    joinBut.setId(indexForJoinId++);
+                    int setIndex = indexForNameId;
+                    joinBut.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            user.setGameId(setIndex +"");
+                            user.updateUser(LobbySelector.this, new IUser() {
+                                @Override
+                                public int onSuccess() {
+                                    return 0;
+                                }
+
+                                @Override
+                                public int onError() {
+                                    return -1;
+                                }
+                            });
+                            startActivity(new Intent(LobbySelector.this, GameScreen.class));
+                        }
+                    });
+                    ImageButton spectate = findViewById(R.id.spectate);
+                    spectate.setId(indexForSpectateId++);
+                    spectate.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            user.setGameId(setIndex +"");
+                            user.set_spectator(true);
+                            user.updateUser(LobbySelector.this, new IUser() {
+                                @Override
+                                public int onSuccess() {
+                                    return 0;
+                                }
+
+                                @Override
+                                public int onError() {
+                                    return -1;
+                                }
+                            });
+                            startActivity(new Intent(LobbySelector.this, GameScreen.class));
+                        }
+                    });
+                    indexForNameId++;
+                    nextId = indexForNameId;
                 }
                 return 0;
             }
@@ -122,7 +181,7 @@ public class LobbySelector extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(LobbySelector.this, UserHome.class);
-                i.putExtra("username", user);
+                i.putExtra("username", userName);
                 startActivity(i);
 
             }
