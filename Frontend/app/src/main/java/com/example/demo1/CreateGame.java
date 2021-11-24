@@ -72,7 +72,7 @@ public class CreateGame extends AppCompatActivity {
                     user.setCurrent_game_money(Integer.parseInt(money));
                     user.setGameId(newLobby.getId());
                     user.updateUser(CreateGame.this, callback, true);
-                    System.out.println("creating...");
+                    System.out.println(user.getGameId() + " Game: "+ newLobby.getId());
                     Intent intent = new Intent(CreateGame.this, GameScreen.class);
                     startActivity(intent);
                 }

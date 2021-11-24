@@ -103,6 +103,7 @@ public class User {
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+                System.out.println(response + "from get user");
                 JSONtoUser(response, InGame);
                 callback.onSuccess();
             }
@@ -123,11 +124,10 @@ public class User {
     public void updateUser(Context con, IUser callback, boolean InGame){
         String postUrl = "http://coms-309-046.cs.iastate.edu:8080/user";
         RequestQueue requestQueue = Volley.newRequestQueue(con);
-        System.out.println(usertoJSON(InGame).toString());
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PUT, postUrl, usertoJSON(InGame), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                System.out.println(response);
+                System.out.println(response + "worked");
                 callback.onSuccess();
             }
         },  new Response.ErrorListener() {

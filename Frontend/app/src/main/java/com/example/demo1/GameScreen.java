@@ -26,6 +26,5 @@ public class GameScreen extends AppCompatActivity {
                 return -1;
             }
         }, Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid(), true);
-        System.out.println("created");
     }
 }
