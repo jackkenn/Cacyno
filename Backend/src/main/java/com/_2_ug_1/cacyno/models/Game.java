@@ -21,31 +21,31 @@ public class Game {
     @Column(name = "id")
     private String id;
     @ApiModelProperty(notes = "holds the data of the first card on the table", name = "public_card1")
-    @Column(name = "public_card1")
+    @Column(name = "public_card1", nullable = false, columnDefinition = "int default 0")
     private int public_card1;
     @ApiModelProperty(notes = "holds the data of the second card on the table", name = "public_card2")
-    @Column(name = "public_card2")
+    @Column(name = "public_card2", nullable = false, columnDefinition = "int default 0")
     private int public_card2;
     @ApiModelProperty(notes = "holds the data of the third card on the table", name = "public_card3")
-    @Column(name = "public_card3")
+    @Column(name = "public_card3", nullable = false, columnDefinition = "int default 0")
     private int public_card3;
     @ApiModelProperty(notes = "holds the data of the fourth card on the table", name = "public_card4")
-    @Column(name = "public_card4")
+    @Column(name = "public_card4", nullable = false, columnDefinition = "int default 0")
     private int public_card4;
     @ApiModelProperty(notes = "holds the data of the fifth card on the table", name = "public_card5")
-    @Column(name = "public_card5")
+    @Column(name = "public_card5", nullable = false, columnDefinition = "int default 0")
     private int public_card5;
     @ApiModelProperty(notes = "holds the data of the total money in the round", name = "pot")
-    @Column(name = "pot")
+    @Column(name = "pot", nullable = false, columnDefinition = "int default 0")
     private int pot;
     @ApiModelProperty(notes = "keeps track of how many rounds have been played in the game", name = "round")
-    @Column(name = "round")
+    @Column(name = "round", nullable = false, columnDefinition = "int default 0")
     private int round;
     @ApiModelProperty(notes = "holds the name of the lobby", name = "lobbyname")
-    @Column(name = "lobbyname")
+    @Column(name = "lobbyname", nullable = false, columnDefinition = "varchar(255) default ''")
     private String lobbyname;
     @ApiModelProperty(notes = "keeps track of if the game is active or not", name = "active")
-    @Column(name = "active")
+    @Column(name = "active", nullable = false, columnDefinition = "boolean default false")
     private boolean active;
 
     /**
