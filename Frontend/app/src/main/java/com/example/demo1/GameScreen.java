@@ -14,6 +14,7 @@ public class GameScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_screen);
+        user = new User();
         user.getUser(GameScreen.this, new IUser() {
             @Override
             public int onSuccess() {
@@ -24,6 +25,7 @@ public class GameScreen extends AppCompatActivity {
             public int onError() {
                 return -1;
             }
-        }, Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid());
+        }, Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid(), true);
+        System.out.println("created");
     }
 }

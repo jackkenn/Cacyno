@@ -13,7 +13,7 @@ public class UserOperations {
      * @param response the given JSONObejct
      * @param user the user object to put the fields in
      */
-    public void JSONtoUser(JSONObject response, User user){
+    public void JSONtoUser(JSONObject response, User user, boolean InGame){
         try {
             user.setMoney(Integer.parseInt(response.getString("money")));
             user.setUsername(response.getString("username"));
@@ -21,7 +21,8 @@ public class UserOperations {
             user.setDisplayName(Boolean.parseBoolean(response.getString("displayname")));
             user.setCurrent_game_money(Integer.parseInt(response.getString("current_game_money")));
             user.set_spectator(Boolean.parseBoolean(response.getString("isSpectator")));
-            user.setGameId(response.getString("game"));
+            if(InGame)
+                user.setGameId(response.getString("game"));
             user.setCard1(Integer.parseInt(response.getString("card1")));
             user.setCard2(Integer.parseInt(response.getString("card2")));
             user.setFolded(Boolean.parseBoolean(response.getString("folded")));
@@ -39,7 +40,7 @@ public class UserOperations {
      * @param user
      * @return
      */
-    public JSONObject usertoJSON(User user){
+    public JSONObject usertoJSON(User user, boolean InGame){
         JSONObject postData = new JSONObject();
         try {
             postData.put("id", user.getId());
@@ -53,7 +54,8 @@ public class UserOperations {
             postData.put("folded", user.getFolded());
             postData.put("isSpecatator", user.getIs_spectator());
             postData.put("position", user.getPosition());
-            postData.put("game", user.getGameId());
+            if(InGame)
+                postData.put("game", user.getGameId());
             postData.put("hasPlayed", user.getHas_played());
         }
         catch(JSONException e){

@@ -26,7 +26,7 @@ public class UserHome extends AppCompatActivity {
         money = findViewById(R.id.moneyRequest);
         username = findViewById(R.id.currentUser);
         play = findViewById(R.id.play_create_but);
-        username.append(getIntent().getStringExtra("username"));
+        //username.append(getIntent().getStringExtra("username"));
         user = new User();
         user.getUser(this, new IUser() {
             @Override
@@ -40,7 +40,7 @@ public class UserHome extends AppCompatActivity {
             public int onError(){
                 return -1;
             }
-        }, FirebaseAuth.getInstance().getCurrentUser().getUid());
+        }, FirebaseAuth.getInstance().getCurrentUser().getUid(), false);
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

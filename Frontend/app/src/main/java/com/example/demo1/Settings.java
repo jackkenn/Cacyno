@@ -37,7 +37,7 @@ public class Settings extends AppCompatActivity {
                 return -1;
             }
         };
-        user.getUser(this, callback, FirebaseAuth.getInstance().getCurrentUser().getUid());
+        user.getUser(this, callback, FirebaseAuth.getInstance().getCurrentUser().getUid(), false);
         back = findViewById(R.id.settings_back);
         apply = findViewById(R.id.apply_button);
         username = findViewById(R.id.editTextTextPersonName);
@@ -51,7 +51,7 @@ public class Settings extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                user.updateUser(Settings.this, callback);
+                user.updateUser(Settings.this, callback, false);
                 Intent intent = new Intent(Settings.this, UserHome.class);
                 intent.putExtra("displayname", user.getDisplayName());
                 intent.putExtra("username", user.getUsername());
@@ -68,7 +68,7 @@ public class Settings extends AppCompatActivity {
                 }
                 else{
                     user.setUsername(input);
-                    user.updateUser(Settings.this, callback);
+                    user.updateUser(Settings.this, callback, false);
                     Intent I = new Intent(Settings.this, UserHome.class);
                     startActivity(I);
                 }
@@ -78,7 +78,7 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 FirebaseAuth.getInstance().signOut();
-                user.updateUser(Settings.this, callback);
+                user.updateUser(Settings.this, callback, false);
                 Intent I = new Intent(Settings.this, ActivityLogin.class);
                 startActivity(I);
                 Toast.makeText(Settings.this, "User logged out", Toast.LENGTH_SHORT).show();

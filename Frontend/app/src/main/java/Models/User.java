@@ -11,7 +11,6 @@ import com.android.volley.toolbox.Volley;
 import com.google.firebase.auth.FirebaseAuth;
 import interfaces.IUser;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -45,10 +44,9 @@ public class User {
      * this method is called when the user object needs to translate into a JSONObject to append to endpoint
      * @return a JSONObject that contains this user object instance
      */
-    public JSONObject usertoJSON(){
-        return ops.usertoJSON(this);
+    public JSONObject usertoJSON(boolean InGame){
+        return ops.usertoJSON(this, InGame);
     }
-
     /**
      * gets displayName
      * @return displayName
@@ -89,8 +87,8 @@ public class User {
      * Converts a JSONObject into our User model
      * @param response the given JSON response
      */
-    public void JSONtoUser(JSONObject response){
-       ops.JSONtoUser(response, this);
+    public void JSONtoUser(JSONObject response, boolean InGame){
+       ops.JSONtoUser(response, this, InGame);
     }
 
     /**
@@ -99,13 +97,13 @@ public class User {
      * @param callback the changes to be made
      * @param id the id of the user
      */
-    public void getUser(Context con, IUser callback, String id){
+    public void getUser(Context con, IUser callback, String id, boolean InGame){
         String url = "http://coms-309-046.cs.iastate.edu:8080/user/" + id;
         RequestQueue requestQueue = Volley.newRequestQueue(con);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                JSONtoUser(response);
+                JSONtoUser(response, InGame);
                 callback.onSuccess();
             }
         }, new Response.ErrorListener() {
@@ -122,11 +120,11 @@ public class User {
      * @param con context of the app
      * @param callback contains the onSuccess and on Error methods for the call
      */
-    public void updateUser(Context con, IUser callback){
+    public void updateUser(Context con, IUser callback, boolean InGame){
         String postUrl = "http://coms-309-046.cs.iastate.edu:8080/user";
         RequestQueue requestQueue = Volley.newRequestQueue(con);
-        System.out.println(usertoJSON().toString());
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PUT, postUrl, usertoJSON(), new Response.Listener<JSONObject>() {
+        System.out.println(usertoJSON(InGame).toString());
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PUT, postUrl, usertoJSON(InGame), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 System.out.println(response);

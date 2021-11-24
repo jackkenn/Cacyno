@@ -50,7 +50,7 @@ public class LobbySelector extends AppCompatActivity{
             public int onError(){
                 return -1;
             }
-        }, FirebaseAuth.getInstance().getCurrentUser().getUid());
+        }, FirebaseAuth.getInstance().getCurrentUser().getUid(), false);
         String userName = getIntent().getStringExtra("username");
         /*
           wait for lobbies to be appended to list to display on screen
@@ -89,7 +89,7 @@ public class LobbySelector extends AppCompatActivity{
                                 public int onError() {
                                     return -1;
                                 }
-                            });
+                            }, true);
                             startActivity(new Intent(LobbySelector.this, GameScreen.class));
                         }
                     });
@@ -110,7 +110,7 @@ public class LobbySelector extends AppCompatActivity{
                                 public int onError() {
                                     return -1;
                                 }
-                            });
+                            }, true);
                             startActivity(new Intent(LobbySelector.this, GameScreen.class));
                         }
                     });

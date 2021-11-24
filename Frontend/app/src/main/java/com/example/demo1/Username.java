@@ -34,7 +34,7 @@ public class Username extends AppCompatActivity {
                 return -1;
             }
         };
-        user.getUser(this, callback, Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid());
+        user.getUser(this, callback, Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid(), false);
         username = (TextView) findViewById(R.id.username);
         apply = (ImageButton) findViewById(R.id.apply_but);
         apply.setOnClickListener(new View.OnClickListener() {
@@ -55,7 +55,7 @@ public class Username extends AppCompatActivity {
                 }
                 else{
                     user.setUsername(input);
-                    user.updateUser(Username.this, callback);
+                    user.updateUser(Username.this, callback, false);
                     Intent I = new Intent(Username.this, UserHome.class);
                     I.putExtra("username", input);
                     startActivity(I);

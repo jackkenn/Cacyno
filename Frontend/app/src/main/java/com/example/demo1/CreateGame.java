@@ -51,7 +51,7 @@ public class CreateGame extends AppCompatActivity {
                 return -1;
             }
         };
-        user.getUser(this, callback, Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid());
+        user.getUser(this, callback, Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid(), false);
         create.setOnClickListener(new View.OnClickListener() {
             /**
              * when the create button is clicked, this method will check the text fields for "lobby name" and
@@ -70,8 +70,10 @@ public class CreateGame extends AppCompatActivity {
                     newLobby.setId(getIntent().getIntExtra("nextid", 1) + "");
                     newLobby.newLobby(CreateGame.this);
                     user.setCurrent_game_money(Integer.parseInt(money));
-                    user.updateUser(CreateGame.this, callback);
-                    Intent intent = new Intent(CreateGame.this, LobbySelector.class);
+                    user.setGameId(newLobby.getId());
+                    user.updateUser(CreateGame.this, callback, true);
+                    System.out.println("creating...");
+                    Intent intent = new Intent(CreateGame.this, GameScreen.class);
                     startActivity(intent);
                 }
                 else{
