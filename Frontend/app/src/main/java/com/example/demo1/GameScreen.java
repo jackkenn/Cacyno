@@ -15,6 +15,7 @@ public class GameScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_screen);
         user = new User();
+        System.out.println("getting user");
         user.getUser(GameScreen.this, new IUser() {
             @Override
             public int onSuccess() {

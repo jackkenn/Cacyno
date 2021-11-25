@@ -39,6 +39,7 @@ public class CreateGame extends AppCompatActivity {
              */
             @Override
             public int onSuccess() {
+                System.out.println("Done updating");
                 return 0;
             }
 
@@ -72,7 +73,7 @@ public class CreateGame extends AppCompatActivity {
                     user.setCurrent_game_money(Integer.parseInt(money));
                     user.setGameId(newLobby.getId());
                     user.updateUser(CreateGame.this, callback, true);
-                    System.out.println(user.getGameId() + " Game: "+ newLobby.getId());
+                    System.out.println("Done updating");
                     Intent intent = new Intent(CreateGame.this, GameScreen.class);
                     startActivity(intent);
                 }
