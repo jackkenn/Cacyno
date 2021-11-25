@@ -1,6 +1,7 @@
 package com._2_ug_1.cacyno.game;
 
 import com._2_ug_1.cacyno.models.Card;
+import com._2_ug_1.cacyno.models.Hand;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,7 +14,7 @@ public class HandChecker {
         System.out.println(getHandRank(new int[]{1, 14, 27, 10, 24, 22, 40}));
     }
 
-    public static Hands getHandRank(int[] cardsParam) {
+    public static Hand getHandRank(int[] cardsParam) {
         int ranks[] = new int[7];
         int suits[] = new int[7];
         Card cards[] = new Card[7];
@@ -25,7 +26,7 @@ public class HandChecker {
         Arrays.sort(suits);
         for (int i = 0; i <= 3; i++) {
             if (contains(cardsParam, i * 13 + 0) && contains(cardsParam, i * 13 + 9) && contains(cardsParam, i * 13 + 10) && contains(cardsParam, i * 13 + 11) && contains(cardsParam, i * 13 + 12)) {
-                return Hands.ROYALFLUSH;
+                return new Hand(Hands.ROYALFLUSH, new int[5]);
             }
         }
 
@@ -92,12 +93,12 @@ public class HandChecker {
 
         for (int i = 0; i <= 5; i++) {
             if (ranks[i] == ranks[i + 1]) {
-                return Hands.PAIR;
+                return Hand(Hands.PAIR);
             }
         }
 
 
-        return Hands.HIGHCARD;
+        return new Hand(Hands.HIGHCARD, Arrays.copyOfRange(ranks, 0, 4));
     }
 
     private static boolean contains(int[] cardsParam, int num) {
