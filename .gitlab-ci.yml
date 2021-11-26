@@ -9,7 +9,7 @@ stages:
 maven-build:
   only:
     refs:
-      - master
+      - main
     changes:
       - Backend/**/*
   stage: mavenbuild
@@ -22,7 +22,7 @@ maven-build:
 maven-test:
   only:
     refs:
-      - master
+      - main
     changes:
       - Backend/**/*
   stage: maventest
@@ -39,7 +39,7 @@ maven-test:
 autoDeploy:
   only:
     refs:
-      - master
+      - main
     changes:
       - Backend/**/*
   stage: mavenDeploy  #do make a stage with same name!
@@ -56,7 +56,7 @@ autoDeploy:
 android-build:
   only:
     refs:
-      - master
+      - main
     changes:
       - Frontend/**/*
   image: javiersantos/android-ci:latest
@@ -76,7 +76,7 @@ android-build:
 android-test:
   only:
     refs:
-      - master
+      - main
     changes:
       - Frontend/**/*
   image: javiersantos/android-ci:latest
