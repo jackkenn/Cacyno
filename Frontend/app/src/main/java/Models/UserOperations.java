@@ -21,10 +21,8 @@ public class UserOperations {
             user.setDisplayName(Boolean.parseBoolean(response.getString("displayname")));
             user.setCurrent_game_money(Integer.parseInt(response.getString("current_game_money")));
             user.set_spectator(Boolean.parseBoolean(response.getString("isSpectator")));
-            if(InGame) {
-                user.setGameId(response.getString("game"));
-
-            }
+            if(InGame)
+                user.setGameId(response.getJSONObject("game"));
             System.out.println("passed");
             user.setCard1(Integer.parseInt(response.getString("card1")));
             user.setCard2(Integer.parseInt(response.getString("card2")));

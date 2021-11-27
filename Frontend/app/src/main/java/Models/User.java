@@ -25,7 +25,7 @@ public class User {
     UserOperations ops;
     int current_game_money;
     boolean is_spectator;
-    String gameId = "";
+    JSONObject gameId;
     int bet;
     int card1;
     int card2;

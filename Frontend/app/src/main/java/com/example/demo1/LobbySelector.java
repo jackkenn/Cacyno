@@ -1,6 +1,7 @@
 package com.example.demo1;
 
 import Models.Lobby;
+import Models.LobbyOperations;
 import Models.User;
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,7 +31,6 @@ public class LobbySelector extends AppCompatActivity{
     private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lobby_selector_screen);
         constraintLayout = findViewById(R.id.constraintLayout);
@@ -39,6 +39,7 @@ public class LobbySelector extends AppCompatActivity{
         creategame = findViewById(R.id.create);
         Lobby lb = new Lobby();
         list = new ArrayList<>();
+        LobbyOperations ops = new LobbyOperations();
         user = new User();
         user.getUser(this, new IUser() {
             @Override
@@ -71,6 +72,7 @@ public class LobbySelector extends AppCompatActivity{
                     View newLobbbyRow = getLayoutInflater().inflate(R.layout.lobby_row, layout);
                     TextView lobbyName = findViewById(R.id.lobbyname);
                     lobbyName.setId(indexForNameId);
+
                     lobbyName.setText(i.getLobbyname());
                     ImageButton joinBut = findViewById(R.id.join);
                     joinBut.setId(indexForJoinId++);
@@ -78,7 +80,7 @@ public class LobbySelector extends AppCompatActivity{
                     joinBut.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            user.setGameId(setIndex +"");
+                            user.setGameId(ops.lobbyToJSON(i));
                             user.updateUser(LobbySelector.this, new IUser() {
                                 @Override
                                 public int onSuccess() {
@@ -98,7 +100,7 @@ public class LobbySelector extends AppCompatActivity{
                     spectate.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            user.setGameId(setIndex +"");
+                            user.setGameId(ops.lobbyToJSON(i));
                             user.set_spectator(true);
                             user.updateUser(LobbySelector.this, new IUser() {
                                 @Override
