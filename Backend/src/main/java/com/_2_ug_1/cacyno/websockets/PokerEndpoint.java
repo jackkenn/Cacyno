@@ -18,13 +18,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-@ServerEndpoint("/poker/{userId}")
-@Component
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
 /**
  * TODO: add admin for resets and starting
  */
+@ServerEndpoint("/poker/{userId}")
+@Component
 public class PokerEndpoint {
     private static Map<String, Poker> _gamesMap = new HashMap<>();
     private static Map<String, List<Session>> _gameSessionMap = new HashMap<>();
@@ -32,20 +33,23 @@ public class PokerEndpoint {
     private static Map<Session, String> _sessionUserMap = new HashMap<>();
     private final Logger _logger = LoggerFactory.getLogger(PokerEndpoint.class);
 
-    @Autowired
-    IUserRepo _userRepo;
+    private static IGameRepo _gameRepo;
+    private static IUserRepo _userRepo;
 
     @Autowired
-    IGameRepo _gameRepo;
+    public void setRepos(IUserRepo userRepo, IGameRepo gameRepo) {
+        _userRepo = userRepo;
+        _gameRepo = gameRepo;
+    }
 
     @OnOpen
     public void onOpen(Session session
             , @PathParam("userId") String userId) throws IOException {
         _logger.info("Entered into Open: " + userId);
-        User u = _userRepo.findById(userId).orElse(null);
-        if (u == null || u.getGame().getId().equals("")) //let them know
+        User u = getUser(userId);
+        if (u == null) //let them know
             throw new NullPointerException();
-        Game g = _gameRepo.findById(u.getGame().getId()).orElse(null);
+        Game g = getGame(u.getGame().getId());
         if (g == null) {
             throw new NullPointerException();
         }
@@ -53,8 +57,11 @@ public class PokerEndpoint {
         if (!_gamesMap.containsKey(u.getGame().getId())) {
             Poker poker = new Poker(g);
             if (!poker.addPlayer(u)) //TODO: assuming they joining to play
-                throw new NullPointerException(); //TODO: let them know it is full
+                throw new NullPointerException(); //TODO: let them know it is full/better error detection
             _gamesMap.put(g.getId(), poker);
+        } else {
+            if (!_gamesMap.get(u.getGame().getId()).addPlayer(u))
+                throw new NullPointerException(); //TODO: let them know it is full/better error detection
         }
         _userRepo.save(u);
         if (_gameSessionMap.containsKey(u.getGame().getId())) {
@@ -72,15 +79,17 @@ public class PokerEndpoint {
     @OnClose
     public void onClose(Session session) throws IOException {
         _logger.info("Entered into Close: " + _sessionUserMap.get(session));
+        if (!_sessionUserMap.containsKey(session))
+            return;
         _userSessionMap.remove(_sessionUserMap.get(session));
-        User toRemove = _userRepo.getById(_sessionUserMap.get(session));
+        User toRemove = getUser(_sessionUserMap.get(session));
         _gamesMap.get(toRemove.getGame().getId()).removePlayer(toRemove);
         _sessionUserMap.remove(session);
         if (_gameSessionMap.get(toRemove.getGame().getId()).size() <= 1) {
             _gameSessionMap.remove(toRemove.getGame().getId());
             _gamesMap.remove(toRemove.getGame().getId());
         } else {
-            _gameSessionMap.get(toRemove.getGame().getId()).removeIf(x -> x.getId().equals(toRemove.getId()));
+            _gameSessionMap.get(toRemove.getGame().getId()).removeIf(x -> x.equals(session));
             sendGameMessage(toRemove.getGame().getId(), toRemove.getUsername() + ": Has Left");
         }
     }
@@ -88,15 +97,22 @@ public class PokerEndpoint {
     @OnMessage
     public void onMessage(Session session, String message) throws IOException {
         _logger.info("Entered into Message: " + _sessionUserMap.get(session) + ". Got Message: " + message);
-        User u = _userRepo.getById(_sessionUserMap.get(session));
+        User u = getUser(_sessionUserMap.get(session));
         Poker p = _gamesMap.get(u.getGame().getId());
-        if (message.equals("initGame"))
+        if (message.equalsIgnoreCase("initGame") && !p.initGame())
             p.initGame();
         if (p.getInitialized()) {
-            if (message.substring(0, 4).equals("Bet")) {
-                int bet = Integer.parseInt(message.split("^[0-9]*$").toString());
-                if (p.bet(u, bet))
-                    sendGameMessage(u.getGame().getId(), u.getUsername() + "Has " + message);
+            if (message.substring(0, 3).equalsIgnoreCase("Bet")) {
+                String tmp = message.split(" ")[1];
+                int bet = Integer.parseInt(tmp); //read only int
+                if (p.bet(u, bet)) {
+                    sendGameMessage(u.getGame().getId(), u.getUsername() + " has " + message);
+                    sendGameMessage(u.getGame().getId(), "Round: " + p.getGame().getRound() + "\n Pot: "
+                            + p.getGame().getPot());
+                }
+
+            } else {
+                sendGameMessage(u.getGame().getId(), u.getUsername() + ": " + message);
             }
         }
     }
@@ -116,5 +132,39 @@ public class PokerEndpoint {
                 }
             }
         });
+    }
+
+    private User getUser(String userId) {
+        Future<User> u = null;
+        try { //waiting for responce
+            u = _userRepo.AsyncGetById(userId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            return u.get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private Game getGame(String gameId) {
+        Future<Game> g = null;
+        try { //waiting for responce
+            g = _gameRepo.AsyncGetById(gameId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            return g.get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

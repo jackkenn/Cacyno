@@ -3,16 +3,12 @@ package com._2_ug_1.cacyno.game;
 import com._2_ug_1.cacyno.models.Game;
 import com._2_ug_1.cacyno.models.User;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Random;
+import java.util.*;
 
 public class Poker {
-    private List<User> _players = new ArrayList<>();
-    private List<Integer> _publicCards = new ArrayList<>();
-    private PriorityQueue<User> _toPlay = new PriorityQueue<>();
-    private PriorityQueue<User> _turnOrder = new PriorityQueue<>();
+    private List<User> _players;
+    private Queue<User> _toPlay;
+    private Queue<User> _turnOrder;
     private int _blind = 100;
     private Deck _deck;
     private final int _maxPlayers = 12;
@@ -20,8 +16,11 @@ public class Poker {
     private Game _game;
 
     public Poker(Game game) {
-        _deck = new Deck(this);
         _game = game;
+        _deck = new Deck(this);
+        _turnOrder = new LinkedList<>();
+        _toPlay = new LinkedList<>();
+        _players = new ArrayList<>();
     }
 
     public boolean initGame() {
@@ -30,7 +29,10 @@ public class Poker {
         _turnOrder.clear();
         _toPlay.clear();
         _game.setRound(0);
-        _players.forEach(x -> _turnOrder.add(x));
+        _players.forEach(x -> {
+            x.setFolded(false);
+            _turnOrder.add(x);
+        });
         _toPlay.addAll(_turnOrder);
         if (_toPlay.poll().getCurrent_game_money() < _blind / 2) {
             removePlayer(_turnOrder.poll()); //TODO: let them know they are too poor to play
@@ -45,6 +47,8 @@ public class Poker {
         _toPlay.addAll(_turnOrder);
         _toPlay.peek().setCurrent_game_money(_toPlay.poll().getCurrent_game_money() - _blind / 2);
         _toPlay.peek().setCurrent_game_money(_toPlay.poll().getCurrent_game_money() - _blind);
+        _toPlay.clear();
+        _toPlay.addAll(_turnOrder); //TODO: fix betting order
         _game.setPot(_blind + _blind / 2);
         _deck.deal();
         _gameInit = true;
@@ -52,13 +56,14 @@ public class Poker {
     }
 
     public boolean bet(User u, int bet) {
-        if (!_toPlay.peek().getId().equals(u.getId())) //is turn to play
+        if (_toPlay.size() < 1 || !_toPlay.peek().getId().equals(u.getId())) //is turn to play
             return false;
         if (_toPlay.peek().getCurrent_game_money() < bet) { //can make play
             return false;
         }
         if (bet >= 0) {
             _toPlay.peek().setCurrent_game_money(_toPlay.poll().getCurrent_game_money() - bet);
+            _game.setPot(_game.getPot() + bet);
         } else {
             _toPlay.poll().setFolded(true);
         }
@@ -72,11 +77,10 @@ public class Poker {
             if (!u.getFolded())
                 notFolded++;
         }
-        if (notFolded > 1) //TODO: all ins
-            if (_toPlay.size() > 0)
-                return;
+        if (_toPlay.size() > 0 && notFolded > 1) //dont end if people need to play
+            return;
         if (_game.getRound() > 3 || notFolded < 2) {
-            endGame();
+            endGame(); //infinite loop if everyone folds, should never happen
             return;
         }
         _deck.dealPublicCards();
@@ -91,27 +95,33 @@ public class Poker {
 
     public void endGame() {
         for (int i = _game.getRound(); i < 5; i++) { //deal the rest of the cards
+            _game.setRound(i);
             _deck.dealPublicCards();
         }
         //TODO: add pot to winning hand
 
-        _toPlay.clear();
         _game.setRound(0);
+        _players.forEach(x -> x.setFolded(false));
+        _turnOrder.add(_turnOrder.poll()); //change big blind
+        _toPlay.clear();
+        _toPlay.addAll(_turnOrder);
         boolean blindsReady = false;
         while (!blindsReady) {
             if (_players.size() < 2) { //not enough players to play
                 _gameInit = false;
                 return;
             }
-            if (_toPlay.poll().getCurrent_game_money() < _blind / 2) {
+            if (_toPlay.poll().getCurrent_game_money() < _blind / 2)
                 removePlayer(_turnOrder.poll()); //TODO: let them know they are too poor to play
-                if (_toPlay.poll().getCurrent_game_money() < _blind) {
-                    _turnOrder.poll(); //get #2
-                    removePlayer(_turnOrder.poll()); //TODO: let them know they are too poor to play
-                    blindsReady = true;
-                }
+            else if (_toPlay.poll().getCurrent_game_money() < _blind) {
+                _turnOrder.poll(); //get #2
+                removePlayer(_turnOrder.poll()); //TODO: let them know they are too poor to play
+            } else {
+                blindsReady = true;
             }
         }
+        _toPlay.clear();
+        _toPlay.addAll(_turnOrder);
         _game.setPot(_blind + _blind / 2);
         _deck.deal();
     }
@@ -175,15 +185,15 @@ public class Poker {
         public void dealPublicCards() {
             switch (_poker.getGame().getRound()) {
                 case 1:
-                    _poker._publicCards.set(0, _cards.remove(_rand.nextInt(_cards.size())));
-                    _poker._publicCards.set(1, _cards.remove(_rand.nextInt(_cards.size())));
-                    _poker._publicCards.set(2, _cards.remove(_rand.nextInt(_cards.size())));
+                    _poker._game.setPublic_card1(_cards.remove(_rand.nextInt(_cards.size())));
+                    _poker._game.setPublic_card2(_cards.remove(_rand.nextInt(_cards.size())));
+                    _poker._game.setPublic_card3(_cards.remove(_rand.nextInt(_cards.size())));
                     break;
                 case 2:
-                    _poker._publicCards.set(4, _cards.remove(_rand.nextInt(_cards.size())));
+                    _poker._game.setPublic_card4(_cards.remove(_rand.nextInt(_cards.size())));
                     break;
                 case 3:
-                    _poker._publicCards.set(5, _cards.remove(_rand.nextInt(_cards.size())));
+                    _poker._game.setPublic_card5(_cards.remove(_rand.nextInt(_cards.size())));
                     break;
             }
         }
