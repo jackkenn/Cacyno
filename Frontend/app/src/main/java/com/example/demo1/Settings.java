@@ -3,7 +3,6 @@ package com.example.demo1;
 import Models.User;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Switch;
@@ -51,11 +50,21 @@ public class Settings extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                user.updateUser(Settings.this, callback, false);
-                Intent intent = new Intent(Settings.this, UserHome.class);
-                intent.putExtra("displayname", user.getDisplayName());
-                intent.putExtra("username", user.getUsername());
-                startActivity(intent);
+                user.updateUser(Settings.this, new IUser() {
+                    @Override
+                    public int onSuccess() {
+                        Intent intent = new Intent(Settings.this, UserHome.class);
+                        intent.putExtra("displayname", user.getDisplayName());
+                        intent.putExtra("username", user.getUsername());
+                        startActivity(intent);
+                        return 0;
+                    }
+
+                    @Override
+                    public int onError() {
+                        return 0;
+                    }
+                }, false);
             }
         });
         apply.setOnClickListener(new View.OnClickListener() {
@@ -68,9 +77,19 @@ public class Settings extends AppCompatActivity {
                 }
                 else{
                     user.setUsername(input);
-                    user.updateUser(Settings.this, callback, false);
-                    Intent I = new Intent(Settings.this, UserHome.class);
-                    startActivity(I);
+                    user.updateUser(Settings.this, new IUser() {
+                        @Override
+                        public int onSuccess() {
+                            Intent I = new Intent(Settings.this, UserHome.class);
+                            startActivity(I);
+                            return 0;
+                        }
+
+                        @Override
+                        public int onError() {
+                            return 0;
+                        }
+                    }, false);
                 }
             }
         });
@@ -78,10 +97,20 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 FirebaseAuth.getInstance().signOut();
-                user.updateUser(Settings.this, callback, false);
-                Intent I = new Intent(Settings.this, ActivityLogin.class);
-                startActivity(I);
-                Toast.makeText(Settings.this, "User logged out", Toast.LENGTH_SHORT).show();
+                user.updateUser(Settings.this, new IUser() {
+                    @Override
+                    public int onSuccess() {
+                        Intent I = new Intent(Settings.this, ActivityLogin.class);
+                        startActivity(I);
+                        Toast.makeText(Settings.this, "User logged out", Toast.LENGTH_SHORT).show();
+                        return 0;
+                    }
+
+                    @Override
+                    public int onError() {
+                        return 0;
+                    }
+                }, false);
             }
         });
         displayName.setOnClickListener(new View.OnClickListener() {

@@ -26,7 +26,6 @@ public class UserHome extends AppCompatActivity {
         money = findViewById(R.id.moneyRequest);
         username = findViewById(R.id.currentUser);
         play = findViewById(R.id.play_create_but);
-        //username.append(getIntent().getStringExtra("username"));
         user = new User();
         user.getUser(this, new IUser() {
             @Override

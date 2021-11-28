@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity{
                                         "SignUp unsuccessful: " + task.getException().getMessage(),
                                         Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_SHORT).show();
                                 user.firstTimeAppend(MainActivity.this);
                                 startActivity(new Intent(MainActivity.this, Username.class));
                             }
