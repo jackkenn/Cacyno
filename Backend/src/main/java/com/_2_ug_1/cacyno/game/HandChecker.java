@@ -37,7 +37,7 @@ public class HandChecker {
                         for (int m = l+1; m <= 6; m++) {
                             Card[] temp = new Card[]{cards[i], cards[j], cards[k], cards[l], cards[m]};
                             if (isStraightFlush(temp)) {
-                                return Hands.STRAIGHTFLUSH;
+                                return new Hand(Hands.STRAIGHTFLUSH,new int[]{temp[4].getRank(),temp[3].getRank(),temp[2].getRank(),temp[1].getRank(),temp[0].getRank()});
                             }
                         }
                     }
