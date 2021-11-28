@@ -12,10 +12,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.ActivityChooserView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import interfaces.IUser;
 
 public class MainActivity extends AppCompatActivity{
 
@@ -54,8 +54,18 @@ public class MainActivity extends AppCompatActivity{
                                         "SignUp unsuccessful: " + task.getException().getMessage(),
                                         Toast.LENGTH_SHORT).show();
                             } else {
-                                user.firstTimeAppend(MainActivity.this);
-                                startActivity(new Intent(MainActivity.this, Username.class));
+                                user.firstTimeAppend(MainActivity.this, new IUser() {
+                                    @Override
+                                    public int onSuccess() {
+                                        startActivity(new Intent(MainActivity.this, Username.class));
+                                        return 0;
+                                    }
+
+                                    @Override
+                                    public int onError() {
+                                        return 0;
+                                    }
+                                });
                             }
                         }
                     });
@@ -67,7 +77,7 @@ public class MainActivity extends AppCompatActivity{
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent I = new Intent(MainActivity.this, ActivityLogin.class);
+                Intent I = new Intent(MainActivity.this, Login.class);
                 startActivity(I);
             }
         });

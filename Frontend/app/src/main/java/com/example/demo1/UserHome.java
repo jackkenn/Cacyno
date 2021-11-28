@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import com.android.volley.RequestQueue;
 import com.google.firebase.auth.FirebaseAuth;
 import interfaces.IUser;
 
@@ -22,10 +21,12 @@ public class UserHome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_screen);
+
         settings = findViewById(R.id.settings);
         money = findViewById(R.id.moneyRequest);
         username = findViewById(R.id.currentUser);
         play = findViewById(R.id.play_create_but);
+
         user = new User();
         user.getUser(this, new IUser() {
             @Override
@@ -40,6 +41,7 @@ public class UserHome extends AppCompatActivity {
                 return -1;
             }
         }, FirebaseAuth.getInstance().getCurrentUser().getUid(), false);
+
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,6 +51,7 @@ public class UserHome extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

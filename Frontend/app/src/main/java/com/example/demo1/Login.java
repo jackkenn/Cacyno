@@ -17,7 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 
-public class ActivityLogin extends AppCompatActivity {
+public class Login extends AppCompatActivity {
     public EditText loginEmailId, logInpasswd;
     Button btnLogIn;
     TextView signup;
@@ -38,11 +38,11 @@ public class ActivityLogin extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
-                    Toast.makeText(ActivityLogin.this, "User logged in ", Toast.LENGTH_SHORT).show();
-                    Intent I = new Intent(ActivityLogin.this,   UserHome.class);
+                    Toast.makeText(Login.this, "User logged in ", Toast.LENGTH_SHORT).show();
+                    Intent I = new Intent(Login.this,   UserHome.class);
                     startActivity(I);
                 } else {
-                    Toast.makeText(ActivityLogin.this, "Login to continue", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "Login to continue", Toast.LENGTH_SHORT).show();
                 }
             }
         };
@@ -53,7 +53,7 @@ public class ActivityLogin extends AppCompatActivity {
              */
             @Override
             public void onClick(View view) {
-                Intent I = new Intent(ActivityLogin.this, MainActivity.class);
+                Intent I = new Intent(Login.this, MainActivity.class);
                 startActivity(I);
             }
         });
@@ -75,9 +75,9 @@ public class ActivityLogin extends AppCompatActivity {
                     logInpasswd.setError("Enter Password!");
                     logInpasswd.requestFocus();
                 } else if (userEmail.isEmpty() && userPaswd.isEmpty()) {
-                    Toast.makeText(ActivityLogin.this, "Fields Empty!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "Fields Empty!", Toast.LENGTH_SHORT).show();
                 } else if (!(userEmail.isEmpty() && userPaswd.isEmpty())) {
-                    firebaseAuth.signInWithEmailAndPassword(userEmail, userPaswd).addOnCompleteListener(ActivityLogin.this, new OnCompleteListener() {
+                    firebaseAuth.signInWithEmailAndPassword(userEmail, userPaswd).addOnCompleteListener(Login.this, new OnCompleteListener() {
                         /**
                          * if the user is logged in succesfully then the method will send you to the user home page.
                          * @param task the task that needs to be handled by Firebase to authorize or not
@@ -85,14 +85,14 @@ public class ActivityLogin extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task task) {
                             if (!task.isSuccessful()) {
-                                Toast.makeText(ActivityLogin.this, "Not successful", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Login.this, "Not successful", Toast.LENGTH_SHORT).show();
                             } else {
-                                startActivity(new Intent(ActivityLogin.this, UserHome.class));
+                                startActivity(new Intent(Login.this, UserHome.class));
                             }
                         }
                     });
                 } else {
-                    Toast.makeText(ActivityLogin.this, "Error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "Error", Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -100,7 +100,7 @@ public class Settings extends AppCompatActivity {
                 user.updateUser(Settings.this, new IUser() {
                     @Override
                     public int onSuccess() {
-                        Intent I = new Intent(Settings.this, ActivityLogin.class);
+                        Intent I = new Intent(Settings.this, Login.class);
                         startActivity(I);
                         Toast.makeText(Settings.this, "User logged out", Toast.LENGTH_SHORT).show();
                         return 0;

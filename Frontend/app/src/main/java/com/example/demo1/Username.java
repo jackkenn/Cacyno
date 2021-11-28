@@ -64,7 +64,6 @@ public class Username extends AppCompatActivity {
                         @Override
                         public int onSuccess() {
                             Intent I = new Intent(Username.this, UserHome.class);
-                            I.putExtra("username", input);
                             startActivity(I);
                             return 0;
                         }
