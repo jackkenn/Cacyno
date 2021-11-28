@@ -18,7 +18,6 @@ public class UserHome extends AppCompatActivity {
     private TextView money;
     private TextView username;
     private User user;
-    private IUser callback;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,9 +26,8 @@ public class UserHome extends AppCompatActivity {
         money = findViewById(R.id.moneyRequest);
         username = findViewById(R.id.currentUser);
         play = findViewById(R.id.play_create_but);
-        username.append(getIntent().getStringExtra("username"));
         user = new User();
-        callback = new IUser() {
+        user.getUser(this, new IUser() {
             @Override
             public int onSuccess() {
                 Log.e("SUCCESS GETTING USER ", user.getUsername());
@@ -41,8 +39,7 @@ public class UserHome extends AppCompatActivity {
             public int onError(){
                 return -1;
             }
-        };
-        user.getUser(this, callback, FirebaseAuth.getInstance().getCurrentUser().getUid());
+        }, FirebaseAuth.getInstance().getCurrentUser().getUid(), false);
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,6 +53,7 @@ public class UserHome extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent I = new Intent(UserHome.this, LobbySelector.class);
+                I.putExtra("username", user.getUsername());
                 startActivity(I);
             }
         });

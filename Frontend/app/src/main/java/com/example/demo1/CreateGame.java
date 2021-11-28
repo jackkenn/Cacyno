@@ -1,6 +1,7 @@
 package com.example.demo1;
 
 import Models.Lobby;
+import Models.LobbyOperations;
 import Models.User;
 import Utilities.GameChecker;
 import Utilities.GameCreation;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
+import interfaces.ILobby;
 import interfaces.IUser;
 
 import java.util.Objects;
@@ -39,6 +41,7 @@ public class CreateGame extends AppCompatActivity {
              */
             @Override
             public int onSuccess() {
+                System.out.println("Done updating");
                 return 0;
             }
 
@@ -51,7 +54,7 @@ public class CreateGame extends AppCompatActivity {
                 return -1;
             }
         };
-        user.getUser(this, callback, Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid());
+        user.getUser(this, callback, Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid(), false);
         create.setOnClickListener(new View.OnClickListener() {
             /**
              * when the create button is clicked, this method will check the text fields for "lobby name" and
@@ -65,14 +68,45 @@ public class CreateGame extends AppCompatActivity {
                 String money = moneyAmount.getText().toString();
                 if(gameCreation.createGame(lobbyInput, money, lobbyname, moneyAmount, CreateGame.this, user)) {
                     Lobby newLobby = new Lobby();
+                    LobbyOperations ops = new LobbyOperations();
                     newLobby.setLobbyname(lobbyInput);
                     newLobby.setActive(true);
                     newLobby.setId(getIntent().getIntExtra("nextid", 1) + "");
-                    newLobby.newLobby(CreateGame.this);
-                    user.setCurrent_game_money(Integer.parseInt(money));
-                    user.updateUser(CreateGame.this, callback);
-                    Intent intent = new Intent(CreateGame.this, LobbySelector.class);
-                    startActivity(intent);
+                    newLobby.newLobby(CreateGame.this, new ILobby() {
+                        @Override
+                        public int onSuccess() {
+                            user.setCurrent_game_money(Integer.parseInt(money));
+                            user.setGameId(ops.lobbyToJSON(newLobby));
+                            user.updateUser(CreateGame.this,  new IUser() {
+                                /**
+                                 * if user is successfully transferred from endpoint to a user object
+                                 * @return int 0 for success
+                                 */
+                                @Override
+                                public int onSuccess() {
+                                    Intent intent = new Intent(CreateGame.this, GameScreen.class);
+                                    startActivity(intent);
+                                    return 0;
+                                }
+
+                                /**
+                                 * if the current user is not successfully transferred from endpoint to a user object
+                                 * @return int -1 for error
+                                 */
+                                @Override
+                                public int onError() {
+                                    return -1;
+                                }
+                            }, true);
+                            System.out.println("Done updating");
+                            return 0;
+                        }
+
+                        @Override
+                        public int onError() {
+                            return 0;
+                        }
+                    });
                 }
                 else{
                     Toast.makeText(CreateGame.this, "NO", Toast.LENGTH_SHORT).show();
