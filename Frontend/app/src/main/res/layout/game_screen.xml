@@ -6,7 +6,7 @@
                                                    android:layout_height="match_parent"
                                                    android:gravity="center"
                                                    android:background="#62D126"
-                                                   android:id="@+id/constraintLayout" tools:ignore="ExtraText">
+                                                   android:id="@+id/lobbyView" tools:ignore="ExtraText">
 
     <ImageView
             android:layout_width="828dp"

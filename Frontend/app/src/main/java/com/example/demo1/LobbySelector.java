@@ -3,10 +3,12 @@ package com.example.demo1;
 import Models.Lobby;
 import Models.LobbyOperations;
 import Models.User;
+import Utilities.GameChecker;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -33,13 +35,13 @@ public class LobbySelector extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lobby_selector_screen);
-        constraintLayout = findViewById(R.id.constraintLayout);
+        constraintLayout = findViewById(R.id.lobbyView);
         back = findViewById(R.id.back);
         refresh = constraintLayout.findViewById(R.id.refresh);
         creategame = findViewById(R.id.create);
         Lobby lb = new Lobby();
         list = new ArrayList<>();
-        LobbyOperations ops = new LobbyOperations();
+        LobbyOperations opsLob = new LobbyOperations();
         user = new User();
         user.getUser(this, new IUser() {
             @Override
@@ -77,10 +79,46 @@ public class LobbySelector extends AppCompatActivity{
                     ImageButton joinBut = findViewById(R.id.join);
                     joinBut.setId(indexForJoinId++);
                     int setIndex = indexForNameId;
+
                     joinBut.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            user.setGameId(ops.lobbyToJSON(i));
+
+                            View join = getLayoutInflater().inflate(R.layout.enter_game_money, constraintLayout);
+                            join.bringToFront();
+                            TextView amount = findViewById(R.id.join_money);
+                            ImageButton joinbut = findViewById(R.id.join_in_game);
+                            ImageButton x = findViewById(R.id.Xout);
+
+                            GameChecker ops = new GameChecker();
+                            joinbut.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    if(ops.checkMoneyAmount(amount.getText().toString(), amount, user)){
+                                        user.setGameId(opsLob.lobbyToJSON(i));
+                                        user.setCurrent_game_money(Integer.parseInt(amount.getText().toString()));
+                                        user.updateUser(LobbySelector.this, new IUser() {
+                                            @Override
+                                            public int onSuccess() {
+                                                startActivity(new Intent(LobbySelector.this, GameScreen.class));
+                                                return 0;
+                                            }
+
+                                            @Override
+                                            public int onError() {
+                                                return -1;
+                                            }
+                                        }, true);
+                                    }
+                                }
+                            });
+
+                            x.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    ((ViewGroup) join.getParent()).removeView(join);
+                                }
+                            });
                             user.updateUser(LobbySelector.this, new IUser() {
                                 @Override
                                 public int onSuccess() {
@@ -92,15 +130,16 @@ public class LobbySelector extends AppCompatActivity{
                                     return -1;
                                 }
                             }, true);
-                            startActivity(new Intent(LobbySelector.this, GameScreen.class));
                         }
                     });
+
                     ImageButton spectate = findViewById(R.id.spectate);
                     spectate.setId(indexForSpectateId++);
+
                     spectate.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            user.setGameId(ops.lobbyToJSON(i));
+                            user.setGameId(opsLob.lobbyToJSON(i));
                             user.set_spectator(true);
                             user.updateUser(LobbySelector.this, new IUser() {
                                 @Override
