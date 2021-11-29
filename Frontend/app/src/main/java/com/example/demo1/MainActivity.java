@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.ActivityChooserView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,7 +32,6 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        startActivity(new Intent(MainActivity.this, LobbySelector.class));
         user = new User();
         accountChecker = new AccountChecker();
         accountCreation = new AccountCreation();
@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity{
                                         "SignUp unsuccessful: " + task.getException().getMessage(),
                                         Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_SHORT).show();
                                 user.firstTimeAppend(MainActivity.this);
                                 startActivity(new Intent(MainActivity.this, Username.class));
                             }

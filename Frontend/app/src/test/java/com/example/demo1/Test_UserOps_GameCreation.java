@@ -44,7 +44,13 @@ public class Test_UserOps_GameCreation {
         when(obj.getString("id")).thenReturn("123");
         when(obj.getString("displayname")).thenReturn("false");
         when(obj.getString("current_game_money")).thenReturn("0");
-        ops.JSONtoUser(obj, user);
+        when(obj.getString("card1")).thenReturn("0");
+        when(obj.getString("card2")).thenReturn("0");
+        when(obj.getString("folded")).thenReturn("false");
+        when(obj.getString("bet")).thenReturn("0");
+        when(obj.getString("position")).thenReturn("0");
+        when(obj.getString("hasPlayed")).thenReturn("false");
+        ops.JSONtoUser(obj, user, false);
         assertFalse(user.getDisplayName());
         assertEquals("manny", user.getUsername());
         assertEquals(1000, user.getMoney());
@@ -69,11 +75,11 @@ public class Test_UserOps_GameCreation {
         tester.put("current_game_money", user.getCurrent_game_money());
         UserOperations ops = new UserOperations();
 
-        assertEquals(tester.getString("username"), ops.usertoJSON(user).getString("username"));
-        assertEquals(tester.get("money"), ops.usertoJSON(user).get("money"));
-        assertEquals(tester.getString("id"), ops.usertoJSON(user).getString("id"));
-        assertEquals(tester.get("displayname"), ops.usertoJSON(user).get("displayname"));
-        assertEquals(tester.get("current_game_money"), ops.usertoJSON(user).get("current_game_money"));
+        assertEquals(tester.getString("username"), ops.usertoJSON(user, false).getString("username"));
+        assertEquals(tester.get("money"), ops.usertoJSON(user, false).get("money"));
+        assertEquals(tester.getString("id"), ops.usertoJSON(user, false).getString("id"));
+        assertEquals(tester.get("displayname"), ops.usertoJSON(user, false).get("displayname"));
+        assertEquals(tester.get("current_game_money"), ops.usertoJSON(user, false).get("current_game_money"));
     }
     @Test
     public void gameCreateEmpty(){
