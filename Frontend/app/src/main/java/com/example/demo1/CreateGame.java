@@ -54,7 +54,9 @@ public class CreateGame extends AppCompatActivity {
                 return -1;
             }
         };
+
         user.getUser(this, callback, Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid(), false);
+
         create.setOnClickListener(new View.OnClickListener() {
             /**
              * when the create button is clicked, this method will check the text fields for "lobby name" and

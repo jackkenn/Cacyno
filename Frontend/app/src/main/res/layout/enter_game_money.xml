@@ -7,19 +7,11 @@
 >
 
     <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" app:srcCompat="@drawable/background_join_money"
-            android:id="@+id/imageView11"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"/>
-    <ImageButton
-            android:layout_width="182dp"
-            android:layout_height="61dp" app:srcCompat="@drawable/join_enter" android:id="@+id/join_in_game"
-            android:background="@android:color/transparent" android:scaleType="fitCenter"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="105dp"
-            android:layout_marginStart="105dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="173dp"/>
+            android:layout_width="432dp"
+            android:layout_height="828dp" app:srcCompat="@drawable/background" android:id="@+id/imageView11"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
     <EditText
             android:layout_width="246dp"
             android:layout_height="48dp"
@@ -28,23 +20,26 @@
             android:id="@+id/join_money"
             android:hint="how much do you wanna bring?" android:fontFamily="@font/aqua" android:textSize="13dp"
             android:textColor="@color/black" android:textColorHint="@color/chatbox" android:singleLine="false"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="72dp"
-            android:layout_marginStart="72dp" app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="363dp"/>
-    <TextView
-            android:text="input amount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/textView3"
-            android:fontFamily="@font/aqua" android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="145dp"
-            android:layout_marginStart="145dp" app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="492dp"/>
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="88dp"
+            android:layout_marginStart="88dp" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="360dp"/>
+    <ImageView
+            android:layout_width="43dp"
+            android:layout_height="61dp" app:srcCompat="@drawable/moneysign" android:id="@+id/imageView12"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="33dp" android:layout_marginStart="33dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="350dp"/>
     <ImageButton
-            android:layout_width="39dp"
-            android:layout_height="32dp" app:srcCompat="@drawable/x" android:id="@+id/Xout"
+            android:layout_width="125dp"
+            android:layout_height="88dp" app:srcCompat="@drawable/join_but" android:id="@+id/join_in_game"
             android:background="@android:color/transparent" android:scaleType="fitCenter"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="294dp"
-            android:layout_marginStart="294dp" app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="607dp"
-    />
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="64dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="134dp"
+            android:layout_marginStart="134dp"/>
+    <ImageButton
+            android:layout_width="65dp"
+            android:layout_height="69dp" app:srcCompat="@drawable/backarrow_but" android:id="@+id/back_to_lobby_selector"
+            android:background="@android:color/transparent" android:scaleType="fitCenter"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="4dp" android:layout_marginEnd="324dp"
+            android:layout_marginRight="324dp" app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
