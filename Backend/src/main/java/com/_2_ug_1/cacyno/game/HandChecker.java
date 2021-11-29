@@ -10,14 +10,14 @@ import java.util.Collections;
 public class HandChecker {
 
 
-    public static void main(String args[]) {
-        Hand hand = getHandRank(new int[]{2, 3, 4, 5, 7, 8, 9});
-        int[] s = hand.getRanks();
-        System.out.println(hand.getHand());
-        for (int j : s) {
-            System.out.println(j);
-        }
-    }
+//    public static void main(String args[]) {
+//        Hand hand = getHandRank(new int[]{2, 3, 4, 5, 7, 8, 9});
+//        int[] ranks = hand.getRanks();
+//        System.out.println(hand.getHand());
+//        for (int j : ranks) {
+//            System.out.println(j);
+//        }
+//    }
 
     public static Hand getHandRank(int[] cardsParam) {
         int ranks[] = new int[7];
