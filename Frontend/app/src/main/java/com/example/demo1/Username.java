@@ -13,6 +13,9 @@ import interfaces.IUser;
 import java.util.Objects;
 
 
+/**
+ * The activity tied to the screen used for changing username
+ */
 public class Username extends AppCompatActivity {
     private TextView username;
     private ImageButton apply;

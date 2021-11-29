@@ -17,7 +17,9 @@ import interfaces.ILobby;
 import interfaces.IUser;
 
 import java.util.Objects;
-
+/**
+ * The activity tied to the game creation screen
+ */
 public class CreateGame extends AppCompatActivity {
     private TextView lobbyname;
     private TextView moneyAmount;

@@ -11,7 +11,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import interfaces.IUser;
-
+/**
+ * The activity tied to the settings screen
+ */
 public class Settings extends AppCompatActivity {
     private ImageButton back;
     public ImageButton apply;

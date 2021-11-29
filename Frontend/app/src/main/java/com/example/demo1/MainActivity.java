@@ -17,6 +17,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import interfaces.IUser;
 
+/**
+ * The activity tied to the signup screen
+ */
 public class MainActivity extends AppCompatActivity{
 
     public EditText emailId, passwd;

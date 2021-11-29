@@ -18,6 +18,10 @@ import com.google.firebase.auth.FirebaseUser;
 
 
 public class Login extends AppCompatActivity {
+/**
+ * The activity tied to the login screen
+ */
+public class ActivityLogin extends AppCompatActivity {
     public EditText loginEmailId, logInpasswd;
     Button btnLogIn;
     TextView signup;

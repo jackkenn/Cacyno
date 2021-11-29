@@ -21,7 +21,9 @@ import interfaces.ILobby;
 import interfaces.IUser;
 
 import java.util.ArrayList;
-
+/**
+ * The activity tied to the lobby selection screen
+ */
 public class LobbySelector extends AppCompatActivity{
     private ScrollView scroll;
     private LinearLayout layout;
