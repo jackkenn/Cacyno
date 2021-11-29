@@ -75,7 +75,6 @@ public class HandChecker {
         }
 
 
-        try {
             for (int i = 0; i < 4; i++) {
                 for (int j = i + 2; j < 6; j++) {
                     if (ranks[i] == ranks[i + 1] && ranks[j] == ranks[j + 2]) {
@@ -86,9 +85,7 @@ public class HandChecker {
                     }
                 }
             }
-        } catch (IndexOutOfBoundsException ignored) {
 
-        }
 
         for (int i = 6; i >=4; i--) {
             for (int j = i - 1; j >= 3; j--) {
