@@ -20,6 +20,10 @@ public class Card implements Comparable<Card>{
         return rank;
     }
 
+    public void setRank(int rank) {
+        this.rank = rank;
+    }
+
     public int getSuit() {
         return suit;
     }
