@@ -4,6 +4,9 @@ import android.util.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * this class is used for a lobby to transfer data to and from db
+ */
 public class LobbyOperations {
     /**
      * Constructor for new lobby operations for a lobby
