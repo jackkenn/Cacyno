@@ -5,7 +5,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class UserOperations {
-
+    /**
+     * Constructor for operations for a user. In which this class will take care of translated data from JSON to a
+     * User object and vise versa.
+     */
     public UserOperations(){}
 
     /**
