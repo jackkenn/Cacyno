@@ -11,7 +11,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.android.volley.RequestQueue;
 import com.google.firebase.auth.FirebaseAuth;
 import interfaces.IUser;
-
+/**
+ * The activity tied to the home screen
+ */
 public class UserHome extends AppCompatActivity {
     private ImageButton settings;
     private ImageButton play;

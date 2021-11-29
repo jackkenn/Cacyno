@@ -10,7 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import interfaces.IUser;
 
-
+/**
+ * The activity tied to the screen for changing username
+ */
 public class Username extends AppCompatActivity {
     private TextView username;
     private ImageButton apply;

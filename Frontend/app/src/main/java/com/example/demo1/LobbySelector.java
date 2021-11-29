@@ -13,7 +13,9 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import interfaces.ILobby;
 
 import java.util.ArrayList;
-
+/**
+ * The activity tied to the lobby selection screen
+ */
 public class LobbySelector extends AppCompatActivity{
     private ScrollView scroll;
     private LinearLayout layout;
