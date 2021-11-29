@@ -17,6 +17,9 @@ import org.json.JSONObject;
 
 @Setter
 @Getter
+/**
+ * this class is the user instance when using the application
+ */
 public class User {
     String username="";
     String id="";

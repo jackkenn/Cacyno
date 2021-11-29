@@ -4,8 +4,14 @@ import android.util.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * this class is used for a user to transfer data to and from db
+ */
 public class UserOperations {
-
+    /**
+     * Constructor for operations for a user. In which this class will take care of translated data from JSON to a
+     * User object and vise versa.
+     */
     public UserOperations(){}
 
     /**
