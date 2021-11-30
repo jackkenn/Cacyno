@@ -8,10 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
+import android.widget.*;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -110,6 +107,7 @@ public class GameScreen extends AppCompatActivity {
         });
         AtomicInteger messages= new AtomicInteger(1);
         chat.setOnClickListener(v -> {
+            ScrollView scroll = findViewById(R.id.chat_scroll);
             findViewById(R.id.chat_view_remove).bringToFront();
             x.setOnClickListener(v1 -> bringToFront());
 
@@ -129,10 +127,13 @@ public class GameScreen extends AppCompatActivity {
                 row.setGravity(Gravity.RIGHT);
                 user_message.append((user.getDisplayName()) ? user.getUsername() : "user" + rand);
                 text.append(message.getText().toString());
-                messages.getAndIncrement();
 
+                messages.getAndIncrement();
+                scroll.fullScroll(View.FOCUS_DOWN);
+                message.setText("");
                 //mWebSocketClient.send(message.getText().toString());
             });
+
         });
     }
 

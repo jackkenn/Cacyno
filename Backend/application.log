@@ -97,3 +97,5 @@ Caused by: java.lang.NullPointerException: Cannot invoke "java.util.Map.forEach(
 	... 23 common frames omitted
 
 2021-11-30 10:16:44.506  INFO 4219 --- [http-nio-8080-exec-10] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 10:46:59.029  WARN 4219 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=12m56s415ms).
+2021-11-30 11:09:44.758  WARN 4219 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=22m15s704ms).
