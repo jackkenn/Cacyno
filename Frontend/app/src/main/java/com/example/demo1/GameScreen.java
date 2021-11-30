@@ -1,10 +1,12 @@
 package com.example.demo1;
 
 import Models.User;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.se.omapi.Session;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -41,7 +43,9 @@ public class GameScreen extends AppCompatActivity {
     private Slider slider;
     private TextView sliderAmount;
     private LinearLayout chatlayout;
+    ScrollView scroll;
     int rand = 0;
+    @SuppressLint("RtlHardcoded")
     @SneakyThrows
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -63,13 +67,13 @@ public class GameScreen extends AppCompatActivity {
 
         gameScreen = findViewById(R.id.ActualGame);
 
-        getLayoutInflater().inflate(R.layout.chat_view, gameScreen);
+        View chatplz = getLayoutInflater().inflate(R.layout.chat_view, gameScreen);
         //buttons
         ImageButton x = findViewById(R.id.x_out_chat);
         ImageButton send = findViewById(R.id.send_message);
         TextView message = findViewById(R.id.message_type);
         chatlayout = findViewById(R.id.linearchat);
-
+        scroll = chatplz.findViewById(R.id.chat_scroll);
         bringToFront();
 
         user = new User();
@@ -105,33 +109,32 @@ public class GameScreen extends AppCompatActivity {
                 }
             }, true);
         });
-        AtomicInteger messages= new AtomicInteger(1);
+
+
         chat.setOnClickListener(v -> {
-            ScrollView scroll = findViewById(R.id.chat_scroll);
             findViewById(R.id.chat_view_remove).bringToFront();
+
             x.setOnClickListener(v1 -> bringToFront());
 
             send.setOnClickListener(v2 -> {
-                View newmessage = getLayoutInflater().inflate(R.layout.chat_row, chatlayout);
-                newmessage.setId(messages.get());
+                View newFrommessage = getLayoutInflater().inflate(R.layout.chat_row, chatlayout);
+                newFrommessage.setId(View.generateViewId());
+                TableRow row = newFrommessage.findViewById(R.id.newChat);
+                row.setId(View.generateViewId());
 
-                TableRow row = findViewById(R.id.newChat);
-                row.setId(messages.get() * 1000);
+                TextView text = newFrommessage.findViewById(R.id.message);
+                text.setId(View.generateViewId());
 
-                TextView text = findViewById(R.id.message);
-                text.setId(messages.get() *10);
-
-                TextView user_message = findViewById(R.id.Sentby);
-                user_message.setId(messages.get() *100);
-
-                row.setGravity(Gravity.RIGHT);
+                TextView user_message = newFrommessage.findViewById(R.id.Sentby);
+                user_message.setId(View.generateViewId());
                 user_message.append((user.getDisplayName()) ? user.getUsername() : "user" + rand);
                 text.append(message.getText().toString());
 
-                messages.getAndIncrement();
+
                 scroll.fullScroll(View.FOCUS_DOWN);
+                row.setGravity(Gravity.END);
+                mWebSocketClient.send(message.getText().toString());
                 message.setText("");
-                //mWebSocketClient.send(message.getText().toString());
             });
 
         });
@@ -198,15 +201,16 @@ public class GameScreen extends AppCompatActivity {
     }
 
     private void connectWebSocket() throws URISyntaxException, JSONException {
-        URI url;
+        URI uri;
+
         /*
          * To test the clientside without the backend, simply connect to an echo server such as:
          *  "ws://echo.websocket.org"
          */
-        url = new URI("http://localhost:8080/"+user.getGameId().getString("id")+"/"+user.getId()); // 10.0.2.2 = localhost
-        // uri = new URI("ws://echo.websocket.org");
+        //uri = new URI("ws://localhost:8080/"+user.getGameId().getString("id")+"/"+user.getId()); // 10.0.2.2 = localhost
+        uri = new URI("ws://192.168.1.2:8080/chat/1/2");
 
-        mWebSocketClient = new WebSocketClient(url) {
+        mWebSocketClient = new WebSocketClient(uri) {
 
 
             @Override
@@ -214,11 +218,42 @@ public class GameScreen extends AppCompatActivity {
                 System.out.println("connected");
             }
 
+            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
             @Override
             public void onMessage(String msg) {
                 Log.i("Websocket", "Message Received");
                 // Appends the message received to the previous messages
-                System.out.println(msg);
+                String username = msg.split(":")[0];
+                String messsage = msg.split(": ")[1];
+
+                runOnUiThread(new Runnable() {
+
+                    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+                    @Override
+                    public void run() {
+                        if(!Objects.equals(username, "2")){
+
+                            View newmessage = getLayoutInflater().inflate(R.layout.chat_row, chatlayout);
+                            newmessage.setId(View.generateViewId());
+
+                            TableRow row = newmessage.findViewById(R.id.newChat);
+                            row.setId(View.generateViewId());
+
+                            TextView text = newmessage.findViewById(R.id.message);
+                            text.setId(View.generateViewId());
+
+                            TextView user_message = newmessage.findViewById(R.id.Sentby);
+                            user_message.setId(View.generateViewId());
+                            row.setGravity(Gravity.START);
+                            user_message.append(username);
+                            text.append(messsage);
+                            scroll.fullScroll(View.FOCUS_DOWN);
+                        }
+                        System.out.println(msg);
+
+                    }
+                });
+
             }
 
             @Override
@@ -233,7 +268,4 @@ public class GameScreen extends AppCompatActivity {
         };
         mWebSocketClient.connect();
     }
-
-
-
 }

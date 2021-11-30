@@ -102,3 +102,1336 @@ Caused by: java.lang.NullPointerException: Cannot invoke "java.util.Map.forEach(
 2021-11-30 11:53:32.257  WARN 4219 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m17s130ms).
 2021-11-30 11:58:02.922  WARN 4219 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m30s674ms).
 2021-11-30 12:06:04.502  WARN 4219 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=8m1s579ms).
+2021-11-30 13:12:51.995  INFO 4219 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : Starting CacynoApplication using Java 15.0.2 on epaz1.student.iastate.edu with PID 4219 (/Users/emmanuelpaz/Downloads/ComS309/Backend/target/classes started by emmanuelpaz in /Users/emmanuelpaz/Downloads/ComS309/Backend)
+2021-11-30 13:12:51.996  INFO 4219 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : No active profile set, falling back to default profiles: default
+2021-11-30 13:12:52.427  INFO 4219 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-11-30 13:12:52.444  INFO 4219 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 16 ms. Found 3 JPA repository interfaces.
+2021-11-30 13:12:52.620  INFO 4219 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-11-30 13:12:53.070  INFO 4219 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-11-30 13:12:53.071  INFO 4219 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-11-30 13:12:53.095  INFO 4219 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-11-30 13:12:53.096  INFO 4219 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1087 ms
+2021-11-30 13:12:53.172  INFO 4219 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-11-30 13:12:53.188  INFO 4219 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2021-11-30 13:12:53.566  INFO 4219 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2021-11-30 13:12:53.569  INFO 4219 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-11-30 13:12:54.165  INFO 4219 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-11-30 13:12:54.168  INFO 4219 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-11-30 13:12:54.714  WARN 4219 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-11-30 13:12:54.755  INFO 6539 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : Starting CacynoApplication using Java 15.0.2 on epaz1.student.iastate.edu with PID 6539 (/Users/emmanuelpaz/Downloads/ComS309/Backend/target/classes started by emmanuelpaz in /Users/emmanuelpaz/Downloads/ComS309/Backend)
+2021-11-30 13:12:54.758  INFO 6539 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : No active profile set, falling back to default profiles: default
+2021-11-30 13:12:54.832  INFO 6539 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-11-30 13:12:54.833  INFO 6539 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-11-30 13:12:54.957  INFO 4219 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-11-30 13:12:55.116  INFO 4219 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-11-30 13:12:56.001  INFO 6539 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-11-30 13:12:56.064  INFO 6539 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 57 ms. Found 3 JPA repository interfaces.
+2021-11-30 13:12:57.008  INFO 6539 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-11-30 13:12:57.017  INFO 6539 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-11-30 13:12:57.018  INFO 6539 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-11-30 13:12:57.080  INFO 6539 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-11-30 13:12:57.081  INFO 6539 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2248 ms
+2021-11-30 13:12:57.115  INFO 4219 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : Started CacynoApplication in 5.271 seconds (JVM running for 9657.556)
+2021-11-30 13:12:57.128  INFO 4219 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2021-11-30 13:12:57.138  INFO 4219 --- [Thread-8] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-11-30 13:12:57.139  INFO 4219 --- [Thread-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2021-11-30 13:12:57.142  INFO 4219 --- [Thread-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2021-11-30 13:12:57.320  INFO 6539 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-11-30 13:12:57.346  INFO 6539 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-11-30 13:12:57.377  INFO 4219 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : Starting CacynoApplication using Java 15.0.2 on epaz1.student.iastate.edu with PID 4219 (/Users/emmanuelpaz/Downloads/ComS309/Backend/target/classes started by emmanuelpaz in /Users/emmanuelpaz/Downloads/ComS309/Backend)
+2021-11-30 13:12:57.379  INFO 4219 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : No active profile set, falling back to default profiles: default
+2021-11-30 13:12:57.405  INFO 6539 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-11-30 13:12:57.450  INFO 6539 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-11-30 13:12:57.561  INFO 6539 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-11-30 13:12:57.572  INFO 6539 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-11-30 13:12:57.639  INFO 4219 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-11-30 13:12:57.656  INFO 4219 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15 ms. Found 3 JPA repository interfaces.
+2021-11-30 13:12:57.796  INFO 4219 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-11-30 13:12:57.799  INFO 4219 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-11-30 13:12:57.799  INFO 4219 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-11-30 13:12:57.813  INFO 4219 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-11-30 13:12:57.814  INFO 4219 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 428 ms
+2021-11-30 13:12:57.843  INFO 4219 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-11-30 13:12:57.848  INFO 4219 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2021-11-30 13:12:57.860  INFO 4219 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2021-11-30 13:12:57.860  INFO 4219 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-11-30 13:12:58.026  INFO 4219 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-11-30 13:12:58.027  INFO 4219 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-11-30 13:12:58.066  INFO 6539 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-11-30 13:12:58.073  INFO 6539 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-11-30 13:12:58.226  WARN 4219 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-11-30 13:12:58.329  INFO 4219 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-11-30 13:12:58.457  INFO 4219 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-11-30 13:12:58.814  WARN 6539 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-11-30 13:12:59.411  WARN 6539 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2021-11-30 13:12:59.883  WARN 6539 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8080 is already in use
+2021-11-30 13:12:59.892  INFO 6539 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-11-30 13:12:59.895  INFO 6539 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-11-30 13:12:59.902  INFO 6539 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-11-30 13:12:59.906  INFO 6539 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2021-11-30 13:12:59.922  INFO 6539 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-11-30 13:12:59.934 ERROR 6539 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2021-11-30 13:13:00.198  INFO 4219 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : Started CacynoApplication in 2.916 seconds (JVM running for 9660.639)
+2021-11-30 13:13:00.203  INFO 4219 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2021-11-30 13:13:27.409  INFO 4219 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-11-30 13:13:27.418  INFO 4219 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-11-30 13:13:27.426  INFO 4219 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
+2021-11-30 13:15:32.137  INFO 4219 --- [http-nio-8080-exec-5] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 13:15:35.139  INFO 4219 --- [http-nio-8080-exec-6] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 13:15:45.503  INFO 4219 --- [http-nio-8080-exec-7] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: dsada
+2021-11-30 13:23:08.791  INFO 4219 --- [http-nio-8080-exec-8] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 13:23:11.953  INFO 4219 --- [http-nio-8080-exec-9] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 13:23:12.008 ERROR 4219 --- [http-nio-8080-exec-9] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.ChatEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:740) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsFrameBase.processDataControl(WsFrameBase.java:367) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsFrameBase.processData(WsFrameBase.java:296) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsFrameBase.processInputBuffer(WsFrameBase.java:133) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsFrameServer.onDataAvailable(WsFrameServer.java:85) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsFrameServer.doOnDataAvailable(WsFrameServer.java:183) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsFrameServer.notifyDataAvailable(WsFrameServer.java:162) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:156) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.Map.forEach(java.util.function.BiConsumer)" because the return value of "java.util.Map.get(Object)" is null
+	at com._2_ug_1.cacyno.websockets.ChatEndpoint.onClose(ChatEndpoint.java:81) ~[classes/:na]
+	... 23 common frames omitted
+
+2021-11-30 13:23:12.028  INFO 4219 --- [http-nio-8080-exec-9] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 13:31:53.412  INFO 4219 --- [http-nio-8080-exec-10] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 13:31:53.415  INFO 4219 --- [http-nio-8080-exec-1] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 13:32:41.190  INFO 4219 --- [http-nio-8080-exec-2] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 13:32:41.190  INFO 4219 --- [http-nio-8080-exec-3] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 13:32:41.231  INFO 4219 --- [http-nio-8080-exec-3] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 13:32:41.232  INFO 4219 --- [http-nio-8080-exec-2] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 13:32:41.247 ERROR 4219 --- [http-nio-8080-exec-3] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.ChatEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:740) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:247) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:163) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.Map.forEach(java.util.function.BiConsumer)" because the return value of "java.util.Map.get(Object)" is null
+	at com._2_ug_1.cacyno.websockets.ChatEndpoint.onClose(ChatEndpoint.java:81) ~[classes/:na]
+	... 18 common frames omitted
+
+2021-11-30 13:32:41.254  INFO 4219 --- [http-nio-8080-exec-3] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 13:32:41.247 ERROR 4219 --- [http-nio-8080-exec-2] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.ChatEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:740) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:247) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:163) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.Map.size()" because the return value of "java.util.Map.get(Object)" is null
+	at com._2_ug_1.cacyno.websockets.ChatEndpoint.onClose(ChatEndpoint.java:75) ~[classes/:na]
+	... 18 common frames omitted
+
+2021-11-30 13:32:41.255  INFO 4219 --- [http-nio-8080-exec-2] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 13:36:47.489  INFO 4219 --- [Thread-12] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-11-30 13:36:47.515  INFO 4219 --- [Thread-12] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2021-11-30 13:36:47.529  INFO 4219 --- [Thread-12] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2021-11-30 13:36:48.427  INFO 4219 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : Starting CacynoApplication using Java 15.0.2 on epaz1.student.iastate.edu with PID 4219 (/Users/emmanuelpaz/Downloads/ComS309/Backend/target/classes started by emmanuelpaz in /Users/emmanuelpaz/Downloads/ComS309/Backend)
+2021-11-30 13:36:48.433  INFO 4219 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : No active profile set, falling back to default profiles: default
+2021-11-30 13:36:49.766  INFO 4219 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-11-30 13:36:49.778  INFO 4219 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2021-11-30 13:36:50.176  INFO 4219 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-11-30 13:36:50.188  INFO 4219 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-11-30 13:36:50.189  INFO 4219 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-11-30 13:36:50.220  INFO 4219 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-11-30 13:36:50.222  INFO 4219 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1766 ms
+2021-11-30 13:36:50.329  INFO 4219 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-11-30 13:36:50.342  INFO 4219 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2021-11-30 13:36:51.981  INFO 4219 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2021-11-30 13:36:51.991  INFO 4219 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-11-30 13:36:52.727  INFO 4219 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-11-30 13:36:52.741  INFO 4219 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-11-30 13:36:53.119  WARN 4219 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-11-30 13:36:53.604  INFO 4219 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-11-30 13:36:54.019  INFO 4219 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-11-30 13:36:56.154  INFO 4219 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : Started CacynoApplication in 8.087 seconds (JVM running for 11096.689)
+2021-11-30 13:36:56.164  INFO 4219 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2021-11-30 13:37:00.176  INFO 4219 --- [Thread-18] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-11-30 13:37:00.189  INFO 4219 --- [Thread-18] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2021-11-30 13:37:00.196  INFO 4219 --- [Thread-18] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2021-11-30 13:37:00.935  INFO 4219 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : Starting CacynoApplication using Java 15.0.2 on epaz1.student.iastate.edu with PID 4219 (/Users/emmanuelpaz/Downloads/ComS309/Backend/target/classes started by emmanuelpaz in /Users/emmanuelpaz/Downloads/ComS309/Backend)
+2021-11-30 13:37:00.942  INFO 4219 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : No active profile set, falling back to default profiles: default
+2021-11-30 13:37:01.686  INFO 4219 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-11-30 13:37:01.736  INFO 4219 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 43 ms. Found 3 JPA repository interfaces.
+2021-11-30 13:37:01.931  INFO 4219 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-11-30 13:37:01.936  INFO 4219 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-11-30 13:37:01.936  INFO 4219 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-11-30 13:37:01.950  INFO 4219 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-11-30 13:37:01.950  INFO 4219 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 979 ms
+2021-11-30 13:37:01.999  INFO 4219 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-11-30 13:37:02.003  INFO 4219 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2021-11-30 13:37:02.033  INFO 4219 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+2021-11-30 13:37:02.034  INFO 4219 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-11-30 13:37:02.520  INFO 4219 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-11-30 13:37:02.521  INFO 4219 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-11-30 13:37:03.054  WARN 4219 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-11-30 13:37:03.243  INFO 4219 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-11-30 13:37:03.785  INFO 4219 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-11-30 13:37:15.616  INFO 4219 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : Started CacynoApplication in 14.994 seconds (JVM running for 11116.152)
+2021-11-30 13:37:15.623  INFO 4219 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2021-11-30 13:37:58.985  INFO 4219 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-11-30 13:37:58.987  INFO 4219 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-11-30 13:37:59.001  INFO 4219 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 14 ms
+2021-11-30 13:37:59.032  INFO 4219 --- [http-nio-8080-exec-2] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 13:37:59.032  INFO 4219 --- [http-nio-8080-exec-1] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 13:38:55.339  INFO 4219 --- [http-nio-8080-exec-3] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: dsada
+2021-11-30 13:39:18.432  INFO 4219 --- [http-nio-8080-exec-6] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 13:39:22.796  INFO 4219 --- [http-nio-8080-exec-7] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: dsada
+2021-11-30 13:39:33.955  INFO 4219 --- [http-nio-8080-exec-8] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: dsada
+2021-11-30 13:40:24.511  INFO 4219 --- [http-nio-8080-exec-2] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: heyyyyy
+
+2021-11-30 13:41:31.656  INFO 4219 --- [http-nio-8080-exec-4] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 13:41:31.655  INFO 4219 --- [http-nio-8080-exec-5] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 13:41:31.668  INFO 4219 --- [http-nio-8080-exec-5] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 13:41:31.668  INFO 4219 --- [http-nio-8080-exec-4] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 13:42:37.090  INFO 4219 --- [http-nio-8080-exec-7] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 13:42:37.090  INFO 4219 --- [http-nio-8080-exec-6] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 13:43:03.838  INFO 4219 --- [http-nio-8080-exec-8] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: hi
+2021-11-30 13:43:14.414  INFO 4219 --- [http-nio-8080-exec-9] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: heyyyyy
+
+2021-11-30 13:44:03.882  INFO 4219 --- [http-nio-8080-exec-3] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 13:44:03.882  INFO 4219 --- [http-nio-8080-exec-1] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 13:44:03.888  INFO 4219 --- [http-nio-8080-exec-1] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 13:44:03.888  INFO 4219 --- [http-nio-8080-exec-3] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 13:44:03.978 ERROR 4219 --- [http-nio-8080-exec-3] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.ChatEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:740) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:247) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:163) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.Map.forEach(java.util.function.BiConsumer)" because the return value of "java.util.Map.get(Object)" is null
+	at com._2_ug_1.cacyno.websockets.ChatEndpoint.onClose(ChatEndpoint.java:81) ~[classes/:na]
+	... 18 common frames omitted
+
+2021-11-30 13:44:03.985  INFO 4219 --- [http-nio-8080-exec-3] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 13:54:02.969  INFO 4219 --- [http-nio-8080-exec-4] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 13:54:02.969  INFO 4219 --- [http-nio-8080-exec-5] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 13:54:03.050  INFO 4219 --- [http-nio-8080-exec-6] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 13:54:03.051  INFO 4219 --- [http-nio-8080-exec-7] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 13:54:03.052  INFO 4219 --- [http-nio-8080-exec-6] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 13:54:03.052  INFO 4219 --- [http-nio-8080-exec-7] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 13:54:03.107 ERROR 4219 --- [http-nio-8080-exec-6] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.ChatEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:740) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:247) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:163) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.Map.forEach(java.util.function.BiConsumer)" because the return value of "java.util.Map.get(Object)" is null
+	at com._2_ug_1.cacyno.websockets.ChatEndpoint.onClose(ChatEndpoint.java:81) ~[classes/:na]
+	... 18 common frames omitted
+
+2021-11-30 13:54:03.107 ERROR 4219 --- [http-nio-8080-exec-7] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.ChatEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:740) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:247) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:163) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.Map.size()" because the return value of "java.util.Map.get(Object)" is null
+	at com._2_ug_1.cacyno.websockets.ChatEndpoint.onClose(ChatEndpoint.java:75) ~[classes/:na]
+	... 18 common frames omitted
+
+2021-11-30 13:54:03.113  INFO 4219 --- [http-nio-8080-exec-7] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 13:54:03.113  INFO 4219 --- [http-nio-8080-exec-6] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 13:57:00.276  INFO 4219 --- [http-nio-8080-exec-9] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 13:57:00.276  INFO 4219 --- [http-nio-8080-exec-8] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 13:57:00.323  INFO 4219 --- [http-nio-8080-exec-10] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 13:57:00.323  INFO 4219 --- [http-nio-8080-exec-2] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 13:57:00.324  INFO 4219 --- [http-nio-8080-exec-2] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 13:57:00.324  INFO 4219 --- [http-nio-8080-exec-10] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 13:57:00.381 ERROR 4219 --- [http-nio-8080-exec-10] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.ChatEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:740) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:247) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:163) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.Map.size()" because the return value of "java.util.Map.get(Object)" is null
+	at com._2_ug_1.cacyno.websockets.ChatEndpoint.onClose(ChatEndpoint.java:75) ~[classes/:na]
+	... 18 common frames omitted
+
+2021-11-30 13:57:00.383  INFO 4219 --- [http-nio-8080-exec-10] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 13:57:00.386 ERROR 4219 --- [http-nio-8080-exec-2] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.ChatEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:740) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:247) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:163) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.Map.forEach(java.util.function.BiConsumer)" because the return value of "java.util.Map.get(Object)" is null
+	at com._2_ug_1.cacyno.websockets.ChatEndpoint.onClose(ChatEndpoint.java:81) ~[classes/:na]
+	... 18 common frames omitted
+
+2021-11-30 13:57:00.387  INFO 4219 --- [http-nio-8080-exec-2] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 13:59:37.361  WARN 4219 --- [HikariPool-5 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-5 - Thread starvation or clock leap detected (housekeeper delta=1m4s826ms).
+2021-11-30 13:59:50.835  INFO 4219 --- [http-nio-8080-exec-3] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 13:59:50.844  INFO 4219 --- [http-nio-8080-exec-3] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 13:59:50.852 ERROR 4219 --- [http-nio-8080-exec-3] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.ChatEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:740) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:247) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:163) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.Map.size()" because the return value of "java.util.Map.get(Object)" is null
+	at com._2_ug_1.cacyno.websockets.ChatEndpoint.onClose(ChatEndpoint.java:75) ~[classes/:na]
+	... 18 common frames omitted
+
+2021-11-30 13:59:50.890  INFO 4219 --- [http-nio-8080-exec-3] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 14:00:04.266  INFO 4219 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-11-30 14:00:04.314  INFO 4219 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2021-11-30 14:00:04.351  INFO 4219 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
+2021-11-30 14:32:15.930  INFO 1489 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : Starting CacynoApplication using Java 15.0.2 on epaz1.student.iastate.edu with PID 1489 (/Users/emmanuelpaz/Downloads/ComS309/Backend/target/classes started by emmanuelpaz in /Users/emmanuelpaz/Downloads/ComS309/Backend)
+2021-11-30 14:32:15.932  INFO 1489 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : No active profile set, falling back to default profiles: default
+2021-11-30 14:32:15.983  INFO 1489 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-11-30 14:32:15.984  INFO 1489 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-11-30 14:32:17.198  INFO 1489 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-11-30 14:32:17.351  INFO 1489 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 130 ms. Found 3 JPA repository interfaces.
+2021-11-30 14:32:18.276  INFO 1489 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-11-30 14:32:18.291  INFO 1489 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-11-30 14:32:18.291  INFO 1489 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-11-30 14:32:18.347  INFO 1489 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-11-30 14:32:18.347  INFO 1489 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2362 ms
+2021-11-30 14:32:18.551  INFO 1489 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-11-30 14:32:18.578  INFO 1489 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-11-30 14:32:18.634  INFO 1489 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-11-30 14:32:18.671  INFO 1489 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-11-30 14:32:19.078  INFO 1489 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-11-30 14:32:19.090  INFO 1489 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-11-30 14:32:19.772  INFO 1489 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-11-30 14:32:19.785  INFO 1489 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-11-30 14:32:20.437  WARN 1489 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-11-30 14:32:21.143  INFO 1489 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-11-30 14:32:21.618  INFO 1489 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-11-30 14:32:23.558  INFO 1489 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : Started CacynoApplication in 8.132 seconds (JVM running for 9.108)
+2021-11-30 14:32:40.570  INFO 1489 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-11-30 14:32:40.572  INFO 1489 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-11-30 14:32:40.580  INFO 1489 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2021-11-30 14:32:40.617  INFO 1489 --- [http-nio-8080-exec-2] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 14:32:40.617  INFO 1489 --- [http-nio-8080-exec-1] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 14:32:57.211  INFO 1489 --- [http-nio-8080-exec-3] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: hh
+2021-11-30 14:36:33.085  INFO 1489 --- [http-nio-8080-exec-10] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 14:36:45.753  INFO 1489 --- [http-nio-8080-exec-3] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: dsada
+2021-11-30 14:38:16.780  INFO 1489 --- [http-nio-8080-exec-6] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 14:38:16.780  INFO 1489 --- [http-nio-8080-exec-7] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 14:38:16.792  INFO 1489 --- [http-nio-8080-exec-6] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 14:38:16.792  INFO 1489 --- [http-nio-8080-exec-7] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 14:45:17.442  INFO 1489 --- [http-nio-8080-exec-8] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 14:45:17.442  INFO 1489 --- [http-nio-8080-exec-9] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 14:45:17.529  INFO 1489 --- [http-nio-8080-exec-10] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 14:45:17.529  INFO 1489 --- [http-nio-8080-exec-2] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 14:45:17.537  INFO 1489 --- [http-nio-8080-exec-10] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 14:45:17.537  INFO 1489 --- [http-nio-8080-exec-2] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 14:45:17.617 ERROR 1489 --- [http-nio-8080-exec-2] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.ChatEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:740) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:247) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:163) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.Map.size()" because the return value of "java.util.Map.get(Object)" is null
+	at com._2_ug_1.cacyno.websockets.ChatEndpoint.onClose(ChatEndpoint.java:75) ~[classes/:na]
+	... 18 common frames omitted
+
+2021-11-30 14:45:17.621  INFO 1489 --- [http-nio-8080-exec-2] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 14:45:17.617 ERROR 1489 --- [http-nio-8080-exec-10] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.ChatEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:740) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:247) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:163) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.Map.forEach(java.util.function.BiConsumer)" because the return value of "java.util.Map.get(Object)" is null
+	at com._2_ug_1.cacyno.websockets.ChatEndpoint.onClose(ChatEndpoint.java:81) ~[classes/:na]
+	... 18 common frames omitted
+
+2021-11-30 14:45:17.621  INFO 1489 --- [http-nio-8080-exec-10] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 14:47:08.315  INFO 1489 --- [http-nio-8080-exec-1] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 14:47:08.322  INFO 1489 --- [http-nio-8080-exec-3] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 14:55:58.331  INFO 1489 --- [http-nio-8080-exec-7] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 14:55:58.331  INFO 1489 --- [http-nio-8080-exec-6] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 14:55:58.343  INFO 1489 --- [http-nio-8080-exec-7] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 14:55:58.343  INFO 1489 --- [http-nio-8080-exec-6] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 14:55:58.361 ERROR 1489 --- [http-nio-8080-exec-7] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.ChatEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:740) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:247) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:163) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.Map.forEach(java.util.function.BiConsumer)" because the return value of "java.util.Map.get(Object)" is null
+	at com._2_ug_1.cacyno.websockets.ChatEndpoint.onClose(ChatEndpoint.java:81) ~[classes/:na]
+	... 18 common frames omitted
+
+2021-11-30 14:55:58.361 ERROR 1489 --- [http-nio-8080-exec-6] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.ChatEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:740) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:247) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:163) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.Map.forEach(java.util.function.BiConsumer)" because the return value of "java.util.Map.get(Object)" is null
+	at com._2_ug_1.cacyno.websockets.ChatEndpoint.onClose(ChatEndpoint.java:81) ~[classes/:na]
+	... 18 common frames omitted
+
+2021-11-30 14:55:58.368  INFO 1489 --- [http-nio-8080-exec-6] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 14:55:58.367  INFO 1489 --- [http-nio-8080-exec-7] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 15:01:23.278  WARN 1489 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m3s816ms).
+2021-11-30 15:07:46.825  WARN 1489 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m39s550ms).
+2021-11-30 15:11:24.386  WARN 1489 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m37s569ms).
+2021-11-30 15:29:56.067  WARN 1489 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=18m31s672ms).
+2021-11-30 15:39:51.797  INFO 1489 --- [http-nio-8080-exec-9] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 15:39:51.827 ERROR 1489 --- [http-nio-8080-exec-9] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.ChatEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:740) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsFrameBase.processDataControl(WsFrameBase.java:367) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsFrameBase.processData(WsFrameBase.java:296) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsFrameBase.processInputBuffer(WsFrameBase.java:133) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsFrameServer.onDataAvailable(WsFrameServer.java:85) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsFrameServer.doOnDataAvailable(WsFrameServer.java:183) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsFrameServer.notifyDataAvailable(WsFrameServer.java:162) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:156) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.Map.size()" because the return value of "java.util.Map.get(Object)" is null
+	at com._2_ug_1.cacyno.websockets.ChatEndpoint.onClose(ChatEndpoint.java:75) ~[classes/:na]
+	... 23 common frames omitted
+
+2021-11-30 15:39:51.829  INFO 1489 --- [http-nio-8080-exec-9] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 15:39:52.778  INFO 1489 --- [http-nio-8080-exec-8] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 15:41:06.487  INFO 1489 --- [http-nio-8080-exec-10] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 15:41:06.499  INFO 1489 --- [http-nio-8080-exec-2] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 15:41:24.052  INFO 1489 --- [http-nio-8080-exec-1] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: sadsad
+2021-11-30 15:45:46.971  INFO 1489 --- [http-nio-8080-exec-1] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 15:45:46.971  INFO 1489 --- [http-nio-8080-exec-2] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 15:45:46.974  INFO 1489 --- [http-nio-8080-exec-1] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 15:45:46.975  INFO 1489 --- [http-nio-8080-exec-2] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 15:45:47.075 ERROR 1489 --- [http-nio-8080-exec-2] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.ChatEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:740) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:247) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:163) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+Caused by: java.util.ConcurrentModificationException: null
+	at java.base/java.util.HashMap.forEach(HashMap.java:1428) ~[na:na]
+	at com._2_ug_1.cacyno.websockets.ChatEndpoint.onClose(ChatEndpoint.java:81) ~[classes/:na]
+	... 18 common frames omitted
+
+2021-11-30 15:45:47.079  INFO 1489 --- [http-nio-8080-exec-2] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 15:46:40.953  INFO 1489 --- [http-nio-8080-exec-4] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 15:46:40.953  INFO 1489 --- [http-nio-8080-exec-3] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 15:48:57.112  INFO 1489 --- [http-nio-8080-exec-8] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 15:48:57.136  INFO 1489 --- [http-nio-8080-exec-8] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 15:48:57.165 ERROR 1489 --- [http-nio-8080-exec-8] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.ChatEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:740) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:247) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:163) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.Map.forEach(java.util.function.BiConsumer)" because the return value of "java.util.Map.get(Object)" is null
+	at com._2_ug_1.cacyno.websockets.ChatEndpoint.onClose(ChatEndpoint.java:81) ~[classes/:na]
+	... 18 common frames omitted
+
+2021-11-30 15:48:57.197  INFO 1489 --- [http-nio-8080-exec-10] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 15:48:57.197  INFO 1489 --- [http-nio-8080-exec-10] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 15:48:57.197  INFO 1489 --- [http-nio-8080-exec-8] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 15:48:57.201 ERROR 1489 --- [http-nio-8080-exec-10] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.ChatEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:740) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:247) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:163) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.Map.size()" because the return value of "java.util.Map.get(Object)" is null
+	at com._2_ug_1.cacyno.websockets.ChatEndpoint.onClose(ChatEndpoint.java:75) ~[classes/:na]
+	... 18 common frames omitted
+
+2021-11-30 15:48:57.214  INFO 1489 --- [http-nio-8080-exec-10] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 15:50:07.080  INFO 1489 --- [http-nio-8080-exec-2] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 15:50:07.080  INFO 1489 --- [http-nio-8080-exec-1] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 15:50:32.878  INFO 1489 --- [http-nio-8080-exec-4] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: hi
+2021-11-30 15:50:43.220  INFO 1489 --- [http-nio-8080-exec-3] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: dsads
+2021-11-30 15:50:53.200  INFO 1489 --- [http-nio-8080-exec-6] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: dsadsa
+2021-11-30 15:50:56.303  INFO 1489 --- [http-nio-8080-exec-5] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: dsad
+2021-11-30 15:51:09.115  INFO 1489 --- [http-nio-8080-exec-8] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: hi
+2021-11-30 15:53:33.451  INFO 1489 --- [http-nio-8080-exec-3] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: hi
+2021-11-30 15:53:40.069  INFO 1489 --- [http-nio-8080-exec-6] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: hello
+2021-11-30 15:55:13.439  INFO 1489 --- [http-nio-8080-exec-10] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 15:55:13.439  INFO 1489 --- [http-nio-8080-exec-2] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 15:55:13.458  INFO 1489 --- [http-nio-8080-exec-10] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 15:55:13.458  INFO 1489 --- [http-nio-8080-exec-2] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 15:55:13.495 ERROR 1489 --- [http-nio-8080-exec-2] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.ChatEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:740) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:247) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:163) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.Map.size()" because the return value of "java.util.Map.get(Object)" is null
+	at com._2_ug_1.cacyno.websockets.ChatEndpoint.onClose(ChatEndpoint.java:75) ~[classes/:na]
+	... 18 common frames omitted
+
+2021-11-30 15:55:13.496 ERROR 1489 --- [http-nio-8080-exec-10] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.ChatEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:740) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:247) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:163) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.Map.forEach(java.util.function.BiConsumer)" because the return value of "java.util.Map.get(Object)" is null
+	at com._2_ug_1.cacyno.websockets.ChatEndpoint.onClose(ChatEndpoint.java:81) ~[classes/:na]
+	... 18 common frames omitted
+
+2021-11-30 15:55:13.504  INFO 1489 --- [http-nio-8080-exec-10] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 15:55:13.504  INFO 1489 --- [http-nio-8080-exec-2] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 15:56:06.584  INFO 1489 --- [http-nio-8080-exec-4] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 15:56:06.585  INFO 1489 --- [http-nio-8080-exec-1] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 15:56:06.651  INFO 1489 --- [http-nio-8080-exec-3] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 15:56:06.651  INFO 1489 --- [http-nio-8080-exec-6] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 15:56:06.653  INFO 1489 --- [http-nio-8080-exec-6] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 15:56:06.653  INFO 1489 --- [http-nio-8080-exec-3] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 15:56:06.666 ERROR 1489 --- [http-nio-8080-exec-6] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.ChatEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:740) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:247) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:163) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.Map.forEach(java.util.function.BiConsumer)" because the return value of "java.util.Map.get(Object)" is null
+	at com._2_ug_1.cacyno.websockets.ChatEndpoint.onClose(ChatEndpoint.java:81) ~[classes/:na]
+	... 18 common frames omitted
+
+2021-11-30 15:56:06.667  INFO 1489 --- [http-nio-8080-exec-6] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 15:56:06.666 ERROR 1489 --- [http-nio-8080-exec-3] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.ChatEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:740) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:247) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:163) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.Map.size()" because the return value of "java.util.Map.get(Object)" is null
+	at com._2_ug_1.cacyno.websockets.ChatEndpoint.onClose(ChatEndpoint.java:75) ~[classes/:na]
+	... 18 common frames omitted
+
+2021-11-30 15:56:06.667  INFO 1489 --- [http-nio-8080-exec-3] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 15:57:18.357  INFO 1489 --- [http-nio-8080-exec-5] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 15:57:18.357  INFO 1489 --- [http-nio-8080-exec-9] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 15:57:18.439  INFO 1489 --- [http-nio-8080-exec-7] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 15:57:18.439  INFO 1489 --- [http-nio-8080-exec-8] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 15:57:18.440  INFO 1489 --- [http-nio-8080-exec-8] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 15:57:18.440  INFO 1489 --- [http-nio-8080-exec-7] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 15:57:18.444 ERROR 1489 --- [http-nio-8080-exec-7] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.ChatEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:740) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:247) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:163) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.Map.size()" because the return value of "java.util.Map.get(Object)" is null
+	at com._2_ug_1.cacyno.websockets.ChatEndpoint.onClose(ChatEndpoint.java:75) ~[classes/:na]
+	... 18 common frames omitted
+
+2021-11-30 15:57:18.446  INFO 1489 --- [http-nio-8080-exec-7] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 15:57:18.445 ERROR 1489 --- [http-nio-8080-exec-8] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.ChatEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:740) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:247) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:163) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.Map.forEach(java.util.function.BiConsumer)" because the return value of "java.util.Map.get(Object)" is null
+	at com._2_ug_1.cacyno.websockets.ChatEndpoint.onClose(ChatEndpoint.java:81) ~[classes/:na]
+	... 18 common frames omitted
+
+2021-11-30 15:57:18.454  INFO 1489 --- [http-nio-8080-exec-8] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 15:59:49.585  INFO 1489 --- [http-nio-8080-exec-10] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 15:59:49.585  INFO 1489 --- [http-nio-8080-exec-2] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 16:00:28.090  INFO 1489 --- [http-nio-8080-exec-1] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: hi
+2021-11-30 16:00:45.380  INFO 1489 --- [http-nio-8080-exec-4] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 16:00:49.793  INFO 1489 --- [http-nio-8080-exec-9] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: hiif
+2021-11-30 16:00:59.387  INFO 1489 --- [http-nio-8080-exec-5] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: hiifhbdjsa dsbahjd sahjd bjsha dj hsadbjasbhdhjasbhjd
+2021-11-30 16:01:07.706  INFO 1489 --- [http-nio-8080-exec-7] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: dsadsa
+2021-11-30 16:01:17.097  INFO 1489 --- [http-nio-8080-exec-8] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 16:01:17.096  INFO 1489 --- [http-nio-8080-exec-10] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 16:01:17.149  INFO 1489 --- [http-nio-8080-exec-10] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 16:01:17.149  INFO 1489 --- [http-nio-8080-exec-8] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 16:01:17.295 ERROR 1489 --- [http-nio-8080-exec-8] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.ChatEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at jdk.internal.reflect.GeneratedMethodAccessor78.invoke(Unknown Source) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:740) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:247) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:163) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.Map.forEach(java.util.function.BiConsumer)" because the return value of "java.util.Map.get(Object)" is null
+	at com._2_ug_1.cacyno.websockets.ChatEndpoint.onClose(ChatEndpoint.java:81) ~[classes/:na]
+	... 17 common frames omitted
+
+2021-11-30 16:01:17.327  INFO 1489 --- [http-nio-8080-exec-8] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 16:01:25.094  INFO 1489 --- [SpringApplicationShutdownHook] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 16:01:25.104  INFO 1489 --- [SpringApplicationShutdownHook] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 16:01:25.106  INFO 1489 --- [SpringApplicationShutdownHook] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 16:01:25.106  INFO 1489 --- [SpringApplicationShutdownHook] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 16:01:25.197  INFO 1489 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-11-30 16:01:25.454  INFO 1489 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-11-30 16:01:25.482  INFO 1489 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-11-30 16:08:42.343  INFO 1273 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : Starting CacynoApplication using Java 15.0.2 on MacBook-Pro-8.local with PID 1273 (/Users/emmanuelpaz/Downloads/ComS309/Backend/target/classes started by emmanuelpaz in /Users/emmanuelpaz/Downloads/ComS309/Backend)
+2021-11-30 16:08:42.345  INFO 1273 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : No active profile set, falling back to default profiles: default
+2021-11-30 16:08:42.394  INFO 1273 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-11-30 16:08:42.395  INFO 1273 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-11-30 16:08:43.434  INFO 1273 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-11-30 16:08:43.498  INFO 1273 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 58 ms. Found 3 JPA repository interfaces.
+2021-11-30 16:08:44.311  INFO 1273 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-11-30 16:08:44.321  INFO 1273 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-11-30 16:08:44.321  INFO 1273 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-11-30 16:08:44.374  INFO 1273 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-11-30 16:08:44.375  INFO 1273 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1980 ms
+2021-11-30 16:08:44.669  INFO 1273 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-11-30 16:08:44.693  INFO 1273 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-11-30 16:08:44.750  INFO 1273 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-11-30 16:08:44.792  INFO 1273 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-11-30 16:08:45.295  INFO 1273 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-11-30 16:08:45.309  INFO 1273 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-11-30 16:08:45.882  INFO 1273 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-11-30 16:08:45.888  INFO 1273 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-11-30 16:08:46.568  WARN 1273 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-11-30 16:08:47.082  INFO 1273 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-11-30 16:08:47.403  INFO 1273 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-11-30 16:08:49.208  INFO 1273 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : Started CacynoApplication in 7.413 seconds (JVM running for 8.482)
+2021-11-30 16:13:17.792  INFO 1273 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-11-30 16:13:17.794  INFO 1273 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-11-30 16:13:17.802  INFO 1273 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2021-11-30 16:19:10.473  INFO 1273 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-11-30 16:19:10.484  INFO 1273 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-11-30 16:19:10.492  INFO 1273 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-11-30 16:34:05.824  INFO 1650 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : Starting CacynoApplication using Java 15.0.2 on MacBook-Pro-8.local with PID 1650 (/Users/emmanuelpaz/Downloads/ComS309/Backend/target/classes started by emmanuelpaz in /Users/emmanuelpaz/Downloads/ComS309/Backend)
+2021-11-30 16:34:05.826  INFO 1650 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : No active profile set, falling back to default profiles: default
+2021-11-30 16:34:05.890  INFO 1650 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-11-30 16:34:05.891  INFO 1650 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-11-30 16:34:06.919  INFO 1650 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-11-30 16:34:06.978  INFO 1650 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 54 ms. Found 3 JPA repository interfaces.
+2021-11-30 16:34:07.697  INFO 1650 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-11-30 16:34:07.703  INFO 1650 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-11-30 16:34:07.704  INFO 1650 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-11-30 16:34:07.755  INFO 1650 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-11-30 16:34:07.755  INFO 1650 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1864 ms
+2021-11-30 16:34:07.935  INFO 1650 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-11-30 16:34:07.960  INFO 1650 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-11-30 16:34:08.013  INFO 1650 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-11-30 16:34:08.053  INFO 1650 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-11-30 16:34:08.224  INFO 1650 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-11-30 16:34:08.238  INFO 1650 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-11-30 16:34:08.755  INFO 1650 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-11-30 16:34:08.761  INFO 1650 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-11-30 16:34:09.426  WARN 1650 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-11-30 16:34:09.964  INFO 1650 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-11-30 16:34:10.253  INFO 1650 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-11-30 16:34:12.210  INFO 1650 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : Started CacynoApplication in 6.914 seconds (JVM running for 8.045)
+2021-11-30 16:36:03.817  INFO 1650 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-11-30 16:36:03.821  INFO 1650 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-11-30 16:36:03.826  INFO 1650 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2021-11-30 16:36:03.858  INFO 1650 --- [http-nio-8080-exec-1] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 16:36:10.812  INFO 1650 --- [http-nio-8080-exec-2] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 16:36:10.812  INFO 1650 --- [http-nio-8080-exec-3] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 16:36:19.757  INFO 1650 --- [http-nio-8080-exec-4] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: dsadas
+2021-11-30 16:36:33.922  INFO 1650 --- [http-nio-8080-exec-5] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: hello
+2021-11-30 16:36:40.887  INFO 1650 --- [http-nio-8080-exec-6] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: hel
+2021-11-30 16:37:42.682  INFO 1650 --- [http-nio-8080-exec-9] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: 32
+2021-11-30 16:38:11.250  INFO 1650 --- [http-nio-8080-exec-3] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 16:38:11.250  INFO 1650 --- [http-nio-8080-exec-2] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 16:38:11.254  INFO 1650 --- [http-nio-8080-exec-3] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 16:38:11.255  INFO 1650 --- [http-nio-8080-exec-2] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 16:38:11.314 ERROR 1650 --- [http-nio-8080-exec-2] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.ChatEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:740) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:247) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:163) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.Map.forEach(java.util.function.BiConsumer)" because the return value of "java.util.Map.get(Object)" is null
+	at com._2_ug_1.cacyno.websockets.ChatEndpoint.onClose(ChatEndpoint.java:81) ~[classes/:na]
+	... 18 common frames omitted
+
+2021-11-30 16:38:11.330  INFO 1650 --- [http-nio-8080-exec-2] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 16:39:22.484  INFO 1650 --- [http-nio-8080-exec-5] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 16:39:22.492  INFO 1650 --- [http-nio-8080-exec-4] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 16:39:39.344  INFO 1650 --- [http-nio-8080-exec-6] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: hello
+2021-11-30 16:39:52.390  INFO 1650 --- [http-nio-8080-exec-7] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: hi
+2021-11-30 16:40:53.863  INFO 1650 --- [http-nio-8080-exec-10] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 16:40:53.863  INFO 1650 --- [http-nio-8080-exec-1] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 16:40:53.868  INFO 1650 --- [http-nio-8080-exec-1] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 16:40:53.868  INFO 1650 --- [http-nio-8080-exec-10] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 16:40:53.880 ERROR 1650 --- [http-nio-8080-exec-10] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.ChatEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:740) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:247) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:163) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.Map.size()" because the return value of "java.util.Map.get(Object)" is null
+	at com._2_ug_1.cacyno.websockets.ChatEndpoint.onClose(ChatEndpoint.java:75) ~[classes/:na]
+	... 18 common frames omitted
+
+2021-11-30 16:40:53.881 ERROR 1650 --- [http-nio-8080-exec-1] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.ChatEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:740) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:247) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:163) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.Map.forEach(java.util.function.BiConsumer)" because the return value of "java.util.Map.get(Object)" is null
+	at com._2_ug_1.cacyno.websockets.ChatEndpoint.onClose(ChatEndpoint.java:81) ~[classes/:na]
+	... 18 common frames omitted
+
+2021-11-30 16:40:53.881  INFO 1650 --- [http-nio-8080-exec-10] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 16:40:53.881  INFO 1650 --- [http-nio-8080-exec-1] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 16:42:14.429  INFO 1650 --- [http-nio-8080-exec-3] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 16:42:14.429  INFO 1650 --- [http-nio-8080-exec-2] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 16:42:22.637  INFO 1650 --- [http-nio-8080-exec-5] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: hi
+2021-11-30 16:43:27.724  INFO 1650 --- [http-nio-8080-exec-7] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: saSA
+2021-11-30 16:43:30.898  INFO 1650 --- [http-nio-8080-exec-8] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: dsada
+2021-11-30 16:43:37.577  INFO 1650 --- [http-nio-8080-exec-9] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: hello
+2021-11-30 16:43:43.539  INFO 1650 --- [http-nio-8080-exec-1] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: dsad
+2021-11-30 16:43:47.566  INFO 1650 --- [http-nio-8080-exec-10] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: dsadsa
+2021-11-30 16:44:58.415  INFO 1650 --- [http-nio-8080-exec-4] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 16:44:58.415  INFO 1650 --- [http-nio-8080-exec-5] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 16:44:58.421  INFO 1650 --- [http-nio-8080-exec-5] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 16:44:58.421  INFO 1650 --- [http-nio-8080-exec-4] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 16:44:58.453 ERROR 1650 --- [http-nio-8080-exec-5] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.ChatEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:740) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:247) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:163) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.Map.forEach(java.util.function.BiConsumer)" because the return value of "java.util.Map.get(Object)" is null
+	at com._2_ug_1.cacyno.websockets.ChatEndpoint.onClose(ChatEndpoint.java:81) ~[classes/:na]
+	... 18 common frames omitted
+
+2021-11-30 16:44:58.453 ERROR 1650 --- [http-nio-8080-exec-4] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.ChatEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:740) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:247) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:163) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.Map.forEach(java.util.function.BiConsumer)" because the return value of "java.util.Map.get(Object)" is null
+	at com._2_ug_1.cacyno.websockets.ChatEndpoint.onClose(ChatEndpoint.java:81) ~[classes/:na]
+	... 18 common frames omitted
+
+2021-11-30 16:44:58.454  INFO 1650 --- [http-nio-8080-exec-4] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 16:44:58.454  INFO 1650 --- [http-nio-8080-exec-5] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 16:45:36.500  INFO 1650 --- [http-nio-8080-exec-6] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 16:45:36.530  INFO 1650 --- [http-nio-8080-exec-7] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 16:45:44.883  INFO 1650 --- [http-nio-8080-exec-8] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: hi
+2021-11-30 16:45:50.151  INFO 1650 --- [http-nio-8080-exec-9] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: hello
+2021-11-30 16:45:54.711  INFO 1650 --- [http-nio-8080-exec-1] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: hi
+2021-11-30 16:46:13.061  INFO 1650 --- [http-nio-8080-exec-10] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: FUCK
+2021-11-30 16:46:42.379  INFO 1650 --- [http-nio-8080-exec-4] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: JACK YOURE UGLY
+2021-11-30 16:46:53.449  INFO 1650 --- [http-nio-8080-exec-5] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: DSAHJBDSA DSABHJDJSA dsahbdjsadbhjsabdhj dsbhajdbsahjdb dsbhajdbas
+2021-11-30 16:47:24.904  INFO 1650 --- [http-nio-8080-exec-6] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message:  dsabhjd sa dbhsja bdhjhsb ajdhjasjhd hjas bd ahjsdb hjabsdh jasbhd jabsdhjsba djasbhjdbasjbdjahsbdjhbahjdbasjhdbjshadbhjadbhjasd
+2021-11-30 16:47:52.846  INFO 1650 --- [http-nio-8080-exec-9] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: FUCK YOU JACK
+2021-11-30 16:50:32.489  INFO 1650 --- [http-nio-8080-exec-5] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 16:50:32.490  INFO 1650 --- [http-nio-8080-exec-4] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 16:50:32.510  INFO 1650 --- [http-nio-8080-exec-4] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 16:50:32.510  INFO 1650 --- [http-nio-8080-exec-5] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 16:50:32.519 ERROR 1650 --- [http-nio-8080-exec-4] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.ChatEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:740) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:247) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:163) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.Map.forEach(java.util.function.BiConsumer)" because the return value of "java.util.Map.get(Object)" is null
+	at com._2_ug_1.cacyno.websockets.ChatEndpoint.onClose(ChatEndpoint.java:81) ~[classes/:na]
+	... 18 common frames omitted
+
+2021-11-30 16:50:32.528  INFO 1650 --- [http-nio-8080-exec-4] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 16:50:32.519 ERROR 1650 --- [http-nio-8080-exec-5] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.ChatEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:740) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:247) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:163) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.Map.size()" because the return value of "java.util.Map.get(Object)" is null
+	at com._2_ug_1.cacyno.websockets.ChatEndpoint.onClose(ChatEndpoint.java:75) ~[classes/:na]
+	... 18 common frames omitted
+
+2021-11-30 16:50:32.531  INFO 1650 --- [http-nio-8080-exec-5] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 16:51:11.132  INFO 1650 --- [http-nio-8080-exec-7] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 16:51:11.132  INFO 1650 --- [http-nio-8080-exec-6] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 16:51:11.338  INFO 1650 --- [http-nio-8080-exec-9] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 16:51:11.339  INFO 1650 --- [http-nio-8080-exec-9] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 16:51:11.338  INFO 1650 --- [http-nio-8080-exec-8] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 16:51:11.341  INFO 1650 --- [http-nio-8080-exec-8] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 16:51:11.362 ERROR 1650 --- [http-nio-8080-exec-8] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.ChatEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:740) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:247) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:163) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.Map.size()" because the return value of "java.util.Map.get(Object)" is null
+	at com._2_ug_1.cacyno.websockets.ChatEndpoint.onClose(ChatEndpoint.java:75) ~[classes/:na]
+	... 18 common frames omitted
+
+2021-11-30 16:51:11.374  INFO 1650 --- [http-nio-8080-exec-8] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 16:51:11.362 ERROR 1650 --- [http-nio-8080-exec-9] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.ChatEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:740) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:247) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:163) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.Map.forEach(java.util.function.BiConsumer)" because the return value of "java.util.Map.get(Object)" is null
+	at com._2_ug_1.cacyno.websockets.ChatEndpoint.onClose(ChatEndpoint.java:81) ~[classes/:na]
+	... 18 common frames omitted
+
+2021-11-30 16:51:11.375  INFO 1650 --- [http-nio-8080-exec-9] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 16:53:08.837  INFO 1650 --- [http-nio-8080-exec-10] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 16:53:08.837  INFO 1650 --- [http-nio-8080-exec-1] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
+2021-11-30 16:53:20.370  INFO 1650 --- [http-nio-8080-exec-2] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: 22
+2021-11-30 16:53:23.048  INFO 1650 --- [http-nio-8080-exec-3] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: FUCK YOU JACK
+2021-11-30 16:53:27.599  INFO 1650 --- [http-nio-8080-exec-5] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: sdsdsd
+2021-11-30 16:53:32.434  INFO 1650 --- [http-nio-8080-exec-4] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: 232132
+2021-11-30 16:53:57.262  INFO 1650 --- [http-nio-8080-exec-6] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 16:53:57.262  INFO 1650 --- [http-nio-8080-exec-7] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 16:53:57.268  INFO 1650 --- [http-nio-8080-exec-6] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 16:53:57.268  INFO 1650 --- [http-nio-8080-exec-7] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
+2021-11-30 16:53:57.280 ERROR 1650 --- [http-nio-8080-exec-7] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.ChatEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:740) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:247) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:163) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.Map.size()" because the return value of "java.util.Map.get(Object)" is null
+	at com._2_ug_1.cacyno.websockets.ChatEndpoint.onClose(ChatEndpoint.java:75) ~[classes/:na]
+	... 18 common frames omitted
+
+2021-11-30 16:53:57.280 ERROR 1650 --- [http-nio-8080-exec-6] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.ChatEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:740) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:247) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:163) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
+Caused by: java.lang.NullPointerException: Cannot invoke "java.util.Map.forEach(java.util.function.BiConsumer)" because the return value of "java.util.Map.get(Object)" is null
+	at com._2_ug_1.cacyno.websockets.ChatEndpoint.onClose(ChatEndpoint.java:81) ~[classes/:na]
+	... 18 common frames omitted
+
+2021-11-30 16:53:57.298  INFO 1650 --- [http-nio-8080-exec-6] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-11-30 16:53:57.298  INFO 1650 --- [http-nio-8080-exec-7] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
