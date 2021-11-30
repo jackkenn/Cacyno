@@ -99,3 +99,6 @@ Caused by: java.lang.NullPointerException: Cannot invoke "java.util.Map.forEach(
 2021-11-30 10:16:44.506  INFO 4219 --- [http-nio-8080-exec-10] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
 2021-11-30 10:46:59.029  WARN 4219 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=12m56s415ms).
 2021-11-30 11:09:44.758  WARN 4219 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=22m15s704ms).
+2021-11-30 11:53:32.257  WARN 4219 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m17s130ms).
+2021-11-30 11:58:02.922  WARN 4219 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m30s674ms).
+2021-11-30 12:06:04.502  WARN 4219 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=8m1s579ms).
