@@ -28,6 +28,9 @@ import org.json.JSONObject;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
+/**
+ * this class is the lobby instance for when the user joins a game
+ */
 @Setter
 @Getter
 public class Lobby {
