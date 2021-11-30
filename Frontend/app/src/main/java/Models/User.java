@@ -12,6 +12,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import interfaces.IUser;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.SneakyThrows;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -108,8 +109,11 @@ public class User {
      */
     public void getUser(Context con, IUser callback, String id, boolean InGame){
         String url = "http://coms-309-046.cs.iastate.edu:8080/user/" + id;
+        String urllocal = "http://localhost:8080/user/"+id;
+
         RequestQueue requestQueue = Volley.newRequestQueue(con);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @SneakyThrows
             @Override
             public void onResponse(JSONObject response) {
                 System.out.println(response + " get user -> " + con);
@@ -132,8 +136,11 @@ public class User {
      */
     public void updateUser(Context con, IUser callback, boolean InGame){
         String postUrl = "http://coms-309-046.cs.iastate.edu:8080/user";
+        String urllocal = "http://localhost:8080/user";
+
         RequestQueue requestQueue = Volley.newRequestQueue(con);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PUT, postUrl, usertoJSON(InGame), new Response.Listener<JSONObject>() {
+            @SneakyThrows
             @Override
             public void onResponse(JSONObject response) {
                 System.out.println(response + "updating -> " + con);
@@ -155,6 +162,8 @@ public class User {
      */
     public void firstTimeAppend(Context con, IUser callback){
         String postUrl = "http://coms-309-046.cs.iastate.edu:8080/user";
+        String urllocal = "http://localhost:8080/user";
+
         RequestQueue requestQueue = Volley.newRequestQueue(con);
         JSONObject postData = new JSONObject();
         try {
@@ -174,6 +183,7 @@ public class User {
             e.printStackTrace();
         }
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, postUrl, postData, new Response.Listener<JSONObject>() {
+            @SneakyThrows
             @Override
             public void onResponse(JSONObject response) {
                 callback.onSuccess();

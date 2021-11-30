@@ -1,29 +1,33 @@
 package com.example.demo1;
 
 import Models.User;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.Group;
-import androidx.fragment.app.FragmentContainerView;
 import com.google.android.material.slider.Slider;
 import com.google.firebase.auth.FirebaseAuth;
 import interfaces.IUser;
+import lombok.SneakyThrows;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
+import org.json.JSONException;
 
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Objects;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class GameScreen extends AppCompatActivity {
     private User user;
@@ -39,6 +43,9 @@ public class GameScreen extends AppCompatActivity {
     private TextView pot;
     private Slider slider;
     private TextView sliderAmount;
+    private LinearLayout chatlayout;
+    int rand = 0;
+    @SneakyThrows
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -64,15 +71,18 @@ public class GameScreen extends AppCompatActivity {
         ImageButton x = findViewById(R.id.x_out_chat);
         ImageButton send = findViewById(R.id.send_message);
         TextView message = findViewById(R.id.message_type);
+        chatlayout = findViewById(R.id.linearchat);
 
         bringToFront();
 
         user = new User();
         user.getUser(GameScreen.this, new IUser() {
             @Override
-            public int onSuccess() {
+            public int onSuccess() throws JSONException, URISyntaxException {
                 ingame_money.append(user.getCurrent_game_money()+"");
-                username.append( (user.getDisplayName()) ? user.getUsername() : "user"+ new Random().nextInt(10000)+1);
+                rand = new Random().nextInt(10000)+1;
+                username.append((user.getDisplayName()) ? user.getUsername() : "user" + rand);
+                connectWebSocket();
                 return 0;
             }
 
@@ -98,11 +108,30 @@ public class GameScreen extends AppCompatActivity {
                 }
             }, true);
         });
-
+        AtomicInteger messages= new AtomicInteger(1);
         chat.setOnClickListener(v -> {
             findViewById(R.id.chat_view_remove).bringToFront();
-            x.setOnClickListener(v1 -> {
-                bringToFront();
+            x.setOnClickListener(v1 -> bringToFront());
+
+            send.setOnClickListener(v2 -> {
+                View newmessage = getLayoutInflater().inflate(R.layout.chat_row, chatlayout);
+                newmessage.setId(messages.get());
+
+                TableRow row = findViewById(R.id.newChat);
+                row.setId(messages.get() * 1000);
+
+                TextView text = findViewById(R.id.message);
+                text.setId(messages.get() *10);
+
+                TextView user_message = findViewById(R.id.Sentby);
+                user_message.setId(messages.get() *100);
+
+                row.setGravity(Gravity.RIGHT);
+                user_message.append((user.getDisplayName()) ? user.getUsername() : "user" + rand);
+                text.append(message.getText().toString());
+                messages.getAndIncrement();
+
+                //mWebSocketClient.send(message.getText().toString());
             });
         });
     }
@@ -167,13 +196,13 @@ public class GameScreen extends AppCompatActivity {
         findViewById(R.id.middlecard_5).bringToFront();
     }
 
-    private void connectWebSocket() throws URISyntaxException {
+    private void connectWebSocket() throws URISyntaxException, JSONException {
         URI url;
         /*
          * To test the clientside without the backend, simply connect to an echo server such as:
          *  "ws://echo.websocket.org"
          */
-        url = new URI("ws://10.0.2.2:8080/example"); // 10.0.2.2 = localhost
+        url = new URI("http://localhost:8080/"+user.getGameId().getString("id")+"/"+user.getId()); // 10.0.2.2 = localhost
         // uri = new URI("ws://echo.websocket.org");
 
         mWebSocketClient = new WebSocketClient(url) {

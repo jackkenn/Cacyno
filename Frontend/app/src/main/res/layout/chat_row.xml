@@ -8,13 +8,12 @@
     <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" android:gravity="right">
+            app:layout_constraintStart_toStartOf="parent" android:id="@+id/newChat">
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="329dp"
                 android:layout_height="wrap_content">
 
             <TextView
-                    android:text="dbsjakfbsaf ks ajda hdhsjka hdkjashjk dhjkhak sdjk hakds"
                     android:layout_width="259dp"
                     android:layout_height="wrap_content" android:id="@+id/message"
                     android:fontFamily="@font/aqua"
@@ -25,7 +24,6 @@
                     android:layout_marginRight="44dp" app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="11dp"/>
             <TextView
-                    android:text="menoy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" android:id="@+id/Sentby"
                     android:layout_marginTop="4dp"
