@@ -3,11 +3,13 @@ package com.example.demo1;
 import Models.User;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,6 +30,9 @@ public class GameScreen extends AppCompatActivity {
     private ImageButton chat;
     private ConstraintLayout gameScreen;
     private WebSocketClient mWebSocketClient;
+    private View chatview;
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -39,6 +44,7 @@ public class GameScreen extends AppCompatActivity {
         backout = findViewById(R.id.back_from_game);
         chat = findViewById(R.id.chat_but);
         gameScreen = findViewById(R.id.ActualGame);
+        chatview = findViewById(R.id.chatplz);
 
         user = new User();
         user.getUser(GameScreen.this, new IUser() {
@@ -73,9 +79,7 @@ public class GameScreen extends AppCompatActivity {
         });
 
         chat.setOnClickListener(v -> {
-            View chatview = getLayoutInflater().inflate(R.layout.chat_view, gameScreen);
-            chatview.bringToFront();
-
+            chatview.setVisibility(View.VISIBLE);
             //buttons
             ImageButton x = findViewById(R.id.x_out_chat);
             ImageButton send = findViewById(R.id.send_message);
@@ -83,10 +87,8 @@ public class GameScreen extends AppCompatActivity {
 
             //exit out
             x.setOnClickListener(v1 -> {
-                gameScreen.removeView(findViewById(R.id.chat_view_remove));
-                gameScreen.invalidate();
+                chatview.setVisibility(View.GONE);
             });
-
         });
     }
 

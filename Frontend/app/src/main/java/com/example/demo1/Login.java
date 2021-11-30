@@ -16,12 +16,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-
-public class Login extends AppCompatActivity {
 /**
  * The activity tied to the login screen
  */
-public class ActivityLogin extends AppCompatActivity {
+public class Login extends AppCompatActivity {
     public EditText loginEmailId, logInpasswd;
     Button btnLogIn;
     TextView signup;
