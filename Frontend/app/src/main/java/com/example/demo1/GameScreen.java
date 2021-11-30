@@ -1,17 +1,20 @@
 package com.example.demo1;
 
 import Models.User;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.Group;
+import androidx.fragment.app.FragmentContainerView;
+import com.google.android.material.slider.Slider;
 import com.google.firebase.auth.FirebaseAuth;
 import interfaces.IUser;
 import org.java_websocket.client.WebSocketClient;
@@ -30,8 +33,12 @@ public class GameScreen extends AppCompatActivity {
     private ImageButton chat;
     private ConstraintLayout gameScreen;
     private WebSocketClient mWebSocketClient;
-    private View chatview;
-
+    private ImageButton raise;
+    private ImageButton fold;
+    private ImageButton check;
+    private TextView pot;
+    private Slider slider;
+    private TextView sliderAmount;
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -43,8 +50,22 @@ public class GameScreen extends AppCompatActivity {
         username = findViewById(R.id.username_ingame);
         backout = findViewById(R.id.back_from_game);
         chat = findViewById(R.id.chat_but);
+        raise = findViewById(R.id.raise);
+        fold = findViewById(R.id.fold);
+        check = findViewById(R.id.check);
+        pot = findViewById(R.id.pot);
+        slider = findViewById(R.id.slider);
+        sliderAmount = findViewById(R.id.slider_amount);
+
         gameScreen = findViewById(R.id.ActualGame);
-        chatview = findViewById(R.id.chatplz);
+
+        getLayoutInflater().inflate(R.layout.chat_view, gameScreen);
+        //buttons
+        ImageButton x = findViewById(R.id.x_out_chat);
+        ImageButton send = findViewById(R.id.send_message);
+        TextView message = findViewById(R.id.message_type);
+
+        bringToFront();
 
         user = new User();
         user.getUser(GameScreen.this, new IUser() {
@@ -79,17 +100,71 @@ public class GameScreen extends AppCompatActivity {
         });
 
         chat.setOnClickListener(v -> {
-            chatview.setVisibility(View.VISIBLE);
-            //buttons
-            ImageButton x = findViewById(R.id.x_out_chat);
-            ImageButton send = findViewById(R.id.send_message);
-            TextView message = findViewById(R.id.message_type);
-
-            //exit out
+            findViewById(R.id.chat_view_remove).bringToFront();
             x.setOnClickListener(v1 -> {
-                chatview.setVisibility(View.GONE);
+                bringToFront();
             });
         });
+    }
+
+    private void bringToFront(){
+        findViewById(R.id.game_background).bringToFront();
+
+        chat.bringToFront();
+        backout.bringToFront();
+        check.bringToFront();
+        fold.bringToFront();
+        raise.bringToFront();
+        username.bringToFront();
+        ingame_money.bringToFront();
+        pot.bringToFront();
+
+        findViewById(R.id.user_tag).bringToFront();
+        findViewById(R.id.user_tag).bringToFront();
+        findViewById(R.id.money_tag).bringToFront();
+        findViewById(R.id.pot_tag).bringToFront();
+
+        findViewById(R.id.your_money_sign).bringToFront();
+        findViewById(R.id.slider_moneysign).bringToFront();
+
+        findViewById(R.id.player1_card1).bringToFront();
+        findViewById(R.id.player1_card2).bringToFront();
+        findViewById(R.id.player1_line).bringToFront();
+        findViewById(R.id.player1_money).bringToFront();
+        findViewById(R.id.player1_username).bringToFront();
+
+        findViewById(R.id.player2_card1).bringToFront();
+        findViewById(R.id.player2_card2).bringToFront();
+        findViewById(R.id.player2_line).bringToFront();
+        findViewById(R.id.player2_money).bringToFront();
+        findViewById(R.id.player2_username).bringToFront();
+
+        findViewById(R.id.player3_card1).bringToFront();
+        findViewById(R.id.player3_card2).bringToFront();
+        findViewById(R.id.player3_line).bringToFront();
+        findViewById(R.id.player3_money).bringToFront();
+        findViewById(R.id.player3_username).bringToFront();
+
+        findViewById(R.id.player4_card1).bringToFront();
+        findViewById(R.id.player4_card2).bringToFront();
+        findViewById(R.id.player4_line).bringToFront();
+        findViewById(R.id.player4_money).bringToFront();
+        findViewById(R.id.player4_username).bringToFront();
+
+        findViewById(R.id.player5_card1).bringToFront();
+        findViewById(R.id.player5_card2).bringToFront();
+        findViewById(R.id.player5_line).bringToFront();
+        findViewById(R.id.player5_money).bringToFront();
+        findViewById(R.id.player5_username).bringToFront();
+
+        findViewById(R.id.yourCard_1).bringToFront();
+        findViewById(R.id.yourCard_2).bringToFront();
+
+        findViewById(R.id.middlecard_1).bringToFront();
+        findViewById(R.id.middlecard_2).bringToFront();
+        findViewById(R.id.middlecard_3).bringToFront();
+        findViewById(R.id.middlecard_4).bringToFront();
+        findViewById(R.id.middlecard_5).bringToFront();
     }
 
     private void connectWebSocket() throws URISyntaxException {
