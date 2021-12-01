@@ -17,6 +17,7 @@ import interfaces.IUser;
 public class UserHome extends AppCompatActivity {
     private ImageButton settings;
     private ImageButton play;
+    private ImageButton leaderboard;
     private TextView money;
     private TextView username;
     private User user;
@@ -28,6 +29,8 @@ public class UserHome extends AppCompatActivity {
         money = findViewById(R.id.moneyRequest);
         username = findViewById(R.id.currentUser);
         play = findViewById(R.id.play_create_but);
+        leaderboard = findViewById(R.id.leaderboard_button);
+
         user = new User();
         user.getUser(this, new IUser() {
             @Override
@@ -42,22 +45,19 @@ public class UserHome extends AppCompatActivity {
                 return -1;
             }
         }, FirebaseAuth.getInstance().getCurrentUser().getUid(), false);
-        settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(UserHome.this, Settings.class);
-                intent.putExtra("displayname", user.getDisplayName());
-                intent.putExtra("username", user.getUsername());
-                startActivity(intent);
-            }
+        settings.setOnClickListener(view -> {
+            Intent intent = new Intent(UserHome.this, Settings.class);
+            intent.putExtra("displayname", user.getDisplayName());
+            intent.putExtra("username", user.getUsername());
+            startActivity(intent);
         });
-        play.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent I = new Intent(UserHome.this, LobbySelector.class);
-                I.putExtra("username", user.getUsername());
-                startActivity(I);
-            }
+        play.setOnClickListener(view -> {
+            Intent I = new Intent(UserHome.this, LobbySelector.class);
+            I.putExtra("username", user.getUsername());
+            startActivity(I);
+        });
+        leaderboard.setOnClickListener(view -> {
+            startActivity(new Intent(UserHome.this, Leaderboard.class));
         });
     }
 }

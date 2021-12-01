@@ -25,6 +25,7 @@
         <activity android:name=".Username"/>
         <activity android:name=".CreateGame"/>
         <activity android:name=".GameScreen"/>
+        <activity android:name=".Leaderboard"/>
     </application>
 
 </manifest>

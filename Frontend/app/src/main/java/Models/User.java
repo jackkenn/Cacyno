@@ -6,14 +6,25 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.gson.ExclusionStrategy;
+import com.google.gson.FieldAttributes;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 import interfaces.IUser;
 import lombok.Getter;
 import lombok.Setter;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 
 @Setter
 @Getter
@@ -21,8 +32,10 @@ import org.json.JSONObject;
  * this class is the user instance when using the application
  */
 public class User {
+    @SerializedName("username")
     String username="";
     String id="";
+    @SerializedName("money")
     int money;
     boolean displayName;
     UserOperations ops;
@@ -94,6 +107,39 @@ public class User {
        ops.JSONtoUser(response, this, InGame);
     }
 
+    private ArrayList<User> JSONtolist(JSONArray response){
+        Type userList = new TypeToken<ArrayList<User>>(){}.getType();
+        User.Exclude ex = new User.Exclude();
+        Gson gson = new GsonBuilder().addDeserializationExclusionStrategy(ex).addSerializationExclusionStrategy(ex).create();
+        return gson.fromJson(response.toString(), userList);
+    }
+
+    public void calltoServer(Context con, ArrayList<User> list, IUser callback){
+        String url = "http://coms-309-046.cs.iastate.edu:8080/user";
+        RequestQueue requestQueue = Volley.newRequestQueue(con);
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            /**
+             * this method is called when the call to endpoint is successful
+             * @param response the response from endpoint
+             */
+            @Override
+            public void onResponse(JSONArray response) {
+                list.addAll(JSONtolist(response));
+                callback.onSuccess();
+                System.out.println(list.size());
+            }
+        }, new Response.ErrorListener() {
+            /**
+             * this method is called when the call to the endpoint is not successful and error has occurred
+             * @param error the Volley error that has occurred
+             */
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("ERROR GETTING USERS", error.toString());
+            }
+        });
+        requestQueue.add(request);
+    }
     /**
      * makes changes to a user based on the callback
      * @param con context of the app
@@ -174,5 +220,23 @@ public class User {
             }
         }, error -> error.printStackTrace());
         requestQueue.add(jsonObjectRequest);
+    }
+
+
+    static class Exclude implements ExclusionStrategy {
+
+        @Override
+        public boolean shouldSkipClass(Class<?> arg0) {
+            // TODO Auto-generated method stub
+            return false;
+        }
+
+        @Override
+        public boolean shouldSkipField(FieldAttributes field) {
+            SerializedName ns = field.getAnnotation(SerializedName.class);
+            if(ns != null)
+                return false;
+            return true;
+        }
     }
 }
