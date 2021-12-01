@@ -26,7 +26,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Objects;
 import java.util.Random;
-import java.util.concurrent.atomic.AtomicInteger;
+
 
 public class GameScreen extends AppCompatActivity {
     private User user;
@@ -44,7 +44,8 @@ public class GameScreen extends AppCompatActivity {
     private TextView sliderAmount;
     private LinearLayout chatlayout;
     ScrollView scroll;
-    int rand = 0;
+    int randForUsername = 0;
+
     @SuppressLint("RtlHardcoded")
     @SneakyThrows
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -54,6 +55,7 @@ public class GameScreen extends AppCompatActivity {
         setContentView(R.layout.game_screen);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
+        //all interactions that the user can do
         ingame_money = findViewById(R.id.money_ingame);
         username = findViewById(R.id.username_ingame);
         backout = findViewById(R.id.back_from_game);
@@ -65,10 +67,13 @@ public class GameScreen extends AppCompatActivity {
         slider = findViewById(R.id.slider);
         sliderAmount = findViewById(R.id.slider_amount);
 
+        //the constraint layout to add chat view
         gameScreen = findViewById(R.id.ActualGame);
 
+        //add chat view
         View chatplz = getLayoutInflater().inflate(R.layout.chat_view, gameScreen);
-        //buttons
+
+        //interations for chat and layouts
         ImageButton x = findViewById(R.id.x_out_chat);
         ImageButton send = findViewById(R.id.send_message);
         TextView message = findViewById(R.id.message_type);
@@ -81,8 +86,8 @@ public class GameScreen extends AppCompatActivity {
             @Override
             public int onSuccess() throws JSONException, URISyntaxException {
                 ingame_money.append(user.getCurrent_game_money()+"");
-                rand = new Random().nextInt(10000)+1;
-                username.append((user.getDisplayName()) ? user.getUsername() : "user" + rand);
+                randForUsername = new Random().nextInt(10000)+1;
+                username.append((user.getDisplayName()) ? user.getUsername() : "user" + randForUsername);
                 connectWebSocket();
                 return 0;
             }
@@ -99,6 +104,7 @@ public class GameScreen extends AppCompatActivity {
             user.updateUser(GameScreen.this, new IUser() {
                 @Override
                 public int onSuccess() {
+                    mWebSocketClient.close();
                     startActivity(new Intent(GameScreen.this, UserHome.class));
                     return 0;
                 }
@@ -117,6 +123,7 @@ public class GameScreen extends AppCompatActivity {
             x.setOnClickListener(v1 -> bringToFront());
 
             send.setOnClickListener(v2 -> {
+                //adding new message row
                 View newFrommessage = getLayoutInflater().inflate(R.layout.chat_row, chatlayout);
                 newFrommessage.setId(View.generateViewId());
                 TableRow row = newFrommessage.findViewById(R.id.newChat);
@@ -127,20 +134,23 @@ public class GameScreen extends AppCompatActivity {
 
                 TextView user_message = newFrommessage.findViewById(R.id.Sentby);
                 user_message.setId(View.generateViewId());
-                user_message.append((user.getDisplayName()) ? user.getUsername() : "user" + rand);
+                user_message.append((user.getDisplayName()) ? user.getUsername() : "user" + randForUsername);
                 text.append(message.getText().toString());
 
-
-                scroll.fullScroll(View.FOCUS_DOWN);
                 row.setGravity(Gravity.END);
                 mWebSocketClient.send(message.getText().toString());
                 message.setText("");
+                scroll.fullScroll(View.FOCUS_DOWN);
             });
 
         });
     }
 
+    /**
+     * this method brings everything except the chatview to the front
+     */
     private void bringToFront(){
+
         findViewById(R.id.game_background).bringToFront();
 
         chat.bringToFront();
@@ -231,6 +241,7 @@ public class GameScreen extends AppCompatActivity {
                     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                     @Override
                     public void run() {
+                        //this if statement is to ensure the user doesn't receive their own message back
                         if(!Objects.equals(username, "2")){
 
                             View newmessage = getLayoutInflater().inflate(R.layout.chat_row, chatlayout);
@@ -245,6 +256,7 @@ public class GameScreen extends AppCompatActivity {
                             TextView user_message = newmessage.findViewById(R.id.Sentby);
                             user_message.setId(View.generateViewId());
                             row.setGravity(Gravity.START);
+
                             user_message.append(username);
                             text.append(messsage);
                             scroll.fullScroll(View.FOCUS_DOWN);
