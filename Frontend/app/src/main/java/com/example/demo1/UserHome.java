@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import com.android.volley.RequestQueue;
 import com.google.firebase.auth.FirebaseAuth;
 import interfaces.IUser;
 /**
@@ -25,11 +24,13 @@ public class UserHome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_screen);
+
         settings = findViewById(R.id.settings);
         money = findViewById(R.id.moneyRequest);
         username = findViewById(R.id.currentUser);
         play = findViewById(R.id.play_create_but);
         leaderboard = findViewById(R.id.leaderboard_button);
+
 
         user = new User();
         user.getUser(this, new IUser() {

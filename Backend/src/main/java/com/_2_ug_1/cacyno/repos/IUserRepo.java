@@ -15,4 +15,8 @@ public interface IUserRepo extends JpaRepository<User, String> {
     @Async
     @Query(value = "SELECT * FROM user WHERE is_spectator = FALSE AND game_id = ?1", nativeQuery = true)
     Future<List<User>> getAllByGameId(String gameId);
+
+    @Async
+    @Query(value = "SELECT * FROM user WHERE id = ?1", nativeQuery = true)
+    Future<User> AsyncGetById(String id);
 }

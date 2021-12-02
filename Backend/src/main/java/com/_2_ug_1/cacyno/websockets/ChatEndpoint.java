@@ -11,6 +11,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Used for communication in games
+ */
 @ServerEndpoint("/chat/{gameId}/{userName}")
 @Component
 public class ChatEndpoint {
@@ -19,6 +22,14 @@ public class ChatEndpoint {
 
     private final Logger _logger = LoggerFactory.getLogger(ChatEndpoint.class);
 
+    /**
+     * Creates a link between players in game
+     *
+     * @param session  user's session
+     * @param gameId   chat channel
+     * @param userName username to identity user
+     * @throws IOException
+     */
     @OnOpen
     public void onOpen(Session session
             , @PathParam("gameId") String gameId
@@ -43,6 +54,15 @@ public class ChatEndpoint {
         });
     }
 
+    /**
+     * server response to receiving a text message
+     *
+     * @param session  user's session
+     * @param gameId   chat channel
+     * @param userName username to identity user
+     * @param message  text message to broadcast to all players with the same game id
+     * @throws IOException
+     */
     @OnMessage
     public void onMessage(Session session
             , @PathParam("gameId") String gameId
@@ -67,6 +87,14 @@ public class ChatEndpoint {
         }
     }
 
+    /**
+     * closes the communication session
+     *
+     * @param session  user's session
+     * @param gameId   chat channel
+     * @param userName username to identity user
+     * @throws IOException
+     */
     @OnClose
     public void onClose(Session session
             , @PathParam("gameId") String gameId
@@ -89,10 +117,18 @@ public class ChatEndpoint {
         });
     }
 
+    /**
+     * reports errors
+     *
+     * @param session   user's session
+     * @param gameId    chat channel
+     * @param userName  username to identity user
+     * @param throwable reported exception
+     */
     @OnError
     public void onError(Session session
             , @PathParam("gameId") String gameId
-            , @PathParam("userId") String userId
+            , @PathParam("userId") String userName
             , Throwable throwable) {
         _logger.info("Entered into Error");
     }

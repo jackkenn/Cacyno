@@ -89,6 +89,8 @@ public class Lobby {
      */
     public void calltoServer(Context con, ArrayList<Lobby> list, ILobby callback){
         String url = "http://coms-309-046.cs.iastate.edu:8080/lobby";
+        String urllocal = "http://localhost:8080/lobby";
+
         RequestQueue requestQueue = Volley.newRequestQueue(con);
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             /**
@@ -145,6 +147,8 @@ public class Lobby {
      */
     public void calltoServer(Context con, String id){
         String url = "http://coms-309-046.cs.iastate.edu:8080/lobby/"+id;
+        String urllocal = "http://localhost:8080/lobby/"+id;
+
         RequestQueue requestQueue = Volley.newRequestQueue(con);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             /**
@@ -181,6 +185,7 @@ public class Lobby {
      */
     public void updateLobby(Context con){
         String url = "http://coms-309-046.cs.iastate.edu:8080/lobby";
+        String urllocal = "http://localhost:8080/lobby";
         RequestQueue requestQueue = Volley.newRequestQueue(con);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, LobbyToJSON(), new Response.Listener<JSONObject>() {
             /**
@@ -208,6 +213,7 @@ public class Lobby {
      */
     public void newLobby(Context con, ILobby callback){
         String url = "http://coms-309-046.cs.iastate.edu:8080/lobby";
+        String urllocal = "http://localhost:8080/lobby";
         RequestQueue requestQueue = Volley.newRequestQueue(con);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, LobbyToJSON(), new Response.Listener<JSONObject>() {
             /**

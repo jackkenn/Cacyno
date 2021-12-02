@@ -20,6 +20,7 @@ import interfaces.IUser;
 import lombok.Getter;
 import lombok.Setter;
 import org.json.JSONArray;
+import lombok.SneakyThrows;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -71,6 +72,12 @@ public class User {
         return displayName;
     }
 
+    /**
+     * resets the user when leaves or game ends
+     */
+    public void resetUser(){
+        ops.removeAttributes(this);
+    }
     /**
      * sets displayName
      */
@@ -150,9 +157,10 @@ public class User {
         String url = "http://coms-309-046.cs.iastate.edu:8080/user/" + id;
         RequestQueue requestQueue = Volley.newRequestQueue(con);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @SneakyThrows
             @Override
             public void onResponse(JSONObject response) {
-                System.out.println(response + "from get user");
+                System.out.println(response + " get user -> " + con);
                 JSONtoUser(response, InGame);
                 callback.onSuccess();
             }
@@ -174,15 +182,16 @@ public class User {
         String postUrl = "http://coms-309-046.cs.iastate.edu:8080/user";
         RequestQueue requestQueue = Volley.newRequestQueue(con);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PUT, postUrl, usertoJSON(InGame), new Response.Listener<JSONObject>() {
+            @SneakyThrows
             @Override
             public void onResponse(JSONObject response) {
-                System.out.println(response + "worked");
+                System.out.println(response + "updating -> " + con);
                 callback.onSuccess();
             }
         },  new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.e("ERROR: UPDATING", error.toString());
+                Log.e("ERROR: UPDATING -> " + con, error.toString());
                 callback.onError();
             }
         });
@@ -193,7 +202,7 @@ public class User {
      * sets base values for the user
      * @param con context of the app
      */
-    public void firstTimeAppend(Context con){
+    public void firstTimeAppend(Context con, IUser callback){
         String postUrl = "http://coms-309-046.cs.iastate.edu:8080/user";
         RequestQueue requestQueue = Volley.newRequestQueue(con);
         JSONObject postData = new JSONObject();
@@ -201,7 +210,7 @@ public class User {
             postData.put("id", FirebaseAuth.getInstance().getCurrentUser().getUid());
             postData.put("username", "");
             postData.put("money", "1000");
-            postData.put("displayname", false);
+            postData.put("displayname", true);
             postData.put("current_game_money", 0);
             postData.put("bet", 0);
             postData.put("card1", 0);
@@ -214,8 +223,10 @@ public class User {
             e.printStackTrace();
         }
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, postUrl, postData, new Response.Listener<JSONObject>() {
+            @SneakyThrows
             @Override
             public void onResponse(JSONObject response) {
+                callback.onSuccess();
                 System.out.println(response);
             }
         }, error -> error.printStackTrace());
