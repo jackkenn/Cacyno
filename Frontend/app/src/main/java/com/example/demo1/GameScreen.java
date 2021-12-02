@@ -217,6 +217,7 @@ public class GameScreen extends AppCompatActivity {
          * To test the clientside without the backend, simply connect to an echo server such as:
          *  "ws://echo.websocket.org"
          */
+        //need to change to remote
         //uri = new URI("ws://localhost:8080/"+user.getGameId().getString("id")+"/"+user.getId()); // 10.0.2.2 = localhost
         uri = new URI("ws://192.168.1.2:8080/chat/1/2");
 

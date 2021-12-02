@@ -1,10 +1,10 @@
 package com._2_ug_1.cacyno;
 
 import com._2_ug_1.cacyno.models.Game;
-import com._2_ug_1.cacyno.services.GameService;
+import com._2_ug_1.cacyno.models.User;
 import com._2_ug_1.cacyno.repos.IGameRepo;
 import com._2_ug_1.cacyno.repos.IUserRepo;
-import com._2_ug_1.cacyno.models.User;
+import com._2_ug_1.cacyno.services.GameService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
