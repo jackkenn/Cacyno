@@ -10,6 +10,9 @@ import springfox.documentation.spring.data.rest.configuration.SpringDataRestConf
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 
+/**
+ * adds swagger documentation
+ */
 @Configuration
 @EnableSwagger2WebMvc
 @Import(SpringDataRestConfiguration.class)
