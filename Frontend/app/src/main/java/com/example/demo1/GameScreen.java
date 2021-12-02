@@ -213,13 +213,9 @@ public class GameScreen extends AppCompatActivity {
     private void connectWebSocket() throws URISyntaxException, JSONException {
         URI uri;
 
-        /*
-         * To test the clientside without the backend, simply connect to an echo server such as:
-         *  "ws://echo.websocket.org"
-         */
         //need to change to remote
-        //uri = new URI("ws://localhost:8080/"+user.getGameId().getString("id")+"/"+user.getId()); // 10.0.2.2 = localhost
-        uri = new URI("ws://192.168.1.2:8080/chat/1/2");
+        uri = new URI("ws://coms-309-046.cs.iastate.edu:8080/chat/1"+"/"+user.getUsername());
+        //uri = new URI("ws://192.168.1.2:8080/chat/1/2");
 
         mWebSocketClient = new WebSocketClient(uri) {
 
@@ -243,7 +239,7 @@ public class GameScreen extends AppCompatActivity {
                     @Override
                     public void run() {
                         //this if statement is to ensure the user doesn't receive their own message back
-                        if(!Objects.equals(username, "2")){
+                        if(!Objects.equals(username, user.getUsername())){
 
                             View newmessage = getLayoutInflater().inflate(R.layout.chat_row, chatlayout);
                             newmessage.setId(View.generateViewId());
@@ -258,7 +254,9 @@ public class GameScreen extends AppCompatActivity {
                             user_message.setId(View.generateViewId());
                             row.setGravity(Gravity.START);
 
-                            user_message.append(username);
+                            //this if statement is when users are connecting and disconnecting. So it does not show "User" for username under text
+                            if(!username.equals("User"))
+                                user_message.append(username);
                             text.append(messsage);
                             scroll.fullScroll(View.FOCUS_DOWN);
                         }
