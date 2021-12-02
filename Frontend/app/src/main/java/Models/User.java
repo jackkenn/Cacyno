@@ -129,6 +129,7 @@ public class User {
              * this method is called when the call to endpoint is successful
              * @param response the response from endpoint
              */
+            @SneakyThrows
             @Override
             public void onResponse(JSONArray response) {
                 list.addAll(JSONtolist(response));
