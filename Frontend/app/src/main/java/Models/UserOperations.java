@@ -29,7 +29,6 @@ public class UserOperations {
             user.set_spectator(Boolean.parseBoolean(response.getString("isSpectator")));
             if(InGame)
                 user.setGameId(response.getJSONObject("game"));
-            System.out.println("passed");
             user.setCard1(Integer.parseInt(response.getString("card1")));
             user.setCard2(Integer.parseInt(response.getString("card2")));
             user.setFolded(Boolean.parseBoolean(response.getString("folded")));
@@ -61,13 +60,24 @@ public class UserOperations {
             postData.put("folded", user.getFolded());
             postData.put("isSpecatator", user.getIs_spectator());
             postData.put("position", user.getPosition());
-            if(InGame)
-                postData.put("game", user.getGameId());
+            if(InGame) {
+                    postData.put("game", user.getGameId());
+            }
             postData.put("hasPlayed", user.getHas_played());
         }
         catch(JSONException e){
             e.printStackTrace();
         }
         return postData;
+    }
+
+    public void removeAttributes(User user){
+        user.setGameId(null);
+        user.setCurrent_game_money(0);
+        user.setPosition(0);
+        user.setFolded(false);
+        user.setCard1(0);
+        user.setCard2(0);
+        user.setBet(0);
     }
 }

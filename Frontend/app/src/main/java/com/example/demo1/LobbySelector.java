@@ -3,7 +3,9 @@ package com.example.demo1;
 import Models.Lobby;
 import Models.LobbyOperations;
 import Models.User;
+import Utilities.GameChecker;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +13,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import com.google.firebase.auth.FirebaseAuth;
@@ -35,14 +38,20 @@ public class LobbySelector extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lobby_selector_screen);
-        constraintLayout = findViewById(R.id.constraintLayout);
+
+        //getting buttons and layouts
+        constraintLayout = findViewById(R.id.lobbyView);
         back = findViewById(R.id.back);
         refresh = constraintLayout.findViewById(R.id.refresh);
         creategame = findViewById(R.id.create);
+
+        //instantiations for lobbies and user
         Lobby lb = new Lobby();
         list = new ArrayList<>();
-        LobbyOperations ops = new LobbyOperations();
+        LobbyOperations opsLob = new LobbyOperations();
         user = new User();
+
+        //getting user to set gameID when enters
         user.getUser(this, new IUser() {
             @Override
             public int onSuccess() {
@@ -54,10 +63,9 @@ public class LobbySelector extends AppCompatActivity{
                 return -1;
             }
         }, FirebaseAuth.getInstance().getCurrentUser().getUid(), false);
-        String userName = getIntent().getStringExtra("username");
-        /*
-          wait for lobbies to be appended to list to display on screen
-         */
+
+
+        //wait for lobbies to be appended to list to display on screen
         lb.calltoServer(this, list, new ILobby(){
             /**
              * if lobbies are successfully added to a list of lobby objects, then this method will add a
@@ -67,59 +75,15 @@ public class LobbySelector extends AppCompatActivity{
              */
             @Override
             public int onSuccess(){
+
+                //setting ids for names of lobbies, join buttons and spectate buttons
                 int indexForNameId = 1;
                 int indexForJoinId = 1000;
                 int indexForSpectateId = 10000;
+
+                //adding lobbies to screen
                 for(Lobby i : list) {
-                    View newLobbbyRow = getLayoutInflater().inflate(R.layout.lobby_row, layout);
-                    TextView lobbyName = findViewById(R.id.lobbyname);
-                    lobbyName.setId(indexForNameId);
-
-                    lobbyName.setText(i.getLobbyname());
-                    ImageButton joinBut = findViewById(R.id.join);
-                    joinBut.setId(indexForJoinId++);
-                    int setIndex = indexForNameId;
-                    joinBut.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            user.setGameId(ops.lobbyToJSON(i));
-                            user.updateUser(LobbySelector.this, new IUser() {
-                                @Override
-                                public int onSuccess() {
-                                    return 0;
-                                }
-
-                                @Override
-                                public int onError() {
-                                    return -1;
-                                }
-                            }, true);
-                            startActivity(new Intent(LobbySelector.this, GameScreen.class));
-                        }
-                    });
-                    ImageButton spectate = findViewById(R.id.spectate);
-                    spectate.setId(indexForSpectateId++);
-                    spectate.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            user.setGameId(ops.lobbyToJSON(i));
-                            user.set_spectator(true);
-                            user.updateUser(LobbySelector.this, new IUser() {
-                                @Override
-                                public int onSuccess() {
-                                    return 0;
-                                }
-
-                                @Override
-                                public int onError() {
-                                    return -1;
-                                }
-                            }, true);
-                            startActivity(new Intent(LobbySelector.this, GameScreen.class));
-                        }
-                    });
-                    indexForNameId++;
-                    nextId = indexForNameId;
+                    setLobbyView(indexForNameId, indexForJoinId, indexForSpectateId, opsLob, i);
                 }
                 return 0;
             }
@@ -132,6 +96,7 @@ public class LobbySelector extends AppCompatActivity{
                 return -1;
             }
         });
+
         layout = findViewById(R.id.linear);
         scroll = findViewById(R.id.scroll);
 
@@ -154,14 +119,14 @@ public class LobbySelector extends AppCompatActivity{
                      */
                     @Override
                     public int onSuccess(){
-                        int indexForId = 1;
+                        //setting ids for names of lobbies, join buttons and spectate buttons
+                        int indexForNameId = 1;
+                        int indexForJoinId = 1000;
+                        int indexForSpectateId = 10000;
+
+                        //adding lobbies to screen
                         for(Lobby i : list) {
-                            View row = getLayoutInflater().inflate(R.layout.lobby_row, layout);
-                            TextView lobbyName = findViewById(R.id.lobbyname);
-                            lobbyName.setId(indexForId);
-                            indexForId++;
-                            lobbyName.setText(i.getLobbyname());
-                            nextId = indexForId;
+                            setLobbyView(indexForNameId, indexForJoinId, indexForSpectateId, opsLob, i);
                         }
                         return 0;
                     }
@@ -185,7 +150,6 @@ public class LobbySelector extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(LobbySelector.this, UserHome.class);
-                i.putExtra("username", userName);
                 startActivity(i);
 
             }
@@ -199,12 +163,90 @@ public class LobbySelector extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LobbySelector.this, CreateGame.class);
-                intent.putExtra("nextid", nextId);
                 startActivity(intent);
             }
         });
+
     }
 
+    public void setLobbyView(int indexForNameId, int indexForJoinId, int indexForSpectateId, LobbyOperations opsLob, Lobby i){
+        View newLobbbyRow = getLayoutInflater().inflate(R.layout.lobby_row, layout);
+        TextView lobbyName = findViewById(R.id.lobbyname);
+        lobbyName.setId(indexForNameId);
+        lobbyName.setText(i.getLobbyname());
+        ImageButton joinBut = findViewById(R.id.join);
+        joinBut.setId(indexForJoinId++);
+        int setIndex = indexForNameId;
+
+        //setting join button listeners
+        joinBut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                View join = getLayoutInflater().inflate(R.layout.enter_game_money, constraintLayout);
+                join.bringToFront();
+                TextView amount = findViewById(R.id.join_money);
+                ImageButton joinGame = findViewById(R.id.join_in_game);
+                ImageButton back = findViewById(R.id.back_to_lobby_selector);
+
+                GameChecker ops = new GameChecker();
+                joinGame.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(ops.checkMoneyAmount(amount.getText().toString(), amount, user)){
+                            user.setGameId(opsLob.lobbyToJSON(i));
+                            user.setCurrent_game_money(Integer.parseInt(amount.getText().toString()));
+                            user.updateUser(LobbySelector.this, new IUser() {
+                                @Override
+                                public int onSuccess() {
+                                    startActivity(new Intent(LobbySelector.this, GameScreen.class));
+                                    return 0;
+                                }
+
+                                @Override
+                                public int onError() {
+                                    return -1;
+                                }
+                            }, true);
+                        }
+                    }
+                });
+
+                back.setOnClickListener(new View.OnClickListener() {
+                    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(LobbySelector.this, LobbySelector.class));
+                    }
+                });
+            }
+        });
+
+        ImageButton spectate = findViewById(R.id.spectate);
+        spectate.setId(indexForSpectateId++);
+
+        spectate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                user.setGameId(opsLob.lobbyToJSON(i));
+                user.set_spectator(true);
+                user.updateUser(LobbySelector.this, new IUser() {
+                    @Override
+                    public int onSuccess() {
+                        return 0;
+                    }
+
+                    @Override
+                    public int onError() {
+                        return -1;
+                    }
+                }, true);
+                startActivity(new Intent(LobbySelector.this, GameScreen.class));
+            }
+        });
+        indexForNameId++;
+        nextId = indexForNameId;
+    }
 
 
 

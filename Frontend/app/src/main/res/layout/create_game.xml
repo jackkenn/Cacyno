@@ -38,7 +38,7 @@
             app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="388dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="92dp"
             android:layout_marginStart="92dp" android:hint="how much do you wanna bring?"
-            android:fontFamily="@font/aqua" android:textSize="13dp"/>
+            android:fontFamily="@font/aqua" android:textSize="13dp" android:singleLine="false"/>
     <ImageButton
             android:layout_width="249dp"
             android:layout_height="84dp" app:srcCompat="@drawable/create_game_but"
