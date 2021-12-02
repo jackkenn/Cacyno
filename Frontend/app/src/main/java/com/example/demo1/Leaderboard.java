@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
@@ -20,12 +21,16 @@ public class Leaderboard extends AppCompatActivity {
     ArrayList<User> users;
     private LinearLayout linearLayout;
     private ImageButton back;
+    private ImageView easterEgg;
+    private boolean descending;
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.leaderboard_view);
         linearLayout = findViewById(R.id.leaderboard_linear);
         back = findViewById(R.id.lb_back);
+        easterEgg = findViewById(R.id.lb_background);
 
         users = new ArrayList<>();
         User user = new User();
@@ -36,6 +41,7 @@ public class Leaderboard extends AppCompatActivity {
                 //sorting by money
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                     users.sort((o1, o2) -> o2.getMoney() - o1.getMoney());
+                    descending = true;
                 }
                 //adding users to view
                 for(User i : users) {
@@ -50,8 +56,18 @@ public class Leaderboard extends AppCompatActivity {
             }
         });
 
-        back.setOnClickListener(v -> {
-            startActivity(new Intent(Leaderboard.this, UserHome.class));
+        back.setOnClickListener(v -> startActivity(new Intent(Leaderboard.this, UserHome.class)));
+
+        easterEgg.setOnClickListener(v -> {
+            linearLayout.removeAllViews();
+            if(descending)
+                users.sort((Comparator.comparingInt(User::getMoney)));
+
+            else
+                users.sort((o1, o2) -> o2.getMoney() - o1.getMoney());
+            descending = !descending;
+            for(User i : users)
+                setRow(i);
         });
 
     }
@@ -67,6 +83,6 @@ public class Leaderboard extends AppCompatActivity {
         money.setId(View.generateViewId());
 
         name.setText(user.getUsername());
-        money.setText(user.getMoney()+"");
+        money.setText(String.valueOf(user.getMoney()));
     }
 }

@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
-import android.se.omapi.Session;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;

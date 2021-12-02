@@ -8,7 +8,7 @@
 
     <ImageView
             android:layout_width="432dp"
-            android:layout_height="828dp" app:srcCompat="@drawable/background" android:id="@+id/imageView11"
+            android:layout_height="828dp" app:srcCompat="@drawable/background" android:id="@+id/lb_background"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
