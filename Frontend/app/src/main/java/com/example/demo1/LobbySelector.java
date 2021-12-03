@@ -179,70 +179,55 @@ public class LobbySelector extends AppCompatActivity{
         int setIndex = indexForNameId;
 
         //setting join button listeners
-        joinBut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        joinBut.setOnClickListener(v -> {
 
-                View join = getLayoutInflater().inflate(R.layout.enter_game_money, constraintLayout);
-                join.bringToFront();
-                TextView amount = findViewById(R.id.join_money);
-                ImageButton joinGame = findViewById(R.id.join_in_game);
-                ImageButton back = findViewById(R.id.back_to_lobby_selector);
+            View join = getLayoutInflater().inflate(R.layout.enter_game_money, constraintLayout);
+            join.bringToFront();
+            TextView amount = findViewById(R.id.join_money);
+            ImageButton joinGame = findViewById(R.id.join_in_game);
+            ImageButton back = findViewById(R.id.back_to_lobby_selector);
 
-                GameChecker ops = new GameChecker();
-                joinGame.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if(ops.checkMoneyAmount(amount.getText().toString(), amount, user)){
-                            user.setGameId(opsLob.lobbyToJSON(i));
-                            user.setCurrent_game_money(Integer.parseInt(amount.getText().toString()));
-                            user.updateUser(LobbySelector.this, new IUser() {
-                                @Override
-                                public int onSuccess() {
-                                    startActivity(new Intent(LobbySelector.this, GameScreen.class));
-                                    return 0;
-                                }
-
-                                @Override
-                                public int onError() {
-                                    return -1;
-                                }
-                            }, true);
+            GameChecker ops = new GameChecker();
+            joinGame.setOnClickListener(v1 -> {
+                if(ops.checkMoneyAmount(amount.getText().toString(), amount, user)){
+                    user.setGameId(opsLob.lobbyToJSON(i));
+                    user.setCurrent_game_money(Integer.parseInt(amount.getText().toString()));
+                    user.updateUser(LobbySelector.this, new IUser() {
+                        @Override
+                        public int onSuccess() {
+                            startActivity(new Intent(LobbySelector.this, GameScreen.class));
+                            return 0;
                         }
-                    }
-                });
 
-                back.setOnClickListener(new View.OnClickListener() {
-                    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-                    @Override
-                    public void onClick(View v) {
-                        startActivity(new Intent(LobbySelector.this, LobbySelector.class));
-                    }
-                });
-            }
+                        @Override
+                        public int onError() {
+                            return -1;
+                        }
+                    }, true);
+                }
+            });
+
+            back.setOnClickListener(v12 -> startActivity(new Intent(LobbySelector.this, LobbySelector.class)));
         });
 
         ImageButton spectate = findViewById(R.id.spectate);
         spectate.setId(indexForSpectateId++);
 
-        spectate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                user.setGameId(opsLob.lobbyToJSON(i));
-                user.set_spectator(true);
-                user.updateUser(LobbySelector.this, new IUser() {
-                    @Override
-                    public int onSuccess() {
-                        return 0;
-                    }
+        spectate.setOnClickListener(v -> {
+            user.setGameId(opsLob.lobbyToJSON(i));
+            user.set_spectator(true);
+            user.updateUser(LobbySelector.this, new IUser() {
+                @Override
+                public int onSuccess() {
+                    return 0;
+                }
 
-                    @Override
-                    public int onError() {
-                        return -1;
-                    }
-                }, true);
-                startActivity(new Intent(LobbySelector.this, GameScreen.class));
-            }
+                @Override
+                public int onError() {
+                    return -1;
+                }
+            }, true);
+            startActivity(new Intent(LobbySelector.this, GameScreen.class));
         });
         indexForNameId++;
         nextId = indexForNameId;

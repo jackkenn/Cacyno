@@ -45,38 +45,35 @@ public class Username extends AppCompatActivity {
         username = (TextView) findViewById(R.id.username);
         apply = (ImageButton) findViewById(R.id.apply_but);
 
-        apply.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String input = username.getText().toString();
-                if(input.isEmpty()){
-                    username.setError("Please provide username");
-                    username.requestFocus();
-                }
-                else if(input.equals("username")){
-                    username.setError("Please provide username");
-                    username.requestFocus();
-                }
-                else if(input.length() > 9){
-                    username.setError("please make shorter than 10 characters");
-                    username.requestFocus();
-                }
-                else{
-                    user.setUsername(input);
-                    user.updateUser(Username.this, new IUser() {
-                        @Override
-                        public int onSuccess() {
-                            Intent I = new Intent(Username.this, UserHome.class);
-                            startActivity(I);
-                            return 0;
-                        }
+        apply.setOnClickListener(view -> {
+            String input = username.getText().toString();
+            if(input.isEmpty()){
+                username.setError("Please provide username");
+                username.requestFocus();
+            }
+            else if(input.equals("username")){
+                username.setError("Please provide username");
+                username.requestFocus();
+            }
+            else if(input.length() > 9){
+                username.setError("please make shorter than 10 characters");
+                username.requestFocus();
+            }
+            else{
+                user.setUsername(input);
+                user.updateUser(Username.this, new IUser() {
+                    @Override
+                    public int onSuccess() {
+                        Intent I = new Intent(Username.this, UserHome.class);
+                        startActivity(I);
+                        return 0;
+                    }
 
-                        @Override
-                        public int onError() {
-                            return -1;
-                        }
-                    }, false);
-                }
+                    @Override
+                    public int onError() {
+                        return -1;
+                    }
+                }, false);
             }
         });
     }

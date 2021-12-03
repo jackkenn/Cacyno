@@ -49,62 +49,34 @@ public class Settings extends AppCompatActivity {
         if(getIntent().getBooleanExtra("displayname", false))
             displayName.setChecked(true);
 
-        back.setOnClickListener(new View.OnClickListener() {
+        back.setOnClickListener(view -> user.updateUser(Settings.this, new IUser() {
             @Override
-            public void onClick(View view) {
+            public int onSuccess() {
+                Intent intent = new Intent(Settings.this, UserHome.class);
+                intent.putExtra("displayname", user.getDisplayName());
+                intent.putExtra("username", user.getUsername());
+                startActivity(intent);
+                return 0;
+            }
+
+            @Override
+            public int onError() {
+                return 0;
+            }
+        }, false));
+        apply.setOnClickListener(view -> {
+            String input = username.getText().toString();
+            if(input.isEmpty()){
+                username.setError("Please provide username");
+                username.requestFocus();
+            }
+            else{
+                user.setUsername(input);
                 user.updateUser(Settings.this, new IUser() {
                     @Override
                     public int onSuccess() {
-                        Intent intent = new Intent(Settings.this, UserHome.class);
-                        intent.putExtra("displayname", user.getDisplayName());
-                        intent.putExtra("username", user.getUsername());
-                        startActivity(intent);
-                        return 0;
-                    }
-
-                    @Override
-                    public int onError() {
-                        return 0;
-                    }
-                }, false);
-            }
-        });
-        apply.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String input = username.getText().toString();
-                if(input.isEmpty()){
-                    username.setError("Please provide username");
-                    username.requestFocus();
-                }
-                else{
-                    user.setUsername(input);
-                    user.updateUser(Settings.this, new IUser() {
-                        @Override
-                        public int onSuccess() {
-                            Intent I = new Intent(Settings.this, UserHome.class);
-                            startActivity(I);
-                            return 0;
-                        }
-
-                        @Override
-                        public int onError() {
-                            return 0;
-                        }
-                    }, false);
-                }
-            }
-        });
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                user.updateUser(Settings.this, new IUser() {
-                    @Override
-                    public int onSuccess() {
-                        Intent I = new Intent(Settings.this, Login.class);
+                        Intent I = new Intent(Settings.this, UserHome.class);
                         startActivity(I);
-                        Toast.makeText(Settings.this, "User logged out", Toast.LENGTH_SHORT).show();
                         return 0;
                     }
 
@@ -115,11 +87,23 @@ public class Settings extends AppCompatActivity {
                 }, false);
             }
         });
-        displayName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                user.setDisplayName(!user.getDisplayName());
-            }
+        logout.setOnClickListener(view -> {
+            FirebaseAuth.getInstance().signOut();
+            user.updateUser(Settings.this, new IUser() {
+                @Override
+                public int onSuccess() {
+                    Intent I = new Intent(Settings.this, Login.class);
+                    startActivity(I);
+                    Toast.makeText(Settings.this, "User logged out", Toast.LENGTH_SHORT).show();
+                    return 0;
+                }
+
+                @Override
+                public int onError() {
+                    return 0;
+                }
+            }, false);
         });
+        displayName.setOnClickListener(view -> user.setDisplayName(!user.getDisplayName()));
     }
 }

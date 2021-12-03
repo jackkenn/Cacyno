@@ -35,17 +35,14 @@ public class Login extends AppCompatActivity {
         logInpasswd = findViewById(R.id.loginpaswd);
         btnLogIn = findViewById(R.id.btnLogIn);
         signup = findViewById(R.id.TVSignIn);
-        authStateListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user != null) {
-                    Toast.makeText(Login.this, "User logged in ", Toast.LENGTH_SHORT).show();
-                    Intent I = new Intent(Login.this,   UserHome.class);
-                    startActivity(I);
-                } else {
-                    Toast.makeText(Login.this, "Login to continue", Toast.LENGTH_SHORT).show();
-                }
+        authStateListener = firebaseAuth -> {
+            FirebaseUser user = firebaseAuth.getCurrentUser();
+            if (user != null) {
+                Toast.makeText(Login.this, "User logged in ", Toast.LENGTH_SHORT).show();
+                Intent I = new Intent(Login.this,   UserHome.class);
+                startActivity(I);
+            } else {
+                Toast.makeText(Login.this, "Login to continue", Toast.LENGTH_SHORT).show();
             }
         };
         signup.setOnClickListener(new View.OnClickListener() {
