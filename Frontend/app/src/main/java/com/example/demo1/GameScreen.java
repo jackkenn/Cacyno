@@ -78,7 +78,7 @@ public class GameScreen extends AppCompatActivity {
         TextView message = findViewById(R.id.message_type);
         chatlayout = findViewById(R.id.linearchat);
         scroll = chatplz.findViewById(R.id.chat_scroll);
-        slider.setValueTo(user.getCurrent_game_money());
+        slider.setStepSize(1);
         bringToFront();
 
         user = new User();
@@ -94,10 +94,12 @@ public class GameScreen extends AppCompatActivity {
 
             @Override
             public int onError() {
+                System.out.println("Failed Getting User");
                 return -1;
             }
         }, Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid(), true);
 
+        slider.setValueTo(user.getCurrent_game_money());
 
         backout.setOnClickListener(v -> {
             user.resetUser();
@@ -145,13 +147,12 @@ public class GameScreen extends AppCompatActivity {
             });
 
         });
-
-//        slider.setOnChangeListener(new Slider.OnChangeListener() {
-//            @Override
-//            public void onValueChange(Slider slider, float value) {
-//                sliderAmount.setText("$" + (int)value);
-//            }
-//        });
+        slider.setOnChangeListener(new Slider.OnChangeListener() {
+            @Override
+            public void onValueChange(Slider slider, float value) {
+                sliderAmount.setText("$" + (int)value);
+            }
+        });
     }
 
 
@@ -170,7 +171,7 @@ public class GameScreen extends AppCompatActivity {
         username.bringToFront();
         ingame_money.bringToFront();
         pot.bringToFront();
-        //slider.bringToFront();
+        slider.bringToFront();
 
         findViewById(R.id.user_tag).bringToFront();
         findViewById(R.id.user_tag).bringToFront();
