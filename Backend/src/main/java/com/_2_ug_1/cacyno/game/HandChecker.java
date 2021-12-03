@@ -10,14 +10,14 @@ import java.util.Collections;
 public class HandChecker {
 
 
-//    public static void main(String args[]) {
-//        Hand hand = getHandRank(new int[]{2, 3, 4, 5, 7, 8, 9});
-//        int[] ranks = hand.getRanks();
-//        System.out.println(hand.getHand());
-//        for (int j : ranks) {
-//            System.out.println(j);
-//        }
-//    }
+    public static void main(String args[]) {
+        Hand hand = getHandRank(new int[]{1,14,27,5,18,11,36});
+        int[] ranks = hand.getRanks();
+        System.out.println(hand.getHand());
+        for (int j : ranks) {
+            System.out.println(j);
+        }
+    }
 
     public static Hand getHandRank(int[] cardsParam) {
         int ranks[] = new int[7];
@@ -77,7 +77,7 @@ public class HandChecker {
 
             for (int i = 0; i < 4; i++) {
                 for (int j = i + 2; j < 6; j++) {
-                    if (ranks[i] == ranks[i + 1] && ranks[j] == ranks[j + 2]) {
+                    if (ranks[i] == ranks[i + 1] && j<5 && ranks[j] == ranks[j + 2]) {
                         return new Hand(Hands.FULLHOUSE, new int[]{ranks[j], ranks[j + 1], ranks[j + 2], ranks[i], ranks[i + 1]});
                     }
                     if (ranks[i] == ranks[i + 2] && ranks[j] == ranks[j + 1]) {
@@ -109,7 +109,7 @@ public class HandChecker {
             }
         }
 
-        for (int i = tempStraightHand.size()-5; i >=0; i++) {
+        for (int i = tempStraightHand.size()-6; i >=0; i--) {
             if (tempStraightHand.get(i) + 4 == tempStraightHand.get(i + 4) || (tempStraightHand.contains(13) && tempStraightHand.contains(1) && tempStraightHand.contains(2) && tempStraightHand.contains(3) && tempStraightHand.contains(4))) {
                 return new Hand(Hands.STRAIGHT, new int[]{tempStraightHand.get(i + 4)});
             }

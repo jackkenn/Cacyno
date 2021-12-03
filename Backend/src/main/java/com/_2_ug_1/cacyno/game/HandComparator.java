@@ -7,7 +7,7 @@ import java.util.HashMap;
 public class HandComparator {
     HashMap<Hands, Integer> HandMap = new HashMap<Hands, Integer>();
 
-    HandComparator() {
+    public HandComparator() {
         HandMap.put(Hands.HIGHCARD, 0);
         HandMap.put(Hands.PAIR, 1);
         HandMap.put(Hands.TWOPAIR, 2);
