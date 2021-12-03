@@ -72,7 +72,7 @@ public class GameScreen extends AppCompatActivity {
         //add chat view
         View chatplz = getLayoutInflater().inflate(R.layout.chat_view, gameScreen);
 
-        //interations for chat and layouts
+        //interactions for chat and layouts
         ImageButton x = findViewById(R.id.x_out_chat);
         ImageButton send = findViewById(R.id.send_message);
         TextView message = findViewById(R.id.message_type);
@@ -139,7 +139,8 @@ public class GameScreen extends AppCompatActivity {
                 row.setGravity(Gravity.END);
                 mWebSocketClient.send(message.getText().toString());
                 message.setText("");
-                scroll.fullScroll(View.FOCUS_DOWN);
+                //auto-scroll
+                scroll.post(() -> scroll.fullScroll(View.FOCUS_DOWN));
             });
 
         });
@@ -209,7 +210,7 @@ public class GameScreen extends AppCompatActivity {
         findViewById(R.id.middlecard_5).bringToFront();
     }
 
-    private void connectWebSocket() throws URISyntaxException, JSONException {
+    private void connectWebSocket() throws URISyntaxException {
         URI uri;
 
         //need to change to remote
@@ -257,7 +258,8 @@ public class GameScreen extends AppCompatActivity {
                             if(!username.equals("User"))
                                 user_message.append(username);
                             text.append(messsage);
-                            scroll.fullScroll(View.FOCUS_DOWN);
+                            //auto scroll
+                            scroll.post(() -> scroll.fullScroll(View.FOCUS_DOWN));
                         }
                         System.out.println(msg);
 
