@@ -49,7 +49,7 @@ public class GameScreen extends AppCompatActivity {
     @SneakyThrows
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_screen);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
@@ -78,14 +78,15 @@ public class GameScreen extends AppCompatActivity {
         TextView message = findViewById(R.id.message_type);
         chatlayout = findViewById(R.id.linearchat);
         scroll = chatplz.findViewById(R.id.chat_scroll);
+        slider.setValueTo(user.getCurrent_game_money());
         bringToFront();
 
         user = new User();
         user.getUser(GameScreen.this, new IUser() {
             @Override
             public int onSuccess() throws JSONException, URISyntaxException {
-                ingame_money.append(user.getCurrent_game_money()+"");
-                randForUsername = new Random().nextInt(10000)+1;
+                ingame_money.append(user.getCurrent_game_money() + "");
+                randForUsername = new Random().nextInt(10000) + 1;
                 username.append((user.getDisplayName()) ? user.getUsername() : "user" + randForUsername);
                 connectWebSocket();
                 return 0;
@@ -144,7 +145,15 @@ public class GameScreen extends AppCompatActivity {
             });
 
         });
+
+//        slider.setOnChangeListener(new Slider.OnChangeListener() {
+//            @Override
+//            public void onValueChange(Slider slider, float value) {
+//                sliderAmount.setText("$" + (int)value);
+//            }
+//        });
     }
+
 
     /**
      * this method brings everything except the chatview to the front
@@ -161,6 +170,7 @@ public class GameScreen extends AppCompatActivity {
         username.bringToFront();
         ingame_money.bringToFront();
         pot.bringToFront();
+        //slider.bringToFront();
 
         findViewById(R.id.user_tag).bringToFront();
         findViewById(R.id.user_tag).bringToFront();
