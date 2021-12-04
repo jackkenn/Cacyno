@@ -19,7 +19,8 @@ public class HandComparatorTest {
     HandChecker handChecker = mock(HandChecker.class);
 
     @Test
-    public void TestHandChecker() throws JSONException {
+    public void TestHandChecker() {
+        HandChecker handChecker = mock(HandChecker.class);
         HandComparator handComparator = new HandComparator();
         int[] hand1 = new int[]{1,2,3,4,5,8,36};
         int[] hand2 = new int[]{3,36,2,7,27,3,37};
@@ -33,7 +34,7 @@ public class HandComparatorTest {
 
 
     @Test
-    public void TestHandCheckerEquals() throws JSONException {
+    public void TestHandCheckerEquals() {
         HandComparator handComparator = new HandComparator();
         int[] hand1 = new int[]{1,14,27,5,18,11,36};
         int[] hand2 = new int[]{1,14,27,5,18,15,29};

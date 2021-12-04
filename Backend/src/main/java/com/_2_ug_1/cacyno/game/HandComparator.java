@@ -21,8 +21,9 @@ public class HandComparator {
     }
 
     public int compareHands(int[] cards1, int[] cards2) {
-        Hand hand1 = HandChecker.getHandRank(cards1);
-        Hand hand2 = HandChecker.getHandRank(cards2);
+        HandChecker handChecker = new HandChecker();
+        Hand hand1 = handChecker.getHandRank(cards1);
+        Hand hand2 = handChecker.getHandRank(cards2);
 
         int[] hand1Ranks = hand1.getRanks();
         int[] hand2Ranks = hand2.getRanks();
