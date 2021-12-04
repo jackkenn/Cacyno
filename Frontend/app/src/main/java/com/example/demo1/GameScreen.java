@@ -85,9 +85,12 @@ public class GameScreen extends AppCompatActivity {
         user.getUser(GameScreen.this, new IUser() {
             @Override
             public int onSuccess() throws JSONException, URISyntaxException {
+                System.out.println("Success Getting User");
                 ingame_money.append(user.getCurrent_game_money() + "");
                 randForUsername = new Random().nextInt(10000) + 1;
                 username.append((user.getDisplayName()) ? user.getUsername() : "user" + randForUsername);
+                slider.setValueFrom(0);
+                slider.setValueTo(user.getCurrent_game_money());
                 connectWebSocket();
                 return 0;
             }
@@ -99,7 +102,7 @@ public class GameScreen extends AppCompatActivity {
             }
         }, Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid(), true);
 
-        slider.setValueTo(user.getCurrent_game_money());
+
 
         backout.setOnClickListener(v -> {
             user.resetUser();
@@ -172,6 +175,7 @@ public class GameScreen extends AppCompatActivity {
         ingame_money.bringToFront();
         pot.bringToFront();
         slider.bringToFront();
+        sliderAmount.bringToFront();
 
         findViewById(R.id.user_tag).bringToFront();
         findViewById(R.id.user_tag).bringToFront();
@@ -179,7 +183,6 @@ public class GameScreen extends AppCompatActivity {
         findViewById(R.id.pot_tag).bringToFront();
 
         findViewById(R.id.your_money_sign).bringToFront();
-        findViewById(R.id.slider_moneysign).bringToFront();
 
         findViewById(R.id.player1_card1).bringToFront();
         findViewById(R.id.player1_card2).bringToFront();
