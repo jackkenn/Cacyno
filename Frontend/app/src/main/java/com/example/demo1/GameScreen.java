@@ -259,8 +259,6 @@ public class GameScreen extends AppCompatActivity {
                 String username = msg.split(":")[0];
                 String messsage = msg.split(": ")[1];
 
-
-
                 runOnUiThread(new Runnable() {
 
                     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
