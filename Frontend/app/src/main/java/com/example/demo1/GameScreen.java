@@ -1,6 +1,7 @@
 package com.example.demo1;
 
 import Models.User;
+import Utilities.ImageIdHashMap;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -23,6 +24,7 @@ import org.json.JSONException;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.HashMap;
 import java.util.Objects;
 import java.util.Random;
 
@@ -42,6 +44,9 @@ public class GameScreen extends AppCompatActivity {
     private Slider slider;
     private TextView sliderAmount;
     private LinearLayout chatlayout;
+    private ImageView yourCard1;
+    private ImageView yourCard2;
+    ImageIdHashMap imageIdsHashMap = new ImageIdHashMap();
     ScrollView scroll;
     int randForUsername = 0;
 
@@ -50,6 +55,7 @@ public class GameScreen extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        HashMap<Integer, Integer> ImageIds = imageIdsHashMap.getImageIds();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_screen);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
@@ -65,6 +71,10 @@ public class GameScreen extends AppCompatActivity {
         pot = findViewById(R.id.pot);
         slider = findViewById(R.id.slider);
         sliderAmount = findViewById(R.id.slider_amount);
+        yourCard1 = findViewById(R.id.yourCard_1);
+        yourCard2 = findViewById(R.id.yourCard_2);
+
+
 
         //the constraint layout to add chat view
         gameScreen = findViewById(R.id.ActualGame);
@@ -91,6 +101,8 @@ public class GameScreen extends AppCompatActivity {
                 username.append((user.getDisplayName()) ? user.getUsername() : "user" + randForUsername);
                 slider.setValueFrom(0);
                 slider.setValueTo(user.getCurrent_game_money());
+                yourCard1.setImageResource(R.drawable.card40);
+                yourCard2.setImageResource(R.drawable.card35);
                 connectWebSocket();
                 return 0;
             }
@@ -246,6 +258,8 @@ public class GameScreen extends AppCompatActivity {
                 // Appends the message received to the previous messages
                 String username = msg.split(":")[0];
                 String messsage = msg.split(": ")[1];
+
+
 
                 runOnUiThread(new Runnable() {
 
