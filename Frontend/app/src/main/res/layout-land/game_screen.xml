@@ -93,8 +93,7 @@
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="@+id/player1_line"
             app:layout_constraintEnd_toEndOf="@+id/player1_line"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="80dp"
-            app:flow_horizontalAlign="center"/>
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="80dp"/>
     <ImageView
             android:layout_width="61dp"
             android:layout_height="76dp" app:srcCompat="@drawable/backcard" android:id="@+id/player1_card1"
@@ -127,7 +126,7 @@
             android:textColor="@color/white"
             app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="160dp"
             app:layout_constraintEnd_toEndOf="@+id/player2_line"
-            app:layout_constraintStart_toStartOf="@+id/player2_line" app:flow_horizontalAlign="center"/>
+            app:layout_constraintStart_toStartOf="@+id/player2_line"/>
     <ImageView
             android:layout_width="61dp"
             android:layout_height="76dp" app:srcCompat="@drawable/backcard" android:id="@+id/player2_card1"
@@ -214,8 +213,7 @@
             android:textColor="@color/white"
             app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="160dp"
             app:layout_constraintStart_toStartOf="@+id/player4_line"
-            app:layout_constraintEnd_toEndOf="@+id/player4_line" app:layout_constraintHorizontal_bias="0.583"
-            app:flow_horizontalAlign="center"/>
+            app:layout_constraintEnd_toEndOf="@+id/player4_line" app:layout_constraintHorizontal_bias="0.583"/>
     <ImageView
             android:layout_width="61dp"
             android:layout_height="76dp" app:srcCompat="@drawable/backcard" android:id="@+id/player4_card1"
@@ -257,8 +255,7 @@
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="@+id/player5_line"
             app:layout_constraintEnd_toEndOf="@+id/player5_line"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="72dp"
-            app:flow_horizontalAlign="center"/>
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="72dp"/>
     <ImageView
             android:layout_width="61dp"
             android:layout_height="76dp" app:srcCompat="@drawable/backcard" android:id="@+id/player5_card1"
