@@ -5,6 +5,7 @@ import com._2_ug_1.cacyno.models.Game;
 import com._2_ug_1.cacyno.models.User;
 import com._2_ug_1.cacyno.repos.IGameRepo;
 import com._2_ug_1.cacyno.repos.IUserRepo;
+import com.google.gson.Gson;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -140,6 +141,7 @@ public class PokerEndpoint {
         _logger.info("Entered into Message: " + _sessionUserMap.get(session) + ". Got Message: " + message);
         User u = getUser(_sessionUserMap.get(session));
         Poker p = _gamesMap.get(u.getGame().getId());
+        sendGameMessage(u.getGame().getId(), getJsonPlayers(p)+", " +getJsonGame(p));
         if (message.equalsIgnoreCase("initGame") && !p.initGame())
             p.initGame();
         if (p.getInitialized()) {
@@ -214,4 +216,18 @@ public class PokerEndpoint {
         }
         return null;
     }
+
+    private String getJsonPlayers(Poker p){
+        List players = p.getPlayers();
+        Gson gson = new Gson();
+        String playersJson = gson.toJson(players);
+        return playersJson;
+    }
+    private String getJsonGame(Poker p){
+        Game game = p.getGame();
+        Gson gson = new Gson();
+        String gameJson = gson.toJson(game);
+        return gameJson;
+    }
+
 }
