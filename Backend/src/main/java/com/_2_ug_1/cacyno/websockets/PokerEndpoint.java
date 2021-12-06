@@ -221,14 +221,12 @@ public class PokerEndpoint {
         List players = p.getPlayers();
         Gson gson = new Gson();
         String playersJson = gson.toJson(players);
-
         return playersJson;
     }
     private String getJsonGame(Poker p){
         Game game = p.getGame();
         Gson gson = new Gson();
         String gameJson = gson.toJson(game);
-
         return gameJson;
     }
 
