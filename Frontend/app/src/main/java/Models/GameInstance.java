@@ -45,8 +45,8 @@ public class GameInstance{
         URI uri;
 
         //need to change to remote
-//        uri = new URI("ws://coms-309-046.cs.iastate.edu:8080/poker/" + FirebaseAuth.getInstance().getUid());
-        uri = new URI("ws://coms-309-046.cs.iastate.edu:8080/poker/1");
+        uri = new URI("ws://coms-309-046.cs.iastate.edu:8080/poker/" + FirebaseAuth.getInstance().getUid());
+//        uri = new URI("ws://coms-309-046.cs.iastate.edu:8080/poker/1");
         //uri = new URI("ws://192.168.1.2:8080/chat/1/2");
 
         mWebSocketClient = new WebSocketClient(uri) {
@@ -82,6 +82,7 @@ public class GameInstance{
                 views.TableCard4( gameJSON.getInt("public_card4"));
                 views.TableCard5( gameJSON.getInt("public_card5"));
                 views.pot( gameJSON.getInt("pot"));
+                views.MyMoney(users.get(0).current_game_money);
             }
 
             @Override
@@ -109,23 +110,23 @@ public class GameInstance{
         switch(currentPlayerIndex){
             case 1:
                 views.Player1Username(user.getUsername());
-                views.Player1Money(String.valueOf(user.getMoney()));
+                views.Player1Money(String.valueOf(user.getCurrent_game_money()));
                 break;
             case 2:
                 views.Player2Username(user.getUsername());
-                views.Player2Money(String.valueOf(user.getMoney()));
+                views.Player2Money(String.valueOf(user.getCurrent_game_money()));
                 break;
             case 3:
                 views.Player3Username(user.getUsername());
-                views.Player3Money(String.valueOf(user.getMoney()));
+                views.Player3Money(String.valueOf(user.getCurrent_game_money()));
                 break;
             case 4:
                 views.Player4Username(user.getUsername());
-                views.Player4Money(String.valueOf(user.getMoney()));
+                views.Player4Money(String.valueOf(user.getCurrent_game_money()));
                 break;
             case 5:
                 views.Player5Username(user.getUsername());
-                views.Player5Money(String.valueOf(user.getMoney()));
+                views.Player5Money(String.valueOf(user.getCurrent_game_money()));
                 break;
             default:
                 break;

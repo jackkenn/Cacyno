@@ -105,13 +105,11 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
             @Override
             public int onSuccess() throws JSONException, URISyntaxException {
                 System.out.println("Success Getting User");
-                ingame_money.append(user.getCurrent_game_money() + "");
+                ingame_money.setText(user.getCurrent_game_money() + "");
                 randForUsername = new Random().nextInt(10000) + 1;
                 username.append((user.getDisplayName()) ? user.getUsername() : "user" + randForUsername);
                 slider.setValueFrom(0);
                 slider.setValueTo(user.getCurrent_game_money());
-                yourCard1.setImageResource(R.drawable.card40);
-                yourCard2.setImageResource(R.drawable.card35);
                 connectWebSocket();
                 game = new GameInstance(user, GameScreen.this);
                 return 0;
@@ -208,7 +206,6 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         findViewById(R.id.money_tag).bringToFront();
         findViewById(R.id.pot_tag).bringToFront();
 
-        findViewById(R.id.your_money_sign).bringToFront();
         findViewById(R.id.slider_amount).bringToFront();
 
         findViewById(R.id.player1_card1).bringToFront();
@@ -326,6 +323,27 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
             }
         };
         mWebSocketClient.connect();
+    }
+
+
+
+
+    @Override
+    public void MyMoney(int money) {
+        TextView temp = findViewById(R.id.money_ingame);
+        temp.setText("$" + money);
+    }
+
+    @Override
+    public void MyCard1(int card) {
+        ImageView temp = findViewById(R.id.yourCard_1);
+        temp.setImageResource(imageIds.get(card));
+    }
+
+    @Override
+    public void MyCard2(int card) {
+        ImageView temp = findViewById(R.id.yourCard_2);
+        temp.setImageResource(imageIds.get(card));
     }
 
     @Override

@@ -2,6 +2,12 @@ package interfaces;
 
 public interface ITextViews {
 
+    void MyMoney(int money);
+
+    void MyCard1(int card);
+
+    void MyCard2(int card);
+
     void Player1Username(String username);
 
     void Player1Money(String money);
