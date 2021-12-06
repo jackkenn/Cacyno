@@ -72,8 +72,9 @@ public class PokerEndpoint {
             throw new NullPointerException();
         }
         u.setGame(g);
+        Poker poker = new Poker(g);
+        sendGameMessage(u.getGame().getId(), getJsonPlayers(poker)+", " +getJsonGame(poker));
         if (!_gamesMap.containsKey(u.getGame().getId())) {
-            Poker poker = new Poker(g);
             if (!poker.addPlayer(u)) //TODO: assuming they joining to play
                 throw new NullPointerException(); //TODO: let them know it is full/better error detection
             _gamesMap.put(g.getId(), poker);
