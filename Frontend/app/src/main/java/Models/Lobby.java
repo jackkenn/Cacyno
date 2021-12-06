@@ -28,6 +28,9 @@ import org.json.JSONObject;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
+/**
+ * this class is the lobby instance for when the user joins a game
+ */
 @Setter
 @Getter
 public class Lobby {
@@ -86,6 +89,8 @@ public class Lobby {
      */
     public void calltoServer(Context con, ArrayList<Lobby> list, ILobby callback){
         String url = "http://coms-309-046.cs.iastate.edu:8080/lobby";
+        String urllocal = "http://localhost:8080/lobby";
+
         RequestQueue requestQueue = Volley.newRequestQueue(con);
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             /**
@@ -142,6 +147,8 @@ public class Lobby {
      */
     public void calltoServer(Context con, String id){
         String url = "http://coms-309-046.cs.iastate.edu:8080/lobby/"+id;
+        String urllocal = "http://localhost:8080/lobby/"+id;
+
         RequestQueue requestQueue = Volley.newRequestQueue(con);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             /**
@@ -178,6 +185,7 @@ public class Lobby {
      */
     public void updateLobby(Context con){
         String url = "http://coms-309-046.cs.iastate.edu:8080/lobby";
+        String urllocal = "http://localhost:8080/lobby";
         RequestQueue requestQueue = Volley.newRequestQueue(con);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, LobbyToJSON(), new Response.Listener<JSONObject>() {
             /**
@@ -203,8 +211,9 @@ public class Lobby {
      * this method is called when a new game is created and the lobby needs to be added to the database
      * @param con the current Android context of this view
      */
-    public void newLobby(Context con){
+    public void newLobby(Context con, ILobby callback){
         String url = "http://coms-309-046.cs.iastate.edu:8080/lobby";
+        String urllocal = "http://localhost:8080/lobby";
         RequestQueue requestQueue = Volley.newRequestQueue(con);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, LobbyToJSON(), new Response.Listener<JSONObject>() {
             /**
@@ -213,7 +222,7 @@ public class Lobby {
              */
             @Override
             public void onResponse(JSONObject response) {
-
+                callback.onSuccess();
             }
         }, new Response.ErrorListener() {
             /**

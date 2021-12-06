@@ -8,28 +8,32 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import com.android.volley.RequestQueue;
 import com.google.firebase.auth.FirebaseAuth;
 import interfaces.IUser;
-
+/**
+ * The activity tied to the home screen
+ */
 public class UserHome extends AppCompatActivity {
     private ImageButton settings;
     private ImageButton play;
+    private ImageButton leaderboard;
     private TextView money;
     private TextView username;
     private User user;
-    private IUser callback;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_screen);
+
         settings = findViewById(R.id.settings);
         money = findViewById(R.id.moneyRequest);
         username = findViewById(R.id.currentUser);
         play = findViewById(R.id.play_create_but);
-        username.append(getIntent().getStringExtra("username"));
+        leaderboard = findViewById(R.id.leaderboard_button);
+
+
         user = new User();
-        callback = new IUser() {
+        user.getUser(this, new IUser() {
             @Override
             public int onSuccess() {
                 Log.e("SUCCESS GETTING USER ", user.getUsername());
@@ -41,23 +45,20 @@ public class UserHome extends AppCompatActivity {
             public int onError(){
                 return -1;
             }
-        };
-        user.getUser(this, callback, FirebaseAuth.getInstance().getCurrentUser().getUid());
-        settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(UserHome.this, Settings.class);
-                intent.putExtra("displayname", user.getDisplayName());
-                intent.putExtra("username", user.getUsername());
-                startActivity(intent);
-            }
+        }, FirebaseAuth.getInstance().getCurrentUser().getUid(), false);
+        settings.setOnClickListener(view -> {
+            Intent intent = new Intent(UserHome.this, Settings.class);
+            intent.putExtra("displayname", user.getDisplayName());
+            intent.putExtra("username", user.getUsername());
+            startActivity(intent);
         });
-        play.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent I = new Intent(UserHome.this, LobbySelector.class);
-                startActivity(I);
-            }
+        play.setOnClickListener(view -> {
+            Intent I = new Intent(UserHome.this, LobbySelector.class);
+            I.putExtra("username", user.getUsername());
+            startActivity(I);
+        });
+        leaderboard.setOnClickListener(view -> {
+            startActivity(new Intent(UserHome.this, Leaderboard.class));
         });
     }
 }

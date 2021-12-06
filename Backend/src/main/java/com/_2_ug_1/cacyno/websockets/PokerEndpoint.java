@@ -21,8 +21,12 @@ import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
-/**
+/*
  * TODO: add admin for resets and starting
+ */
+
+/**
+ * Creates connection between players and the server allowing for calls to a game object to play poker
  */
 @ServerEndpoint("/poker/{userId}")
 @Component
@@ -36,12 +40,25 @@ public class PokerEndpoint {
     private static IGameRepo _gameRepo;
     private static IUserRepo _userRepo;
 
+    /**
+     * sets the user and game repositories to pull information from
+     *
+     * @param userRepo the user repo
+     * @param gameRepo the game repo
+     */
     @Autowired
     public void setRepos(IUserRepo userRepo, IGameRepo gameRepo) {
         _userRepo = userRepo;
         _gameRepo = gameRepo;
     }
 
+    /**
+     * Creates the user's connection to the server and adds them to a specified game
+     *
+     * @param session user's session
+     * @param userId  The id for a user in the user repo
+     * @throws IOException
+     */
     @OnOpen
     public void onOpen(Session session
             , @PathParam("userId") String userId) throws IOException {
@@ -76,6 +93,16 @@ public class PokerEndpoint {
         sendGameMessage(g.getId(), u.getUsername() + ": Has Joined");
     }
 
+    /*
+     * TODO: update user and game(if needed) in repo/database
+     */
+
+    /**
+     * Closes a user's session, removes them from the game and updates database
+     *
+     * @param session user's session
+     * @throws IOException
+     */
     @OnClose
     public void onClose(Session session) throws IOException {
         _logger.info("Entered into Close: " + _sessionUserMap.get(session));
@@ -98,6 +125,20 @@ public class PokerEndpoint {
         }
     }
 
+    /*
+     * TODO: broad cast a json of: current game model,  user model who played, list of all players in game. after a
+     *  player makes a successful play
+     * TODO: enforce/create a formated message system to receive player's plays
+     */
+
+    /**
+     * receives player's moves for the game and sends out current game model,  user model who played,\
+     * list of all players in game. after a player makes a successful play
+     *
+     * @param session user's session
+     * @param message user's playing action
+     * @throws IOException
+     */
     @OnMessage
     public void onMessage(Session session, String message) throws IOException {
         _logger.info("Entered into Message: " + _sessionUserMap.get(session) + ". Got Message: " + message);
@@ -121,6 +162,12 @@ public class PokerEndpoint {
         }
     }
 
+    /**
+     * reports errors
+     *
+     * @param session   user's session
+     * @param throwable reported exception
+     */
     @OnError
     public void onError(Session session, Throwable throwable) {
         _logger.info("Entered into Error. " + throwable.getMessage());

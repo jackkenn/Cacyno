@@ -6,10 +6,10 @@
                                                    android:layout_height="match_parent">
 
     <ImageView
-            android:layout_width="464dp"
-            android:layout_height="842dp" app:srcCompat="@drawable/background" android:id="@+id/imageView4"
+            android:layout_width="451dp"
+            android:layout_height="858dp" app:srcCompat="@drawable/background" android:id="@+id/imageView4"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" android:contentDescription="@string/homeBackground_image"/>
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"/>
     <EditText
             android:layout_width="279dp"
             android:layout_height="66dp"
