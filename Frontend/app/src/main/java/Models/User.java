@@ -35,19 +35,30 @@ import java.util.ArrayList;
 public class User {
     @SerializedName("username")
     String username="";
+    @SerializedName("id")
     String id="";
     @SerializedName("money")
     int money;
+    @SerializedName("display")
     boolean displayName;
     UserOperations ops;
+    @SerializedName("current_game_money")
     int current_game_money;
+    @SerializedName("is_spectator")
     boolean is_spectator;
+    @SerializedName("game_id")
     JSONObject gameId;
+    @SerializedName("bet")
     int bet;
+    @SerializedName("card1")
     int card1;
+    @SerializedName("card2")
     int card2;
+    @SerializedName("folded")
     boolean folded;
+    @SerializedName("has_played")
     boolean has_played;
+    @SerializedName("position")
     int position;
     /**
      * Constructor for making a new User
@@ -114,7 +125,7 @@ public class User {
        ops.JSONtoUser(response, this, InGame);
     }
 
-    private ArrayList<User> JSONtolist(JSONArray response){
+    public ArrayList<User> JSONtolist(JSONArray response){
         Type userList = new TypeToken<ArrayList<User>>(){}.getType();
         User.Exclude ex = new User.Exclude();
         Gson gson = new GsonBuilder().addDeserializationExclusionStrategy(ex).addSerializationExclusionStrategy(ex).create();
