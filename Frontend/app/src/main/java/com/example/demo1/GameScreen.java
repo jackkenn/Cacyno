@@ -105,7 +105,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
             @Override
             public int onSuccess() throws JSONException, URISyntaxException {
                 System.out.println("Success Getting User");
-                ingame_money.setText(user.getCurrent_game_money() + "");
+                ingame_money.setText("$" + user.getCurrent_game_money());
                 randForUsername = new Random().nextInt(10000) + 1;
                 username.append((user.getDisplayName()) ? user.getUsername() : "user" + randForUsername);
                 slider.setValueFrom(0);
@@ -213,7 +213,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         findViewById(R.id.user_tag).bringToFront();
         findViewById(R.id.money_tag).bringToFront();
         findViewById(R.id.pot_tag).bringToFront();
-        findViewById(R.id.your_greendot).bringToFront();
+        //findViewById(R.id.your_greendot).bringToFront();
 
         findViewById(R.id.slider_amount).bringToFront();
 
@@ -222,35 +222,35 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         findViewById(R.id.player1_line).bringToFront();
         findViewById(R.id.player1_money).bringToFront();
         findViewById(R.id.player1_username).bringToFront();
-        findViewById(R.id.player1_greendot).bringToFront();
+        //findViewById(R.id.player1_greendot).bringToFront();
 
         findViewById(R.id.player2_card1).bringToFront();
         findViewById(R.id.player2_card2).bringToFront();
         findViewById(R.id.player2_line).bringToFront();
         findViewById(R.id.player2_money).bringToFront();
         findViewById(R.id.player2_username).bringToFront();
-        findViewById(R.id.player2_greendot).bringToFront();
+        //findViewById(R.id.player2_greendot).bringToFront();
 
         findViewById(R.id.player3_card1).bringToFront();
         findViewById(R.id.player3_card2).bringToFront();
         findViewById(R.id.player3_line).bringToFront();
         findViewById(R.id.player3_money).bringToFront();
         findViewById(R.id.player3_username).bringToFront();
-        findViewById(R.id.player3_greendot).bringToFront();
+        //findViewById(R.id.player3_greendot).bringToFront();
 
         findViewById(R.id.player4_card1).bringToFront();
         findViewById(R.id.player4_card2).bringToFront();
         findViewById(R.id.player4_line).bringToFront();
         findViewById(R.id.player4_money).bringToFront();
         findViewById(R.id.player4_username).bringToFront();
-        findViewById(R.id.player4_greendot).bringToFront();
+        //findViewById(R.id.player4_greendot).bringToFront();
 
         findViewById(R.id.player5_card1).bringToFront();
         findViewById(R.id.player5_card2).bringToFront();
         findViewById(R.id.player5_line).bringToFront();
         findViewById(R.id.player5_money).bringToFront();
         findViewById(R.id.player5_username).bringToFront();
-        findViewById(R.id.player5_greendot).bringToFront();
+        //findViewById(R.id.player5_greendot).bringToFront();
 
         findViewById(R.id.yourCard_1).bringToFront();
         findViewById(R.id.yourCard_2).bringToFront();
@@ -344,8 +344,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
 
     @Override
     public void MyMoney(int money) {
-        TextView temp = findViewById(R.id.money_ingame);
-        temp.setText("$" + money);
+        ingame_money.setText("$" + money);
     }
 
     @Override
