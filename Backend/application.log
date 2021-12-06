@@ -1,76 +1,166 @@
-2021-12-01 06:45:07.258  INFO 2737 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : Starting CacynoApplication using Java 15.0.2 on MacBook-Pro-8.local with PID 2737 (/Users/emmanuelpaz/Downloads/ComS309/Backend/target/classes started by emmanuelpaz in /Users/emmanuelpaz/Downloads/ComS309/Backend)
-2021-12-01 06:45:07.263  INFO 2737 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : No active profile set, falling back to default profiles: default
-2021-12-01 06:45:07.336  INFO 2737 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2021-12-01 06:45:07.338  INFO 2737 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2021-12-01 06:45:08.344  INFO 2737 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2021-12-01 06:45:08.398  INFO 2737 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 48 ms. Found 3 JPA repository interfaces.
-2021-12-01 06:45:09.149  INFO 2737 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2021-12-01 06:45:09.155  INFO 2737 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2021-12-01 06:45:09.156  INFO 2737 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.53]
-2021-12-01 06:45:09.227  INFO 2737 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2021-12-01 06:45:09.228  INFO 2737 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1890 ms
-2021-12-01 06:45:09.450  INFO 2737 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2021-12-01 06:45:09.475  INFO 2737 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
-2021-12-01 06:45:09.531  INFO 2737 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2021-12-01 06:45:09.575  INFO 2737 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2021-12-01 06:45:09.864  INFO 2737 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2021-12-01 06:45:09.900  INFO 2737 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2021-12-01 06:45:10.446  INFO 2737 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2021-12-01 06:45:10.452  INFO 2737 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2021-12-01 06:45:11.086  WARN 2737 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2021-12-01 06:45:11.580  INFO 2737 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2021-12-01 06:45:11.884  INFO 2737 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2021-12-01 06:45:13.758  INFO 2737 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : Started CacynoApplication in 6.975 seconds (JVM running for 7.973)
-2021-12-01 06:50:55.938  INFO 2737 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2021-12-01 06:50:55.939  INFO 2737 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2021-12-01 06:50:55.951  INFO 2737 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 11 ms
-2021-12-01 06:50:55.997  INFO 2737 --- [http-nio-8080-exec-1] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
-2021-12-01 06:50:55.997  INFO 2737 --- [http-nio-8080-exec-2] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
-2021-12-01 06:51:07.694  INFO 2737 --- [http-nio-8080-exec-3] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: hi
-2021-12-01 06:51:14.118  INFO 2737 --- [http-nio-8080-exec-4] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: hi
-2021-12-01 06:51:18.564  INFO 2737 --- [http-nio-8080-exec-5] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: dsa dsa das das da sd
-2021-12-01 06:51:22.188  INFO 2737 --- [http-nio-8080-exec-6] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message:  dsad sad as das
-2021-12-01 06:51:28.855  INFO 2737 --- [http-nio-8080-exec-7] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message:  dsad sadsa d
-2021-12-01 06:52:17.070  INFO 2737 --- [http-nio-8080-exec-10] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
-2021-12-01 06:52:40.997  INFO 2737 --- [http-nio-8080-exec-1] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: hi
-2021-12-01 06:53:29.314  INFO 2737 --- [http-nio-8080-exec-4] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: hifds 
-2021-12-01 06:53:54.858  INFO 2737 --- [http-nio-8080-exec-5] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
-2021-12-01 06:53:54.858  INFO 2737 --- [http-nio-8080-exec-6] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
-2021-12-01 06:53:54.871  INFO 2737 --- [http-nio-8080-exec-6] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
-2021-12-01 06:53:54.871  INFO 2737 --- [http-nio-8080-exec-5] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
-2021-12-01 06:54:45.379  INFO 2737 --- [http-nio-8080-exec-9] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
-2021-12-01 06:54:45.378  INFO 2737 --- [http-nio-8080-exec-7] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
-2021-12-01 06:55:38.728  INFO 2737 --- [http-nio-8080-exec-8] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: hifds 
-2021-12-01 06:55:41.621  INFO 2737 --- [http-nio-8080-exec-10] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: hifds 
-2021-12-01 06:55:42.516  INFO 2737 --- [http-nio-8080-exec-1] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: hifds 
-2021-12-01 06:55:43.398  INFO 2737 --- [http-nio-8080-exec-3] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: hifds 
-2021-12-01 06:55:44.262  INFO 2737 --- [http-nio-8080-exec-2] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: hifds 
-2021-12-01 06:55:45.032  INFO 2737 --- [http-nio-8080-exec-4] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: hifds 
-2021-12-01 06:55:45.915  INFO 2737 --- [http-nio-8080-exec-9] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: hifds 
-2021-12-01 06:55:46.784  INFO 2737 --- [http-nio-8080-exec-7] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: hifds 
-2021-12-01 06:55:47.497  INFO 2737 --- [http-nio-8080-exec-8] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: hifds 
-2021-12-01 06:55:48.316  INFO 2737 --- [http-nio-8080-exec-10] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: hifds 
-2021-12-01 06:55:52.433  INFO 2737 --- [http-nio-8080-exec-1] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: xdsadsads
-2021-12-01 06:55:57.390  INFO 2737 --- [http-nio-8080-exec-3] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: dsadsa
-2021-12-01 06:56:04.053  INFO 2737 --- [http-nio-8080-exec-2] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: dsa
-2021-12-01 06:56:07.754  INFO 2737 --- [http-nio-8080-exec-4] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: dsadsad
-2021-12-01 06:56:31.306  INFO 2737 --- [http-nio-8080-exec-5] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
-2021-12-01 06:57:56.502  INFO 2737 --- [http-nio-8080-exec-10] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
-2021-12-01 06:57:56.502  INFO 2737 --- [http-nio-8080-exec-1] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
-2021-12-01 06:57:56.508  INFO 2737 --- [http-nio-8080-exec-10] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
-2021-12-01 06:57:56.509  INFO 2737 --- [http-nio-8080-exec-1] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
-2021-12-01 06:57:56.685 ERROR 2737 --- [http-nio-8080-exec-10] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.ChatEndpoint]
+2021-12-05 16:30:08.373  INFO 23440 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : Starting CacynoApplication using Java 16.0.2 on DESKTOP-5N273J5 with PID 23440 (C:\Users\Ben's PC\1_ug_1\Backend\target\classes started by Ben's PC in C:\Users\Ben's PC\1_ug_1\Backend)
+2021-12-05 16:30:08.389  INFO 23440 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : No active profile set, falling back to default profiles: default
+2021-12-05 16:30:08.437  INFO 23440 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-12-05 16:30:08.437  INFO 23440 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-12-05 16:30:09.411  INFO 23440 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-05 16:30:09.475  INFO 23440 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 54 ms. Found 3 JPA repository interfaces.
+2021-12-05 16:30:10.150  INFO 23440 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-12-05 16:30:10.159  INFO 23440 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-12-05 16:30:10.159  INFO 23440 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-12-05 16:30:10.251  INFO 23440 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-12-05 16:30:10.251  INFO 23440 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1813 ms
+2021-12-05 16:30:10.514  INFO 23440 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-05 16:30:10.565  INFO 23440 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-12-05 16:30:10.688  INFO 23440 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-12-05 16:30:10.792  INFO 23440 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-12-05 16:30:10.946  INFO 23440 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-12-05 16:30:10.964  INFO 23440 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-12-05 16:30:11.574  INFO 23440 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-05 16:30:11.581  INFO 23440 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-05 16:30:12.333  WARN 23440 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-05 16:30:13.034  INFO 23440 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-12-05 16:30:13.592  INFO 23440 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-12-05 16:30:14.120  INFO 23440 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : Started CacynoApplication in 6.132 seconds (JVM running for 7.766)
+2021-12-05 16:31:50.473  INFO 23440 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-12-05 16:31:50.474  INFO 23440 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-12-05 16:31:50.475  INFO 23440 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2021-12-05 16:31:50.508  INFO 23440 --- [http-nio-8080-exec-1] c._.cacyno.websockets.PokerEndpoint      : Entered into Open: 1
+2021-12-05 16:31:53.114  INFO 23440 --- [http-nio-8080-exec-2] c._.cacyno.websockets.PokerEndpoint      : Entered into Open: 2
+2021-12-05 16:32:00.379  INFO 23440 --- [http-nio-8080-exec-3] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 1. Got Message: initGame
+2021-12-05 16:32:10.926  INFO 23440 --- [http-nio-8080-exec-4] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 1. Got Message: bet: 1
+2021-12-05 16:32:10.934  INFO 23440 --- [http-nio-8080-exec-4] c._.cacyno.websockets.PokerEndpoint      : Entered into Error. Cannot invoke "com._2_ug_1.cacyno.models.User.getCurrent_game_money()" because the return value of "java.util.Queue.poll()" is null
+2021-12-05 16:32:10.935  INFO 23440 --- [http-nio-8080-exec-4] c._.cacyno.websockets.PokerEndpoint      : Entered into Close: 1
+2021-12-05 16:33:06.664  INFO 23440 --- [http-nio-8080-exec-5] c._.cacyno.websockets.PokerEndpoint      : Entered into Open: 1
+2021-12-05 16:33:17.176  INFO 23440 --- [http-nio-8080-exec-6] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 1. Got Message: initGame
+2021-12-05 16:33:25.085  INFO 23440 --- [http-nio-8080-exec-7] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 1. Got Message: bet: 1
+2021-12-05 16:33:51.855  INFO 23440 --- [http-nio-8080-exec-8] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 1. Got Message: bet: 1
+2021-12-05 16:33:59.106  INFO 23440 --- [http-nio-8080-exec-9] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 2. Got Message: bet: 1
+2021-12-05 16:33:59.111  INFO 23440 --- [http-nio-8080-exec-9] c._.cacyno.websockets.PokerEndpoint      : Entered into Error. Cannot invoke "com._2_ug_1.cacyno.models.User.getCurrent_game_money()" because the return value of "java.util.Queue.poll()" is null
+2021-12-05 16:33:59.111  INFO 23440 --- [http-nio-8080-exec-9] c._.cacyno.websockets.PokerEndpoint      : Entered into Close: 2
+2021-12-05 16:51:39.870  INFO 23440 --- [SpringApplicationShutdownHook] c._.cacyno.websockets.PokerEndpoint      : Entered into Close: 1
+2021-12-05 16:51:39.887  INFO 23440 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-05 16:51:39.891  INFO 23440 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-12-05 16:51:39.897  INFO 23440 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-12-05 16:51:43.790  INFO 10108 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : Starting CacynoApplication using Java 16.0.2 on DESKTOP-5N273J5 with PID 10108 (C:\Users\Ben's PC\1_ug_1\Backend\target\classes started by Ben's PC in C:\Users\Ben's PC\1_ug_1\Backend)
+2021-12-05 16:51:43.792  INFO 10108 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : No active profile set, falling back to default profiles: default
+2021-12-05 16:51:43.834  INFO 10108 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-12-05 16:51:43.835  INFO 10108 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-12-05 16:51:44.714  INFO 10108 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-05 16:51:44.768  INFO 10108 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 47 ms. Found 3 JPA repository interfaces.
+2021-12-05 16:51:45.385  INFO 10108 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-12-05 16:51:45.392  INFO 10108 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-12-05 16:51:45.392  INFO 10108 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-12-05 16:51:45.478  INFO 10108 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-12-05 16:51:45.478  INFO 10108 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1643 ms
+2021-12-05 16:51:45.722  INFO 10108 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-05 16:51:45.758  INFO 10108 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-12-05 16:51:45.852  INFO 10108 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-12-05 16:51:45.930  INFO 10108 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-12-05 16:51:46.030  INFO 10108 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-12-05 16:51:46.047  INFO 10108 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-12-05 16:51:46.554  INFO 10108 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-05 16:51:46.562  INFO 10108 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-05 16:51:47.285  WARN 10108 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-05 16:51:47.944  INFO 10108 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-12-05 16:51:48.483  INFO 10108 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-12-05 16:51:49.008  INFO 10108 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : Started CacynoApplication in 5.589 seconds (JVM running for 6.352)
+2021-12-05 16:53:00.187  INFO 10108 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-12-05 16:53:00.187  INFO 10108 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-12-05 16:53:00.189  INFO 10108 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2021-12-05 16:53:00.227  INFO 10108 --- [http-nio-8080-exec-1] c._.cacyno.websockets.PokerEndpoint      : Entered into Open: 1
+2021-12-05 16:53:02.448  INFO 10108 --- [http-nio-8080-exec-2] c._.cacyno.websockets.PokerEndpoint      : Entered into Open: 2
+2021-12-05 16:53:11.513  INFO 10108 --- [http-nio-8080-exec-3] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 1. Got Message: initGame
+2021-12-05 16:53:19.442  INFO 10108 --- [http-nio-8080-exec-4] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 1. Got Message: bet: 1
+2021-12-05 16:54:39.762  INFO 10108 --- [SpringApplicationShutdownHook] c._.cacyno.websockets.PokerEndpoint      : Entered into Close: 1
+2021-12-05 16:54:39.765  INFO 10108 --- [SpringApplicationShutdownHook] c._.cacyno.websockets.PokerEndpoint      : Entered into Error. null
+2021-12-05 16:54:39.766  INFO 10108 --- [SpringApplicationShutdownHook] c._.cacyno.websockets.PokerEndpoint      : Entered into Close: 2
+2021-12-05 16:54:39.770  INFO 10108 --- [SpringApplicationShutdownHook] c._.cacyno.websockets.PokerEndpoint      : Entered into Error. null
+2021-12-05 16:54:39.783  INFO 10108 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-05 16:54:39.786  INFO 10108 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-12-05 16:54:39.792  INFO 10108 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-12-05 16:54:43.836  INFO 8104 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : Starting CacynoApplication using Java 16.0.2 on DESKTOP-5N273J5 with PID 8104 (C:\Users\Ben's PC\1_ug_1\Backend\target\classes started by Ben's PC in C:\Users\Ben's PC\1_ug_1\Backend)
+2021-12-05 16:54:43.838  INFO 8104 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : No active profile set, falling back to default profiles: default
+2021-12-05 16:54:43.877  INFO 8104 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-12-05 16:54:43.877  INFO 8104 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-12-05 16:54:44.802  INFO 8104 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-05 16:54:44.857  INFO 8104 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 48 ms. Found 3 JPA repository interfaces.
+2021-12-05 16:54:45.474  INFO 8104 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-12-05 16:54:45.481  INFO 8104 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-12-05 16:54:45.482  INFO 8104 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-12-05 16:54:45.568  INFO 8104 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-12-05 16:54:45.568  INFO 8104 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1690 ms
+2021-12-05 16:54:45.829  INFO 8104 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-05 16:54:45.866  INFO 8104 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-12-05 16:54:45.958  INFO 8104 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-12-05 16:54:46.035  INFO 8104 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-12-05 16:54:46.140  INFO 8104 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-12-05 16:54:46.156  INFO 8104 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-12-05 16:54:46.659  INFO 8104 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-05 16:54:46.667  INFO 8104 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-05 16:54:47.396  WARN 8104 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-05 16:54:48.066  INFO 8104 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-12-05 16:54:48.595  INFO 8104 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-12-05 16:54:49.119  INFO 8104 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : Started CacynoApplication in 5.647 seconds (JVM running for 6.508)
+2021-12-05 16:57:16.511  INFO 8104 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-12-05 16:57:16.511  INFO 8104 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-12-05 16:57:16.513  INFO 8104 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2021-12-05 16:57:16.546  INFO 8104 --- [http-nio-8080-exec-1] c._.cacyno.websockets.PokerEndpoint      : Entered into Open: 1
+2021-12-05 16:57:18.472  INFO 8104 --- [http-nio-8080-exec-2] c._.cacyno.websockets.PokerEndpoint      : Entered into Open: 2
+2021-12-05 16:57:26.763  INFO 8104 --- [http-nio-8080-exec-3] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 1. Got Message: initGame
+2021-12-05 16:57:34.126  INFO 8104 --- [http-nio-8080-exec-4] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 1. Got Message: bet: 1
+2021-12-05 16:57:38.501  INFO 8104 --- [http-nio-8080-exec-5] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 2. Got Message: bet: 1
+2021-12-05 16:57:42.061  INFO 8104 --- [http-nio-8080-exec-6] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 1. Got Message: bet: 1
+2021-12-05 16:57:44.755  INFO 8104 --- [http-nio-8080-exec-7] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 2. Got Message: bet: 1
+2021-12-05 16:57:59.645  INFO 8104 --- [http-nio-8080-exec-8] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 2. Got Message: bet: 1
+2021-12-05 16:58:23.638  INFO 8104 --- [http-nio-8080-exec-9] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 1. Got Message: bet: 1
+2021-12-05 16:58:24.989  INFO 8104 --- [http-nio-8080-exec-10] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 1. Got Message: bet: 1
+2021-12-05 16:58:44.740  INFO 8104 --- [http-nio-8080-exec-1] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 1. Got Message: bet: 1
+2021-12-05 16:58:47.659  INFO 8104 --- [http-nio-8080-exec-2] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 2. Got Message: bet: 1
+2021-12-05 16:58:52.509  INFO 8104 --- [http-nio-8080-exec-3] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 1. Got Message: bet: 1
+2021-12-05 16:58:55.126  INFO 8104 --- [http-nio-8080-exec-4] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 2. Got Message: bet: 1
+2021-12-05 16:58:57.909  INFO 8104 --- [http-nio-8080-exec-5] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 1. Got Message: bet: 1
+2021-12-05 16:59:00.592  INFO 8104 --- [http-nio-8080-exec-6] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 2. Got Message: bet: 1
+2021-12-05 16:59:03.152  INFO 8104 --- [http-nio-8080-exec-7] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 1. Got Message: bet: 1
+2021-12-05 16:59:05.623  INFO 8104 --- [http-nio-8080-exec-8] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 2. Got Message: bet: 1
+2021-12-05 16:59:23.310  INFO 8104 --- [http-nio-8080-exec-9] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 1. Got Message: bet: 1
+2021-12-05 16:59:27.692  INFO 8104 --- [http-nio-8080-exec-10] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 2. Got Message: bet: 1
+2021-12-05 16:59:32.991  INFO 8104 --- [http-nio-8080-exec-1] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 1. Got Message: bet: 2
+2021-12-05 16:59:32.994  INFO 8104 --- [http-nio-8080-exec-1] c._.cacyno.websockets.PokerEndpoint      : Entered into Error. Cannot invoke "com._2_ug_1.cacyno.models.User.getId()" because the return value of "java.util.Queue.peek()" is null
+2021-12-05 16:59:32.995  INFO 8104 --- [http-nio-8080-exec-1] c._.cacyno.websockets.PokerEndpoint      : Entered into Close: 1
+2021-12-05 16:59:38.259  INFO 8104 --- [http-nio-8080-exec-2] c._.cacyno.websockets.PokerEndpoint      : Entered into Open: 1
+2021-12-05 16:59:47.997  INFO 8104 --- [http-nio-8080-exec-3] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 1. Got Message: initGame
+2021-12-05 16:59:54.982  INFO 8104 --- [http-nio-8080-exec-4] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 1. Got Message: bet: 2
+2021-12-05 17:00:01.116  INFO 8104 --- [http-nio-8080-exec-5] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 2. Got Message: bet: 2
+2021-12-05 17:00:04.681  INFO 8104 --- [http-nio-8080-exec-6] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 1. Got Message: bet: 2
+2021-12-05 17:00:08.727  INFO 8104 --- [http-nio-8080-exec-7] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 2. Got Message: bet: 2
+2021-12-05 17:00:11.457  INFO 8104 --- [http-nio-8080-exec-8] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 1. Got Message: bet: 2
+2021-12-05 17:00:15.143  INFO 8104 --- [http-nio-8080-exec-9] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 2. Got Message: bet: 2
+2021-12-05 17:00:16.473  INFO 8104 --- [http-nio-8080-exec-10] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 2. Got Message: bet: 2
+2021-12-05 17:00:18.448  INFO 8104 --- [http-nio-8080-exec-1] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 1. Got Message: bet: 2
+2021-12-05 17:00:20.565  INFO 8104 --- [http-nio-8080-exec-2] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 2. Got Message: bet: 2
+2021-12-05 17:00:22.479  INFO 8104 --- [http-nio-8080-exec-3] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 1. Got Message: bet: 2
+2021-12-05 17:00:24.564  INFO 8104 --- [http-nio-8080-exec-4] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 2. Got Message: bet: 2
+2021-12-05 17:00:26.698  INFO 8104 --- [http-nio-8080-exec-5] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 1. Got Message: bet: 2
+2021-12-05 17:00:28.665  INFO 8104 --- [http-nio-8080-exec-6] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 2. Got Message: bet: 2
+2021-12-05 17:00:30.711  INFO 8104 --- [http-nio-8080-exec-7] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 1. Got Message: bet: 2
+2021-12-05 17:00:33.489  INFO 8104 --- [http-nio-8080-exec-8] c._.cacyno.websockets.PokerEndpoint      : Entered into Close: 1
+2021-12-05 17:00:33.501 ERROR 8104 --- [http-nio-8080-exec-8] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.PokerEndpoint]
 
 java.lang.reflect.InvocationTargetException: null
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78) ~[na:na]
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
-	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567) ~[na:na]
 	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
 	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
 	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:740) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
-	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:247) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
-	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:163) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsFrameBase.processDataControl(WsFrameBase.java:367) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsFrameBase.processData(WsFrameBase.java:296) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsFrameBase.processInputBuffer(WsFrameBase.java:133) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsFrameServer.onDataAvailable(WsFrameServer.java:85) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsFrameServer.doOnDataAvailable(WsFrameServer.java:183) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsFrameServer.notifyDataAvailable(WsFrameServer.java:162) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:156) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
 	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
 	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
 	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
@@ -79,23 +169,69 @@ java.lang.reflect.InvocationTargetException: null
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
-	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
-Caused by: java.lang.NullPointerException: Cannot invoke "java.util.Map.forEach(java.util.function.BiConsumer)" because the return value of "java.util.Map.get(Object)" is null
-	at com._2_ug_1.cacyno.websockets.ChatEndpoint.onClose(ChatEndpoint.java:81) ~[classes/:na]
-	... 18 common frames omitted
+	at java.base/java.lang.Thread.run(Thread.java:831) ~[na:na]
+Caused by: java.lang.NullPointerException: Cannot invoke "com._2_ug_1.cacyno.models.User.setFolded(boolean)" because the return value of "java.util.Queue.poll()" is null
+	at com._2_ug_1.cacyno.game.Poker.bet(Poker.java:110) ~[classes/:na]
+	at com._2_ug_1.cacyno.game.Poker.removePlayer(Poker.java:199) ~[classes/:na]
+	at com._2_ug_1.cacyno.websockets.PokerEndpoint.onClose(PokerEndpoint.java:90) ~[classes/:na]
+	... 23 common frames omitted
 
-2021-12-01 06:57:56.685 ERROR 2737 --- [http-nio-8080-exec-1] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.ChatEndpoint]
+2021-12-05 17:00:33.502  INFO 8104 --- [http-nio-8080-exec-8] c._.cacyno.websockets.PokerEndpoint      : Entered into Error. null
+2021-12-05 17:00:35.960  INFO 8104 --- [http-nio-8080-exec-9] c._.cacyno.websockets.PokerEndpoint      : Entered into Open: 1
+2021-12-05 17:00:35.967  INFO 8104 --- [http-nio-8080-exec-9] c._.cacyno.websockets.PokerEndpoint      : Entered into Error. The WebSocket session [2] has been closed and no method (apart from close()) may be called on a closed session
+2021-12-05 17:00:35.967  INFO 8104 --- [http-nio-8080-exec-9] c._.cacyno.websockets.PokerEndpoint      : Entered into Close: 1
+2021-12-05 17:00:35.971 ERROR 8104 --- [http-nio-8080-exec-9] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.PokerEndpoint]
 
 java.lang.reflect.InvocationTargetException: null
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78) ~[na:na]
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
-	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.doClose(WsSession.java:708) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.doClose(WsSession.java:666) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.close(WsSession.java:653) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.close(WsSession.java:647) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.handleOnOpenOrCloseError(PojoEndpointBase.java:96) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.doOnOpen(PojoEndpointBase.java:81) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointServer.onOpen(PojoEndpointServer.java:48) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.init(WsHttpUpgradeHandler.java:135) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:940) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:831) ~[na:na]
+Caused by: java.lang.IllegalStateException: The WebSocket session [2] has been closed and no method (apart from close()) may be called on a closed session
+	at org.apache.tomcat.websocket.WsSession.checkState(WsSession.java:1074) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.getBasicRemote(WsSession.java:640) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at com._2_ug_1.cacyno.websockets.PokerEndpoint.lambda$sendGameMessage$1(PokerEndpoint.java:133) ~[classes/:na]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511) ~[na:na]
+	at com._2_ug_1.cacyno.websockets.PokerEndpoint.sendGameMessage(PokerEndpoint.java:130) ~[classes/:na]
+	at com._2_ug_1.cacyno.websockets.PokerEndpoint.onClose(PokerEndpoint.java:97) ~[classes/:na]
+	... 21 common frames omitted
+
+2021-12-05 17:00:35.972  INFO 8104 --- [http-nio-8080-exec-9] c._.cacyno.websockets.PokerEndpoint      : Entered into Error. null
+2021-12-05 17:00:39.275  INFO 8104 --- [http-nio-8080-exec-10] c._.cacyno.websockets.PokerEndpoint      : Entered into Close: 2
+2021-12-05 17:00:39.279 ERROR 8104 --- [http-nio-8080-exec-10] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.PokerEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567) ~[na:na]
 	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
 	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
 	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:740) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
-	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:247) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
-	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:163) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsFrameBase.processDataControl(WsFrameBase.java:367) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsFrameBase.processData(WsFrameBase.java:296) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsFrameBase.processInputBuffer(WsFrameBase.java:133) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsFrameServer.onDataAvailable(WsFrameServer.java:85) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsFrameServer.doOnDataAvailable(WsFrameServer.java:183) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsFrameServer.notifyDataAvailable(WsFrameServer.java:162) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:156) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
 	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
 	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
 	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
@@ -104,36 +240,299 @@ java.lang.reflect.InvocationTargetException: null
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
-	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
-Caused by: java.lang.NullPointerException: Cannot invoke "java.util.Map.size()" because the return value of "java.util.Map.get(Object)" is null
-	at com._2_ug_1.cacyno.websockets.ChatEndpoint.onClose(ChatEndpoint.java:75) ~[classes/:na]
-	... 18 common frames omitted
+	at java.base/java.lang.Thread.run(Thread.java:831) ~[na:na]
+Caused by: java.lang.IllegalStateException: The WebSocket session [2] has been closed and no method (apart from close()) may be called on a closed session
+	at org.apache.tomcat.websocket.WsSession.checkState(WsSession.java:1074) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.getBasicRemote(WsSession.java:640) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at com._2_ug_1.cacyno.websockets.PokerEndpoint.lambda$sendGameMessage$1(PokerEndpoint.java:133) ~[classes/:na]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511) ~[na:na]
+	at com._2_ug_1.cacyno.websockets.PokerEndpoint.sendGameMessage(PokerEndpoint.java:130) ~[classes/:na]
+	at com._2_ug_1.cacyno.websockets.PokerEndpoint.onClose(PokerEndpoint.java:97) ~[classes/:na]
+	... 23 common frames omitted
 
-2021-12-01 06:57:56.699  INFO 2737 --- [http-nio-8080-exec-1] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
-2021-12-01 06:57:56.698  INFO 2737 --- [http-nio-8080-exec-10] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
-2021-12-01 06:58:32.685  INFO 2737 --- [http-nio-8080-exec-2] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
-2021-12-01 06:58:32.687  INFO 2737 --- [http-nio-8080-exec-3] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
-2021-12-01 06:58:47.841  INFO 2737 --- [http-nio-8080-exec-4] c._.cacyno.websockets.ChatEndpoint       : Entered into Open
-2021-12-01 06:58:47.904  INFO 2737 --- [http-nio-8080-exec-5] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: hifds 
-2021-12-01 06:59:18.050  INFO 2737 --- [http-nio-8080-exec-6] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: hifds 
-2021-12-01 06:59:19.973  INFO 2737 --- [http-nio-8080-exec-9] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: hifds 
-2021-12-01 06:59:22.388  INFO 2737 --- [http-nio-8080-exec-7] c._.cacyno.websockets.ChatEndpoint       : Entered into Message: Got Message: hifds 
-2021-12-01 06:59:51.163  INFO 2737 --- [http-nio-8080-exec-2] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
-2021-12-01 06:59:51.163  INFO 2737 --- [http-nio-8080-exec-1] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
-2021-12-01 06:59:51.170  INFO 2737 --- [http-nio-8080-exec-1] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
-2021-12-01 06:59:51.172  INFO 2737 --- [http-nio-8080-exec-2] c._.cacyno.websockets.ChatEndpoint       : Entered into Close
-2021-12-01 06:59:51.178 ERROR 2737 --- [http-nio-8080-exec-2] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.ChatEndpoint]
+2021-12-05 17:00:39.279  INFO 8104 --- [http-nio-8080-exec-10] c._.cacyno.websockets.PokerEndpoint      : Entered into Error. null
+2021-12-05 17:00:39.701  INFO 8104 --- [http-nio-8080-exec-1] c._.cacyno.websockets.PokerEndpoint      : Entered into Open: 2
+2021-12-05 17:00:39.709  INFO 8104 --- [http-nio-8080-exec-1] c._.cacyno.websockets.PokerEndpoint      : Entered into Error. The WebSocket session [2] has been closed and no method (apart from close()) may be called on a closed session
+2021-12-05 17:00:39.709  INFO 8104 --- [http-nio-8080-exec-1] c._.cacyno.websockets.PokerEndpoint      : Entered into Close: 2
+2021-12-05 17:00:39.712 ERROR 8104 --- [http-nio-8080-exec-1] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.PokerEndpoint]
 
 java.lang.reflect.InvocationTargetException: null
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78) ~[na:na]
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
-	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.doClose(WsSession.java:708) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.doClose(WsSession.java:666) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.close(WsSession.java:653) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.close(WsSession.java:647) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.handleOnOpenOrCloseError(PojoEndpointBase.java:96) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.doOnOpen(PojoEndpointBase.java:81) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointServer.onOpen(PojoEndpointServer.java:48) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.init(WsHttpUpgradeHandler.java:135) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:940) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:831) ~[na:na]
+Caused by: java.lang.IllegalStateException: The WebSocket session [2] has been closed and no method (apart from close()) may be called on a closed session
+	at org.apache.tomcat.websocket.WsSession.checkState(WsSession.java:1074) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.getBasicRemote(WsSession.java:640) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at com._2_ug_1.cacyno.websockets.PokerEndpoint.lambda$sendGameMessage$1(PokerEndpoint.java:133) ~[classes/:na]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511) ~[na:na]
+	at com._2_ug_1.cacyno.websockets.PokerEndpoint.sendGameMessage(PokerEndpoint.java:130) ~[classes/:na]
+	at com._2_ug_1.cacyno.websockets.PokerEndpoint.onClose(PokerEndpoint.java:97) ~[classes/:na]
+	... 21 common frames omitted
+
+2021-12-05 17:00:39.712  INFO 8104 --- [http-nio-8080-exec-1] c._.cacyno.websockets.PokerEndpoint      : Entered into Error. null
+2021-12-05 17:00:42.486  INFO 8104 --- [http-nio-8080-exec-2] c._.cacyno.websockets.PokerEndpoint      : Entered into Open: 2
+2021-12-05 17:00:42.493  INFO 8104 --- [http-nio-8080-exec-2] c._.cacyno.websockets.PokerEndpoint      : Entered into Error. The WebSocket session [2] has been closed and no method (apart from close()) may be called on a closed session
+2021-12-05 17:00:42.494  INFO 8104 --- [http-nio-8080-exec-2] c._.cacyno.websockets.PokerEndpoint      : Entered into Close: 2
+2021-12-05 17:00:42.497 ERROR 8104 --- [http-nio-8080-exec-2] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.PokerEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.doClose(WsSession.java:708) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.doClose(WsSession.java:666) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.close(WsSession.java:653) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.close(WsSession.java:647) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.handleOnOpenOrCloseError(PojoEndpointBase.java:96) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.doOnOpen(PojoEndpointBase.java:81) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointServer.onOpen(PojoEndpointServer.java:48) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.init(WsHttpUpgradeHandler.java:135) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:940) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:831) ~[na:na]
+Caused by: java.lang.IllegalStateException: The WebSocket session [2] has been closed and no method (apart from close()) may be called on a closed session
+	at org.apache.tomcat.websocket.WsSession.checkState(WsSession.java:1074) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.getBasicRemote(WsSession.java:640) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at com._2_ug_1.cacyno.websockets.PokerEndpoint.lambda$sendGameMessage$1(PokerEndpoint.java:133) ~[classes/:na]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511) ~[na:na]
+	at com._2_ug_1.cacyno.websockets.PokerEndpoint.sendGameMessage(PokerEndpoint.java:130) ~[classes/:na]
+	at com._2_ug_1.cacyno.websockets.PokerEndpoint.onClose(PokerEndpoint.java:97) ~[classes/:na]
+	... 21 common frames omitted
+
+2021-12-05 17:00:42.497  INFO 8104 --- [http-nio-8080-exec-2] c._.cacyno.websockets.PokerEndpoint      : Entered into Error. null
+2021-12-05 17:00:47.531  INFO 8104 --- [http-nio-8080-exec-3] c._.cacyno.websockets.PokerEndpoint      : Entered into Open: 1
+2021-12-05 17:00:47.539  INFO 8104 --- [http-nio-8080-exec-3] c._.cacyno.websockets.PokerEndpoint      : Entered into Error. The WebSocket session [2] has been closed and no method (apart from close()) may be called on a closed session
+2021-12-05 17:00:47.539  INFO 8104 --- [http-nio-8080-exec-3] c._.cacyno.websockets.PokerEndpoint      : Entered into Close: 1
+2021-12-05 17:00:47.542 ERROR 8104 --- [http-nio-8080-exec-3] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.PokerEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.doClose(WsSession.java:708) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.doClose(WsSession.java:666) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.close(WsSession.java:653) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.close(WsSession.java:647) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.handleOnOpenOrCloseError(PojoEndpointBase.java:96) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.doOnOpen(PojoEndpointBase.java:81) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointServer.onOpen(PojoEndpointServer.java:48) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.init(WsHttpUpgradeHandler.java:135) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:940) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:831) ~[na:na]
+Caused by: java.lang.IllegalStateException: The WebSocket session [2] has been closed and no method (apart from close()) may be called on a closed session
+	at org.apache.tomcat.websocket.WsSession.checkState(WsSession.java:1074) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.getBasicRemote(WsSession.java:640) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at com._2_ug_1.cacyno.websockets.PokerEndpoint.lambda$sendGameMessage$1(PokerEndpoint.java:133) ~[classes/:na]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511) ~[na:na]
+	at com._2_ug_1.cacyno.websockets.PokerEndpoint.sendGameMessage(PokerEndpoint.java:130) ~[classes/:na]
+	at com._2_ug_1.cacyno.websockets.PokerEndpoint.onClose(PokerEndpoint.java:97) ~[classes/:na]
+	... 21 common frames omitted
+
+2021-12-05 17:00:47.543  INFO 8104 --- [http-nio-8080-exec-3] c._.cacyno.websockets.PokerEndpoint      : Entered into Error. null
+2021-12-05 17:07:30.655  INFO 8104 --- [http-nio-8080-exec-4] c._.cacyno.websockets.PokerEndpoint      : Entered into Open: 1
+2021-12-05 17:07:30.663  INFO 8104 --- [http-nio-8080-exec-4] c._.cacyno.websockets.PokerEndpoint      : Entered into Error. The WebSocket session [2] has been closed and no method (apart from close()) may be called on a closed session
+2021-12-05 17:07:30.664  INFO 8104 --- [http-nio-8080-exec-4] c._.cacyno.websockets.PokerEndpoint      : Entered into Close: 1
+2021-12-05 17:07:30.667 ERROR 8104 --- [http-nio-8080-exec-4] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.PokerEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.doClose(WsSession.java:708) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.doClose(WsSession.java:666) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.close(WsSession.java:653) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.close(WsSession.java:647) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.handleOnOpenOrCloseError(PojoEndpointBase.java:96) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.doOnOpen(PojoEndpointBase.java:81) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointServer.onOpen(PojoEndpointServer.java:48) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.init(WsHttpUpgradeHandler.java:135) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:940) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:831) ~[na:na]
+Caused by: java.lang.IllegalStateException: The WebSocket session [2] has been closed and no method (apart from close()) may be called on a closed session
+	at org.apache.tomcat.websocket.WsSession.checkState(WsSession.java:1074) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.getBasicRemote(WsSession.java:640) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at com._2_ug_1.cacyno.websockets.PokerEndpoint.lambda$sendGameMessage$1(PokerEndpoint.java:133) ~[classes/:na]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511) ~[na:na]
+	at com._2_ug_1.cacyno.websockets.PokerEndpoint.sendGameMessage(PokerEndpoint.java:130) ~[classes/:na]
+	at com._2_ug_1.cacyno.websockets.PokerEndpoint.onClose(PokerEndpoint.java:97) ~[classes/:na]
+	... 21 common frames omitted
+
+2021-12-05 17:07:30.667  INFO 8104 --- [http-nio-8080-exec-4] c._.cacyno.websockets.PokerEndpoint      : Entered into Error. null
+2021-12-05 17:07:34.926  INFO 8104 --- [http-nio-8080-exec-5] c._.cacyno.websockets.PokerEndpoint      : Entered into Open: 2
+2021-12-05 17:07:34.934  INFO 8104 --- [http-nio-8080-exec-5] c._.cacyno.websockets.PokerEndpoint      : Entered into Error. The WebSocket session [2] has been closed and no method (apart from close()) may be called on a closed session
+2021-12-05 17:07:34.934  INFO 8104 --- [http-nio-8080-exec-5] c._.cacyno.websockets.PokerEndpoint      : Entered into Close: 2
+2021-12-05 17:07:34.937 ERROR 8104 --- [http-nio-8080-exec-5] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.PokerEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.doClose(WsSession.java:708) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.doClose(WsSession.java:666) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.close(WsSession.java:653) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.close(WsSession.java:647) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.handleOnOpenOrCloseError(PojoEndpointBase.java:96) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.doOnOpen(PojoEndpointBase.java:81) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointServer.onOpen(PojoEndpointServer.java:48) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.init(WsHttpUpgradeHandler.java:135) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:940) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:831) ~[na:na]
+Caused by: java.lang.IllegalStateException: The WebSocket session [2] has been closed and no method (apart from close()) may be called on a closed session
+	at org.apache.tomcat.websocket.WsSession.checkState(WsSession.java:1074) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.getBasicRemote(WsSession.java:640) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at com._2_ug_1.cacyno.websockets.PokerEndpoint.lambda$sendGameMessage$1(PokerEndpoint.java:133) ~[classes/:na]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511) ~[na:na]
+	at com._2_ug_1.cacyno.websockets.PokerEndpoint.sendGameMessage(PokerEndpoint.java:130) ~[classes/:na]
+	at com._2_ug_1.cacyno.websockets.PokerEndpoint.onClose(PokerEndpoint.java:97) ~[classes/:na]
+	... 21 common frames omitted
+
+2021-12-05 17:07:34.938  INFO 8104 --- [http-nio-8080-exec-5] c._.cacyno.websockets.PokerEndpoint      : Entered into Error. null
+2021-12-05 17:07:38.946  INFO 8104 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-05 17:07:38.951  INFO 8104 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-12-05 17:07:38.958  INFO 8104 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-12-05 17:07:42.257  INFO 7952 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : Starting CacynoApplication using Java 16.0.2 on DESKTOP-5N273J5 with PID 7952 (C:\Users\Ben's PC\1_ug_1\Backend\target\classes started by Ben's PC in C:\Users\Ben's PC\1_ug_1\Backend)
+2021-12-05 17:07:42.259  INFO 7952 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : No active profile set, falling back to default profiles: default
+2021-12-05 17:07:42.300  INFO 7952 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-12-05 17:07:42.301  INFO 7952 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-12-05 17:07:43.165  INFO 7952 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-05 17:07:43.218  INFO 7952 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 46 ms. Found 3 JPA repository interfaces.
+2021-12-05 17:07:43.820  INFO 7952 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-12-05 17:07:43.826  INFO 7952 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-12-05 17:07:43.827  INFO 7952 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-12-05 17:07:43.909  INFO 7952 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-12-05 17:07:43.909  INFO 7952 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1608 ms
+2021-12-05 17:07:44.153  INFO 7952 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-05 17:07:44.190  INFO 7952 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-12-05 17:07:44.280  INFO 7952 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-12-05 17:07:44.358  INFO 7952 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-12-05 17:07:44.456  INFO 7952 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-12-05 17:07:44.473  INFO 7952 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-12-05 17:07:44.967  INFO 7952 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-05 17:07:44.975  INFO 7952 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-05 17:07:45.688  WARN 7952 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-05 17:07:46.335  INFO 7952 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-12-05 17:07:46.856  INFO 7952 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-12-05 17:07:47.366  INFO 7952 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : Started CacynoApplication in 5.458 seconds (JVM running for 6.29)
+2021-12-05 17:47:08.457  INFO 7952 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-05 17:47:08.460  INFO 7952 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-12-05 17:47:08.463  INFO 7952 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-12-05 17:47:12.630  INFO 16324 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : Starting CacynoApplication using Java 16.0.2 on DESKTOP-5N273J5 with PID 16324 (C:\Users\Ben's PC\1_ug_1\Backend\target\classes started by Ben's PC in C:\Users\Ben's PC\1_ug_1\Backend)
+2021-12-05 17:47:12.632  INFO 16324 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : No active profile set, falling back to default profiles: default
+2021-12-05 17:47:12.674  INFO 16324 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-12-05 17:47:12.675  INFO 16324 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-12-05 17:47:13.564  INFO 16324 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-05 17:47:13.620  INFO 16324 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 48 ms. Found 3 JPA repository interfaces.
+2021-12-05 17:47:14.241  INFO 16324 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-12-05 17:47:14.248  INFO 16324 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-12-05 17:47:14.249  INFO 16324 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-12-05 17:47:14.334  INFO 16324 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-12-05 17:47:14.335  INFO 16324 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1660 ms
+2021-12-05 17:47:14.581  INFO 16324 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-05 17:47:14.619  INFO 16324 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-12-05 17:47:14.714  INFO 16324 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-12-05 17:47:14.794  INFO 16324 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-12-05 17:47:14.896  INFO 16324 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-12-05 17:47:14.913  INFO 16324 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-12-05 17:47:15.420  INFO 16324 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-05 17:47:15.427  INFO 16324 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-05 17:47:16.167  WARN 16324 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-05 17:47:16.843  INFO 16324 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-12-05 17:47:17.381  INFO 16324 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-12-05 17:47:17.910  INFO 16324 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : Started CacynoApplication in 5.649 seconds (JVM running for 6.605)
+2021-12-05 17:47:31.576  INFO 16324 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-12-05 17:47:31.577  INFO 16324 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-12-05 17:47:31.578  INFO 16324 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2021-12-05 17:47:31.611  INFO 16324 --- [http-nio-8080-exec-1] c._.cacyno.websockets.PokerEndpoint      : Entered into Open: 1
+2021-12-05 17:47:33.969  INFO 16324 --- [http-nio-8080-exec-2] c._.cacyno.websockets.PokerEndpoint      : Entered into Open: 2
+2021-12-05 17:47:44.493  INFO 16324 --- [http-nio-8080-exec-3] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 1. Got Message: initGame
+2021-12-05 17:47:51.291  INFO 16324 --- [http-nio-8080-exec-4] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 1. Got Message: bet: 1
+2021-12-05 17:47:53.951  INFO 16324 --- [http-nio-8080-exec-5] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 2. Got Message: bet: 2
+2021-12-05 17:47:58.812  INFO 16324 --- [http-nio-8080-exec-6] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 1. Got Message: bet: 1
+2021-12-05 17:47:58.816  INFO 16324 --- [http-nio-8080-exec-6] c._.cacyno.websockets.PokerEndpoint      : Entered into Error. Cannot invoke "com._2_ug_1.cacyno.models.User.getCurrent_game_money()" because the return value of "java.util.Queue.poll()" is null
+2021-12-05 17:47:58.817  INFO 16324 --- [http-nio-8080-exec-6] c._.cacyno.websockets.PokerEndpoint      : Entered into Close: 1
+2021-12-05 17:50:42.716  INFO 16324 --- [http-nio-8080-exec-7] c._.cacyno.websockets.PokerEndpoint      : Entered into Close: 2
+2021-12-05 17:50:46.471  INFO 16324 --- [http-nio-8080-exec-8] c._.cacyno.websockets.PokerEndpoint      : Entered into Open: 1
+2021-12-05 17:50:48.588  INFO 16324 --- [http-nio-8080-exec-9] c._.cacyno.websockets.PokerEndpoint      : Entered into Open: 2
+2021-12-05 17:50:57.736  INFO 16324 --- [http-nio-8080-exec-10] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 1. Got Message: initGame
+2021-12-05 17:51:04.245  INFO 16324 --- [http-nio-8080-exec-1] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 1. Got Message: bet: 1
+2021-12-05 17:51:07.534  INFO 16324 --- [http-nio-8080-exec-2] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 2. Got Message: bet: 2
+2021-12-05 17:51:14.073  INFO 16324 --- [http-nio-8080-exec-3] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 1. Got Message: bet: 2
+2021-12-05 17:51:27.748  INFO 16324 --- [http-nio-8080-exec-4] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 2. Got Message: bet: 2
+2021-12-05 17:51:31.914  INFO 16324 --- [http-nio-8080-exec-5] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 1. Got Message: bet: 2
+2021-12-05 17:51:34.276  INFO 16324 --- [http-nio-8080-exec-6] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 2. Got Message: bet: 2
+2021-12-05 17:51:36.934  INFO 16324 --- [http-nio-8080-exec-7] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 1. Got Message: bet: 2
+2021-12-05 17:51:39.473  INFO 16324 --- [http-nio-8080-exec-8] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 2. Got Message: bet: 2
+2021-12-05 17:51:41.844  INFO 16324 --- [http-nio-8080-exec-9] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 1. Got Message: bet: 2
+2021-12-05 17:51:43.926  INFO 16324 --- [http-nio-8080-exec-10] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 2. Got Message: bet: 2
+2021-12-05 17:51:45.985  INFO 16324 --- [http-nio-8080-exec-1] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 1. Got Message: bet: 2
+2021-12-05 17:51:47.961  INFO 16324 --- [http-nio-8080-exec-2] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 2. Got Message: bet: 2
+2021-12-05 17:51:51.861  INFO 16324 --- [http-nio-8080-exec-3] c._.cacyno.websockets.PokerEndpoint      : Entered into Close: 2
+2021-12-05 17:51:51.870 ERROR 16324 --- [http-nio-8080-exec-3] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.PokerEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567) ~[na:na]
 	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
 	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
 	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:740) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
-	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.close(WsHttpUpgradeHandler.java:247) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
-	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:163) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsFrameBase.processDataControl(WsFrameBase.java:367) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsFrameBase.processData(WsFrameBase.java:296) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsFrameBase.processInputBuffer(WsFrameBase.java:133) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsFrameServer.onDataAvailable(WsFrameServer.java:85) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsFrameServer.doOnDataAvailable(WsFrameServer.java:183) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsFrameServer.notifyDataAvailable(WsFrameServer.java:162) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:156) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
 	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
 	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
 	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
@@ -142,9 +541,51 @@ java.lang.reflect.InvocationTargetException: null
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
-	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
-Caused by: java.lang.NullPointerException: Cannot invoke "java.util.Map.forEach(java.util.function.BiConsumer)" because the return value of "java.util.Map.get(Object)" is null
-	at com._2_ug_1.cacyno.websockets.ChatEndpoint.onClose(ChatEndpoint.java:81) ~[classes/:na]
-	... 18 common frames omitted
+	at java.base/java.lang.Thread.run(Thread.java:831) ~[na:na]
+Caused by: java.lang.NullPointerException: Cannot invoke "com._2_ug_1.cacyno.models.User.setFolded(boolean)" because the return value of "java.util.Queue.poll()" is null
+	at com._2_ug_1.cacyno.game.Poker.bet(Poker.java:110) ~[classes/:na]
+	at com._2_ug_1.cacyno.game.Poker.removePlayer(Poker.java:199) ~[classes/:na]
+	at com._2_ug_1.cacyno.websockets.PokerEndpoint.onClose(PokerEndpoint.java:90) ~[classes/:na]
+	... 23 common frames omitted
 
-2021-12-01 06:59:51.187  INFO 2737 --- [http-nio-8080-exec-2] c._.cacyno.websockets.ChatEndpoint       : Entered into Error
+2021-12-05 17:51:51.871  INFO 16324 --- [http-nio-8080-exec-3] c._.cacyno.websockets.PokerEndpoint      : Entered into Error. null
+2021-12-05 17:51:55.828  INFO 16324 --- [http-nio-8080-exec-4] c._.cacyno.websockets.PokerEndpoint      : Entered into Close: 1
+2021-12-05 17:51:55.832 ERROR 16324 --- [http-nio-8080-exec-4] o.a.t.websocket.pojo.PojoEndpointBase    : Failed to call onClose method of POJO end point for POJO of type [com._2_ug_1.cacyno.websockets.PokerEndpoint]
+
+java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:567) ~[na:na]
+	at org.apache.tomcat.websocket.pojo.PojoEndpointBase.onClose(PojoEndpointBase.java:107) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.fireEndpointOnClose(WsSession.java:759) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.onClose(WsSession.java:740) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsFrameBase.processDataControl(WsFrameBase.java:367) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsFrameBase.processData(WsFrameBase.java:296) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsFrameBase.processInputBuffer(WsFrameBase.java:133) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsFrameServer.onDataAvailable(WsFrameServer.java:85) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsFrameServer.doOnDataAvailable(WsFrameServer.java:183) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsFrameServer.notifyDataAvailable(WsFrameServer.java:162) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.server.WsHttpUpgradeHandler.upgradeDispatch(WsHttpUpgradeHandler.java:156) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.coyote.http11.upgrade.UpgradeProcessorInternal.dispatch(UpgradeProcessorInternal.java:60) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:59) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1726) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
+	at java.base/java.lang.Thread.run(Thread.java:831) ~[na:na]
+Caused by: java.lang.IllegalStateException: The WebSocket session [3] has been closed and no method (apart from close()) may be called on a closed session
+	at org.apache.tomcat.websocket.WsSession.checkState(WsSession.java:1074) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at org.apache.tomcat.websocket.WsSession.getBasicRemote(WsSession.java:640) ~[tomcat-embed-websocket-9.0.53.jar:9.0.53]
+	at com._2_ug_1.cacyno.websockets.PokerEndpoint.lambda$sendGameMessage$1(PokerEndpoint.java:133) ~[classes/:na]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511) ~[na:na]
+	at com._2_ug_1.cacyno.websockets.PokerEndpoint.sendGameMessage(PokerEndpoint.java:130) ~[classes/:na]
+	at com._2_ug_1.cacyno.websockets.PokerEndpoint.onClose(PokerEndpoint.java:97) ~[classes/:na]
+	... 23 common frames omitted
+
+2021-12-05 17:51:55.832  INFO 16324 --- [http-nio-8080-exec-4] c._.cacyno.websockets.PokerEndpoint      : Entered into Error. null
+2021-12-05 18:50:11.388  INFO 16324 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-05 18:50:11.391  INFO 16324 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-12-05 18:50:11.394  INFO 16324 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
