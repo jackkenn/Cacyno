@@ -144,6 +144,7 @@ public class PokerEndpoint {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     private User getUser(String userId) {

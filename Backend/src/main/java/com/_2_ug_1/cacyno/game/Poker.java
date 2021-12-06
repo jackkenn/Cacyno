@@ -6,7 +6,7 @@ import com._2_ug_1.cacyno.models.User;
 import java.util.*;
 
 public class Poker {
-    private List<User> _players;
+    private LinkedList<User> _players;
     private Queue<User> _toPlay;
     private LinkedList<User> _turnOrder;
     private int _blind = 100;
@@ -22,10 +22,11 @@ public class Poker {
         _deck = new Deck(this);
         _turnOrder = new LinkedList<>();
         _toPlay = new LinkedList<>();
-        _players = new ArrayList<>();
+        _players = new LinkedList<>();
         highest_bet = 0;
         _tooPoor = new ArrayList<>();
     }
+
 
     public boolean initGame() {
         if (_players.size() < 2) //need at least 2 players
@@ -77,6 +78,8 @@ public class Poker {
         if (_toPlay.peek().getCurrent_game_money() < bet) { //can make play
             return false;
         }
+        u.setBet(bet);
+
         if (bet >= 0) {
             if (bet > highest_bet) {
                 _toPlay.peek().setCurrent_game_money(_toPlay.poll().getCurrent_game_money() - bet);
@@ -95,13 +98,16 @@ public class Poker {
                         }
                     }
                 }
-            } else {
+            } else if (bet == highest_bet) {
                 _toPlay.peek().setCurrent_game_money(_toPlay.poll().getCurrent_game_money() - bet);
                 _game.setPot(_game.getPot() + bet);
+            } else {
+                return false;
             }
         } else {
             _toPlay.poll().setFolded(true);
         }
+
         endRound();
         return true;
     }
@@ -111,6 +117,9 @@ public class Poker {
         for (User u : _players) {
             if (!u.getFolded())
                 notFolded++;
+        }
+        for (User u : _players) {
+
         }
         if (_toPlay.size() > 0 && notFolded > 1) //dont end if people need to play
             return;
