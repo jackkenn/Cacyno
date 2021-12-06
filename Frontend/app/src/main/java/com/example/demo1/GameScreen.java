@@ -142,7 +142,15 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         });
 
         raise.setOnClickListener(v -> {
-            game.send("Bet: " + sliderAmount.toString());
+            game.send(sliderAmount.toString());
+        });
+
+        check.setOnClickListener(v -> {
+            game.send("0");
+        });
+
+        fold.setOnClickListener(v -> {
+            game.send("-1");
         });
 
 
