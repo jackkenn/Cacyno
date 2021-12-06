@@ -51,31 +51,47 @@ public class Poker {
             _turnOrder.add(x);
         });
         _toPlay.addAll(_turnOrder);
-        if (_toPlay.poll().getCurrent_game_money() < _blind / 2) {
-            _tooPoor.add(_turnOrder.peek());
-            removePlayer(_turnOrder.poll());
+
+        for(int i = 0; i < _turnOrder.size(); i++){
+            if(_toPlay.size() == 2){
+                break;
+            }
+            else{
+                _toPlay.remove();
+            }
+        }
+
+        if (_toPlay.peek().getCurrent_game_money() < _blind) {
+            _tooPoor.add(_toPlay.peek());
+            removePlayer(_toPlay.poll());
             //TODO: let them know they are too poor to play //done
 
             return initGame();
         }
-        if (_toPlay.poll().getCurrent_game_money() < _blind * 2) {
-            _turnOrder.poll(); //get #2
-            _tooPoor.add(_turnOrder.peek());
-            removePlayer(_turnOrder.poll());
+        if (_toPlay.peek().getCurrent_game_money() < _blind * 2) {
+            _toPlay.poll(); //get #2
+            _tooPoor.add(_toPlay.peek());
+            removePlayer(_toPlay.poll());
             //TODO: let them know they are too poor to play //done
 
             return initGame();
         }
         _toPlay.clear();
         _toPlay.addAll(_turnOrder);
-        _toPlay.peek().setCurrent_game_money(_toPlay.poll().getCurrent_game_money() - _blind);
-        _toPlay.peek().setCurrent_game_money(_toPlay.poll().getCurrent_game_money() - _blind * 2);
+        for(int i = 0; i < _turnOrder.size(); i++){
+            if(_toPlay.size() == 2){
+                _toPlay.peek().setCurrent_game_money(_toPlay.poll().getCurrent_game_money() - _blind);
+                _toPlay.peek().setCurrent_game_money(_toPlay.poll().getCurrent_game_money() - _blind * 2);
+                break;
+            }
+            else{
+                _toPlay.remove();
+            }
+        }
         _toPlay.clear();
         _toPlay.addAll(_turnOrder);
-        //TODO: fix betting order //done?
+        //TODO: fix betting order //done
 
-        _toPlay.add((_toPlay.poll())); //small blind to back of queue
-        _toPlay.add((_toPlay.poll())); //big blind to back of queue
         highest_bet = 0;
 
         _game.setPot(_blind + _blind / 2);
@@ -101,18 +117,22 @@ public class Poker {
 
         if (bet >= 0) {
             if (bet > highest_bet) {
+                String temp = _toPlay.peek().getId();
                 _toPlay.peek().setCurrent_game_money(_toPlay.poll().getCurrent_game_money() - bet);
                 _game.setPot(_game.getPot() + bet);
 
                 highest_bet = bet;
-                String temp = _toPlay.peek().getId();
                 for (int i = 0; i < _turnOrder.size(); i++) {
                     if (temp.equals(_turnOrder.get(i).getId())) {
                         continue;
                     } else {
                         if (_turnOrder.get(i).getFolded() == true) {
                             continue;
-                        } else {
+                        }
+                        else if(_turnOrder.get(i).getId().equals(_toPlay.peek().getId())){
+                            continue;
+                        }
+                        else {
                             _toPlay.add(_turnOrder.get(i));
                         }
                     }
@@ -251,6 +271,10 @@ public class Poker {
 
     public List TooPoor() {
         return _tooPoor;
+    }
+
+    public List getPlayers(){
+        return _players;
     }
 
     private class Deck {

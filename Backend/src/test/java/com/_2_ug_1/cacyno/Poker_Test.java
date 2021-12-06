@@ -60,15 +60,12 @@ public class Poker_Test {
             assertFalse(u.getFolded());
             assertNotEquals(-1, u.getCard1());
             assertNotEquals(-1, u.getCard2());
-            switch (i) {
-                case 0:
-                    assertEquals(_baseUser.getCurrent_game_money() - blind, u.getCurrent_game_money()); //blind
-                    break;
-                case 1:
-                    assertEquals(_baseUser.getCurrent_game_money() - blind * 2, u.getCurrent_game_money()); //blind
-                    break;
-                default:
-                    assertEquals(_baseUser.getCurrent_game_money(), u.getCurrent_game_money());
+            if (i == _users.size() - 2) {
+                assertEquals(_baseUser.getCurrent_game_money() - blind, u.getCurrent_game_money()); //blind
+            } else if (i == _users.size() - 1) {
+                assertEquals(_baseUser.getCurrent_game_money() - blind * 2, u.getCurrent_game_money()); //blind
+            } else {
+                assertEquals(_baseUser.getCurrent_game_money(), u.getCurrent_game_money());
             }
         }
         assertEquals(_game.getPot(), blind + blind * 2);
@@ -98,17 +95,14 @@ public class Poker_Test {
                 }
                 User u = _users.get(j);
                 assertTrue(_sut.bet(u, 1));
-                switch (j) {
-                    case 0:
-                        assertEquals(_baseUser.getCurrent_game_money() - (i + 1) - blind
-                                , u.getCurrent_game_money()); //blind
-                        break;
-                    case 1:
-                        assertEquals(_baseUser.getCurrent_game_money() - (i + 1) - blind * 2
-                                , u.getCurrent_game_money()); //blind
-                        break;
-                    default:
-                        assertEquals(_baseUser.getCurrent_game_money() - (i + 1), u.getCurrent_game_money());
+                if (j == _users.size() - 2) {
+                    assertEquals(_baseUser.getCurrent_game_money() - (i + 1) - blind
+                            , u.getCurrent_game_money()); //blind
+                } else if (j == _users.size() - 1) {
+                    assertEquals(_baseUser.getCurrent_game_money() - (i + 1) - blind * 2
+                            , u.getCurrent_game_money()); //blind
+                } else {
+                    assertEquals(_baseUser.getCurrent_game_money() - (i + 1), u.getCurrent_game_money());
                 }
             }
             if (i == 3) {
@@ -223,17 +217,16 @@ public class Poker_Test {
         Poker_Test();
         int numFolded = 0;
         List<Integer> playerBets = new ArrayList<>();
+        int size = _users.size();
         for (int i = 0; i < _users.size(); i++) {
-            switch (i) {
-                case 0:
-                    playerBets.add(_baseUser.getCurrent_game_money() - blind);
-                    break;
-                case 1:
-                    playerBets.add(_baseUser.getCurrent_game_money() - blind * 2);
-                    break;
-                default:
-                    playerBets.add(_baseUser.getCurrent_game_money());
-                    break;
+            if(i == _users.size()-2){
+                playerBets.add(_baseUser.getCurrent_game_money() - blind);
+            }
+            else if(i == _users.size()-1){
+                playerBets.add(_baseUser.getCurrent_game_money() - blind * 2);
+            }
+            else{
+                playerBets.add(_baseUser.getCurrent_game_money());
             }
         }
         for (int i = 0; i < 5 && numFolded < _users.size() - 1; i++) {
