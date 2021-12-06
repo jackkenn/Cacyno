@@ -332,6 +332,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     public void Player1Username(String username) {
         TextView temp = findViewById(R.id.player1_username);
         temp.setText(username);
+
     }
 
     @Override
