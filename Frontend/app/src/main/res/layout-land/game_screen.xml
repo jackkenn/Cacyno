@@ -293,12 +293,6 @@
             android:layout_marginEnd="155dp" android:layout_marginRight="155dp"
             app:layout_constraintEnd_toEndOf="parent"/>
     <ImageView
-            android:layout_width="16dp"
-            android:layout_height="21dp" app:srcCompat="@drawable/moneysign" android:id="@+id/slider_moneysign"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="85dp"
-            android:layout_marginEnd="230dp" android:layout_marginRight="230dp"
-            app:layout_constraintEnd_toEndOf="parent"/>
-    <ImageView
             android:layout_width="88dp"
             android:layout_height="7dp" app:srcCompat="@drawable/line" android:id="@+id/player5_line"
             android:layout_marginEnd="67dp" android:layout_marginRight="67dp"

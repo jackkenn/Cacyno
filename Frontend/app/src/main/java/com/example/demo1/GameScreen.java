@@ -1,6 +1,7 @@
 package com.example.demo1;
 
 import Models.User;
+import Utilities.ImageIdHashMap;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -23,6 +24,7 @@ import org.json.JSONException;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.HashMap;
 import java.util.Objects;
 import java.util.Random;
 
@@ -42,6 +44,9 @@ public class GameScreen extends AppCompatActivity {
     private Slider slider;
     private TextView sliderAmount;
     private LinearLayout chatlayout;
+    private ImageView yourCard1;
+    private ImageView yourCard2;
+    ImageIdHashMap imageIdsHashMap = new ImageIdHashMap();
     ScrollView scroll;
     int randForUsername = 0;
 
@@ -49,7 +54,8 @@ public class GameScreen extends AppCompatActivity {
     @SneakyThrows
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
+        HashMap<Integer, Integer> ImageIds = imageIdsHashMap.getImageIds();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_screen);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
@@ -65,6 +71,10 @@ public class GameScreen extends AppCompatActivity {
         pot = findViewById(R.id.pot);
         slider = findViewById(R.id.slider);
         sliderAmount = findViewById(R.id.slider_amount);
+        yourCard1 = findViewById(R.id.yourCard_1);
+        yourCard2 = findViewById(R.id.yourCard_2);
+
+
 
         //the constraint layout to add chat view
         gameScreen = findViewById(R.id.ActualGame);
@@ -78,24 +88,32 @@ public class GameScreen extends AppCompatActivity {
         TextView message = findViewById(R.id.message_type);
         chatlayout = findViewById(R.id.linearchat);
         scroll = chatplz.findViewById(R.id.chat_scroll);
+        slider.setStepSize(1);
         bringToFront();
 
         user = new User();
         user.getUser(GameScreen.this, new IUser() {
             @Override
             public int onSuccess() throws JSONException, URISyntaxException {
-                ingame_money.append(user.getCurrent_game_money()+"");
-                randForUsername = new Random().nextInt(10000)+1;
+                System.out.println("Success Getting User");
+                ingame_money.append(user.getCurrent_game_money() + "");
+                randForUsername = new Random().nextInt(10000) + 1;
                 username.append((user.getDisplayName()) ? user.getUsername() : "user" + randForUsername);
+                slider.setValueFrom(0);
+                slider.setValueTo(user.getCurrent_game_money());
+                yourCard1.setImageResource(R.drawable.card40);
+                yourCard2.setImageResource(R.drawable.card35);
                 connectWebSocket();
                 return 0;
             }
 
             @Override
             public int onError() {
+                System.out.println("Failed Getting User");
                 return -1;
             }
         }, Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid(), true);
+
 
 
         backout.setOnClickListener(v -> {
@@ -144,7 +162,14 @@ public class GameScreen extends AppCompatActivity {
             });
 
         });
+        slider.setOnChangeListener(new Slider.OnChangeListener() {
+            @Override
+            public void onValueChange(Slider slider, float value) {
+                sliderAmount.setText("$" + (int)value);
+            }
+        });
     }
+
 
     /**
      * this method brings everything except the chatview to the front
@@ -161,6 +186,8 @@ public class GameScreen extends AppCompatActivity {
         username.bringToFront();
         ingame_money.bringToFront();
         pot.bringToFront();
+        slider.bringToFront();
+        sliderAmount.bringToFront();
 
         findViewById(R.id.user_tag).bringToFront();
         findViewById(R.id.user_tag).bringToFront();
@@ -168,7 +195,6 @@ public class GameScreen extends AppCompatActivity {
         findViewById(R.id.pot_tag).bringToFront();
 
         findViewById(R.id.your_money_sign).bringToFront();
-        findViewById(R.id.slider_moneysign).bringToFront();
         findViewById(R.id.slider_amount).bringToFront();
 
         findViewById(R.id.player1_card1).bringToFront();
