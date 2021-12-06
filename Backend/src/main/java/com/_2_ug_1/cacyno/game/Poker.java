@@ -9,7 +9,7 @@ import java.util.*;
  * calculates game states based on user input
  */
 public class Poker {
-    private LinkedList<User> _players;
+    private List<User> _players;
     private Queue<User> _toPlay;
     private LinkedList<User> _turnOrder;
     private int _blind = 50;
@@ -17,8 +17,6 @@ public class Poker {
     private final int _maxPlayers = 12;
     private boolean _gameInit;
     private Game _game;
-    private int highest_bet;
-    private List<User> _tooPoor;
 
     /**
      * constructor for Poker
@@ -30,9 +28,7 @@ public class Poker {
         _deck = new Deck(this);
         _turnOrder = new LinkedList<>();
         _toPlay = new LinkedList<>();
-        _players = new LinkedList<>();
-        highest_bet = 0;
-        _tooPoor = new ArrayList<>();
+        _players = new ArrayList<>();
     }
 
     /**
@@ -51,19 +47,13 @@ public class Poker {
             _turnOrder.add(x);
         });
         _toPlay.addAll(_turnOrder);
-        if (_toPlay.poll().getCurrent_game_money() < _blind / 2) {
-            _tooPoor.add(_turnOrder.peek());
-            removePlayer(_turnOrder.poll());
-            //TODO: let them know they are too poor to play //done
-
+        if (_toPlay.poll().getCurrent_game_money() < _blind) {
+            removePlayer(_turnOrder.poll()); //TODO: let them know they are too poor to play
             return initGame();
         }
         if (_toPlay.poll().getCurrent_game_money() < _blind * 2) {
             _turnOrder.poll(); //get #2
-            _tooPoor.add(_turnOrder.peek());
-            removePlayer(_turnOrder.poll());
-            //TODO: let them know they are too poor to play //done
-
+            removePlayer(_turnOrder.poll()); //TODO: let them know they are too poor to play
             return initGame();
         }
         _toPlay.clear();
@@ -71,14 +61,8 @@ public class Poker {
         _toPlay.peek().setCurrent_game_money(_toPlay.poll().getCurrent_game_money() - _blind);
         _toPlay.peek().setCurrent_game_money(_toPlay.poll().getCurrent_game_money() - _blind * 2);
         _toPlay.clear();
-        _toPlay.addAll(_turnOrder);
-        //TODO: fix betting order //done?
-
-        _toPlay.add((_toPlay.poll())); //small blind to back of queue
-        _toPlay.add((_toPlay.poll())); //big blind to back of queue
-        highest_bet = 0;
-
-        _game.setPot(_blind + _blind / 2);
+        _toPlay.addAll(_turnOrder); //TODO: fix betting order
+        _game.setPot(_blind + _blind * 2);
         _deck.deal();
         _gameInit = true;
         return true;
@@ -97,36 +81,12 @@ public class Poker {
         if (_toPlay.peek().getCurrent_game_money() < bet) { //can make play
             return false;
         }
-        u.setBet(bet);
-
         if (bet >= 0) {
-            if (bet > highest_bet) {
-                _toPlay.peek().setCurrent_game_money(_toPlay.poll().getCurrent_game_money() - bet);
-                _game.setPot(_game.getPot() + bet);
-
-                highest_bet = bet;
-                String temp = _toPlay.peek().getId();
-                for (int i = 0; i < _turnOrder.size(); i++) {
-                    if (temp.equals(_turnOrder.get(i).getId())) {
-                        continue;
-                    } else {
-                        if (_turnOrder.get(i).getFolded() == true) {
-                            continue;
-                        } else {
-                            _toPlay.add(_turnOrder.get(i));
-                        }
-                    }
-                }
-            } else if (bet == highest_bet) {
-                _toPlay.peek().setCurrent_game_money(_toPlay.poll().getCurrent_game_money() - bet);
-                _game.setPot(_game.getPot() + bet);
-            } else {
-                return false;
-            }
+            _toPlay.peek().setCurrent_game_money(_toPlay.poll().getCurrent_game_money() - bet);
+            _game.setPot(_game.getPot() + bet);
         } else {
             _toPlay.poll().setFolded(true);
         }
-
         endRound();
         return true;
     }
@@ -136,9 +96,6 @@ public class Poker {
         for (User u : _players) {
             if (!u.getFolded())
                 notFolded++;
-        }
-        for (User u : _players) {
-
         }
         if (_toPlay.size() > 0 && notFolded > 1) //dont end if people need to play
             return;
@@ -173,15 +130,11 @@ public class Poker {
                 _gameInit = false;
                 return;
             }
-            if (_toPlay.poll().getCurrent_game_money() < _blind / 2) {
-                _tooPoor.add(_turnOrder.peek());
-                removePlayer(_turnOrder.poll());
-                //TODO: let them know they are too poor to play //done
-            } else if (_toPlay.poll().getCurrent_game_money() < _blind) {
+            if (_toPlay.poll().getCurrent_game_money() < _blind)
+                removePlayer(_turnOrder.poll()); //TODO: let them know they are too poor to play
+            else if (_toPlay.poll().getCurrent_game_money() < _blind * 2) {
                 _turnOrder.poll(); //get #2
-                _tooPoor.add(_turnOrder.peek());
-                removePlayer(_turnOrder.poll());
-                //TODO: let them know they are too poor to play //done
+                removePlayer(_turnOrder.poll()); //TODO: let them know they are too poor to play
             } else {
                 blindsReady = true;
             }
@@ -247,10 +200,6 @@ public class Poker {
      */
     public Game getGame() {
         return _game;
-    }
-
-    public List TooPoor() {
-        return _tooPoor;
     }
 
     private class Deck {
