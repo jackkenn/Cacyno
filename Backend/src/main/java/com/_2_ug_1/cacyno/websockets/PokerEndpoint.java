@@ -74,11 +74,11 @@ public class PokerEndpoint {
         if (!_gamesMap.containsKey(u.getGame().getId())) {
             Poker poker = new Poker(g);
             if (!poker.addPlayer(u)) //TODO: assuming they joining to play
-                sendUserMessage(u.getId(), u.getUsername() + ": Cannot join due to maximum spots already filled"); //TODO: let them know it is full/better error detection //done?
+                throw new NullPointerException(); //TODO: let them know it is full/better error detection
             _gamesMap.put(g.getId(), poker);
         } else {
             if (!_gamesMap.get(u.getGame().getId()).addPlayer(u))
-                sendUserMessage(u.getId(), u.getUsername() + ": Cannot join due to maximum spots already filled"); //TODO: let them know it is full/better error detection //done?
+                throw new NullPointerException(); //TODO: let them know it is full/better error detection
         }
         _userRepo.save(u);
         if (_gameSessionMap.containsKey(u.getGame().getId())) {
@@ -108,12 +108,8 @@ public class PokerEndpoint {
         _logger.info("Entered into Close: " + _sessionUserMap.get(session));
         if (!_sessionUserMap.containsKey(session))
             return;
-        User toRemove = getUser(_sessionUserMap.get(session));
-        Poker p = _gamesMap.get(toRemove.getGame().getId());
-        if(p.TooPoor().contains(toRemove)){
-            sendUserMessage(toRemove.getId(), toRemove.getUsername() + "Has Been Kicked Due To Insufficient Funds");
-        }
         _userSessionMap.remove(_sessionUserMap.get(session));
+        User toRemove = getUser(_sessionUserMap.get(session));
         _gamesMap.get(toRemove.getGame().getId()).removePlayer(toRemove);
         _sessionUserMap.remove(session);
         if (_gameSessionMap.get(toRemove.getGame().getId()).size() <= 1) {
@@ -183,15 +179,6 @@ public class PokerEndpoint {
                 }
             }
         });
-    }
-
-    private void sendUserMessage(String userId, String message) {
-        try {
-            _userSessionMap.get(userId).getBasicRemote().sendText(message);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
     }
 
     private User getUser(String userId) {
