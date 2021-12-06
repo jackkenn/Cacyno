@@ -89,6 +89,8 @@ public class PokerEndpoint {
             sessionList.add(session);
             _gameSessionMap.put(u.getGame().getId(), sessionList);
         }
+        Poker poker = _gamesMap.get(u.getGame().getId());
+        sendGameMessage(u.getGame().getId(), getJsonPlayers(poker)+", " +getJsonGame(poker));
         _sessionUserMap.putIfAbsent(session, userId);
         _userSessionMap.putIfAbsent(userId, session);
         sendGameMessage(g.getId(), u.getUsername() + ": Has Joined");

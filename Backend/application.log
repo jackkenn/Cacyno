@@ -379,3 +379,207 @@ Caused by: org.hibernate.HibernateException: Access to DialectResolutionInfo can
 2021-12-05 23:10:23.366  INFO 22472 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2021-12-05 23:10:23.369  INFO 22472 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2021-12-05 23:10:23.374  INFO 22472 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-12-06 09:30:02.650  INFO 15124 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : Starting CacynoApplication using Java 16.0.2 on DESKTOP-5N273J5 with PID 15124 (C:\Users\Ben's PC\1_ug_1\Backend\target\classes started by Ben's PC in C:\Users\Ben's PC\1_ug_1\Backend)
+2021-12-06 09:30:02.653  INFO 15124 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : No active profile set, falling back to default profiles: default
+2021-12-06 09:30:02.690  INFO 15124 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-12-06 09:30:02.691  INFO 15124 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-12-06 09:30:03.570  INFO 15124 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-06 09:30:03.623  INFO 15124 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 46 ms. Found 3 JPA repository interfaces.
+2021-12-06 09:30:04.205  INFO 15124 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-12-06 09:30:04.213  INFO 15124 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-12-06 09:30:04.214  INFO 15124 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-12-06 09:30:04.302  INFO 15124 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-12-06 09:30:04.302  INFO 15124 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1611 ms
+2021-12-06 09:30:04.512  INFO 15124 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-06 09:30:04.560  INFO 15124 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-12-06 09:30:04.669  INFO 15124 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-12-06 09:30:04.750  INFO 15124 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-12-06 09:30:04.856  INFO 15124 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-12-06 09:30:04.872  INFO 15124 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-12-06 09:30:05.372  INFO 15124 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-06 09:30:05.379  INFO 15124 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-06 09:30:05.967  WARN 15124 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-06 09:30:06.496  INFO 15124 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-12-06 09:30:06.942  INFO 15124 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-12-06 09:30:07.424  INFO 15124 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : Started CacynoApplication in 5.105 seconds (JVM running for 5.86)
+2021-12-06 09:31:51.518  INFO 15124 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-12-06 09:31:51.519  INFO 15124 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-12-06 09:31:51.520  INFO 15124 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2021-12-06 09:31:51.551  INFO 15124 --- [http-nio-8080-exec-1] c._.cacyno.websockets.PokerEndpoint      : Entered into Open: 1
+2021-12-06 09:31:51.641  INFO 15124 --- [http-nio-8080-exec-1] c._.cacyno.websockets.PokerEndpoint      : Entered into Error. Cannot invoke "java.util.List.forEach(java.util.function.Consumer)" because the return value of "java.util.Map.get(Object)" is null
+2021-12-06 09:31:51.644  INFO 15124 --- [http-nio-8080-exec-1] c._.cacyno.websockets.PokerEndpoint      : Entered into Close: null
+2021-12-06 09:31:59.554  INFO 15124 --- [http-nio-8080-exec-3] c._.cacyno.websockets.PokerEndpoint      : Entered into Open: 1
+2021-12-06 09:31:59.559  INFO 15124 --- [http-nio-8080-exec-3] c._.cacyno.websockets.PokerEndpoint      : Entered into Error. Cannot invoke "java.util.List.forEach(java.util.function.Consumer)" because the return value of "java.util.Map.get(Object)" is null
+2021-12-06 09:31:59.560  INFO 15124 --- [http-nio-8080-exec-3] c._.cacyno.websockets.PokerEndpoint      : Entered into Close: null
+2021-12-06 09:32:02.262  INFO 15124 --- [http-nio-8080-exec-5] c._.cacyno.websockets.PokerEndpoint      : Entered into Open: 2
+2021-12-06 09:32:02.268  INFO 15124 --- [http-nio-8080-exec-5] c._.cacyno.websockets.PokerEndpoint      : Entered into Error. Cannot invoke "java.util.List.forEach(java.util.function.Consumer)" because the return value of "java.util.Map.get(Object)" is null
+2021-12-06 09:32:02.268  INFO 15124 --- [http-nio-8080-exec-5] c._.cacyno.websockets.PokerEndpoint      : Entered into Close: null
+2021-12-06 09:32:15.001  INFO 15124 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-06 09:32:15.004  INFO 15124 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-12-06 09:32:15.009  INFO 15124 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-12-06 09:32:30.929  INFO 22708 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : Starting CacynoApplication using Java 16.0.2 on DESKTOP-5N273J5 with PID 22708 (C:\Users\Ben's PC\1_ug_1\Backend\target\classes started by Ben's PC in C:\Users\Ben's PC\1_ug_1\Backend)
+2021-12-06 09:32:30.931  INFO 22708 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : No active profile set, falling back to default profiles: default
+2021-12-06 09:32:30.969  INFO 22708 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-12-06 09:32:30.970  INFO 22708 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-12-06 09:32:31.783  INFO 22708 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-06 09:32:31.831  INFO 22708 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 42 ms. Found 3 JPA repository interfaces.
+2021-12-06 09:32:32.367  INFO 22708 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-12-06 09:32:32.373  INFO 22708 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-12-06 09:32:32.373  INFO 22708 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-12-06 09:32:32.458  INFO 22708 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-12-06 09:32:32.458  INFO 22708 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1488 ms
+2021-12-06 09:32:32.662  INFO 22708 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-06 09:32:32.697  INFO 22708 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-12-06 09:32:32.781  INFO 22708 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-12-06 09:32:32.851  INFO 22708 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-12-06 09:32:32.940  INFO 22708 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-12-06 09:32:32.954  INFO 22708 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-12-06 09:32:33.395  INFO 22708 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-06 09:32:33.401  INFO 22708 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-06 09:32:33.970  WARN 22708 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-06 09:32:34.472  INFO 22708 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-12-06 09:32:34.904  INFO 22708 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-12-06 09:32:35.382  INFO 22708 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : Started CacynoApplication in 4.755 seconds (JVM running for 5.423)
+2021-12-06 09:32:40.922  INFO 22708 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-12-06 09:32:40.922  INFO 22708 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-12-06 09:32:40.923  INFO 22708 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2021-12-06 09:32:40.951  INFO 22708 --- [http-nio-8080-exec-1] c._.cacyno.websockets.PokerEndpoint      : Entered into Open: 1
+2021-12-06 09:32:41.031  INFO 22708 --- [http-nio-8080-exec-1] c._.cacyno.websockets.PokerEndpoint      : Entered into Error. Cannot invoke "java.util.List.forEach(java.util.function.Consumer)" because the return value of "java.util.Map.get(Object)" is null
+2021-12-06 09:32:41.034  INFO 22708 --- [http-nio-8080-exec-1] c._.cacyno.websockets.PokerEndpoint      : Entered into Close: null
+2021-12-06 09:33:14.109  INFO 22708 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-06 09:33:14.112  INFO 22708 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-12-06 09:33:14.117  INFO 22708 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-12-06 09:33:18.791  INFO 10600 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : Starting CacynoApplication using Java 16.0.2 on DESKTOP-5N273J5 with PID 10600 (C:\Users\Ben's PC\1_ug_1\Backend\target\classes started by Ben's PC in C:\Users\Ben's PC\1_ug_1\Backend)
+2021-12-06 09:33:18.793  INFO 10600 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : No active profile set, falling back to default profiles: default
+2021-12-06 09:33:18.834  INFO 10600 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-12-06 09:33:18.835  INFO 10600 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-12-06 09:33:19.627  INFO 10600 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-06 09:33:19.674  INFO 10600 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 40 ms. Found 3 JPA repository interfaces.
+2021-12-06 09:33:20.213  INFO 10600 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-12-06 09:33:20.219  INFO 10600 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-12-06 09:33:20.220  INFO 10600 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-12-06 09:33:20.300  INFO 10600 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-12-06 09:33:20.300  INFO 10600 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1465 ms
+2021-12-06 09:33:20.496  INFO 10600 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-06 09:33:20.530  INFO 10600 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-12-06 09:33:20.607  INFO 10600 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-12-06 09:33:20.671  INFO 10600 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-12-06 09:33:20.759  INFO 10600 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-12-06 09:33:20.773  INFO 10600 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-12-06 09:33:21.216  INFO 10600 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-06 09:33:21.223  INFO 10600 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-06 09:33:21.802  WARN 10600 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-06 09:33:22.338  INFO 10600 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-12-06 09:33:22.780  INFO 10600 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-12-06 09:33:23.247  INFO 10600 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : Started CacynoApplication in 4.806 seconds (JVM running for 5.471)
+2021-12-06 09:33:29.883  INFO 10600 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-12-06 09:33:29.883  INFO 10600 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-12-06 09:33:29.885  INFO 10600 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2021-12-06 09:33:29.912  INFO 10600 --- [http-nio-8080-exec-1] c._.cacyno.websockets.PokerEndpoint      : Entered into Open: 1
+2021-12-06 09:33:34.599  INFO 10600 --- [http-nio-8080-exec-2] c._.cacyno.websockets.PokerEndpoint      : Entered into Open: 2
+2021-12-06 09:33:44.282  INFO 10600 --- [http-nio-8080-exec-3] c._.cacyno.websockets.PokerEndpoint      : Entered into Close: 2
+2021-12-06 09:33:46.833  INFO 10600 --- [http-nio-8080-exec-4] c._.cacyno.websockets.PokerEndpoint      : Entered into Close: 1
+2021-12-06 09:33:49.881  INFO 10600 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-06 09:33:49.884  INFO 10600 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-12-06 09:33:49.890  INFO 10600 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-12-06 09:34:33.932  INFO 21196 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : Starting CacynoApplication using Java 16.0.2 on DESKTOP-5N273J5 with PID 21196 (C:\Users\Ben's PC\1_ug_1\Backend\target\classes started by Ben's PC in C:\Users\Ben's PC\1_ug_1\Backend)
+2021-12-06 09:34:33.935  INFO 21196 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : No active profile set, falling back to default profiles: default
+2021-12-06 09:34:33.971  INFO 21196 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-12-06 09:34:33.972  INFO 21196 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-12-06 09:34:34.758  INFO 21196 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-06 09:34:34.806  INFO 21196 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 41 ms. Found 3 JPA repository interfaces.
+2021-12-06 09:34:35.336  INFO 21196 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-12-06 09:34:35.342  INFO 21196 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-12-06 09:34:35.343  INFO 21196 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-12-06 09:34:35.422  INFO 21196 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-12-06 09:34:35.422  INFO 21196 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1450 ms
+2021-12-06 09:34:35.618  INFO 21196 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-06 09:34:35.652  INFO 21196 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-12-06 09:34:35.726  INFO 21196 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-12-06 09:34:35.790  INFO 21196 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-12-06 09:34:35.880  INFO 21196 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-12-06 09:34:35.894  INFO 21196 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-12-06 09:34:36.351  INFO 21196 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-06 09:34:36.357  INFO 21196 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-06 09:34:36.912  WARN 21196 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-06 09:34:37.409  INFO 21196 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-12-06 09:34:37.823  INFO 21196 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-12-06 09:34:38.297  INFO 21196 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : Started CacynoApplication in 4.685 seconds (JVM running for 5.347)
+2021-12-06 09:34:49.619  INFO 21196 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-12-06 09:34:49.619  INFO 21196 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-12-06 09:34:49.621  INFO 21196 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2021-12-06 09:34:49.649  INFO 21196 --- [http-nio-8080-exec-1] c._.cacyno.websockets.PokerEndpoint      : Entered into Open: 1
+2021-12-06 09:35:27.064  INFO 21196 --- [http-nio-8080-exec-2] c._.cacyno.websockets.PokerEndpoint      : Entered into Open: 2
+2021-12-06 09:37:29.032  INFO 21196 --- [SpringApplicationShutdownHook] c._.cacyno.websockets.PokerEndpoint      : Entered into Close: 1
+2021-12-06 09:37:29.037  INFO 21196 --- [SpringApplicationShutdownHook] c._.cacyno.websockets.PokerEndpoint      : Entered into Close: 2
+2021-12-06 09:37:29.052  INFO 21196 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-06 09:37:29.055  INFO 21196 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-12-06 09:37:29.061  INFO 21196 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-12-06 09:37:52.060  INFO 22996 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : Starting CacynoApplication using Java 16.0.2 on DESKTOP-5N273J5 with PID 22996 (C:\Users\Ben's PC\1_ug_1\Backend\target\classes started by Ben's PC in C:\Users\Ben's PC\1_ug_1\Backend)
+2021-12-06 09:37:52.062  INFO 22996 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : No active profile set, falling back to default profiles: default
+2021-12-06 09:37:52.099  INFO 22996 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-12-06 09:37:52.099  INFO 22996 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-12-06 09:37:52.880  INFO 22996 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-06 09:37:52.926  INFO 22996 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 40 ms. Found 3 JPA repository interfaces.
+2021-12-06 09:37:53.457  INFO 22996 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-12-06 09:37:53.464  INFO 22996 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-12-06 09:37:53.464  INFO 22996 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-12-06 09:37:53.545  INFO 22996 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-12-06 09:37:53.545  INFO 22996 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1445 ms
+2021-12-06 09:37:53.763  INFO 22996 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-06 09:37:53.805  INFO 22996 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-12-06 09:37:53.891  INFO 22996 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-12-06 09:37:53.956  INFO 22996 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-12-06 09:37:54.050  INFO 22996 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-12-06 09:37:54.065  INFO 22996 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-12-06 09:37:54.536  INFO 22996 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-06 09:37:54.543  INFO 22996 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-06 09:37:55.127  WARN 22996 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-06 09:37:55.639  INFO 22996 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-12-06 09:37:56.053  INFO 22996 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-12-06 09:37:56.541  INFO 22996 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : Started CacynoApplication in 4.78 seconds (JVM running for 5.51)
+2021-12-06 09:38:08.707  INFO 22996 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-12-06 09:38:08.707  INFO 22996 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-12-06 09:38:08.709  INFO 22996 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2021-12-06 09:38:08.736  INFO 22996 --- [http-nio-8080-exec-1] c._.cacyno.websockets.PokerEndpoint      : Entered into Open: 1
+2021-12-06 09:38:12.867  INFO 22996 --- [http-nio-8080-exec-2] c._.cacyno.websockets.PokerEndpoint      : Entered into Open: 2
+2021-12-06 09:38:15.758  INFO 22996 --- [http-nio-8080-exec-3] c._.cacyno.websockets.PokerEndpoint      : Entered into Close: 2
+2021-12-06 09:38:17.570  INFO 22996 --- [http-nio-8080-exec-4] c._.cacyno.websockets.PokerEndpoint      : Entered into Open: 2
+2021-12-06 09:38:24.483  INFO 22996 --- [http-nio-8080-exec-5] c._.cacyno.websockets.PokerEndpoint      : Entered into Close: 2
+2021-12-06 09:38:28.182  INFO 22996 --- [http-nio-8080-exec-6] c._.cacyno.websockets.PokerEndpoint      : Entered into Close: 1
+2021-12-06 09:38:29.061  INFO 22996 --- [http-nio-8080-exec-7] c._.cacyno.websockets.PokerEndpoint      : Entered into Open: 1
+2021-12-06 09:38:38.391  INFO 22996 --- [http-nio-8080-exec-8] c._.cacyno.websockets.PokerEndpoint      : Entered into Open: 2
+2021-12-06 09:58:34.893  INFO 22996 --- [SpringApplicationShutdownHook] c._.cacyno.websockets.PokerEndpoint      : Entered into Close: 2
+2021-12-06 09:58:34.896  INFO 22996 --- [SpringApplicationShutdownHook] c._.cacyno.websockets.PokerEndpoint      : Entered into Close: 1
+2021-12-06 09:58:34.910  INFO 22996 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-06 09:58:34.913  INFO 22996 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-12-06 09:58:34.919  INFO 22996 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-12-06 09:58:42.944  INFO 20724 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : Starting CacynoApplication using Java 16.0.2 on DESKTOP-5N273J5 with PID 20724 (C:\Users\Ben's PC\1_ug_1\Backend\target\classes started by Ben's PC in C:\Users\Ben's PC\1_ug_1\Backend)
+2021-12-06 09:58:42.946  INFO 20724 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : No active profile set, falling back to default profiles: default
+2021-12-06 09:58:42.985  INFO 20724 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-12-06 09:58:42.986  INFO 20724 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-12-06 09:58:43.764  INFO 20724 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-06 09:58:43.811  INFO 20724 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 40 ms. Found 3 JPA repository interfaces.
+2021-12-06 09:58:44.337  INFO 20724 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-12-06 09:58:44.343  INFO 20724 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-12-06 09:58:44.344  INFO 20724 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-12-06 09:58:44.423  INFO 20724 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-12-06 09:58:44.423  INFO 20724 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1437 ms
+2021-12-06 09:58:44.620  INFO 20724 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-06 09:58:44.654  INFO 20724 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-12-06 09:58:44.730  INFO 20724 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-12-06 09:58:44.794  INFO 20724 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-12-06 09:58:44.883  INFO 20724 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-12-06 09:58:44.896  INFO 20724 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-12-06 09:58:45.327  INFO 20724 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-06 09:58:45.334  INFO 20724 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-06 09:58:45.890  WARN 20724 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-06 09:58:46.389  INFO 20724 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-12-06 09:58:46.801  INFO 20724 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-12-06 09:58:47.267  INFO 20724 --- [restartedMain] com._2_ug_1.cacyno.CacynoApplication     : Started CacynoApplication in 4.639 seconds (JVM running for 5.386)
+2021-12-06 09:58:55.568  INFO 20724 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-12-06 09:58:55.568  INFO 20724 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-12-06 09:58:55.569  INFO 20724 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2021-12-06 09:58:55.599  INFO 20724 --- [http-nio-8080-exec-1] c._.cacyno.websockets.PokerEndpoint      : Entered into Open: 1
+2021-12-06 09:58:58.885  INFO 20724 --- [http-nio-8080-exec-2] c._.cacyno.websockets.PokerEndpoint      : Entered into Open: 2
+2021-12-06 09:58:58.962  INFO 20724 --- [http-nio-8080-exec-3] c._.cacyno.websockets.PokerEndpoint      : Entered into Close: 2
