@@ -101,7 +101,6 @@ public class PokerEndpoint {
         sendGameMessage(u.getGame().getId(), getJsonPlayers(poker) + ", " + getJsonGame(poker));
         _sessionUserMap.put(session, userId);
         _userSessionMap.put(userId, session);
-        sendGameMessage(g.getId(), u.getUsername() + ": Has Joined");
     }
 
     /*
