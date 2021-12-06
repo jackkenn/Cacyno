@@ -195,6 +195,8 @@ public class GameScreen extends AppCompatActivity {
         findViewById(R.id.pot_tag).bringToFront();
 
         findViewById(R.id.your_money_sign).bringToFront();
+        findViewById(R.id.slider_moneysign).bringToFront();
+        findViewById(R.id.slider_amount).bringToFront();
 
         findViewById(R.id.player1_card1).bringToFront();
         findViewById(R.id.player1_card2).bringToFront();
