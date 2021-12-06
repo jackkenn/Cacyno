@@ -5,6 +5,7 @@ import com._2_ug_1.cacyno.models.Game;
 import com._2_ug_1.cacyno.models.User;
 import com._2_ug_1.cacyno.repos.IGameRepo;
 import com._2_ug_1.cacyno.repos.IUserRepo;
+import com.google.gson.Gson;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -140,7 +141,7 @@ public class PokerEndpoint {
         _logger.info("Entered into Message: " + _sessionUserMap.get(session) + ". Got Message: " + message);
         User u = getUser(_sessionUserMap.get(session));
         Poker p = _gamesMap.get(u.getGame().getId());
-        sendGameMessage(u.getGame().getId(), "[{\"id\":\"1\",\"username\":\"jack\",\"money\":1000,\"displayname\":false,\"current_game_money\":800,\"card1\":1,\"card2\":14,\"folded\":true,\"hasPlayed\":true,\"position\":0,\"isSpectator\":false,\"bet\":200,\"game\":{\"id\":\"1\",\"public_card1\":26,\"public_card2\":18,\"public_card3\":3,\"public_card4\":28,\"public_card5\":42,\"pot\":100,\"round\":0,\"lobbyname\":\"Jack's Lobby\",\"active\":true}},{\"id\":\"2\",\"username\":\"ben\",\"money\":1000,\"displayname\":false,\"current_game_money\":1000,\"card1\":48,\"card2\":50,\"folded\":true,\"hasPlayed\":false,\"position\":1,\"isSpectator\":false,\"bet\":0,\"game\":{\"id\":\"1\",\"public_card1\":26,\"public_card2\":18,\"public_card3\":3,\"public_card4\":28,\"public_card5\":42,\"pot\":100,\"round\":0,\"lobbyname\":\"Jack's Lobby\",\"active\":true}},{\"id\":\"3\",\"username\":\"caden\",\"money\":1000,\"displayname\":false,\"current_game_money\":1000,\"card1\":1,\"card2\":2,\"folded\":false,\"hasPlayed\":false,\"position\":0,\"isSpectator\":false,\"bet\":0,\"game\":{\"id\":\"1\",\"public_card1\":26,\"public_card2\":18,\"public_card3\":3,\"public_card4\":28,\"public_card5\":42,\"pot\":100,\"round\":0,\"lobbyname\":\"Jack's Lobby\",\"active\":true}},{\"id\":\"4\",\"username\":\"manny\",\"money\":1000,\"displayname\":false,\"current_game_money\":1000,\"card1\":1,\"card2\":2,\"folded\":false,\"hasPlayed\":false,\"position\":0,\"isSpectator\":false,\"bet\":0,\"game\":{\"id\":\"1\",\"public_card1\":26,\"public_card2\":18,\"public_card3\":3,\"public_card4\":28,\"public_card5\":42,\"pot\":100,\"round\":0,\"lobbyname\":\"Jack's Lobby\",\"active\":true}},{\"id\":\"5\",\"username\":\"usman\",\"money\":1000,\"displayname\":false,\"current_game_money\":1000,\"card1\":1,\"card2\":2,\"folded\":false,\"hasPlayed\":false,\"position\":0,\"isSpectator\":false,\"bet\":0,\"game\":{\"id\":\"1\",\"public_card1\":26,\"public_card2\":18,\"public_card3\":3,\"public_card4\":28,\"public_card5\":42,\"pot\":100,\"round\":0,\"lobbyname\":\"Jack's Lobby\",\"active\":true}},{\"id\":\"6\",\"username\":\"simantra\",\"money\":1000,\"displayname\":false,\"current_game_money\":1000,\"card1\":1,\"card2\":2,\"folded\":false,\"hasPlayed\":false,\"position\":0,\"isSpectator\":false,\"bet\":0,\"game\":{\"id\":\"1\",\"public_card1\":26,\"public_card2\":18,\"public_card3\":3,\"public_card4\":28,\"public_card5\":42,\"pot\":100,\"round\":0,\"lobbyname\":\"Jack's Lobby\",\"active\":true}}], {\"id\":\"1\",\"public_card1\":26,\"public_card2\":18,\"public_card3\":3,\"public_card4\":28,\"public_card5\":42,\"pot\":100,\"round\":0,\"lobbyname\":\"Jack's Lobby\",\"active\":true}");
+        sendGameMessage(u.getGame().getId(), getJsonPlayers(p)+", " +getJsonGame(p));
         if (message.equalsIgnoreCase("initGame") && !p.initGame())
             p.initGame();
         if (p.getInitialized()) {
@@ -215,4 +216,20 @@ public class PokerEndpoint {
         }
         return null;
     }
+
+    private String getJsonPlayers(Poker p){
+        List players = p.getPlayers();
+        Gson gson = new Gson();
+        String playersJson = gson.toJson(players);
+
+        return playersJson;
+    }
+    private String getJsonGame(Poker p){
+        Game game = p.getGame();
+        Gson gson = new Gson();
+        String gameJson = gson.toJson(game);
+
+        return gameJson;
+    }
+
 }

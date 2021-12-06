@@ -9,7 +9,7 @@ import java.util.*;
  * calculates game states based on user input
  */
 public class Poker {
-    private List<User> _players;
+    private LinkedList<User> _players;
     private Queue<User> _toPlay;
     private LinkedList<User> _turnOrder;
     private int _blind = 50;
@@ -28,7 +28,7 @@ public class Poker {
         _deck = new Deck(this);
         _turnOrder = new LinkedList<>();
         _toPlay = new LinkedList<>();
-        _players = new ArrayList<>();
+        _players = new LinkedList<>();
     }
 
     /**
@@ -200,6 +200,10 @@ public class Poker {
      */
     public Game getGame() {
         return _game;
+    }
+
+    public List getPlayers(){
+        return _players;
     }
 
     private class Deck {
