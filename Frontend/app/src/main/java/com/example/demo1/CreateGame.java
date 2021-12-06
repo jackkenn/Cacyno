@@ -19,6 +19,8 @@ import interfaces.ILobby;
 import interfaces.IUser;
 
 import java.util.Objects;
+import java.util.UUID;
+
 /**
  * The activity tied to the game creation screen
  */
@@ -77,7 +79,7 @@ public class CreateGame extends AppCompatActivity {
 
                     newLobby.setLobbyname(lobbyInput);
                     newLobby.setActive(true);
-                    newLobby.setId(View.generateViewId()+"");
+                    newLobby.setId(UUID.randomUUID().toString());
 
                     newLobby.newLobby(CreateGame.this, new ILobby() {
                         @Override
