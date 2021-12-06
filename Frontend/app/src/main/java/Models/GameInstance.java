@@ -71,6 +71,8 @@ public class GameInstance{
                 for (User i : user.JSONtolist(stringToJSON)) {
                     if (!user.getId().equals(i.getId()) && !checkObjects(i)) {
                         users.add(i);
+                        if(currentPlayerIndex == 2)
+                            mWebSocketClient.send("START THIS SHIT");
                         currentPlayerIndex++;
                         toView(i);
                     }

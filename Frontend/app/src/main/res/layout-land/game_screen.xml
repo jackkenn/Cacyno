@@ -83,7 +83,7 @@
             android:textSize="20dp" app:layout_constraintStart_toStartOf="@+id/player1_line"
             android:layout_marginLeft="30dp"
             android:layout_marginStart="30dp" app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="104dp" android:layout_marginEnd="30dp" android:layout_marginRight="30dp"
+            android:layout_marginBottom="107dp" android:layout_marginEnd="30dp" android:layout_marginRight="30dp"
             app:layout_constraintEnd_toEndOf="@+id/player1_line"/>
     <TextView
             android:text="waiting..."
@@ -171,14 +171,14 @@
             app:layout_constraintEnd_toEndOf="@+id/player3_line" app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="93dp"/>
     <TextView
-            android:text="waiting.."
+            android:text="waiting..."
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/player3_username"
             android:fontFamily="@font/aqua" android:textSize="18dp"
             android:textColor="@color/white"
             app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="128dp"
             app:layout_constraintStart_toStartOf="@+id/player3_line"
-            app:layout_constraintEnd_toEndOf="@+id/player3_line"/>
+            app:layout_constraintEnd_toEndOf="@+id/player3_line" app:layout_constraintHorizontal_bias="0.50"/>
     <ImageView
             android:layout_width="61dp"
             android:layout_height="76dp" app:srcCompat="@drawable/backcard" android:id="@+id/player3_card1"
@@ -247,7 +247,7 @@
             android:textSize="20dp" app:layout_constraintStart_toStartOf="@+id/player5_line"
             android:layout_marginLeft="30dp"
             android:layout_marginStart="30dp" app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="104dp" android:layout_marginEnd="30dp" android:layout_marginRight="30dp"
+            android:layout_marginBottom="107dp" android:layout_marginEnd="30dp" android:layout_marginRight="30dp"
             app:layout_constraintEnd_toEndOf="@+id/player5_line"/>
     <TextView
             android:text="waiting..."
@@ -331,7 +331,7 @@
     <TextView
             android:text="0"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/pot"
+            android:layout_height="20dp" android:id="@+id/pot"
             android:textColor="@color/white" android:fontFamily="@font/aqua"
             android:textSize="20dp" android:gravity="center_vertical" app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="16dp"
