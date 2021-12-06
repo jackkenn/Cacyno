@@ -22,5 +22,17 @@ public interface ITextViews {
 
     void Player5Money(String money);
 
+    void TableCard1(int card);
+
+    void TableCard2(int card);
+
+    void TableCard3(int card);
+
+    void TableCard4(int card);
+
+    void TableCard5(int card);
+
     void ToastComments(String msg);
+
+    void pot(int pot);
 }

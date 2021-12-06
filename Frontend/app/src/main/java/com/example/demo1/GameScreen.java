@@ -23,6 +23,7 @@ import lombok.SneakyThrows;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
 import org.json.JSONException;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.HashMap;
@@ -53,6 +54,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     private ImageView yourCard2;
     ImageIdHashMap imageIdsHashMap = new ImageIdHashMap();
     ScrollView scroll;
+    HashMap<Integer, Integer> imageIds;
 
     private GameInstance game;
 
@@ -63,7 +65,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        HashMap<Integer, Integer> ImageIds = imageIdsHashMap.getImageIds();
+        imageIds = imageIdsHashMap.getImageIds();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_screen);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
@@ -81,7 +83,6 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         sliderAmount = findViewById(R.id.slider_amount);
         yourCard1 = findViewById(R.id.yourCard_1);
         yourCard2 = findViewById(R.id.yourCard_2);
-
 
 
         //the constraint layout to add chat view
@@ -115,13 +116,13 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
                 game = new GameInstance(user, GameScreen.this);
                 return 0;
             }
+
             @Override
             public int onError() {
                 System.out.println("Failed Getting User");
                 return -1;
             }
         }, Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid(), true);
-
 
 
         backout.setOnClickListener(v -> {
@@ -140,6 +141,10 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
                     return 0;
                 }
             }, true);
+        });
+
+        raise.setOnClickListener(v -> {
+            game.send("Bet: " + sliderAmount.toString());
         });
 
 
@@ -174,7 +179,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         slider.setOnChangeListener(new Slider.OnChangeListener() {
             @Override
             public void onValueChange(Slider slider, float value) {
-                sliderAmount.setText("$" + (int)value);
+                sliderAmount.setText("$" + (int) value);
             }
         });
     }
@@ -183,7 +188,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     /**
      * this method brings everything except the chatview to the front
      */
-    private void bringToFront(){
+    private void bringToFront() {
 
         findViewById(R.id.game_background).bringToFront();
 
@@ -248,6 +253,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
 
     /**
      * connecting to chat websocket
+     *
      * @throws URISyntaxException
      * @throws JSONException
      */
@@ -255,7 +261,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         URI uri;
 
         //need to change to remote
-        uri = new URI("ws://coms-309-046.cs.iastate.edu:8080/chat/"+user.getGameId().getString("id")+"/"+user.getUsername());
+        uri = new URI("ws://coms-309-046.cs.iastate.edu:8080/chat/" + user.getGameId().getString("id") + "/" + user.getUsername());
         //uri = new URI("ws://192.168.1.2:8080/chat/1/2");
 
         mWebSocketClient = new WebSocketClient(uri) {
@@ -280,7 +286,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
                     @Override
                     public void run() {
                         //this if statement is to ensure the user doesn't receive their own message back
-                        if(!Objects.equals(username, user.getUsername())){
+                        if (!Objects.equals(username, user.getUsername())) {
 
                             View newmessage = getLayoutInflater().inflate(R.layout.chat_row, chatlayout);
                             newmessage.setId(View.generateViewId());
@@ -296,7 +302,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
                             row.setGravity(Gravity.START);
 
                             //this if statement is when users are connecting and disconnecting. So it does not show "User" for username under text
-                            if(!username.equals("User"))
+                            if (!username.equals("User"))
                                 user_message.append(username);
                             text.append(messsage);
                             //auto scroll
@@ -331,7 +337,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     @Override
     public void Player1Money(String money) {
         TextView temp = findViewById(R.id.player1_money);
-        temp.setText(money);
+        temp.setText("$" + money);
     }
 
     @Override
@@ -343,7 +349,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     @Override
     public void Player2Money(String money) {
         TextView temp = findViewById(R.id.player2_money);
-        temp.setText(money);
+        temp.setText("$" + money);
     }
 
     @Override
@@ -355,7 +361,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     @Override
     public void Player3Money(String money) {
         TextView temp = findViewById(R.id.player3_money);
-        temp.setText(money);
+        temp.setText("$" + money);
     }
 
     @Override
@@ -367,7 +373,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     @Override
     public void Player4Money(String money) {
         TextView temp = findViewById(R.id.player4_money);
-        temp.setText(money);
+        temp.setText("$" + money);
     }
 
     @Override
@@ -379,17 +385,71 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     @Override
     public void Player5Money(String money) {
         TextView temp = findViewById(R.id.player5_money);
-        temp.setText(money);
+        temp.setText("$" + money);
+    }
+
+    @Override
+    public void TableCard1(int card) {
+        ImageView temp = findViewById(R.id.middlecard_1);
+        if (card == -1) {
+            temp.setImageResource(R.drawable.backcard);
+        }
+        temp.setImageResource(imageIds.get(card));
+    }
+
+    @Override
+    public void TableCard2(int card) {
+        ImageView temp = findViewById(R.id.middlecard_2);
+        if (card == -1) {
+            temp.setImageResource(R.drawable.backcard);
+        }
+        temp.setImageResource(imageIds.get(card));
+    }
+
+    @Override
+    public void TableCard3(int card) {
+        ImageView temp = findViewById(R.id.middlecard_3);
+        if (card == -1) {
+            temp.setImageResource(R.drawable.backcard);
+        }
+        temp.setImageResource(imageIds.get(card));
+    }
+
+    @Override
+    public void TableCard4(int card) {
+        ImageView temp = findViewById(R.id.middlecard_4);
+        if (card == -1) {
+            temp.setImageResource(R.drawable.backcard);
+        }
+        temp.setImageResource(imageIds.get(card));
+    }
+
+    @Override
+    public void TableCard5(int card) {
+        ImageView temp = findViewById(R.id.middlecard_5);
+        if (card == -1) {
+            temp.setImageResource(R.drawable.backcard);
+        }
+        temp.setImageResource(imageIds.get(card));
+    }
+
+    @Override
+    public void pot(int pot) {
+        TextView temp = findViewById(R.id.pot);
+    temp.setText("$" + pot);
     }
 
     /**
      * sends user to home when websocket is closed.
+     *
      * @param msg
      */
     @Override
-    public void ToastComments(String msg){
+    public void ToastComments(String msg) {
         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
         user.resetUser();
         startActivity(new Intent(GameScreen.this, UserHome.class));
     }
+
+
 }

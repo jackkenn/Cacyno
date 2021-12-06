@@ -107,12 +107,6 @@
             android:layout_marginLeft="100dp" android:layout_marginStart="100dp"
             app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="131dp"/>
     <ImageView
-            android:layout_width="16dp"
-            android:layout_height="21dp" app:srcCompat="@drawable/moneysign" android:id="@+id/player1_moneysign"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="44dp" android:layout_marginStart="44dp"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="104dp"/>
-    <ImageView
             android:layout_width="88dp"
             android:layout_height="7dp" app:srcCompat="@drawable/line" android:id="@+id/player1_line"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -146,12 +140,6 @@
             android:layout_marginTop="152dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="176dp"
             android:layout_marginStart="176dp"/>
-    <ImageView
-            android:layout_width="16dp"
-            android:layout_height="21dp" app:srcCompat="@drawable/moneysign" android:id="@+id/player2_moneysign"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="160dp" android:layout_marginStart="160dp"
-            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="136dp"/>
     <TextView
             android:text="500"
             android:layout_width="wrap_content"
@@ -206,12 +194,6 @@
             android:layout_marginLeft="350dp" android:layout_marginStart="350dp" android:layout_marginEnd="369dp"
             android:layout_marginRight="369dp" app:layout_constraintEnd_toEndOf="parent"/>
     <ImageView
-            android:layout_width="16dp"
-            android:layout_height="21dp" app:srcCompat="@drawable/moneysign" android:id="@+id/player3_moneysign"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="336dp" android:layout_marginStart="336dp"
-            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="96dp"/>
-    <ImageView
             android:layout_width="61dp"
             android:layout_height="76dp" app:srcCompat="@drawable/backcard" android:id="@+id/player4_card2"
             app:layout_constraintTop_toTopOf="parent"
@@ -237,12 +219,6 @@
             android:layout_height="76dp" app:srcCompat="@drawable/backcard" android:id="@+id/player4_card1"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="48dp" android:layout_marginEnd="236dp" android:layout_marginRight="236dp"
-            app:layout_constraintEnd_toEndOf="parent"/>
-    <ImageView
-            android:layout_width="16dp"
-            android:layout_height="21dp" app:srcCompat="@drawable/moneysign" android:id="@+id/player4_moneysign"
-            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="132dp"
-            android:layout_marginEnd="287dp" android:layout_marginRight="287dp"
             app:layout_constraintEnd_toEndOf="parent"/>
     <TextView
             android:text="700"
@@ -285,12 +261,6 @@
             android:layout_height="76dp" app:srcCompat="@drawable/backcard" android:id="@+id/player5_card1"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="131dp" android:layout_marginEnd="108dp" android:layout_marginRight="108dp"
-            app:layout_constraintEnd_toEndOf="parent"/>
-    <ImageView
-            android:layout_width="16dp"
-            android:layout_height="21dp" app:srcCompat="@drawable/moneysign" android:id="@+id/player5_moneysign"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="104dp"
-            android:layout_marginEnd="155dp" android:layout_marginRight="155dp"
             app:layout_constraintEnd_toEndOf="parent"/>
     <ImageView
             android:layout_width="88dp"
@@ -358,9 +328,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/pot_tag"
             android:textColor="@color/white" android:fontFamily="@font/aqua"
-            android:textSize="20dp" android:layout_marginEnd="127dp" android:layout_marginRight="127dp"
+            android:textSize="20dp" android:layout_marginEnd="12dp" android:layout_marginRight="12dp"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="15dp"/>
+            android:layout_marginTop="16dp" app:layout_constraintEnd_toStartOf="@+id/pot"/>
     <TextView
             android:text="0"
             android:layout_width="wrap_content"
