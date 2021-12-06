@@ -65,21 +65,26 @@ public class PokerEndpoint {
             , @PathParam("userId") String userId) throws IOException {
         _logger.info("Entered into Open: " + userId);
         User u = getUser(userId);
-        if (u == null) //let them know
-            throw new NullPointerException();
+        if (u == null) {//let them know
+            sendErrorString(session, u, "User could not be found in repo");
+        }
+        if (u.getGame() == null) {
+            sendErrorString(session, u, "Game can not be null");
+        }
         Game g = getGame(u.getGame().getId());
         if (g == null) {
-            throw new NullPointerException();
+            sendErrorString(session, u, "Game could not be found in repo");
         }
-        u.setGame(g);
         if (!_gamesMap.containsKey(u.getGame().getId())) {
             Poker poker = new Poker(g);
-            if (!poker.addPlayer(u)) //TODO: assuming they joining to play
-                throw new NullPointerException(); //TODO: let them know it is full/better error detection
+            if (!poker.addPlayer(u)) {//TODO: assuming they joining to play
+                sendErrorString(session, u, "Failed to join game: " + poker.toString());
+            }
             _gamesMap.put(g.getId(), poker);
         } else {
-            if (!_gamesMap.get(u.getGame().getId()).addPlayer(u))
-                throw new NullPointerException(); //TODO: let them know it is full/better error detection
+            if (!_gamesMap.get(u.getGame().getId()).addPlayer(u)) { //TODO: let them know it is full/better error detection
+                sendErrorString(session, u, "Failed to join game: " + _gamesMap.get(u.getGame().getId()).toString());
+            }
         }
         _userRepo.save(u);
         if (_gameSessionMap.containsKey(u.getGame().getId())) {
@@ -90,9 +95,12 @@ public class PokerEndpoint {
             _gameSessionMap.put(u.getGame().getId(), sessionList);
         }
         Poker poker = _gamesMap.get(u.getGame().getId());
-        sendGameMessage(u.getGame().getId(), getJsonPlayers(poker)+", " +getJsonGame(poker));
-        _sessionUserMap.putIfAbsent(session, userId);
-        _userSessionMap.putIfAbsent(userId, session);
+        if (_userSessionMap.containsKey(userId)) {
+            sendErrorString(session, u, "User is already in a session: " + poker.toString());
+        }
+        sendGameMessage(u.getGame().getId(), getJsonPlayers(poker) + ", " + getJsonGame(poker));
+        _sessionUserMap.put(session, userId);
+        _userSessionMap.put(userId, session);
         sendGameMessage(g.getId(), u.getUsername() + ": Has Joined");
     }
 
@@ -143,7 +151,7 @@ public class PokerEndpoint {
         _logger.info("Entered into Message: " + _sessionUserMap.get(session) + ". Got Message: " + message);
         User u = getUser(_sessionUserMap.get(session));
         Poker p = _gamesMap.get(u.getGame().getId());
-        sendGameMessage(u.getGame().getId(), getJsonPlayers(p)+", " +getJsonGame(p));
+        sendGameMessage(u.getGame().getId(), getJsonPlayers(p) + ", " + getJsonGame(p));
         if (message.equalsIgnoreCase("initGame") && !p.initGame())
             p.initGame();
         if (p.getInitialized()) {
@@ -171,6 +179,11 @@ public class PokerEndpoint {
     @OnError
     public void onError(Session session, Throwable throwable) {
         _logger.info("Entered into Error. " + throwable.getMessage());
+        try {
+            onClose(session);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void sendGameMessage(String gameId, String message) {
@@ -219,17 +232,40 @@ public class PokerEndpoint {
         return null;
     }
 
-    private String getJsonPlayers(Poker p){
+    private String getJsonPlayers(Poker p) {
         List players = p.getPlayers();
         Gson gson = new Gson();
         String playersJson = gson.toJson(players);
         return playersJson;
     }
-    private String getJsonGame(Poker p){
+
+    private String getJsonGame(Poker p) {
         Game game = p.getGame();
         Gson gson = new Gson();
         String gameJson = gson.toJson(game);
         return gameJson;
+    }
+
+    private void sendErrorString(Session session, User u, String message) {
+        if (u == null) {
+            try {
+                session.getBasicRemote().sendText("User could not be found in repo.");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            throw new NullPointerException();
+        }
+        try {
+            Gson gson = new Gson();
+            session.getBasicRemote().sendText(message + ": \n" + gson.toJson(u));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            onClose(session);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

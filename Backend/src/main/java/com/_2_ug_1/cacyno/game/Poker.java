@@ -2,6 +2,7 @@ package com._2_ug_1.cacyno.game;
 
 import com._2_ug_1.cacyno.models.Game;
 import com._2_ug_1.cacyno.models.User;
+import com.google.gson.Gson;
 
 import java.util.*;
 
@@ -14,7 +15,7 @@ public class Poker {
     private LinkedList<User> _turnOrder;
     private int _blind = 50;
     private Deck _deck;
-    private final int _maxPlayers = 12;
+    private final int _maxPlayers = 6;
     private boolean _gameInit;
     private Game _game;
 
@@ -29,6 +30,25 @@ public class Poker {
         _turnOrder = new LinkedList<>();
         _toPlay = new LinkedList<>();
         _players = new LinkedList<>();
+    }
+
+    /**
+     * returns a list of internal objects
+     *
+     * @return poker as a string
+     */
+    public String toString() {
+        Gson gson = new Gson();
+        String poker = new String("");
+        poker += "@_players: size:" + _players.size() + "\n" + gson.toJson(_players) + ", ";
+        poker += "@_toPlay: \n" + gson.toJson(_toPlay) + ", ";
+        poker += "@_turnOrder: \n" + gson.toJson(_turnOrder) + ", ";
+        poker += "@_blind: \n" + _blind + ", ";
+        poker += "@_deck: \n" + _deck.toString() + ", ";
+        poker += "@_maxPlayers: \n" + _maxPlayers + ", ";
+        poker += "@_gameInit: \n" + _gameInit + ", ";
+        poker += "@_game: \n" + gson.toJson(_game);
+        return poker;
     }
 
     /**
@@ -202,7 +222,7 @@ public class Poker {
         return _game;
     }
 
-    public List getPlayers(){
+    public List getPlayers() {
         return _players;
     }
 
@@ -241,6 +261,10 @@ public class Poker {
                     _poker._game.setPublic_card5(_cards.remove(_rand.nextInt(_cards.size())));
                     break;
             }
+        }
+
+        public String toString() {
+            return _cards.toString();
         }
     }
 }
