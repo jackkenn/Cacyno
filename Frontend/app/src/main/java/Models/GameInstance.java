@@ -19,7 +19,7 @@ import java.util.ArrayList;
  * poker websockets.
  */
 public class GameInstance{
-
+    WebSocketClient mWebSocketClient;
     private ArrayList<User> users;
     private ITextViews views;
     private int currentPlayerIndex;
@@ -46,7 +46,7 @@ public class GameInstance{
         uri = new URI("ws://coms-309-046.cs.iastate.edu:8080/poker/"+user.getGameId().getString("id")+"/"+user.getUsername());;
         //uri = new URI("ws://192.168.1.2:8080/chat/1/2");
 
-        WebSocketClient mWebSocketClient = new WebSocketClient(uri) {
+        mWebSocketClient = new WebSocketClient(uri) {
 
 
             @Override
@@ -130,6 +130,13 @@ public class GameInstance{
                 return true;
         }
         return false;
+    }
+
+    /**
+     * called from game screen class when back button is clicked
+     */
+    public void closeWebsocket(){
+        mWebSocketClient.close();
     }
 
 }

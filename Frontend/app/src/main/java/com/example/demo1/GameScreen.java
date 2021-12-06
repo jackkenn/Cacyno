@@ -50,7 +50,6 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     ScrollView scroll;
 
     private GameInstance game;
-    private ITextViews views;
 
     int randForUsername = 0;
 
@@ -113,6 +112,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
                 @Override
                 public int onSuccess() {
                     mWebSocketClient.close();
+                    game.closeWebsocket();
                     startActivity(new Intent(GameScreen.this, UserHome.class));
                     return 0;
                 }
@@ -220,6 +220,11 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         findViewById(R.id.middlecard_5).bringToFront();
     }
 
+    /**
+     * connecting to chat websocket
+     * @throws URISyntaxException
+     * @throws JSONException
+     */
     private void connectWebSocket() throws URISyntaxException, JSONException {
         URI uri;
 
@@ -351,6 +356,10 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         temp.setText(money);
     }
 
+    /**
+     * sends user to home when websocket is closed.
+     * @param msg
+     */
     @Override
     public void ToastComments(String msg){
         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
