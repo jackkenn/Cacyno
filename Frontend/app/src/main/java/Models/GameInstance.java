@@ -75,7 +75,8 @@ public class GameInstance{
 
             @Override
             public void onClose(int errorCode, String reason, boolean remote) {
-                views.ToastComments(reason);
+                if(remote)
+                    views.ToastComments(reason);
             }
 
             @Override
