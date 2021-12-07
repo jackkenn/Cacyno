@@ -124,8 +124,8 @@ public class GameInstance{
                     String finalWinner = winner;
                     new Handler(Looper.getMainLooper()).post(() -> {
                         try {
-                            views.MyCard1( gameJSON.getInt("card1"));
-                            views.MyCard2( gameJSON.getInt("card2"));
+                            views.MyCard1( users.get(0).getCard1());
+                            views.MyCard2( users.get(0).getCard2());
                             views.TableCard1(gameJSON.getInt("public_card1"));
                             views.TableCard2(gameJSON.getInt("public_card2"));
                             views.TableCard3(gameJSON.getInt("public_card3"));
