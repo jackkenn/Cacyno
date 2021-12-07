@@ -86,11 +86,12 @@ public class GameInstance{
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
             @Override
             public void onMessage(String msg) {
-                System.out.println();
                 if (msg.startsWith("[{")){
 
                     String getPlayersOnly = msg.split("\\*\\*")[INDEX_OF_LIST_PLAYERS];
                     String gameStatus = msg.split("\\*\\*")[INDEX_OF_GAME_STATE];
+                    System.out.println(getPlayersOnly);
+                    System.out.println(gameStatus);
                     JSONArray stringToJSON = new JSONArray(getPlayersOnly);
                     JSONObject gameJSON = new JSONObject(gameStatus);
                     String winner = "";
@@ -108,8 +109,12 @@ public class GameInstance{
 
                     //finding new users to add to screen
                     for (User i : user.JSONtolist(stringToJSON)) {
+                        if(findIndexOfUserID(i.id) == 0){
+                            views.MyCard1(i.getCard1());
+                            views.MyCard2(i.getCard2());
+                            views.MyMoney(i.getCurrent_game_money());
+                        }
                         if (!user.getId().equals(i.getId()) && !checkObjects(i) && users.size() != MAX_PLAYERS) {
-
                             users.add(i);
                             i.setIndexOnScreen(users.size()-1);
                             if (users.size() == 2)
@@ -124,8 +129,6 @@ public class GameInstance{
                     String finalWinner = winner;
                     new Handler(Looper.getMainLooper()).post(() -> {
                         try {
-                            views.MyCard1( gameJSON.getInt("card1"));
-                            views.MyCard2( gameJSON.getInt("card2"));
                             views.TableCard1(gameJSON.getInt("public_card1"));
                             views.TableCard2(gameJSON.getInt("public_card2"));
                             views.TableCard3(gameJSON.getInt("public_card3"));
@@ -133,7 +136,6 @@ public class GameInstance{
                             views.TableCard5(gameJSON.getInt("public_card5"));
                             views.raiseAmount( gameJSON.getInt("highest_bet"));
                             views.pot(gameJSON.getInt("pot"));
-                            views.MyMoney(users.get(0).current_game_money);
                             views.setHighestBet(gameJSON.getInt("highest_bet"));
 
                             if(gameJSON.getInt("round") == 6) //round 6 is to present winner
