@@ -9,6 +9,21 @@
                                                    android:id="@+id/lobbyView" tools:ignore="ExtraText">
 
     <ImageView
+            android:layout_width="182dp"
+            android:layout_height="109dp" app:srcCompat="@drawable/winner" android:id="@+id/winnerImage"
+            android:background="@android:color/transparent" android:scaleType="fitCenter"
+            android:adjustViewBounds="false" android:cropToPadding="false" android:layout_marginEnd="64dp"
+            android:layout_marginRight="64dp" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="88dp"/>
+    <TextView
+            android:text="JACK"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp" android:id="@+id/winner_username"
+            app:layout_constraintStart_toStartOf="@+id/winnerImage"
+            app:layout_constraintEnd_toEndOf="@+id/winnerImage" android:textColor="@color/white"
+            android:fontFamily="@font/aqua" android:textSize="30dp" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="92dp"/>
+    <ImageView
             android:layout_width="828dp"
             android:layout_height="418dp" app:srcCompat="@drawable/game_screen" android:id="@+id/game_background"
             app:layout_constraintTop_toTopOf="parent"
