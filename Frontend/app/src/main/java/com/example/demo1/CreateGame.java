@@ -6,17 +6,21 @@ import Models.User;
 import Utilities.GameChecker;
 import Utilities.GameCreation;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import interfaces.ILobby;
 import interfaces.IUser;
 
 import java.util.Objects;
+import java.util.UUID;
+
 /**
  * The activity tied to the game creation screen
  */
@@ -26,6 +30,8 @@ public class CreateGame extends AppCompatActivity {
     private User user;
     private IUser callback;
     private GameCreation gameCreation;
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,7 +79,7 @@ public class CreateGame extends AppCompatActivity {
 
                     newLobby.setLobbyname(lobbyInput);
                     newLobby.setActive(true);
-                    newLobby.setId(getIntent().getIntExtra("nextid", 1) + "");
+                    newLobby.setId(UUID.randomUUID().toString());
 
                     newLobby.newLobby(CreateGame.this, new ILobby() {
                         @Override
