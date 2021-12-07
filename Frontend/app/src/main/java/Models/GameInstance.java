@@ -1,8 +1,11 @@
 package Models;
 
 import android.os.Build;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import androidx.annotation.RequiresApi;
+import com.example.demo1.R;
 import com.google.firebase.auth.FirebaseAuth;
 import interfaces.ITextViews;
 import lombok.SneakyThrows;
@@ -61,44 +64,47 @@ public class GameInstance{
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
             @Override
             public void onMessage(String msg) {
-                System.out.println("ASDFASDFSADFASDFASDFASDFSADFASDF\nASDFASDFSADFASDFASDFASDFSADFASDF\nASDFASDFSADFASDFASDFASDFSADFASDF\nASDFASDFSADFASDFASDFASDFSADFASDF\nASDFASDFSADFASDFASDFASDFSADFASDF\nASDFASDFSADFASDFASDFASDFSADFASDF\nASDFASDFSADFASDFASDFASDFSADFASDF\n");
-                String getPlayersOnly = msg.split("],")[0];
-                getPlayersOnly += "]";
-                String gameStatus = msg.split("],")[1];
-                JSONArray stringToJSON = new JSONArray(getPlayersOnly);
-                JSONObject gameJSON = new JSONObject(gameStatus);
+                if (msg.startsWith("[{")){
+                    String getPlayersOnly = msg.split("],")[0];
+                    getPlayersOnly += "]";
+                    String gameStatus = msg.split("],")[1];
+                    JSONArray stringToJSON = new JSONArray(getPlayersOnly);
+                    JSONObject gameJSON = new JSONObject(gameStatus);
 
-                for (User i : user.JSONtolist(stringToJSON)) {
-                    if (!user.getId().equals(i.getId()) && !checkObjects(i)) {
-                        users.add(i);
-                        if(currentPlayerIndex == 2)
-                            mWebSocketClient.send("START THIS SHIT");
-                        currentPlayerIndex++;
-                        toView(i);
+                    for (User i : user.JSONtolist(stringToJSON)) {
+                        if (!user.getId().equals(i.getId()) && !checkObjects(i) && users.size() != 6) {
+                            users.add(i);
+                            if (currentPlayerIndex == 2)
+                                mWebSocketClient.send("START THIS SHIT");
+                            currentPlayerIndex++;
+                            toView(i);
+                        }
+
                     }
-
+                    views.TableCard1(gameJSON.getInt("public_card1"));
+                    views.TableCard2(gameJSON.getInt("public_card2"));
+                    views.TableCard3(gameJSON.getInt("public_card3"));
+                    views.TableCard4(gameJSON.getInt("public_card4"));
+                    views.TableCard5(gameJSON.getInt("public_card5"));
+                    views.pot(gameJSON.getInt("pot"));
+                    views.MyMoney(users.get(0).current_game_money);
                 }
-                views.TableCard1( gameJSON.getInt("public_card1"));
-                views.TableCard2( gameJSON.getInt("public_card2"));
-                views.TableCard3( gameJSON.getInt("public_card3"));
-                views.TableCard4( gameJSON.getInt("public_card4"));
-                views.TableCard5( gameJSON.getInt("public_card5"));
-                views.pot( gameJSON.getInt("pot"));
-                views.MyMoney(users.get(0).current_game_money);
+                new Handler(Looper.getMainLooper()).post(() -> views.setVisible(currentPlayerIndex));
             }
 
             @Override
-            public void onClose(int errorCode, String reason, boolean remote) {
+            public void onClose ( int errorCode, String reason,boolean remote){
                 System.out.println("Connection closed " + uri.toString());
                 System.out.println("Connection closed " + remote + reason);
-                if(remote)
+                if (remote)
                     views.ToastComments(reason);
             }
 
             @Override
-            public void onError(Exception e) {
+            public void onError (Exception e){
                 Log.i("Websocket", "Error " + e.getMessage());
             }
+
         };
         mWebSocketClient.connect();
     }
@@ -109,30 +115,32 @@ public class GameInstance{
      * @param user the user data
      */
     private void toView(User user){
-        switch(currentPlayerIndex){
-            case 1:
-                views.Player1Username(user.getUsername());
-                views.Player1Money(String.valueOf(user.getCurrent_game_money()));
-                break;
-            case 2:
-                views.Player2Username(user.getUsername());
-                views.Player2Money(String.valueOf(user.getCurrent_game_money()));
-                break;
-            case 3:
-                views.Player3Username(user.getUsername());
-                views.Player3Money(String.valueOf(user.getCurrent_game_money()));
-                break;
-            case 4:
-                views.Player4Username(user.getUsername());
-                views.Player4Money(String.valueOf(user.getCurrent_game_money()));
-                break;
-            case 5:
-                views.Player5Username(user.getUsername());
-                views.Player5Money(String.valueOf(user.getCurrent_game_money()));
-                break;
-            default:
-                break;
-        }
+        new Handler(Looper.getMainLooper()).post(() -> {
+            switch(currentPlayerIndex){
+                case 1:
+                    views.Player1Username(user.getUsername());
+                    views.Player1Money(user.getCurrent_game_money()+"");
+                    break;
+                case 2:
+                    views.Player2Username(user.getUsername());
+                    views.Player2Money(String.valueOf(user.getCurrent_game_money()));
+                    break;
+                case 3:
+                    views.Player3Username(user.getUsername());
+                    views.Player3Money(String.valueOf(user.getCurrent_game_money()));
+                    break;
+                case 4:
+                    views.Player4Username(user.getUsername());
+                    views.Player4Money(String.valueOf(user.getCurrent_game_money()));
+                    break;
+                case 5:
+                    views.Player5Username(user.getUsername());
+                    views.Player5Money(String.valueOf(user.getCurrent_game_money()));
+                    break;
+                default:
+                    break;
+            }
+        });
     }
 
     /**

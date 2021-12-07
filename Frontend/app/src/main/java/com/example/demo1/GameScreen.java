@@ -98,7 +98,9 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         chatlayout = findViewById(R.id.linearchat);
         scroll = chatplz.findViewById(R.id.chat_scroll);
         slider.setStepSize(1);
+
         bringToFront();
+        setInvisible();
 
         user = new User();
         user.getUser(GameScreen.this, new IUser() {
@@ -182,12 +184,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
             });
 
         });
-        slider.setOnChangeListener(new Slider.OnChangeListener() {
-            @Override
-            public void onValueChange(Slider slider, float value) {
-                sliderAmount.setText("$" + (int) value);
-            }
-        });
+        slider.setOnChangeListener((slider, value) -> sliderAmount.setText("$" + (int) value));
     }
 
 
@@ -213,7 +210,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         findViewById(R.id.user_tag).bringToFront();
         findViewById(R.id.money_tag).bringToFront();
         findViewById(R.id.pot_tag).bringToFront();
-        //findViewById(R.id.your_greendot).bringToFront();
+        findViewById(R.id.your_greendot).bringToFront();
 
         findViewById(R.id.slider_amount).bringToFront();
 
@@ -222,35 +219,35 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         findViewById(R.id.player1_line).bringToFront();
         findViewById(R.id.player1_money).bringToFront();
         findViewById(R.id.player1_username).bringToFront();
-        //findViewById(R.id.player1_greendot).bringToFront();
+        findViewById(R.id.player1_greendot).bringToFront();
 
         findViewById(R.id.player2_card1).bringToFront();
         findViewById(R.id.player2_card2).bringToFront();
         findViewById(R.id.player2_line).bringToFront();
         findViewById(R.id.player2_money).bringToFront();
         findViewById(R.id.player2_username).bringToFront();
-        //findViewById(R.id.player2_greendot).bringToFront();
+        findViewById(R.id.player2_greendot).bringToFront();
 
         findViewById(R.id.player3_card1).bringToFront();
         findViewById(R.id.player3_card2).bringToFront();
         findViewById(R.id.player3_line).bringToFront();
         findViewById(R.id.player3_money).bringToFront();
         findViewById(R.id.player3_username).bringToFront();
-        //findViewById(R.id.player3_greendot).bringToFront();
+        findViewById(R.id.player3_greendot).bringToFront();
 
         findViewById(R.id.player4_card1).bringToFront();
         findViewById(R.id.player4_card2).bringToFront();
         findViewById(R.id.player4_line).bringToFront();
         findViewById(R.id.player4_money).bringToFront();
         findViewById(R.id.player4_username).bringToFront();
-        //findViewById(R.id.player4_greendot).bringToFront();
+        findViewById(R.id.player4_greendot).bringToFront();
 
         findViewById(R.id.player5_card1).bringToFront();
         findViewById(R.id.player5_card2).bringToFront();
         findViewById(R.id.player5_line).bringToFront();
         findViewById(R.id.player5_money).bringToFront();
         findViewById(R.id.player5_username).bringToFront();
-        //findViewById(R.id.player5_greendot).bringToFront();
+        findViewById(R.id.player5_greendot).bringToFront();
 
         findViewById(R.id.yourCard_1).bringToFront();
         findViewById(R.id.yourCard_2).bringToFront();
@@ -361,63 +358,84 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
 
     @Override
     public void Player1Username(String username) {
-        TextView temp = findViewById(R.id.player1_username);
-        temp.setText(username);
+        runOnUiThread(() -> {
+            TextView temp = findViewById(R.id.player1_username);
+            temp.setText(username);
+        });
 
     }
 
     @Override
     public void Player1Money(String money) {
-        TextView temp = findViewById(R.id.player1_money);
-        temp.setText("$" + money);
+        runOnUiThread(() -> {
+            System.out.println("money-> "+money);
+            TextView temp = findViewById(R.id.player1_money);
+            temp.setText("$" + money);
+        });
     }
 
     @Override
     public void Player2Username(String username) {
-        TextView temp = findViewById(R.id.player2_username);
-        temp.setText(username);
+        runOnUiThread(() -> {
+            TextView temp = findViewById(R.id.player2_username);
+            temp.setText(username);
+        });
     }
 
     @Override
     public void Player2Money(String money) {
-        TextView temp = findViewById(R.id.player2_money);
-        temp.setText("$" + money);
+        runOnUiThread(() -> {
+            TextView temp = findViewById(R.id.player2_money);
+            temp.setText("$" + money);
+        });
     }
 
     @Override
     public void Player3Username(String username) {
-        TextView temp = findViewById(R.id.player3_username);
-        temp.setText(username);
+        runOnUiThread(() -> {
+            TextView temp = findViewById(R.id.player3_username);
+            temp.setText(username);
+        });
     }
 
     @Override
     public void Player3Money(String money) {
-        TextView temp = findViewById(R.id.player3_money);
-        temp.setText("$" + money);
+        runOnUiThread(() -> {
+            TextView temp = findViewById(R.id.player3_money);
+            temp.setText("$" + money);
+        });
     }
 
     @Override
     public void Player4Username(String username) {
-        TextView temp = findViewById(R.id.player4_username);
-        temp.setText(username);
+        runOnUiThread(() -> {
+            TextView temp = findViewById(R.id.player4_username);
+            temp.setText(username);
+        });
     }
 
     @Override
     public void Player4Money(String money) {
-        TextView temp = findViewById(R.id.player4_money);
-        temp.setText("$" + money);
+        runOnUiThread(() -> {
+            TextView temp = findViewById(R.id.player4_money);
+            temp.setText("$" + money);
+        });
     }
 
     @Override
     public void Player5Username(String username) {
-        TextView temp = findViewById(R.id.player5_username);
-        temp.setText(username);
+        runOnUiThread(() -> {
+            TextView temp = findViewById(R.id.player5_username);
+            temp.setText(username);
+        });
     }
 
     @Override
     public void Player5Money(String money) {
-        TextView temp = findViewById(R.id.player5_money);
-        temp.setText("$" + money);
+        runOnUiThread(() -> {
+            TextView temp = findViewById(R.id.player5_money);
+            temp.setText("$" + money);
+        });
     }
 
     @Override
@@ -468,7 +486,54 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     @Override
     public void pot(int pot) {
         TextView temp = findViewById(R.id.pot);
-    temp.setText("$" + pot);
+        temp.setText("$" + pot);
+    }
+
+    @Override
+    public void setVisible(int player){
+        runOnUiThread(() -> {
+            setInvisible();
+            switch(player){
+                case 0:
+                    findViewById(R.id.your_greendot).setVisibility(View.VISIBLE);
+                    break;
+
+                case 1:
+                    findViewById(R.id.player1_greendot).setVisibility(View.VISIBLE);
+                    break;
+
+                case 2:
+                    findViewById(R.id.player2_greendot).setVisibility(View.VISIBLE);
+                    break;
+
+                case 3:
+                    findViewById(R.id.player3_greendot).setVisibility(View.VISIBLE);
+                    break;
+
+                case 4:
+                    findViewById(R.id.player4_greendot).setVisibility(View.VISIBLE);
+                    break;
+
+                case 5:
+                    findViewById(R.id.player5_greendot).setVisibility(View.VISIBLE);
+                    break;
+
+                default:
+                    break;
+            }
+        });
+    }
+
+
+    public void setInvisible(){
+        runOnUiThread(() -> {
+            findViewById(R.id.your_greendot).setVisibility(View.INVISIBLE);
+            findViewById(R.id.player1_greendot).setVisibility(View.INVISIBLE);
+            findViewById(R.id.player2_greendot).setVisibility(View.INVISIBLE);
+            findViewById(R.id.player3_greendot).setVisibility(View.INVISIBLE);
+            findViewById(R.id.player4_greendot).setVisibility(View.INVISIBLE);
+            findViewById(R.id.player5_greendot).setVisibility(View.INVISIBLE);
+        });
     }
 
     /**

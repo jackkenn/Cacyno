@@ -420,4 +420,43 @@
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="16dp"
             android:layout_marginStart="16dp" app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="74dp"/>
+    <ImageView
+            android:layout_width="20dp"
+            android:layout_height="19dp" app:srcCompat="@drawable/green_dot" android:id="@+id/player1_greendot"
+            android:scaleType="fitCenter" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="264dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="156dp" android:layout_marginStart="156dp"/>
+    <ImageView
+            android:layout_width="20dp"
+            android:layout_height="19dp" app:srcCompat="@drawable/green_dot" android:id="@+id/player2_greendot"
+            android:scaleType="fitCenter" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="152dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="272dp" android:layout_marginStart="272dp"/>
+    <ImageView
+            android:layout_width="20dp"
+            android:layout_height="19dp" app:srcCompat="@drawable/green_dot" android:id="@+id/player3_greendot"
+            android:scaleType="fitCenter" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="116dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="420dp" android:layout_marginStart="420dp"/>
+    <ImageView
+            android:layout_width="20dp"
+            android:layout_height="19dp" app:srcCompat="@drawable/green_dot" android:id="@+id/player4_greendot"
+            android:scaleType="fitCenter" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="152dp"
+            android:layout_marginEnd="170dp" android:layout_marginRight="170dp"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    <ImageView
+            android:layout_width="20dp"
+            android:layout_height="19dp" app:srcCompat="@drawable/green_dot" android:id="@+id/player5_greendot"
+            android:scaleType="fitCenter" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="260dp"
+            android:layout_marginEnd="40dp" android:layout_marginRight="40dp"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    <ImageView
+            android:layout_width="20dp"
+            android:layout_height="19dp" app:srcCompat="@drawable/green_dot" android:id="@+id/your_greendot"
+            android:scaleType="fitCenter" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="344dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="156dp"
+            android:layout_marginStart="156dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

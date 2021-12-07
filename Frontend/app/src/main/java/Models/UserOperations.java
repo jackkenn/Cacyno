@@ -35,6 +35,7 @@ public class UserOperations {
             user.setBet(Integer.parseInt(response.getString("bet")));
             user.setPosition(Integer.parseInt(response.getString("position")));
             user.setHas_played(Boolean.parseBoolean(response.getString("hasPlayed")));
+            user.setAllIn(Boolean.parseBoolean(response.getString("allIn")));
         }catch (JSONException e){
             Log.e("ERROR: JSON->USER", e.toString());
         }
@@ -60,6 +61,7 @@ public class UserOperations {
             postData.put("folded", user.getFolded());
             postData.put("isSpecatator", user.getIs_spectator());
             postData.put("position", user.getPosition());
+            postData.put("allIn", user.get_allin());
             if(InGame) {
                     postData.put("game", user.getGameId());
             }
@@ -79,5 +81,6 @@ public class UserOperations {
         user.setCard1(0);
         user.setCard2(0);
         user.setBet(0);
+        user.setAllIn(false);
     }
 }

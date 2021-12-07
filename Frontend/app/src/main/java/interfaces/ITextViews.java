@@ -41,4 +41,6 @@ public interface ITextViews {
     void ToastComments(String msg);
 
     void pot(int pot);
+
+    void setVisible(int player);
 }
