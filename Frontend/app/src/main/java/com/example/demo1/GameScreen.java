@@ -559,22 +559,22 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         for(Integer i : indicesOfCurrentPlayers){
             switch(i){
                 case 0:
-                    ((ImageView) findViewById(R.id.your_greendot)).setVisibility(View.VISIBLE);
+                    ((ImageView) findViewById(R.id.your_greendot)).setImageResource(R.drawable.white_dot);
                     break;
                 case 1:
-                    ((ImageView) findViewById(R.id.player1_greendot)).setVisibility(View.VISIBLE);
+                    ((ImageView) findViewById(R.id.player1_greendot)).setImageResource(R.drawable.white_dot);
                     break;
                 case 2:
-                    ((ImageView) findViewById(R.id.player2_greendot)).setVisibility(View.VISIBLE);
+                    ((ImageView) findViewById(R.id.player2_greendot)).setImageResource(R.drawable.white_dot);
                     break;
                 case 3:
-                    ((ImageView) findViewById(R.id.player3_greendot)).setVisibility(View.VISIBLE);
+                    ((ImageView) findViewById(R.id.player3_greendot)).setImageResource(R.drawable.white_dot);
                     break;
                 case 4:
-                    ((ImageView) findViewById(R.id.player4_greendot)).setVisibility(View.VISIBLE);
+                    ((ImageView) findViewById(R.id.player4_greendot)).setImageResource(R.drawable.white_dot);
                     break;
                 case 5:
-                    ((ImageView) findViewById(R.id.player5_greendot)).setVisibility(View.VISIBLE);
+                    ((ImageView) findViewById(R.id.player5_greendot)).setImageResource(R.drawable.white_dot);
                     break;
                 default:
 

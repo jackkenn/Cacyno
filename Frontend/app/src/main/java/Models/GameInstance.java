@@ -122,7 +122,7 @@ public class GameInstance{
                 }
 
                 //set players to white dot
-                views.setWhite(indiciesOfCurrentPlayers);
+                new Handler(Looper.getMainLooper()).post(() -> views.setWhite(indiciesOfCurrentPlayers));
 
                 //set player green
                 new Handler(Looper.getMainLooper()).post(() -> views.setGreen(currentPlayerIndex));
