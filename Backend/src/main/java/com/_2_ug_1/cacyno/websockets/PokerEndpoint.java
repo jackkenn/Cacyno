@@ -105,7 +105,8 @@ public class PokerEndpoint {
         if (_userSessionMap.containsKey(userId)) {
             sendErrorString(session, u, "User is already in a session: " + poker.toString());
         }
-        sendGameMessage(u.getGame().getId(), getJsonPlayers(poker) + "**" + getJsonGame(poker));
+        String next = poker.getToPlayNextId();
+        sendGameMessage(u.getGame().getId(), getJsonPlayers(poker) + "**" + getJsonGame(poker) + "**" + next);
         _sessionUserMap.put(session, userId);
         _userSessionMap.put(userId, session);
     }
