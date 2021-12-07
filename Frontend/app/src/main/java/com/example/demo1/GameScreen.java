@@ -24,7 +24,6 @@ import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
 import org.json.JSONException;
 
-import java.lang.reflect.Array;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -42,6 +41,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     private ImageButton chat;
     private ImageButton raise;
     private ImageButton fold;
+    private ImageButton call;
     private ImageButton check;
     private Slider slider;
 
@@ -81,6 +81,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         chat = findViewById(R.id.chat_but);
         raise = findViewById(R.id.raise);
         fold = findViewById(R.id.fold);
+        call = findViewById(R.id.call);
         check = findViewById(R.id.check);
         pot = findViewById(R.id.pot);
         slider = findViewById(R.id.slider);
@@ -151,7 +152,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
             game.send("Bet: " + sliderAmount.toString());
         });
 
-        check.setOnClickListener(v -> {
+        call.setOnClickListener(v -> {
             if (bet == highest_bet) {
                 game.send("Bet: 0");
             } else {
@@ -206,6 +207,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         chat.bringToFront();
         backout.bringToFront();
         check.bringToFront();
+        call.bringToFront();
         fold.bringToFront();
         raise.bringToFront();
         username.bringToFront();

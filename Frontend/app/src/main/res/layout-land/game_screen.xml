@@ -90,6 +90,13 @@
             android:layout_marginEnd="225dp" android:layout_marginRight="225dp"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="5dp"/>
+    <ImageButton
+            android:layout_width="109dp"
+            android:layout_height="46dp" app:srcCompat="@drawable/call" android:id="@+id/call"
+            android:background="@android:color/transparent" android:scaleType="fitCenter"
+            android:layout_marginEnd="225dp" android:layout_marginRight="225dp"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="5dp"/>
     <TextView
             android:text="user."
             android:layout_width="wrap_content"
