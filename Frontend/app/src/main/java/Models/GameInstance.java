@@ -87,14 +87,21 @@ public class GameInstance{
             @Override
             public void onMessage(String msg) {
                 if (msg.startsWith("[{")){
+
                     String getPlayersOnly = msg.split("\\*\\*")[0];
                     String gameStatus = msg.split("\\*\\*")[1];
                     JSONArray stringToJSON = new JSONArray(getPlayersOnly);
                     JSONObject gameJSON = new JSONObject(gameStatus);
-
                     String winner = "";
-                    if(msg.split("\\*\\*").length == 3){
-                       winner = msg.split("\\*\\*")[2];
+                    /**
+                     * format that will be sent during game
+                     *              <listOfPlayers>**<gameState>**userID
+                     *
+                     * format that will be sent when game is over
+                     *              <listOfPlayers>**<gameState>**userID**GameWinner
+                     */
+                    if(msg.split("\\*\\*").length == 4){
+                       winner = msg.split("\\*\\*")[3];
                     }
 
 
@@ -157,7 +164,8 @@ public class GameInstance{
                 new Handler(Looper.getMainLooper()).post(() -> views.setWhite(indiciesOfCurrentPlayers));
 
                 //set player green
-                new Handler(Looper.getMainLooper()).post(() -> views.setGreen(currentPlayerIndex));
+                String userID = msg.split("\\*\\*")[2];
+                new Handler(Looper.getMainLooper()).post(() -> views.setGreen(findIndexOfUserID(userID)));
 
                 //find players who folded and set their dot to grey
                 for(int i = 0; i < users.size(); i++){
@@ -292,6 +300,19 @@ public class GameInstance{
                 return true;
         }
         return false;
+    }
+
+    /**
+     * finds the matching userID in the list of current players
+     * @param userID the ID to match with
+     * @return the index of the User On screen
+     */
+    private int findIndexOfUserID(String userID){
+        for(User i : users){
+            if(i.getId().equals(userID))
+                return i.getIndexOnScreen();
+        }
+        return -1;
     }
 
     public void send(String message) {
