@@ -520,9 +520,6 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     @Override
     public void TableCard1(int card) {
         ImageView temp = findViewById(R.id.middlecard_1);
-        if (card == -1) {
-            temp.setImageResource(R.drawable.backcard);
-        }
         temp.setImageResource(imageIds.get(card));
     }
 

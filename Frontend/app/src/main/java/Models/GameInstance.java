@@ -90,8 +90,6 @@ public class GameInstance{
 
                     String getPlayersOnly = msg.split("\\*\\*")[INDEX_OF_LIST_PLAYERS];
                     String gameStatus = msg.split("\\*\\*")[INDEX_OF_GAME_STATE];
-                    System.out.println(getPlayersOnly);
-                    System.out.println(gameStatus);
                     JSONArray stringToJSON = new JSONArray(getPlayersOnly);
                     JSONObject gameJSON = new JSONObject(gameStatus);
                     String winner = "";
