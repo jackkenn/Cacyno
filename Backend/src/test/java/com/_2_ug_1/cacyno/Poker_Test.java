@@ -83,7 +83,7 @@ public class Poker_Test {
             oldCards += u.getCard1();
             oldCards += u.getCard2();
         }
-        for (int i = 0; i < 500; i+=100) {
+        for (int i = 0; i < 500; i += 100) {
             for (int j = 0; j < _users.size(); j++) {
                 for (int k = 0; k < _users.size(); k++) {
                     User u = _users.get(k);
@@ -99,8 +99,10 @@ public class Poker_Test {
                     assertEquals(_baseUser.getCurrent_game_money() - (i + 100) - blind
                             , u.getCurrent_game_money()); //blind
                 } else if (j == _users.size() - 1) {
-                    assertEquals(_baseUser.getCurrent_game_money() - (i + 100) - blind * 2
-                            , u.getCurrent_game_money()); //blind
+                    if (u.getCurrent_game_money() != 12550) { //chance they win
+                        assertEquals(_baseUser.getCurrent_game_money() - (i + 100) - blind * 2
+                                , u.getCurrent_game_money()); //blind
+                    }
                 } else {
                     assertEquals(_baseUser.getCurrent_game_money() - (i + 100), u.getCurrent_game_money());
                 }
@@ -216,23 +218,22 @@ public class Poker_Test {
     private void test_folded(List<List<Integer>> toFold) { //list of { { whoFolds, round } , ... }
         Poker_Test();
         int numFolded = 0;
-        boolean endOfGame = false;
+        boolean firstRound = true;
+        boolean endGame = false;
         int prevGamePot = 0;
         List<Integer> playerBets = new ArrayList<>();
         int size = _users.size();
         for (int i = 0; i < _users.size(); i++) {
-            if(i == _users.size()-2){
+            if (i == _users.size() - 2) {
                 playerBets.add(_baseUser.getCurrent_game_money() - blind);
-            }
-            else if(i == _users.size()-1){
+            } else if (i == _users.size() - 1) {
                 playerBets.add(_baseUser.getCurrent_game_money() - blind * 2);
-            }
-            else{
+            } else {
                 playerBets.add(_baseUser.getCurrent_game_money());
             }
         }
         for (int i = 0; i < 5 && numFolded < _users.size() - 1; i++) {
-            for (int j = 0; j < _users.size() && numFolded < _users.size() - 1; j++) {
+            for (int j = 0; j < _users.size() && numFolded < _users.size() - 1 && !endGame; j++) {
                 int round = i;
                 int user = j;
                 List<List<Integer>> folded = toFold.stream().filter(x -> {
@@ -243,11 +244,14 @@ public class Poker_Test {
                         return x.get(1) == round;
                     })) {
                         User u = _users.get(j);
-                        assertTrue(_sut.bet(u, -1), "Poker: " + _sut.toString());
-
-                        //assertTrue(_sut.bet(u,100));
-
+                        assertTrue(_sut.bet(u, -1), "Poker: \n" + _sut.toString());
                         numFolded++;
+                        if (_game.getRound() == 0 && (!firstRound || numFolded < _users.size() - 1)) {
+                            assertEquals(playerBets.get(j), u.getCurrent_game_money(), 100 + prevGamePot);
+                            endGame = true;
+                        } else {
+                            assertEquals(playerBets.get(j), u.getCurrent_game_money(), "Poker: \n" + _sut.toString());
+                        }
                     }
                 } else {
                     for (int k = 0; k < _users.size(); k++) {
@@ -261,27 +265,18 @@ public class Poker_Test {
                     User u = _users.get(j);
                     assertTrue(_sut.bet(u, 100));
                     playerBets.set(j, playerBets.get(j) - 100);
-                    prevGamePot += 100;
-                    if(_game.getRound() == 4){
-                        endOfGame = true;
-                    }
-                    if(i == 4 && j ==3){
-                        int temp = 0;
-                    }
-                    if(playerBets.get(j) != u.getCurrent_game_money() && endOfGame){
-                        int tmp = 0;
-                    }
-
-
-
-                    if (_game.getRound() == 0 && endOfGame){
-                        assertEquals(playerBets.get(j) + prevGamePot, u.getCurrent_game_money());
-                    }
-                    else{
+                    if (_game.getRound() == 0 && (!firstRound || numFolded < _users.size() - 1)) {
+                        assertEquals(playerBets.get(j), u.getCurrent_game_money(), 100 + prevGamePot);
+                        endGame = true;
+                    } else {
+                        prevGamePot += 100;
                         assertEquals(playerBets.get(j), u.getCurrent_game_money());
                     }
                 }
                 prevGamePot = _game.getPot();
+                if (_game.getRound() > 0) {
+                    firstRound = false;
+                }
             }
             if (i < 4 && numFolded < _users.size() - 1) {
                 int sumOfBets = 0;
@@ -289,10 +284,10 @@ public class Poker_Test {
                     sumOfBets += num;
                 }
                 assertEquals(_baseUser.getCurrent_game_money() * _users.size() - sumOfBets, _game.getPot());
-                assertEquals(i + 1, _game.getRound());
+                assertEquals(endGame ? 0 : i + 1, _game.getRound());
             }
         }
-        assertEquals(blind + (blind * 2), _game.getPot());
+        assertEquals(blind + (blind * 2), _game.getPot(), _sut.toString());
         assertEquals(0, _game.getRound());
         assertTrue(_sut.bet(_users.get(1), 100)); //new leader
     }
