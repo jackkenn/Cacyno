@@ -40,7 +40,7 @@ public class Poker_Test {
             User user = new User();
             user.setId(Integer.toString(_users.size()));
             user.setGame(_game);
-            user.setCurrent_game_money(1000);
+            user.setCurrent_game_money(10000);
             user.setCard1(-1);
             user.setCard2(-1);
             if (i < 6) {
@@ -89,12 +89,12 @@ public class Poker_Test {
                     User u = _users.get(k);
                     if (j != k) { //not turn to play
                         int beforeBet = u.getCurrent_game_money();
-                        assertFalse(_sut.bet(u, 1));
+                        assertFalse(_sut.bet(u, 100));
                         assertEquals(beforeBet, u.getCurrent_game_money());
                     }
                 }
                 User u = _users.get(j);
-                assertTrue(_sut.bet(u, 1));
+                assertTrue(_sut.bet(u, 100));
                 if (j == _users.size() - 2) {
                     assertEquals(_baseUser.getCurrent_game_money() - (i + 1) - blind
                             , u.getCurrent_game_money()); //blind
@@ -271,6 +271,6 @@ public class Poker_Test {
         }
         assertEquals(blind + (blind * 2), _game.getPot());
         assertEquals(0, _game.getRound());
-        assertTrue(_sut.bet(_users.get(1), 1)); //new leader
+        assertTrue(_sut.bet(_users.get(1), 100)); //new leader
     }
 }

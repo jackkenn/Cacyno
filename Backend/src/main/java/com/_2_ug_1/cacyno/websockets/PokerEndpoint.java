@@ -79,11 +79,11 @@ public class PokerEndpoint {
         if (!_gamesMap.containsKey(u.getGame().getId())) {
             Poker poker = new Poker(g);
             if (!poker.addPlayer(u)) //TODO: assuming they joining to play
-                sendUserMessage(u.getId(), u.getUsername() + ": Cannot join due to maximum spots already filled"); //TODO: let them know it is full/better error detection //done?
+                sendUserMessage(u.getId(), u.getUsername() + ": cannot join due to maximum spots already filled"); //TODO: let them know it is full/better error detection //done?
             _gamesMap.put(g.getId(), poker);
         } else {
             if (!_gamesMap.get(u.getGame().getId()).addPlayer(u))
-                sendUserMessage(u.getId(), u.getUsername() + ": Cannot join due to maximum spots already filled"); //TODO: let them know it is full/better error detection //done?
+                sendUserMessage(u.getId(), u.getUsername() + ": cannot join due to maximum spots already filled"); //TODO: let them know it is full/better error detection //done?
         }
         _userRepo.save(u);
         if (_gameSessionMap.containsKey(u.getGame().getId())) {
@@ -93,9 +93,10 @@ public class PokerEndpoint {
             sessionList.add(session);
             _gameSessionMap.put(u.getGame().getId(), sessionList);
         }
+        Poker poker = _gamesMap.get(u.getGame().getId());
+        sendGameMessage(u.getGame().getId(), getJsonPlayers(poker) + ", " + getJsonGame(poker));
         _sessionUserMap.putIfAbsent(session, userId);
         _userSessionMap.putIfAbsent(userId, session);
-        sendGameMessage(g.getId(), u.getUsername() + ": Has Joined");
     }
 
     /*
@@ -115,7 +116,7 @@ public class PokerEndpoint {
             return;
         User toRemove = getUser(_sessionUserMap.get(session));
         Poker p = _gamesMap.get(toRemove.getGame().getId());
-        if(p.TooPoor().contains(toRemove)){
+        if (p.TooPoor().contains(toRemove)) {
             sendUserMessage(toRemove.getId(), toRemove.getUsername() + "Has Been Kicked Due To Insufficient Funds");
         }
         _userSessionMap.remove(_sessionUserMap.get(session));
@@ -149,7 +150,7 @@ public class PokerEndpoint {
         _logger.info("Entered into Message: " + _sessionUserMap.get(session) + ". Got Message: " + message);
         User u = getUser(_sessionUserMap.get(session));
         Poker p = _gamesMap.get(u.getGame().getId());
-        sendGameMessage(u.getGame().getId(), getJsonPlayers(p)+", " +getJsonGame(p));
+        sendGameMessage(u.getGame().getId(), getJsonPlayers(p) + ", " + getJsonGame(p));
         if (message.equalsIgnoreCase("initGame") && !p.initGame())
             p.initGame();
         if (p.getInitialized()) {
@@ -235,14 +236,15 @@ public class PokerEndpoint {
         return null;
     }
 
-    private String getJsonPlayers(Poker p){
+    private String getJsonPlayers(Poker p) {
         List players = p.getPlayers();
         Gson gson = new Gson();
         String playersJson = gson.toJson(players);
 
         return playersJson;
     }
-    private String getJsonGame(Poker p){
+
+    private String getJsonGame(Poker p) {
         Game game = p.getGame();
         Gson gson = new Gson();
         String gameJson = gson.toJson(game);
