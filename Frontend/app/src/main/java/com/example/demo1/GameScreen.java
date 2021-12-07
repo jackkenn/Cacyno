@@ -24,7 +24,6 @@ import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
 import org.json.JSONException;
 
-import java.lang.reflect.Array;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -115,7 +114,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
                 slider.setValueFrom(0);
                 slider.setValueTo(user.getCurrent_game_money());
                 connectWebSocket();
-                game = new GameInstance(user, GameScreen.this);
+                game = new GameInstance(user, GameScreen.this, false);
                 return 0;
             }
 

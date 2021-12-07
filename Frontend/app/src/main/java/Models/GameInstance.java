@@ -17,6 +17,7 @@ import org.json.JSONObject;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * Mainly this class is to help keep game screen organized and connect to the
@@ -37,8 +38,9 @@ public class GameInstance{
      * @throws URISyntaxException
      * @throws JSONException
      */
-    public GameInstance(User user, ITextViews views) throws URISyntaxException, JSONException {
-        connectWebSocket(user);
+    public GameInstance(User user, ITextViews views, boolean testing) throws URISyntaxException, JSONException {
+        if(!testing)
+            connectWebSocket(user);
         users = new ArrayList<>();
         users.add(user);
 
@@ -49,15 +51,30 @@ public class GameInstance{
         indiciesOfCurrentPlayers = new ArrayList<>();
     }
 
+    public ArrayList<User> getuserList(){
+        return users;
+    }
+
+    public ArrayList<Integer> getBothList(int i){
+        if(i == 0)
+            return indiciesOfFolded;
+        else
+            return indiciesOfCurrentPlayers;
+    }
+
     private void connectWebSocket(User user) throws URISyntaxException, JSONException {
-        URI uri;
+        URI uri = null;
 
         //need to change to remote
-        uri = new URI("ws://coms-309-046.cs.iastate.edu:8080/poker/" + FirebaseAuth.getInstance().getUid());
+        try {
+            uri = new URI("ws://coms-309-046.cs.iastate.edu:8080/poker/" + FirebaseAuth.getInstance().getUid());
+        }catch (ExceptionInInitializerError e){
+            System.out.println("no user");
+        }
 //        uri = new URI("ws://coms-309-046.cs.iastate.edu:8080/poker/1");
         //uri = new URI("ws://192.168.1.2:8080/chat/1/2");
 
-        mWebSocketClient = new WebSocketClient(uri) {
+        mWebSocketClient = new WebSocketClient(Objects.requireNonNull(uri)) {
 
 
             @Override
