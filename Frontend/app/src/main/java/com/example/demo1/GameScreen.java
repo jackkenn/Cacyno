@@ -41,6 +41,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     private ImageButton chat;
     private ImageButton raise;
     private ImageButton fold;
+    private ImageButton call;
     private ImageButton check;
     private Slider slider;
 
@@ -56,6 +57,8 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     ImageIdHashMap imageIdsHashMap = new ImageIdHashMap();
     ScrollView scroll;
     HashMap<Integer, Integer> imageIds;
+    int highest_bet;
+    int bet;
 
     private GameInstance game;
 
@@ -78,6 +81,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         chat = findViewById(R.id.chat_but);
         raise = findViewById(R.id.raise);
         fold = findViewById(R.id.fold);
+        call = findViewById(R.id.call);
         check = findViewById(R.id.check);
         pot = findViewById(R.id.pot);
         slider = findViewById(R.id.slider);
@@ -99,6 +103,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         chatlayout = findViewById(R.id.linearchat);
         scroll = chatplz.findViewById(R.id.chat_scroll);
         slider.setStepSize(1);
+        slider.setValueFrom(0);
 
         bringToFront();
         setIdle();
@@ -145,15 +150,19 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         });
 
         raise.setOnClickListener(v -> {
-            game.send(sliderAmount.toString());
+            game.send("Bet: " + sliderAmount.toString());
         });
 
-        check.setOnClickListener(v -> {
-            game.send("0");
+        call.setOnClickListener(v -> {
+            if (bet == highest_bet) {
+                game.send("Bet: 0");
+            } else {
+                game.send("Bet: " + (highest_bet-bet));
+            }
         });
 
         fold.setOnClickListener(v -> {
-            game.send("-1");
+            game.send("Bet: -1");
         });
 
 
@@ -199,6 +208,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         chat.bringToFront();
         backout.bringToFront();
         check.bringToFront();
+        call.bringToFront();
         fold.bringToFront();
         raise.bringToFront();
         username.bringToFront();
@@ -212,6 +222,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         findViewById(R.id.money_tag).bringToFront();
         findViewById(R.id.pot_tag).bringToFront();
         findViewById(R.id.your_greendot).bringToFront();
+        findViewById(R.id.your_bet).bringToFront();
 
         findViewById(R.id.slider_amount).bringToFront();
 
@@ -221,6 +232,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         findViewById(R.id.player1_money).bringToFront();
         findViewById(R.id.player1_username).bringToFront();
         findViewById(R.id.player1_greendot).bringToFront();
+        findViewById(R.id.player1_bet).bringToFront();
 
         findViewById(R.id.player2_card1).bringToFront();
         findViewById(R.id.player2_card2).bringToFront();
@@ -228,6 +240,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         findViewById(R.id.player2_money).bringToFront();
         findViewById(R.id.player2_username).bringToFront();
         findViewById(R.id.player2_greendot).bringToFront();
+        findViewById(R.id.player2_bet).bringToFront();
 
         findViewById(R.id.player3_card1).bringToFront();
         findViewById(R.id.player3_card2).bringToFront();
@@ -235,6 +248,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         findViewById(R.id.player3_money).bringToFront();
         findViewById(R.id.player3_username).bringToFront();
         findViewById(R.id.player3_greendot).bringToFront();
+        findViewById(R.id.player3_bet).bringToFront();
 
         findViewById(R.id.player4_card1).bringToFront();
         findViewById(R.id.player4_card2).bringToFront();
@@ -242,6 +256,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         findViewById(R.id.player4_money).bringToFront();
         findViewById(R.id.player4_username).bringToFront();
         findViewById(R.id.player4_greendot).bringToFront();
+        findViewById(R.id.player4_bet).bringToFront();
 
         findViewById(R.id.player5_card1).bringToFront();
         findViewById(R.id.player5_card2).bringToFront();
@@ -249,6 +264,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         findViewById(R.id.player5_money).bringToFront();
         findViewById(R.id.player5_username).bringToFront();
         findViewById(R.id.player5_greendot).bringToFront();
+        findViewById(R.id.player5_bet).bringToFront();
 
         findViewById(R.id.yourCard_1).bringToFront();
         findViewById(R.id.yourCard_2).bringToFront();
@@ -338,8 +354,6 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     }
 
 
-
-
     @Override
     public void MyMoney(int money) {
         ingame_money.setText("$" + money);
@@ -355,6 +369,12 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     public void MyCard2(int card) {
         ImageView temp = findViewById(R.id.yourCard_2);
         temp.setImageResource(imageIds.get(card));
+    }
+
+    @Override
+    public void MyBet(int bet) {
+        TextView temp = findViewById(R.id.your_bet);
+        temp.setText("$" + bet);
     }
 
     @Override
@@ -381,6 +401,12 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     }
 
     @Override
+    public void Player1Bet(int bet) {
+        TextView temp = findViewById(R.id.player1_bet);
+        temp.setText("$" + bet);
+    }
+
+    @Override
     public void Player2Username(String username, boolean removeDot) {
         runOnUiThread(() -> {
             ((ImageView) findViewById(R.id.player2_greendot)).setVisibility(View.VISIBLE);
@@ -398,6 +424,12 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
             TextView temp = findViewById(R.id.player2_money);
             temp.setText(money);
         });
+    }
+
+    @Override
+    public void Player2Bet(int bet) {
+        TextView temp = findViewById(R.id.player2_bet);
+        temp.setText("$" + bet);
     }
 
     @Override
@@ -421,6 +453,12 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     }
 
     @Override
+    public void Player3Bet(int bet) {
+        TextView temp = findViewById(R.id.player3_bet);
+        temp.setText("$" + bet);
+    }
+
+    @Override
     public void Player4Username(String username, boolean removeDot) {
         runOnUiThread(() -> {
             ((ImageView) findViewById(R.id.player4_greendot)).setVisibility(View.VISIBLE);
@@ -441,6 +479,12 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     }
 
     @Override
+    public void Player4Bet(int bet) {
+        TextView temp = findViewById(R.id.player4_bet);
+        temp.setText("$" + bet);
+    }
+
+    @Override
     public void Player5Username(String username, boolean removeDot) {
         runOnUiThread(() -> {
             ((ImageView) findViewById(R.id.player5_greendot)).setVisibility(View.VISIBLE);
@@ -458,6 +502,12 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
             TextView temp = findViewById(R.id.player5_money);
             temp.setText(money);
         });
+    }
+
+    @Override
+    public void Player5Bet(int bet) {
+        TextView temp = findViewById(R.id.player5_bet);
+        temp.setText("$" + bet);
     }
 
     @Override
@@ -639,6 +689,26 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
             ((ImageView) findViewById(R.id.player5_greendot)).setVisibility(View.INVISIBLE);
 
         });
+    }
+
+    @Override
+    public void raiseAmount(int highest_bet) {
+        slider.setValueFrom(highest_bet * 2);
+    }
+
+    @Override
+    public void setHighestBet(int highest_bet) {
+        this.highest_bet = highest_bet;
+    }
+
+    @Override
+    public void setBet(int bet) {
+        this.bet = bet;
+        if(bet==highest_bet) {
+            check.setImageResource(R.drawable.call);
+        } else {
+            check.setImageResource(R.drawable.check);
+        }
     }
 
     /**

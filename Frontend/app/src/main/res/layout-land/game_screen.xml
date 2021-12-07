@@ -16,6 +16,51 @@
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
     />
+    <TextView
+            android:text="$0"
+            android:layout_width="49dp"
+            android:layout_height="10dp" android:id="@+id/player4_bet"
+            android:fontFamily="@font/aqua" android:textColor="@color/white"
+            android:textSize="10dp"
+            android:layout_marginTop="6dp" app:layout_constraintTop_toBottomOf="@+id/player4_username"
+            app:layout_constraintEnd_toStartOf="@+id/player5_card1" android:layout_marginEnd="40dp"
+            android:layout_marginRight="40dp"/>
+    <TextView
+            android:text="$0"
+            android:layout_width="49dp"
+            android:layout_height="10dp" android:id="@+id/player1_bet"
+            android:fontFamily="@font/aqua" android:textColor="@color/white"
+            android:textSize="10dp"
+            android:layout_marginLeft="16dp" android:layout_marginStart="16dp"
+            app:layout_constraintStart_toEndOf="@+id/player1_card2"
+            android:layout_marginTop="23dp" app:layout_constraintTop_toBottomOf="@+id/player2_username"/>
+    <TextView
+            android:text="$0"
+            android:layout_width="49dp"
+            android:layout_height="10dp" android:id="@+id/your_bet"
+            android:fontFamily="@font/aqua" android:textColor="@color/white"
+            android:textSize="10dp"
+            android:layout_marginTop="18dp" app:layout_constraintTop_toBottomOf="@+id/player1_username"
+            app:layout_constraintEnd_toStartOf="@+id/yourCard_1" android:layout_marginEnd="9dp"
+            android:layout_marginRight="9dp"/>
+    <TextView
+            android:text="$0"
+            android:layout_width="49dp"
+            android:layout_height="10dp" android:id="@+id/player3_bet"
+            android:fontFamily="@font/aqua" android:textColor="@color/white"
+            android:textSize="10dp"
+            android:layout_marginTop="11dp" app:layout_constraintTop_toBottomOf="@+id/player3_username"
+            app:layout_constraintEnd_toStartOf="@+id/player4_username" android:layout_marginEnd="83dp"
+            android:layout_marginRight="83dp"/>
+    <TextView
+            android:text="$0"
+            android:layout_width="49dp"
+            android:layout_height="10dp" android:id="@+id/player5_bet"
+            android:fontFamily="@font/aqua" android:textColor="@color/white"
+            android:textSize="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/player5_card1"
+            android:layout_marginEnd="7dp" android:layout_marginRight="7dp" android:layout_marginBottom="35dp"
+            app:layout_constraintBottom_toTopOf="@+id/slider_amount"/>
     <ImageButton
             android:layout_width="69dp"
             android:layout_height="46dp" app:srcCompat="@drawable/backarrow_but" android:id="@+id/back_from_game"
@@ -41,6 +86,13 @@
     <ImageButton
             android:layout_width="109dp"
             android:layout_height="46dp" app:srcCompat="@drawable/check" android:id="@+id/check"
+            android:background="@android:color/transparent" android:scaleType="fitCenter"
+            android:layout_marginEnd="225dp" android:layout_marginRight="225dp"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="5dp"/>
+    <ImageButton
+            android:layout_width="109dp"
+            android:layout_height="46dp" app:srcCompat="@drawable/call" android:id="@+id/call"
             android:background="@android:color/transparent" android:scaleType="fitCenter"
             android:layout_marginEnd="225dp" android:layout_marginRight="225dp"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
@@ -316,35 +368,35 @@
             android:layout_height="75dp" app:srcCompat="@drawable/backcard" android:id="@+id/middlecard_1"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="204dp"
-            android:layout_marginEnd="504dp" android:layout_marginRight="504dp"
+            android:layout_marginEnd="489dp" android:layout_marginRight="489dp"
             app:layout_constraintEnd_toEndOf="parent"/>
     <ImageView
             android:layout_width="59dp"
             android:layout_height="75dp" app:srcCompat="@drawable/backcard" android:id="@+id/middlecard_2"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="204dp"
-            android:layout_marginEnd="448dp" android:layout_marginRight="448dp"
+            android:layout_marginEnd="433dp" android:layout_marginRight="433dp"
             app:layout_constraintEnd_toEndOf="parent"/>
     <ImageView
             android:layout_width="59dp"
             android:layout_height="75dp" app:srcCompat="@drawable/backcard" android:id="@+id/middlecard_3"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="204dp"
-            android:layout_marginEnd="392dp" android:layout_marginRight="392dp"
+            android:layout_marginEnd="377dp" android:layout_marginRight="377dp"
             app:layout_constraintEnd_toEndOf="parent"/>
     <ImageView
             android:layout_width="59dp"
             android:layout_height="75dp" app:srcCompat="@drawable/backcard" android:id="@+id/middlecard_4"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="204dp"
-            android:layout_marginEnd="336dp" android:layout_marginRight="336dp"
+            android:layout_marginEnd="321dp" android:layout_marginRight="321dp"
             app:layout_constraintEnd_toEndOf="parent"/>
     <ImageView
             android:layout_width="59dp"
             android:layout_height="75dp" app:srcCompat="@drawable/backcard" android:id="@+id/middlecard_5"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="204dp"
-            android:layout_marginEnd="280dp" android:layout_marginRight="280dp"
+            android:layout_marginEnd="265dp" android:layout_marginRight="265dp"
             app:layout_constraintEnd_toEndOf="parent"/>
     <ImageView
             android:layout_width="145dp"
@@ -375,7 +427,7 @@
             android:id="@+id/slider"
             android:layout_width="153dp"
             android:layout_height="24dp"
-            android:valueFrom="0f"
+            android:valueFrom="0"
             android:valueTo="70f"
             android:stepSize="1"
             app:thumbRadius="10dp"
@@ -401,4 +453,13 @@
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="16dp"
             android:layout_marginStart="16dp" app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="74dp"/>
+    <TextView
+            android:text="$0"
+            android:layout_width="49dp"
+            android:layout_height="10dp" android:id="@+id/player2_bet"
+            android:fontFamily="@font/aqua" android:textColor="@color/white"
+            android:textSize="10dp"
+            android:layout_marginTop="4dp" app:layout_constraintTop_toBottomOf="@+id/player2_username"
+            android:layout_marginLeft="64dp" android:layout_marginStart="64dp"
+            app:layout_constraintStart_toEndOf="@+id/player1_card2"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

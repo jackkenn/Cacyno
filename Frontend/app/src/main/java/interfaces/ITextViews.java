@@ -10,25 +10,37 @@ public interface ITextViews {
 
     void MyCard2(int card);
 
+    void MyBet(int bet);
+
     void Player1Username(String username, boolean removeDot);
 
     void Player1Money(String money);
 
     void Player2Username(String username, boolean removeDot);
+    void Player1Bet(int bet);
+
 
     void Player2Money(String money);
 
     void Player3Username(String username, boolean removeDot);
+    void Player2Bet(int bet);
+
 
     void Player3Money(String money);
 
     void Player4Username(String username, boolean removeDot);
+    void Player3Bet(int bet);
+
 
     void Player4Money(String money);
 
     void Player5Username(String username, boolean removeDot);
+    void Player4Bet(int bet);
+
 
     void Player5Money(String money);
+
+    void Player5Bet(int bet);
 
     void TableCard1(int card);
 
@@ -50,4 +62,10 @@ public interface ITextViews {
 
     void setWhite(ArrayList<Integer> indicesOfCurrentPlayers);
 
+
+    void raiseAmount(int highest_bet);
+
+    void setHighestBet(int highest_bet);
+
+    void setBet(int bet);
 }

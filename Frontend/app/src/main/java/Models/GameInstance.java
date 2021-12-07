@@ -110,13 +110,18 @@ public class GameInstance{
 
                     new Handler(Looper.getMainLooper()).post(() -> {
                         try {
+                            views.MyCard1( gameJSON.getInt("card1"));
+                            views.MyCard2( gameJSON.getInt("card2"));
                             views.TableCard1(gameJSON.getInt("public_card1"));
                             views.TableCard2(gameJSON.getInt("public_card2"));
                             views.TableCard3(gameJSON.getInt("public_card3"));
                             views.TableCard4(gameJSON.getInt("public_card4"));
                             views.TableCard5(gameJSON.getInt("public_card5"));
+                            views.raiseAmount( gameJSON.getInt("highest_bet"));
                             views.pot(gameJSON.getInt("pot"));
                             views.MyMoney(users.get(0).current_game_money);
+                            views.setHighestBet(gameJSON.getInt("highest_bet"));
+                            views.setBet(user.bet);
                         }catch (JSONException e){
                             e.printStackTrace();
                         }
@@ -175,6 +180,35 @@ public class GameInstance{
      * @param user the user data
      */
     private void toView(User user){
+        switch(currentPlayerIndex){
+            case 1:
+                views.Player1Username(user.getUsername(), false);
+                views.Player1Money("$" + user.getCurrent_game_money() + "");
+                views.Player1Bet(user.bet);
+                break;
+            case 2:
+                views.Player2Username(user.getUsername(), false);
+                views.Player2Money("$" + user.getCurrent_game_money() + "");
+                views.Player2Bet(user.bet);
+                break;
+            case 3:
+                views.Player3Username(user.getUsername(), false);
+                views.Player3Money("$" + user.getCurrent_game_money() + "");
+                views.Player3Bet(user.bet);
+                break;
+            case 4:
+                views.Player4Username(user.getUsername(), false);
+                views.Player4Money("$" + user.getCurrent_game_money() + "");
+                views.Player4Bet(user.bet);
+                break;
+            case 5:
+                views.Player5Username(user.getUsername(), false);
+                views.Player5Money("$" + user.getCurrent_game_money() + "");
+                views.Player5Bet(user.bet);
+                break;
+            default:
+                break;
+        }
         new Handler(Looper.getMainLooper()).post(() -> {
             switch(currentPlayerIndex){
                 case 1:
