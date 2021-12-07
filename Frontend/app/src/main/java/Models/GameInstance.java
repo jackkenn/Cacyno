@@ -5,7 +5,6 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import androidx.annotation.RequiresApi;
-import com.example.demo1.R;
 import com.google.firebase.auth.FirebaseAuth;
 import interfaces.ITextViews;
 import lombok.SneakyThrows;
@@ -29,6 +28,8 @@ public class GameInstance{
     private ITextViews views;
     private int currentPlayerIndex;
     private ArrayList<Integer> indiciesOfFolded;
+    private ArrayList<Integer> indiciesOfCurrentPlayers;
+
     /**
      * this constructor makes a game instance object for each player.
      * @param user the user that is using the device
@@ -40,8 +41,12 @@ public class GameInstance{
         connectWebSocket(user);
         users = new ArrayList<>();
         users.add(user);
+
+        user.setIndexOnScreen(0);
+
         this.views = views;
         indiciesOfFolded = new ArrayList<>();
+        indiciesOfCurrentPlayers = new ArrayList<>();
     }
 
     private void connectWebSocket(User user) throws URISyntaxException, JSONException {
@@ -71,15 +76,21 @@ public class GameInstance{
                     JSONArray stringToJSON = new JSONArray(getPlayersOnly);
                     JSONObject gameJSON = new JSONObject(gameStatus);
 
+                    //finding new users to add to screen
                     for (User i : user.JSONtolist(stringToJSON)) {
                         if (!user.getId().equals(i.getId()) && !checkObjects(i) && users.size() != 6) {
+
                             users.add(i);
+                            i.setIndexOnScreen(users.size()-1);
                             if (users.size() == 2)
                                 mWebSocketClient.send("START THIS SHIT");
+
                             currentPlayerIndex++;
                             toView(i);
+                            indiciesOfCurrentPlayers.add(i.getIndexOnScreen());
                         }
                     }
+
                     new Handler(Looper.getMainLooper()).post(() -> {
                         try {
                             views.TableCard1(gameJSON.getInt("public_card1"));
@@ -94,24 +105,32 @@ public class GameInstance{
                         }
                     });
                 }
+                //removes user who left from screen
                 else if(msg.contains("Has Left")){
                     String playerUsername = msg.split(":")[0];
                     for(int i = 0; i < users.size(); i++){
                         if(users.get(i).getUsername().equals(playerUsername)){
-                            removePlayer(i);
+
+                            removePlayer(users.get(i).getIndexOnScreen());
                             users.remove(i);
-                            currentPlayerIndex = i;
+                            indiciesOfCurrentPlayers.remove(i);
+                            currentPlayerIndex = users.get(i).getIndexOnScreen();
+
                         }
                     }
 
                 }
+
+                //set players to white dot
+                views.setWhite(indiciesOfCurrentPlayers);
+
                 //set player green
                 new Handler(Looper.getMainLooper()).post(() -> views.setGreen(currentPlayerIndex));
 
                 //find players who folded and set their dot to grey
                 for(int i = 0; i < users.size(); i++){
                     if(users.get(i).getFolded())
-                        indiciesOfFolded.add(i);
+                        indiciesOfFolded.add(users.get(i).getIndexOnScreen());
                 }
                 new Handler(Looper.getMainLooper()).post(() -> views.setFolded(indiciesOfFolded));
             }
@@ -142,23 +161,23 @@ public class GameInstance{
         new Handler(Looper.getMainLooper()).post(() -> {
             switch(currentPlayerIndex){
                 case 1:
-                    views.Player1Username(user.getUsername());
+                    views.Player1Username(user.getUsername(), false);
                     views.Player1Money("$"+user.getCurrent_game_money()+"");
                     break;
                 case 2:
-                    views.Player2Username(user.getUsername());
+                    views.Player2Username(user.getUsername(), false);
                     views.Player2Money("$"+user.getCurrent_game_money()+"");
                     break;
                 case 3:
-                    views.Player3Username(user.getUsername());
+                    views.Player3Username(user.getUsername(), false);
                     views.Player3Money("$"+user.getCurrent_game_money()+"");
                     break;
                 case 4:
-                    views.Player4Username(user.getUsername());
+                    views.Player4Username(user.getUsername(), false);
                     views.Player4Money("$"+user.getCurrent_game_money()+"");
                     break;
                 case 5:
-                    views.Player5Username(user.getUsername());
+                    views.Player5Username(user.getUsername(), false);
                     views.Player5Money("$"+user.getCurrent_game_money()+"");
                     break;
                 default:
@@ -168,30 +187,30 @@ public class GameInstance{
     }
 
     /**
-     * removes the player from view
+     * removes the player from view and their corresponding dot
      * @param index the index of the player
      */
     private void removePlayer(int index){
         new Handler(Looper.getMainLooper()).post(() -> {
             switch(index){
                 case 1:
-                    views.Player1Username("waiting...");
+                    views.Player1Username("waiting...", true);
                     views.Player1Money("");
                     break;
                 case 2:
-                    views.Player2Username("waiting...");
+                    views.Player2Username("waiting...", true);
                     views.Player2Money("");
                     break;
                 case 3:
-                    views.Player3Username("waiting..");
+                    views.Player3Username("waiting..", true);
                     views.Player3Money("");
                     break;
                 case 4:
-                    views.Player4Username("waiting...");
+                    views.Player4Username("waiting...", true);
                     views.Player4Money("");
                     break;
                 case 5:
-                    views.Player5Username("waiting...");
+                    views.Player5Username("waiting...", true);
                     views.Player5Money("");
                     break;
                 default:

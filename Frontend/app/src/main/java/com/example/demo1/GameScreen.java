@@ -24,6 +24,7 @@ import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
 import org.json.JSONException;
 
+import java.lang.reflect.Array;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -358,11 +359,14 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     }
 
     @Override
-    public void Player1Username(String username) {
+    public void Player1Username(String username, boolean removeDot) {
         runOnUiThread(() -> {
+            findViewById(R.id.player1_greendot).setVisibility(View.VISIBLE);
+            if(removeDot)
+                findViewById(R.id.player1_greendot).setVisibility(View.INVISIBLE);
+
             TextView temp = findViewById(R.id.player1_username);
             temp.setText(username);
-            ((ImageView) findViewById(R.id.player1_greendot)).setVisibility(View.VISIBLE);
 
         });
 
@@ -378,11 +382,14 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     }
 
     @Override
-    public void Player2Username(String username) {
+    public void Player2Username(String username, boolean removeDot) {
         runOnUiThread(() -> {
+            ((ImageView) findViewById(R.id.player2_greendot)).setVisibility(View.VISIBLE);
+            if(removeDot)
+                findViewById(R.id.player2_greendot).setVisibility(View.INVISIBLE);
+
             TextView temp = findViewById(R.id.player2_username);
             temp.setText(username);
-            ((ImageView) findViewById(R.id.player2_greendot)).setVisibility(View.VISIBLE);
         });
     }
 
@@ -395,11 +402,14 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     }
 
     @Override
-    public void Player3Username(String username) {
+    public void Player3Username(String username, boolean removeDot) {
         runOnUiThread(() -> {
+            ((ImageView) findViewById(R.id.player3_greendot)).setVisibility(View.VISIBLE);
+            if(removeDot)
+                findViewById(R.id.player3_greendot).setVisibility(View.INVISIBLE);
+
             TextView temp = findViewById(R.id.player3_username);
             temp.setText(username);
-            ((ImageView) findViewById(R.id.player3_greendot)).setVisibility(View.VISIBLE);
         });
     }
 
@@ -412,11 +422,14 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     }
 
     @Override
-    public void Player4Username(String username) {
+    public void Player4Username(String username, boolean removeDot) {
         runOnUiThread(() -> {
+            ((ImageView) findViewById(R.id.player4_greendot)).setVisibility(View.VISIBLE);
+            if(removeDot)
+                findViewById(R.id.player4_greendot).setVisibility(View.INVISIBLE);
+
             TextView temp = findViewById(R.id.player4_username);
             temp.setText(username);
-            ((ImageView) findViewById(R.id.player4_greendot)).setVisibility(View.VISIBLE);
         });
     }
 
@@ -429,11 +442,14 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     }
 
     @Override
-    public void Player5Username(String username) {
+    public void Player5Username(String username, boolean removeDot) {
         runOnUiThread(() -> {
+            ((ImageView) findViewById(R.id.player5_greendot)).setVisibility(View.VISIBLE);
+            if(removeDot)
+                findViewById(R.id.player5_greendot).setVisibility(View.INVISIBLE);
+
             TextView temp = findViewById(R.id.player5_username);
             temp.setText(username);
-            ((ImageView) findViewById(R.id.player5_greendot)).setVisibility(View.VISIBLE);
         });
     }
 
@@ -498,6 +514,10 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         });
     }
 
+    /**
+     * finds the player on screen to set green dot
+     * @param player the player will have the green dot
+     */
     @Override
     public void setGreen(int player){
         runOnUiThread(() -> {
@@ -532,6 +552,40 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         });
     }
 
+    /**
+     * resets all players dots to white before updating certain ones to folded or the person that will be the green dot
+     */
+    public void setWhite(ArrayList<Integer> indicesOfCurrentPlayers){
+        for(Integer i : indicesOfCurrentPlayers){
+            switch(i){
+                case 0:
+                    ((ImageView) findViewById(R.id.your_greendot)).setVisibility(View.VISIBLE);
+                    break;
+                case 1:
+                    ((ImageView) findViewById(R.id.player1_greendot)).setVisibility(View.VISIBLE);
+                    break;
+                case 2:
+                    ((ImageView) findViewById(R.id.player2_greendot)).setVisibility(View.VISIBLE);
+                    break;
+                case 3:
+                    ((ImageView) findViewById(R.id.player3_greendot)).setVisibility(View.VISIBLE);
+                    break;
+                case 4:
+                    ((ImageView) findViewById(R.id.player4_greendot)).setVisibility(View.VISIBLE);
+                    break;
+                case 5:
+                    ((ImageView) findViewById(R.id.player5_greendot)).setVisibility(View.VISIBLE);
+                    break;
+                default:
+
+            }
+        }
+    }
+
+    /**
+     * find all people that have folded and set their dot to grey
+     * @param indices the list of indices of where the player is display on screen
+     */
     @Override
     public void setFolded(ArrayList<Integer> indices){
         runOnUiThread(() -> {
@@ -567,7 +621,9 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         });
     }
 
-
+    /**
+     * setting all dots to white and invisible when the game is created
+     */
     public void setIdle(){
         runOnUiThread(() -> {
             ((ImageView) findViewById(R.id.your_greendot)).setImageResource(R.drawable.white_dot);

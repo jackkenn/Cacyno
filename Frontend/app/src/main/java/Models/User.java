@@ -62,6 +62,8 @@ public class User {
     int position;
     @SerializedName("allIn")
     boolean allIn;
+
+    int indexOnScreen;
     /**
      * Constructor for making a new User
      */

@@ -10,23 +10,23 @@ public interface ITextViews {
 
     void MyCard2(int card);
 
-    void Player1Username(String username);
+    void Player1Username(String username, boolean removeDot);
 
     void Player1Money(String money);
 
-    void Player2Username(String username);
+    void Player2Username(String username, boolean removeDot);
 
     void Player2Money(String money);
 
-    void Player3Username(String username);
+    void Player3Username(String username, boolean removeDot);
 
     void Player3Money(String money);
 
-    void Player4Username(String username);
+    void Player4Username(String username, boolean removeDot);
 
     void Player4Money(String money);
 
-    void Player5Username(String username);
+    void Player5Username(String username, boolean removeDot);
 
     void Player5Money(String money);
 
@@ -47,4 +47,7 @@ public interface ITextViews {
     void setGreen(int player);
 
     void setFolded(ArrayList<Integer> indicesOfFolded);
+
+    void setWhite(ArrayList<Integer> indicesOfCurrentPlayers);
+
 }
