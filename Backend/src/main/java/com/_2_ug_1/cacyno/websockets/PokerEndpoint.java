@@ -5,6 +5,7 @@ import com._2_ug_1.cacyno.models.Game;
 import com._2_ug_1.cacyno.models.User;
 import com._2_ug_1.cacyno.repos.IGameRepo;
 import com._2_ug_1.cacyno.repos.IUserRepo;
+import com.google.gson.Gson;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
+
+
+
+
 
 /*
  * TODO: add admin for resets and starting
@@ -70,15 +75,17 @@ public class PokerEndpoint {
         if (g == null) {
             throw new NullPointerException();
         }
+        g.setActive(true);
+        _gameRepo.save(g);
         u.setGame(g);
         if (!_gamesMap.containsKey(u.getGame().getId())) {
             Poker poker = new Poker(g);
             if (!poker.addPlayer(u)) //TODO: assuming they joining to play
-                throw new NullPointerException(); //TODO: let them know it is full/better error detection
+                sendUserMessage(u.getId(), u.getUsername() + ": cannot join due to maximum spots already filled"); //TODO: let them know it is full/better error detection //done?
             _gamesMap.put(g.getId(), poker);
         } else {
             if (!_gamesMap.get(u.getGame().getId()).addPlayer(u))
-                throw new NullPointerException(); //TODO: let them know it is full/better error detection
+                sendUserMessage(u.getId(), u.getUsername() + ": cannot join due to maximum spots already filled"); //TODO: let them know it is full/better error detection //done?
         }
         _userRepo.save(u);
         if (_gameSessionMap.containsKey(u.getGame().getId())) {
@@ -88,9 +95,10 @@ public class PokerEndpoint {
             sessionList.add(session);
             _gameSessionMap.put(u.getGame().getId(), sessionList);
         }
+        Poker poker = _gamesMap.get(u.getGame().getId());
+        sendGameMessage(u.getGame().getId(), getJsonPlayers(poker) + ", " + getJsonGame(poker));
         _sessionUserMap.putIfAbsent(session, userId);
         _userSessionMap.putIfAbsent(userId, session);
-        sendGameMessage(g.getId(), u.getUsername() + ": Has Joined");
     }
 
     /*
@@ -108,17 +116,24 @@ public class PokerEndpoint {
         _logger.info("Entered into Close: " + _sessionUserMap.get(session));
         if (!_sessionUserMap.containsKey(session))
             return;
-        _userSessionMap.remove(_sessionUserMap.get(session));
         User toRemove = getUser(_sessionUserMap.get(session));
+        Poker p = _gamesMap.get(toRemove.getGame().getId());
+        if (p.TooPoor().contains(toRemove)) {
+            sendUserMessage(toRemove.getId(), toRemove.getUsername() + "Has Been Kicked Due To Insufficient Funds");
+        }
+        _userSessionMap.remove(_sessionUserMap.get(session));
         _gamesMap.get(toRemove.getGame().getId()).removePlayer(toRemove);
         _sessionUserMap.remove(session);
         if (_gameSessionMap.get(toRemove.getGame().getId()).size() <= 1) {
+            p.getGame().setActive(false);
+            _gameRepo.save(p.getGame());
             _gameSessionMap.remove(toRemove.getGame().getId());
             _gamesMap.remove(toRemove.getGame().getId());
         } else {
             _gameSessionMap.get(toRemove.getGame().getId()).removeIf(x -> x.equals(session));
             sendGameMessage(toRemove.getGame().getId(), toRemove.getUsername() + ": Has Left");
         }
+        _userRepo.save(toRemove);
     }
 
     /*
@@ -140,6 +155,7 @@ public class PokerEndpoint {
         _logger.info("Entered into Message: " + _sessionUserMap.get(session) + ". Got Message: " + message);
         User u = getUser(_sessionUserMap.get(session));
         Poker p = _gamesMap.get(u.getGame().getId());
+        sendGameMessage(u.getGame().getId(), getJsonPlayers(p) + ", " + getJsonGame(p));
         if (message.equalsIgnoreCase("initGame") && !p.initGame())
             p.initGame();
         if (p.getInitialized()) {
@@ -157,6 +173,7 @@ public class PokerEndpoint {
             }
         }
     }
+
 
     /**
      * reports errors
@@ -179,6 +196,15 @@ public class PokerEndpoint {
                 }
             }
         });
+    }
+
+    private void sendUserMessage(String userId, String message) {
+        try {
+            _userSessionMap.get(userId).getBasicRemote().sendText(message);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private User getUser(String userId) {
@@ -213,5 +239,21 @@ public class PokerEndpoint {
             e.printStackTrace();
         }
         return null;
+    }
+
+    private String getJsonPlayers(Poker p) {
+        List players = p.getPlayers();
+        Gson gson = new Gson();
+        String playersJson = gson.toJson(players);
+
+        return playersJson;
+    }
+
+    private String getJsonGame(Poker p) {
+        Game game = p.getGame();
+        Gson gson = new Gson();
+        String gameJson = gson.toJson(game);
+
+        return gameJson;
     }
 }

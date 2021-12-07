@@ -3,6 +3,9 @@ package Utilities;
 import Models.User;
 import android.widget.TextView;
 
+/**
+ * This class is for operations to check a game parameters
+ */
 public class GameChecker {
     /**
      * this method is used to check all cases of input for a lobby name when creating a new game.

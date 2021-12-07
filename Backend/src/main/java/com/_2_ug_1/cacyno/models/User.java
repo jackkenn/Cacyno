@@ -81,6 +81,11 @@ public class User {
      * holds the amount of how much the user is betting that round
      */
     private int bet;
+
+    @ApiModelProperty(notes = "gets if the user has all-inned", name = "allIn")
+    @Column(name = "allIn")
+    private boolean allIn;
+
     @ApiModelProperty(notes = "gets the id of the game the user is in", name = "gameId")
     @ManyToOne(targetEntity = Game.class)
     @JoinColumn(name = "gameId")
@@ -318,5 +323,21 @@ public class User {
      */
     public void setPosition(int position) {
         this.position = position;
+    }
+
+    /**
+     * sets the player to all-in
+     * @param allIn
+     */
+    public void setAllIn(boolean allIn) {
+        this.allIn = allIn;
+    }
+
+    /**
+     * gets if the player is all-in
+     * @return
+     */
+    public boolean isAllIn() {
+        return allIn;
     }
 }

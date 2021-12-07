@@ -18,12 +18,14 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ActivityLogin"/>
+        <activity android:name=".Login"/>
         <activity android:name=".LobbySelector"/>
         <activity android:name=".UserHome"/>
         <activity android:name=".Settings"/>
         <activity android:name=".Username"/>
         <activity android:name=".CreateGame"/>
+        <activity android:name=".GameScreen"/>
+        <activity android:name=".Leaderboard"/>
     </application>
 
 </manifest>
