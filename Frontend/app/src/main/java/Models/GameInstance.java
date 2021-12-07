@@ -31,6 +31,13 @@ public class GameInstance{
     private ArrayList<Integer> indiciesOfFolded;
     private ArrayList<Integer> indiciesOfCurrentPlayers;
 
+    private final int INDEX_OF_LIST_PLAYERS = 0;
+    private final int INDEX_OF_GAME_STATE = 1;
+    private final int INDEX_OF_CURRENT_PLAYER = 2;
+    private final int INDEX_OF_WINNER = 3;
+
+    private final int MAX_PLAYERS = 6;
+
     /**
      * this constructor makes a game instance object for each player.
      * @param user the user that is using the device
@@ -63,16 +70,9 @@ public class GameInstance{
     }
 
     private void connectWebSocket(User user) throws URISyntaxException, JSONException {
-        URI uri = null;
+        URI uri;
 
-        //need to change to remote
-        try {
-            uri = new URI("ws://coms-309-046.cs.iastate.edu:8080/poker/" + FirebaseAuth.getInstance().getUid());
-        }catch (ExceptionInInitializerError e){
-            System.out.println("no user");
-        }
-//        uri = new URI("ws://coms-309-046.cs.iastate.edu:8080/poker/1");
-        //uri = new URI("ws://192.168.1.2:8080/chat/1/2");
+        uri = new URI("ws://coms-309-046.cs.iastate.edu:8080/poker/" + FirebaseAuth.getInstance().getUid());
 
         mWebSocketClient = new WebSocketClient(Objects.requireNonNull(uri)) {
 
@@ -86,28 +86,29 @@ public class GameInstance{
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
             @Override
             public void onMessage(String msg) {
+                System.out.println();
                 if (msg.startsWith("[{")){
 
-                    String getPlayersOnly = msg.split("\\*\\*")[0];
-                    String gameStatus = msg.split("\\*\\*")[1];
+                    String getPlayersOnly = msg.split("\\*\\*")[INDEX_OF_LIST_PLAYERS];
+                    String gameStatus = msg.split("\\*\\*")[INDEX_OF_GAME_STATE];
                     JSONArray stringToJSON = new JSONArray(getPlayersOnly);
                     JSONObject gameJSON = new JSONObject(gameStatus);
                     String winner = "";
                     /**
                      * format that will be sent during game
-                     *              <listOfPlayers>**<gameState>**userID
+                     *              <listOfPlayers>**<gameState>**<userID>
                      *
                      * format that will be sent when game is over
-                     *              <listOfPlayers>**<gameState>**userID**GameWinner
+                     *              <listOfPlayers>**<gameState>**<userID>**<GameWinner>
                      */
                     if(msg.split("\\*\\*").length == 4){
-                       winner = msg.split("\\*\\*")[3];
+                       winner = msg.split("\\*\\*")[INDEX_OF_WINNER];
                     }
 
 
                     //finding new users to add to screen
                     for (User i : user.JSONtolist(stringToJSON)) {
-                        if (!user.getId().equals(i.getId()) && !checkObjects(i) && users.size() != 6) {
+                        if (!user.getId().equals(i.getId()) && !checkObjects(i) && users.size() != MAX_PLAYERS) {
 
                             users.add(i);
                             i.setIndexOnScreen(users.size()-1);
@@ -135,7 +136,7 @@ public class GameInstance{
                             views.MyMoney(users.get(0).current_game_money);
                             views.setHighestBet(gameJSON.getInt("highest_bet"));
 
-                            if(gameJSON.getInt("round") == 6)
+                            if(gameJSON.getInt("round") == 6) //round 6 is to present winner
                                 views.setWinner(finalWinner);
 
                             views.setBet(user.bet);
@@ -164,8 +165,9 @@ public class GameInstance{
                 new Handler(Looper.getMainLooper()).post(() -> views.setWhite(indiciesOfCurrentPlayers));
 
                 //set player green
-                String userID = msg.split("\\*\\*")[2];
-                new Handler(Looper.getMainLooper()).post(() -> views.setGreen(findIndexOfUserID(userID)));
+                String userID = msg.split("\\*\\*")[INDEX_OF_CURRENT_PLAYER];
+                if(!userID.equals("null"))
+                    new Handler(Looper.getMainLooper()).post(() -> views.setGreen(findIndexOfUserID(userID)));
 
                 //find players who folded and set their dot to grey
                 for(int i = 0; i < users.size(); i++){

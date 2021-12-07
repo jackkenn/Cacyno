@@ -187,12 +187,7 @@ public class User {
                 JSONtoUser(response, InGame);
                 callback.onSuccess();
             }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                callback.onError();
-            }
-        });
+        }, error -> callback.onError());
         requestQueue.add(request);
     }
 
@@ -211,12 +206,9 @@ public class User {
                 System.out.println(response + "updating -> " + con);
                 callback.onSuccess();
             }
-        },  new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e("ERROR: UPDATING -> " + con, error.toString());
-                callback.onError();
-            }
+        }, error -> {
+            Log.e("ERROR: UPDATING -> " + con, error.toString());
+            callback.onError();
         });
         requestQueue.add(jsonObjectRequest);
     }
@@ -242,7 +234,8 @@ public class User {
             postData.put("hasPlayed", false);
             postData.put("isSpectator", false);
             postData.put("position", 0);
-            //postData.put("allIn", false);
+            postData.put("allIn", false);
+
         } catch (JSONException e) {
             e.printStackTrace();
         }

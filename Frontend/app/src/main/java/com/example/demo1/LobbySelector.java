@@ -125,7 +125,8 @@ public class LobbySelector extends AppCompatActivity{
 
                         //adding lobbies to screen
                         for(Lobby i : list) {
-                            setLobbyView(indexForNameId, indexForJoinId, indexForSpectateId, opsLob, i);
+                            if(i.getActive())
+                                setLobbyView(indexForNameId, indexForJoinId, indexForSpectateId, opsLob, i);
                         }
                         return 0;
                     }
