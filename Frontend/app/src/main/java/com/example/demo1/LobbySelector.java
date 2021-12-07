@@ -5,7 +5,6 @@ import Models.LobbyOperations;
 import Models.User;
 import Utilities.GameChecker;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,7 +12,6 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,6 +19,7 @@ import interfaces.ILobby;
 import interfaces.IUser;
 
 import java.util.ArrayList;
+
 /**
  * The activity tied to the lobby selection screen
  */
