@@ -165,28 +165,28 @@ public class GameInstance{
     private void toView(User user){
         switch(currentPlayerIndex){
             case 1:
-                views.Player1Username(user.getUsername());
-                views.Player1Money(String.valueOf(user.getCurrent_game_money()));
+                views.Player1Username(user.getUsername(), false);
+                views.Player1Money("$" + user.getCurrent_game_money() + "");
                 views.Player1Bet(user.bet);
                 break;
             case 2:
-                views.Player2Username(user.getUsername());
-                views.Player2Money(String.valueOf(user.getCurrent_game_money()));
+                views.Player2Username(user.getUsername(), false);
+                views.Player2Money("$" + user.getCurrent_game_money() + "");
                 views.Player2Bet(user.bet);
                 break;
             case 3:
-                views.Player3Username(user.getUsername());
-                views.Player3Money(String.valueOf(user.getCurrent_game_money()));
+                views.Player3Username(user.getUsername(), false);
+                views.Player3Money("$" + user.getCurrent_game_money() + "");
                 views.Player3Bet(user.bet);
                 break;
             case 4:
-                views.Player4Username(user.getUsername());
-                views.Player4Money(String.valueOf(user.getCurrent_game_money()));
+                views.Player4Username(user.getUsername(), false);
+                views.Player4Money("$" + user.getCurrent_game_money() + "");
                 views.Player4Bet(user.bet);
                 break;
             case 5:
-                views.Player5Username(user.getUsername());
-                views.Player5Money(String.valueOf(user.getCurrent_game_money()));
+                views.Player5Username(user.getUsername(), false);
+                views.Player5Money("$" + user.getCurrent_game_money() + "");
                 views.Player5Bet(user.bet);
                 break;
             default:
