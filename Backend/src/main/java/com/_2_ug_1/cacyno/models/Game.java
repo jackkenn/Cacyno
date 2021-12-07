@@ -48,10 +48,10 @@ public class Game {
     @Column(name = "active", nullable = false, columnDefinition = "boolean default false")
     private boolean active;
     @ApiModelProperty(notes = "keeps track of the highest bet of the game", name = "highest_bet")
-    @Column(name = "highest_bet")
+    @Column(name = "highest_bet", nullable = false, columnDefinition = "int default 0")
     private int highest_bet;
     @ApiModelProperty(notes = "keeps track of the highest bet in the round", name = "highest_round_bet")
-    @Column(name = "highest_round_bet")
+    @Column(name = "highest_round_bet", nullable = false, columnDefinition = "int default 0")
     private int highest_round_bet;
 
     /**
