@@ -242,7 +242,12 @@ public class Poker_Test {
                     })) {
                         User u = _users.get(j);
                         assertTrue(_sut.bet(u, -1), "Poker: " + _sut.toString());
-                        assertEquals(playerBets.get(j), u.getCurrent_game_money());
+
+                        if(_sut.bet(u,100)){
+                            int tmp = 0;
+                        }
+                        assertTrue(_sut.bet(u,100));
+
                         numFolded++;
                     }
                 } else {
