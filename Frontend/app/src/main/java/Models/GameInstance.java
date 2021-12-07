@@ -41,7 +41,6 @@ public class GameInstance{
         users = new ArrayList<>();
         users.add(user);
         this.views = views;
-        //currentPlayerIndex++;
     }
 
     private void connectWebSocket(User user) throws URISyntaxException, JSONException {
@@ -74,20 +73,36 @@ public class GameInstance{
                     for (User i : user.JSONtolist(stringToJSON)) {
                         if (!user.getId().equals(i.getId()) && !checkObjects(i) && users.size() != 6) {
                             users.add(i);
-                            if (currentPlayerIndex == 2)
+                            if (users.size() == 2)
                                 mWebSocketClient.send("START THIS SHIT");
                             currentPlayerIndex++;
                             toView(i);
                         }
-
                     }
-                    views.TableCard1(gameJSON.getInt("public_card1"));
-                    views.TableCard2(gameJSON.getInt("public_card2"));
-                    views.TableCard3(gameJSON.getInt("public_card3"));
-                    views.TableCard4(gameJSON.getInt("public_card4"));
-                    views.TableCard5(gameJSON.getInt("public_card5"));
-                    views.pot(gameJSON.getInt("pot"));
-                    views.MyMoney(users.get(0).current_game_money);
+                    new Handler(Looper.getMainLooper()).post(() -> {
+                        try {
+                            views.TableCard1(gameJSON.getInt("public_card1"));
+                            views.TableCard2(gameJSON.getInt("public_card2"));
+                            views.TableCard3(gameJSON.getInt("public_card3"));
+                            views.TableCard4(gameJSON.getInt("public_card4"));
+                            views.TableCard5(gameJSON.getInt("public_card5"));
+                            views.pot(gameJSON.getInt("pot"));
+                            views.MyMoney(users.get(0).current_game_money);
+                        }catch (JSONException e){
+                            e.printStackTrace();
+                        }
+                    });
+                }
+                else if(msg.contains("Has Left")){
+                    String playerUsername = msg.split(":")[0];
+                    for(int i = 0; i < users.size(); i++){
+                        if(users.get(i).getUsername().equals(playerUsername)){
+                            removePlayer(i);
+                            users.remove(i);
+                            currentPlayerIndex = i;
+                        }
+                    }
+
                 }
                 new Handler(Looper.getMainLooper()).post(() -> views.setVisible(currentPlayerIndex));
             }
@@ -119,23 +134,56 @@ public class GameInstance{
             switch(currentPlayerIndex){
                 case 1:
                     views.Player1Username(user.getUsername());
-                    views.Player1Money(user.getCurrent_game_money()+"");
+                    views.Player1Money("$"+user.getCurrent_game_money()+"");
                     break;
                 case 2:
                     views.Player2Username(user.getUsername());
-                    views.Player2Money(String.valueOf(user.getCurrent_game_money()));
+                    views.Player2Money("$"+user.getCurrent_game_money()+"");
                     break;
                 case 3:
                     views.Player3Username(user.getUsername());
-                    views.Player3Money(String.valueOf(user.getCurrent_game_money()));
+                    views.Player3Money("$"+user.getCurrent_game_money()+"");
                     break;
                 case 4:
                     views.Player4Username(user.getUsername());
-                    views.Player4Money(String.valueOf(user.getCurrent_game_money()));
+                    views.Player4Money("$"+user.getCurrent_game_money()+"");
                     break;
                 case 5:
                     views.Player5Username(user.getUsername());
-                    views.Player5Money(String.valueOf(user.getCurrent_game_money()));
+                    views.Player5Money("$"+user.getCurrent_game_money()+"");
+                    break;
+                default:
+                    break;
+            }
+        });
+    }
+
+    /**
+     * removes the player from view
+     * @param index the index of the player
+     */
+    private void removePlayer(int index){
+        new Handler(Looper.getMainLooper()).post(() -> {
+            switch(index){
+                case 1:
+                    views.Player1Username("waiting...");
+                    views.Player1Money("");
+                    break;
+                case 2:
+                    views.Player2Username("waiting...");
+                    views.Player2Money("");
+                    break;
+                case 3:
+                    views.Player3Username("waiting..");
+                    views.Player3Money("");
+                    break;
+                case 4:
+                    views.Player4Username("waiting...");
+                    views.Player4Money("");
+                    break;
+                case 5:
+                    views.Player5Username("waiting...");
+                    views.Player5Money("");
                     break;
                 default:
                     break;

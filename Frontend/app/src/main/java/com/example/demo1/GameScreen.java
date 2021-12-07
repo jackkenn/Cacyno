@@ -370,7 +370,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         runOnUiThread(() -> {
             System.out.println("money-> "+money);
             TextView temp = findViewById(R.id.player1_money);
-            temp.setText("$" + money);
+            temp.setText(money);
         });
     }
 
@@ -386,7 +386,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     public void Player2Money(String money) {
         runOnUiThread(() -> {
             TextView temp = findViewById(R.id.player2_money);
-            temp.setText("$" + money);
+            temp.setText(money);
         });
     }
 
@@ -402,7 +402,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     public void Player3Money(String money) {
         runOnUiThread(() -> {
             TextView temp = findViewById(R.id.player3_money);
-            temp.setText("$" + money);
+            temp.setText(money);
         });
     }
 
@@ -418,7 +418,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     public void Player4Money(String money) {
         runOnUiThread(() -> {
             TextView temp = findViewById(R.id.player4_money);
-            temp.setText("$" + money);
+            temp.setText(money);
         });
     }
 
@@ -434,7 +434,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     public void Player5Money(String money) {
         runOnUiThread(() -> {
             TextView temp = findViewById(R.id.player5_money);
-            temp.setText("$" + money);
+            temp.setText(money);
         });
     }
 
@@ -485,14 +485,16 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
 
     @Override
     public void pot(int pot) {
-        TextView temp = findViewById(R.id.pot);
-        temp.setText("$" + pot);
+        runOnUiThread(() -> {
+            TextView temp = findViewById(R.id.pot);
+            temp.setText("$" + pot);
+        });
     }
 
     @Override
     public void setVisible(int player){
-        runOnUiThread(() -> {
             setInvisible();
+        runOnUiThread(() -> {
             switch(player){
                 case 0:
                     findViewById(R.id.your_greendot).setVisibility(View.VISIBLE);
@@ -543,9 +545,11 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
      */
     @Override
     public void ToastComments(String msg) {
-        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
-        user.resetUser();
-        startActivity(new Intent(GameScreen.this, UserHome.class));
+        runOnUiThread(() -> {
+            Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+            user.resetUser();
+            startActivity(new Intent(GameScreen.this, UserHome.class));
+        });
     }
 
 
