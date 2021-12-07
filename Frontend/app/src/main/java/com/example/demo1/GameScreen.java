@@ -42,7 +42,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     private ImageButton chat;
     private ImageButton raise;
     private ImageButton fold;
-    private ImageButton check;
+    private ImageButton call;
     private Slider slider;
 
     private ConstraintLayout gameScreen;
@@ -79,7 +79,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         chat = findViewById(R.id.chat_but);
         raise = findViewById(R.id.raise);
         fold = findViewById(R.id.fold);
-        check = findViewById(R.id.check);
+        call = findViewById(R.id.call);
         pot = findViewById(R.id.pot);
         slider = findViewById(R.id.slider);
         sliderAmount = findViewById(R.id.slider_amount);
@@ -149,7 +149,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
             game.send(sliderAmount.toString());
         });
 
-        check.setOnClickListener(v -> {
+        call.setOnClickListener(v -> {
             game.send("0");
         });
 
@@ -199,7 +199,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
 
         chat.bringToFront();
         backout.bringToFront();
-        check.bringToFront();
+        call.bringToFront();
         fold.bringToFront();
         raise.bringToFront();
         username.bringToFront();
