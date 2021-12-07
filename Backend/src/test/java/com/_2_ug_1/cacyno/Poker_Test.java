@@ -216,6 +216,8 @@ public class Poker_Test {
     private void test_folded(List<List<Integer>> toFold) { //list of { { whoFolds, round } , ... }
         Poker_Test();
         int numFolded = 0;
+        boolean endOfGame = false;
+        int prevGamePot = 0;
         List<Integer> playerBets = new ArrayList<>();
         int size = _users.size();
         for (int i = 0; i < _users.size(); i++) {
@@ -259,8 +261,27 @@ public class Poker_Test {
                     User u = _users.get(j);
                     assertTrue(_sut.bet(u, 100));
                     playerBets.set(j, playerBets.get(j) - 100);
-                    assertEquals(playerBets.get(j), u.getCurrent_game_money());
+                    prevGamePot += 100;
+                    if(_game.getRound() == 4){
+                        endOfGame = true;
+                    }
+                    if(i == 4 && j ==3){
+                        int temp = 0;
+                    }
+                    if(playerBets.get(j) != u.getCurrent_game_money() && endOfGame){
+                        int tmp = 0;
+                    }
+
+
+
+                    if (_game.getRound() == 0 && endOfGame){
+                        assertEquals(playerBets.get(j) + prevGamePot, u.getCurrent_game_money());
+                    }
+                    else{
+                        assertEquals(playerBets.get(j), u.getCurrent_game_money());
+                    }
                 }
+                prevGamePot = _game.getPot();
             }
             if (i < 4 && numFolded < _users.size() - 1) {
                 int sumOfBets = 0;

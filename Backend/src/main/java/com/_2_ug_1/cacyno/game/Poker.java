@@ -183,14 +183,14 @@ public class Poker {
                 notFoldedOrAllIn++;
         }
 
-
+        _game.setHighest_round_bet(0);
         if (_toPlay.size() > 0 && notFoldedOrAllIn > 1) //dont end if people need to play
             return;
         if (_game.getRound() > 3 || notFoldedOrAllIn < 2) {
             endGame(); //infinite loop if everyone folds, should never happen
             return;
         }
-        _game.setHighest_round_bet(0);
+
         _deck.dealPublicCards();
         _game.setRound(_game.getRound() + 1);
         for (int i = 0; i < _turnOrder.size(); i++) { //should be clear
@@ -229,9 +229,15 @@ public class Poker {
             currentCards.add(_game.getPublic_card3());
             currentCards.add(_game.getPublic_card4());
             currentCards.add(_game.getPublic_card5());
+
             if(compare.compareHands(currentCards.stream().mapToInt(j->j).toArray(),bestCards.stream().mapToInt(j->j).toArray()) > 0){
-                bestHand = new ArrayList<>();
-                bestHand.add(_turnOrder.get(i));
+                if(_turnOrder.get(i).getFolded()){
+                    continue;
+                }
+                else {
+                    bestHand = new ArrayList<>();
+                    bestHand.add(_turnOrder.get(i));
+                }
             }
             else if(compare.compareHands(currentCards.stream().mapToInt(j->j).toArray(),bestCards.stream().mapToInt(j->j).toArray()) == 0){
                 bestHand.add(_turnOrder.get(i));
