@@ -108,9 +108,9 @@ public class GameInstance{
                 //set player green
                 new Handler(Looper.getMainLooper()).post(() -> views.setGreen(currentPlayerIndex));
 
-                //set players who folded to grey
+                //find players who folded and set their dot to grey
                 for(int i = 0; i < users.size(); i++){
-                    if(!users.get(i).getFolded())
+                    if(users.get(i).getFolded())
                         indiciesOfFolded.add(i);
                 }
                 new Handler(Looper.getMainLooper()).post(() -> views.setFolded(indiciesOfFolded));

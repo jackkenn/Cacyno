@@ -500,7 +500,6 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
 
     @Override
     public void setGreen(int player){
-            setIdle();
         runOnUiThread(() -> {
             switch(player){
                 case 0:
