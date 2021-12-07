@@ -87,11 +87,16 @@ public class GameInstance{
             @Override
             public void onMessage(String msg) {
                 if (msg.startsWith("[{")){
-                    String getPlayersOnly = msg.split("],")[0];
-                    getPlayersOnly += "]";
-                    String gameStatus = msg.split("],")[1];
+                    String getPlayersOnly = msg.split("\\*\\*")[0];
+                    String gameStatus = msg.split("\\*\\*")[1];
                     JSONArray stringToJSON = new JSONArray(getPlayersOnly);
                     JSONObject gameJSON = new JSONObject(gameStatus);
+
+                    String winner = "";
+                    if(msg.split("\\*\\*").length == 3){
+                       winner = msg.split("\\*\\*")[2];
+                    }
+
 
                     //finding new users to add to screen
                     for (User i : user.JSONtolist(stringToJSON)) {
@@ -108,6 +113,7 @@ public class GameInstance{
                         }
                     }
 
+                    String finalWinner = winner;
                     new Handler(Looper.getMainLooper()).post(() -> {
                         try {
                             views.MyCard1( gameJSON.getInt("card1"));
@@ -121,6 +127,10 @@ public class GameInstance{
                             views.pot(gameJSON.getInt("pot"));
                             views.MyMoney(users.get(0).current_game_money);
                             views.setHighestBet(gameJSON.getInt("highest_bet"));
+
+                            if(gameJSON.getInt("round") == 6)
+                                views.setWinner(finalWinner);
+
                             views.setBet(user.bet);
                         }catch (JSONException e){
                             e.printStackTrace();

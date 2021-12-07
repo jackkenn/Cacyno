@@ -37,6 +37,9 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     private TextView ingame_money;
     private TextView username;
 
+    private ImageView winnerImage;
+    private TextView winner_username;
+
     private ImageButton backout;
     private ImageButton chat;
     private ImageButton raise;
@@ -88,6 +91,10 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         sliderAmount = findViewById(R.id.slider_amount);
         yourCard1 = findViewById(R.id.yourCard_1);
         yourCard2 = findViewById(R.id.yourCard_2);
+
+        //winner views
+        winnerImage = findViewById(R.id.winnerImage);
+        winner_username = findViewById(R.id.winner_username);
 
 
         //the constraint layout to add chat view
@@ -709,6 +716,16 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         } else {
             check.setImageResource(R.drawable.check);
         }
+    }
+
+    @Override
+    public void setWinner(String username){
+        runOnUiThread(() -> {
+            TextView winner = findViewById(R.id.winner_username);
+            winner.setText(username);
+            winner.bringToFront();
+            findViewById(R.id.winnerImage).bringToFront();
+        });
     }
 
     /**

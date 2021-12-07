@@ -18,49 +18,49 @@
     />
     <TextView
             android:text="$0"
-            android:layout_width="49dp"
+            android:layout_width="wrap_content"
             android:layout_height="10dp" android:id="@+id/player4_bet"
             android:fontFamily="@font/aqua" android:textColor="@color/white"
             android:textSize="10dp"
-            android:layout_marginTop="6dp" app:layout_constraintTop_toBottomOf="@+id/player4_username"
-            app:layout_constraintEnd_toStartOf="@+id/player5_card1" android:layout_marginEnd="40dp"
-            android:layout_marginRight="40dp"/>
+            app:layout_constraintStart_toStartOf="@+id/player4_card1"
+            app:layout_constraintEnd_toEndOf="@+id/player4_card2" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="36dp"/>
     <TextView
             android:text="$0"
-            android:layout_width="49dp"
+            android:layout_width="wrap_content"
             android:layout_height="10dp" android:id="@+id/player1_bet"
             android:fontFamily="@font/aqua" android:textColor="@color/white"
             android:textSize="10dp"
-            android:layout_marginLeft="16dp" android:layout_marginStart="16dp"
-            app:layout_constraintStart_toEndOf="@+id/player1_card2"
-            android:layout_marginTop="23dp" app:layout_constraintTop_toBottomOf="@+id/player2_username"/>
+            app:layout_constraintStart_toStartOf="@+id/player1_card1"
+            app:layout_constraintEnd_toEndOf="@+id/player1_card2" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="148dp"/>
     <TextView
             android:text="$0"
-            android:layout_width="49dp"
+            android:layout_width="wrap_content"
             android:layout_height="10dp" android:id="@+id/your_bet"
             android:fontFamily="@font/aqua" android:textColor="@color/white"
             android:textSize="10dp"
-            android:layout_marginTop="18dp" app:layout_constraintTop_toBottomOf="@+id/player1_username"
-            app:layout_constraintEnd_toStartOf="@+id/yourCard_1" android:layout_marginEnd="9dp"
-            android:layout_marginRight="9dp"/>
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="36dp" android:layout_marginStart="36dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="35dp"/>
     <TextView
             android:text="$0"
-            android:layout_width="49dp"
+            android:layout_width="wrap_content"
             android:layout_height="10dp" android:id="@+id/player3_bet"
             android:fontFamily="@font/aqua" android:textColor="@color/white"
             android:textSize="10dp"
-            android:layout_marginTop="11dp" app:layout_constraintTop_toBottomOf="@+id/player3_username"
-            app:layout_constraintEnd_toStartOf="@+id/player4_username" android:layout_marginEnd="83dp"
-            android:layout_marginRight="83dp"/>
+            app:layout_constraintStart_toStartOf="@+id/player3_card1"
+            app:layout_constraintEnd_toEndOf="@+id/player3_card2" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="4dp"/>
     <TextView
             android:text="$0"
-            android:layout_width="49dp"
+            android:layout_width="wrap_content"
             android:layout_height="10dp" android:id="@+id/player5_bet"
             android:fontFamily="@font/aqua" android:textColor="@color/white"
             android:textSize="10dp"
-            app:layout_constraintEnd_toStartOf="@+id/player5_card1"
-            android:layout_marginEnd="7dp" android:layout_marginRight="7dp" android:layout_marginBottom="35dp"
-            app:layout_constraintBottom_toTopOf="@+id/slider_amount"/>
+            app:layout_constraintStart_toStartOf="@+id/player5_card1"
+            app:layout_constraintEnd_toEndOf="@+id/player5_card2" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="150dp"/>
     <ImageButton
             android:layout_width="69dp"
             android:layout_height="46dp" app:srcCompat="@drawable/backarrow_but" android:id="@+id/back_from_game"
@@ -455,11 +455,25 @@
             android:layout_marginTop="74dp"/>
     <TextView
             android:text="$0"
-            android:layout_width="49dp"
+            android:layout_width="wrap_content"
             android:layout_height="10dp" android:id="@+id/player2_bet"
             android:fontFamily="@font/aqua" android:textColor="@color/white"
             android:textSize="10dp"
-            android:layout_marginTop="4dp" app:layout_constraintTop_toBottomOf="@+id/player2_username"
-            android:layout_marginLeft="64dp" android:layout_marginStart="64dp"
-            app:layout_constraintStart_toEndOf="@+id/player1_card2"/>
+            app:layout_constraintStart_toStartOf="@+id/player2_card1"
+            app:layout_constraintEnd_toEndOf="@+id/player2_card2" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="40dp"/>
+    <ImageView
+            android:layout_width="182dp"
+            android:layout_height="109dp" app:srcCompat="@drawable/winner" android:id="@+id/winnerImage"
+            android:background="@android:color/transparent" android:scaleType="fitCenter"
+            android:adjustViewBounds="false" android:cropToPadding="false" android:layout_marginEnd="1dp"
+            android:layout_marginRight="1dp" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="60dp"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="25dp" android:id="@+id/winner_username"
+            app:layout_constraintStart_toStartOf="@+id/winnerImage"
+            app:layout_constraintEnd_toEndOf="@+id/winnerImage" android:textColor="@color/white"
+            android:fontFamily="@font/aqua" android:textSize="25dp" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="70dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

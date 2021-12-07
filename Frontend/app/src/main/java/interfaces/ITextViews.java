@@ -68,4 +68,6 @@ public interface ITextViews {
     void setHighestBet(int highest_bet);
 
     void setBet(int bet);
+
+    void setWinner(String username);
 }
