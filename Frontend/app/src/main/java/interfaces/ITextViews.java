@@ -1,5 +1,7 @@
 package interfaces;
 
+import java.util.ArrayList;
+
 public interface ITextViews {
 
     void MyMoney(int money);
@@ -10,31 +12,31 @@ public interface ITextViews {
 
     void MyBet(int bet);
 
-    void Player1Username(String username);
+    void Player1Username(String username, boolean removeDot);
 
     void Player1Money(String money);
 
+    void Player2Username(String username, boolean removeDot);
     void Player1Bet(int bet);
 
-    void Player2Username(String username);
 
     void Player2Money(String money);
 
+    void Player3Username(String username, boolean removeDot);
     void Player2Bet(int bet);
 
-    void Player3Username(String username);
 
     void Player3Money(String money);
 
+    void Player4Username(String username, boolean removeDot);
     void Player3Bet(int bet);
 
-    void Player4Username(String username);
 
     void Player4Money(String money);
 
+    void Player5Username(String username, boolean removeDot);
     void Player4Bet(int bet);
 
-    void Player5Username(String username);
 
     void Player5Money(String money);
 
@@ -53,6 +55,13 @@ public interface ITextViews {
     void ToastComments(String msg);
 
     void pot(int pot);
+
+    void setGreen(int player);
+
+    void setFolded(ArrayList<Integer> indicesOfFolded);
+
+    void setWhite(ArrayList<Integer> indicesOfCurrentPlayers);
+
 
     void raiseAmount(int highest_bet);
 

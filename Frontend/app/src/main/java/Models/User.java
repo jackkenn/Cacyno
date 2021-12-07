@@ -60,6 +60,10 @@ public class User {
     boolean has_played;
     @SerializedName("position")
     int position;
+    @SerializedName("allIn")
+    boolean allIn;
+
+    int indexOnScreen;
     /**
      * Constructor for making a new User
      */
@@ -117,6 +121,13 @@ public class User {
         return has_played;
     }
 
+    /**
+     * get allin
+     * @return allin
+     */
+    public boolean get_allin(){
+        return allIn;
+    }
     /**
      * Converts a JSONObject into our User model
      * @param response the given JSON response
@@ -231,6 +242,7 @@ public class User {
             postData.put("hasPlayed", false);
             postData.put("isSpectator", false);
             postData.put("position", 0);
+            //postData.put("allIn", false);
         } catch (JSONException e) {
             e.printStackTrace();
         }
