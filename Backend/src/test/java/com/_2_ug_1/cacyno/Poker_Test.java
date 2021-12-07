@@ -278,7 +278,6 @@ public class Poker_Test {
                     firstRound = false;
                 }
 
-                System.out.println("innerForLoop: " + _game.getPot());
             }
             if (i < 4 && numFolded < _users.size() - 1) {
                 int sumOfBets = 0;
