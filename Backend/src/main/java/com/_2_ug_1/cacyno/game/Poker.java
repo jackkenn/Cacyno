@@ -155,7 +155,7 @@ public class Poker {
     private void endRound() {
         int notFoldedOrAllIn = 0;
         for (User u : _players) {
-            if (!u.getFolded() || !u.isAllIn())
+            if (!u.getFolded() && !u.isAllIn())
                 notFoldedOrAllIn++;
         }
 
@@ -169,7 +169,7 @@ public class Poker {
         _deck.dealPublicCards();
         _game.setRound(_game.getRound() + 1);
         for (int i = 0; i < _turnOrder.size(); i++) { //should be clear
-            if (!_turnOrder.get(i).getFolded() || !_turnOrder.get(i).isAllIn()) {
+            if (!_turnOrder.get(i).getFolded() && !_turnOrder.get(i).isAllIn()) {
                 _toPlay.add(_turnOrder.get(i));
             }
         }
