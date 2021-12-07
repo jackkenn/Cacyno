@@ -231,7 +231,7 @@ public class Poker {
             }
             _game.setPot(0);
         }
-        //System.out.println(cards.length);
+
 
 
         _game.setRound(0);
