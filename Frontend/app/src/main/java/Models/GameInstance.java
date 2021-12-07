@@ -28,7 +28,7 @@ public class GameInstance{
     private ArrayList<User> users;
     private ITextViews views;
     private int currentPlayerIndex;
-
+    private ArrayList<Integer> indiciesOfFolded;
     /**
      * this constructor makes a game instance object for each player.
      * @param user the user that is using the device
@@ -41,6 +41,7 @@ public class GameInstance{
         users = new ArrayList<>();
         users.add(user);
         this.views = views;
+        indiciesOfFolded = new ArrayList<>();
     }
 
     private void connectWebSocket(User user) throws URISyntaxException, JSONException {
@@ -104,7 +105,15 @@ public class GameInstance{
                     }
 
                 }
-                new Handler(Looper.getMainLooper()).post(() -> views.setVisible(currentPlayerIndex));
+                //set player green
+                new Handler(Looper.getMainLooper()).post(() -> views.setGreen(currentPlayerIndex));
+
+                //set players who folded to grey
+                for(int i = 0; i < users.size(); i++){
+                    if(!users.get(i).getFolded())
+                        indiciesOfFolded.add(i);
+                }
+                new Handler(Looper.getMainLooper()).post(() -> views.setFolded(indiciesOfFolded));
             }
 
             @Override

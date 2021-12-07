@@ -26,6 +26,7 @@ import org.json.JSONException;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.Random;
@@ -100,7 +101,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         slider.setStepSize(1);
 
         bringToFront();
-        setInvisible();
+        setIdle();
 
         user = new User();
         user.getUser(GameScreen.this, new IUser() {
@@ -361,6 +362,8 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         runOnUiThread(() -> {
             TextView temp = findViewById(R.id.player1_username);
             temp.setText(username);
+            ((ImageView) findViewById(R.id.player1_greendot)).setVisibility(View.VISIBLE);
+
         });
 
     }
@@ -379,6 +382,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         runOnUiThread(() -> {
             TextView temp = findViewById(R.id.player2_username);
             temp.setText(username);
+            ((ImageView) findViewById(R.id.player2_greendot)).setVisibility(View.VISIBLE);
         });
     }
 
@@ -395,6 +399,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         runOnUiThread(() -> {
             TextView temp = findViewById(R.id.player3_username);
             temp.setText(username);
+            ((ImageView) findViewById(R.id.player3_greendot)).setVisibility(View.VISIBLE);
         });
     }
 
@@ -411,6 +416,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         runOnUiThread(() -> {
             TextView temp = findViewById(R.id.player4_username);
             temp.setText(username);
+            ((ImageView) findViewById(R.id.player4_greendot)).setVisibility(View.VISIBLE);
         });
     }
 
@@ -427,6 +433,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         runOnUiThread(() -> {
             TextView temp = findViewById(R.id.player5_username);
             temp.setText(username);
+            ((ImageView) findViewById(R.id.player5_greendot)).setVisibility(View.VISIBLE);
         });
     }
 
@@ -492,32 +499,67 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     }
 
     @Override
-    public void setVisible(int player){
-            setInvisible();
+    public void setGreen(int player){
+            setIdle();
         runOnUiThread(() -> {
             switch(player){
                 case 0:
-                    findViewById(R.id.your_greendot).setVisibility(View.VISIBLE);
+                    ((ImageView) findViewById(R.id.your_greendot)).setImageResource(R.drawable.green_dot);
                     break;
 
                 case 1:
-                    findViewById(R.id.player1_greendot).setVisibility(View.VISIBLE);
+                    ((ImageView) findViewById(R.id.player1_greendot)).setImageResource(R.drawable.green_dot);
                     break;
 
                 case 2:
-                    findViewById(R.id.player2_greendot).setVisibility(View.VISIBLE);
+                    ((ImageView) findViewById(R.id.player2_greendot)).setImageResource(R.drawable.green_dot);
                     break;
 
                 case 3:
-                    findViewById(R.id.player3_greendot).setVisibility(View.VISIBLE);
+                    ((ImageView) findViewById(R.id.player3_greendot)).setImageResource(R.drawable.green_dot);
                     break;
 
                 case 4:
-                    findViewById(R.id.player4_greendot).setVisibility(View.VISIBLE);
+                    ((ImageView) findViewById(R.id.player4_greendot)).setImageResource(R.drawable.green_dot);
                     break;
 
                 case 5:
-                    findViewById(R.id.player5_greendot).setVisibility(View.VISIBLE);
+                    ((ImageView) findViewById(R.id.player5_greendot)).setImageResource(R.drawable.green_dot);
+                    break;
+
+                default:
+                    break;
+            }
+        });
+    }
+
+    @Override
+    public void setFolded(ArrayList<Integer> indices){
+        runOnUiThread(() -> {
+            for(Integer i : indices)
+            switch(i){
+                case 0:
+                    ((ImageView) findViewById(R.id.your_greendot)).setImageResource(R.drawable.grey_dot);
+                    break;
+
+                case 1:
+                    ((ImageView) findViewById(R.id.player1_greendot)).setImageResource(R.drawable.grey_dot);
+                    break;
+
+                case 2:
+                    ((ImageView) findViewById(R.id.player2_greendot)).setImageResource(R.drawable.grey_dot);
+                    break;
+
+                case 3:
+                    ((ImageView) findViewById(R.id.player3_greendot)).setImageResource(R.drawable.grey_dot);
+                    break;
+
+                case 4:
+                    ((ImageView) findViewById(R.id.player4_greendot)).setImageResource(R.drawable.grey_dot);
+                    break;
+
+                case 5:
+                    ((ImageView) findViewById(R.id.player5_greendot)).setImageResource(R.drawable.grey_dot);
                     break;
 
                 default:
@@ -527,14 +569,21 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     }
 
 
-    public void setInvisible(){
+    public void setIdle(){
         runOnUiThread(() -> {
-            findViewById(R.id.your_greendot).setVisibility(View.INVISIBLE);
-            findViewById(R.id.player1_greendot).setVisibility(View.INVISIBLE);
-            findViewById(R.id.player2_greendot).setVisibility(View.INVISIBLE);
-            findViewById(R.id.player3_greendot).setVisibility(View.INVISIBLE);
-            findViewById(R.id.player4_greendot).setVisibility(View.INVISIBLE);
-            findViewById(R.id.player5_greendot).setVisibility(View.INVISIBLE);
+            ((ImageView) findViewById(R.id.your_greendot)).setImageResource(R.drawable.white_dot);
+            ((ImageView) findViewById(R.id.player1_greendot)).setImageResource(R.drawable.white_dot);
+            ((ImageView) findViewById(R.id.player5_greendot)).setImageResource(R.drawable.white_dot);
+            ((ImageView) findViewById(R.id.player5_greendot)).setImageResource(R.drawable.white_dot);
+            ((ImageView) findViewById(R.id.player5_greendot)).setImageResource(R.drawable.white_dot);
+            ((ImageView) findViewById(R.id.player5_greendot)).setImageResource(R.drawable.white_dot);
+
+            ((ImageView) findViewById(R.id.player1_greendot)).setVisibility(View.INVISIBLE);
+            ((ImageView) findViewById(R.id.player2_greendot)).setVisibility(View.INVISIBLE);
+            ((ImageView) findViewById(R.id.player3_greendot)).setVisibility(View.INVISIBLE);
+            ((ImageView) findViewById(R.id.player4_greendot)).setVisibility(View.INVISIBLE);
+            ((ImageView) findViewById(R.id.player5_greendot)).setVisibility(View.INVISIBLE);
+
         });
     }
 

@@ -240,7 +240,7 @@ public class User {
             postData.put("hasPlayed", false);
             postData.put("isSpectator", false);
             postData.put("position", 0);
-            postData.put("allIn", false);
+            //postData.put("allIn", false);
         } catch (JSONException e) {
             e.printStackTrace();
         }

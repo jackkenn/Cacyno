@@ -1,5 +1,7 @@
 package interfaces;
 
+import java.util.ArrayList;
+
 public interface ITextViews {
 
     void MyMoney(int money);
@@ -42,5 +44,7 @@ public interface ITextViews {
 
     void pot(int pot);
 
-    void setVisible(int player);
+    void setGreen(int player);
+
+    void setFolded(ArrayList<Integer> indicesOfFolded);
 }
