@@ -38,7 +38,6 @@ public class GameInstance{
         users = new ArrayList<>();
         users.add(user);
         this.views = views;
-        //currentPlayerIndex++;
     }
 
     private void connectWebSocket(User user) throws URISyntaxException, JSONException {
@@ -78,13 +77,18 @@ public class GameInstance{
                     }
 
                 }
+                views.MyCard1( gameJSON.getInt("card1"));
+                views.MyCard2( gameJSON.getInt("card2"));
                 views.TableCard1( gameJSON.getInt("public_card1"));
                 views.TableCard2( gameJSON.getInt("public_card2"));
                 views.TableCard3( gameJSON.getInt("public_card3"));
                 views.TableCard4( gameJSON.getInt("public_card4"));
                 views.TableCard5( gameJSON.getInt("public_card5"));
                 views.pot( gameJSON.getInt("pot"));
+                views.raiseAmount( gameJSON.getInt("highest_bet"));
                 views.MyMoney(users.get(0).current_game_money);
+                views.setHighestBet(gameJSON.getInt("highest_bet"));
+                views.setBet(user.bet);
             }
 
             @Override
@@ -113,22 +117,27 @@ public class GameInstance{
             case 1:
                 views.Player1Username(user.getUsername());
                 views.Player1Money(String.valueOf(user.getCurrent_game_money()));
+                views.Player1Bet(user.bet);
                 break;
             case 2:
                 views.Player2Username(user.getUsername());
                 views.Player2Money(String.valueOf(user.getCurrent_game_money()));
+                views.Player2Bet(user.bet);
                 break;
             case 3:
                 views.Player3Username(user.getUsername());
                 views.Player3Money(String.valueOf(user.getCurrent_game_money()));
+                views.Player3Bet(user.bet);
                 break;
             case 4:
                 views.Player4Username(user.getUsername());
                 views.Player4Money(String.valueOf(user.getCurrent_game_money()));
+                views.Player4Bet(user.bet);
                 break;
             case 5:
                 views.Player5Username(user.getUsername());
                 views.Player5Money(String.valueOf(user.getCurrent_game_money()));
+                views.Player5Bet(user.bet);
                 break;
             default:
                 break;
