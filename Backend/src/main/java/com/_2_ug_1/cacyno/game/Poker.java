@@ -111,6 +111,7 @@ public class Poker {
         _toPlay.addAll(_turnOrder);
 
         _game.setHighest_bet(_blind * 2);
+        _game.setHighest_round_bet(_blind * 2);
 
 
         _game.setPot(_blind + _blind * 2);
@@ -163,6 +164,7 @@ public class Poker {
                 _toPlay.addAll(tempList);
 
                 _game.setHighest_bet(_toPlay.peek().getBet());
+                _game.setHighest_round_bet(_toPlay.peek().getBet());
 
                 _toPlay.peek().setCurrent_game_money(_toPlay.poll().getCurrent_game_money() - bet);
                 _game.setPot(_game.getPot() + bet);
@@ -188,6 +190,7 @@ public class Poker {
             endGame(); //infinite loop if everyone folds, should never happen
             return;
         }
+        _game.setHighest_round_bet(0);
         _deck.dealPublicCards();
         _game.setRound(_game.getRound() + 1);
         for (int i = 0; i < _turnOrder.size(); i++) { //should be clear
@@ -202,7 +205,7 @@ public class Poker {
             _game.setRound(i);
             _deck.dealPublicCards();
         }
-        //TODO: add pot to winning hand
+
         HandComparator compare = new HandComparator();
 
         ArrayList<Integer> currentCards = new ArrayList<>();
