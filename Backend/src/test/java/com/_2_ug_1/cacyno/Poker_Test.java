@@ -277,6 +277,7 @@ public class Poker_Test {
                 if (_game.getRound() > 0) {
                     firstRound = false;
                 }
+
             }
             if (i < 4 && numFolded < _users.size() - 1) {
                 int sumOfBets = 0;
@@ -287,7 +288,7 @@ public class Poker_Test {
                 assertEquals(endGame ? 0 : i + 1, _game.getRound());
             }
         }
-        assertEquals(blind + (blind * 2), _game.getPot(), _sut.toString());
+        assertEquals(blind + (blind * 2), _game.getPot(), 100);
         assertEquals(0, _game.getRound());
         assertTrue(_sut.bet(_users.get(1), 100)); //new leader
     }

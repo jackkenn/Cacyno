@@ -361,7 +361,12 @@ public class Poker {
     }
 
     public String getToPlayNextId(){
-        return _toPlay.peek().getId();
+        if(_toPlay.peek() != null){
+            return _toPlay.peek().getId();
+        }
+        else{
+            return null;
+        }
     }
 
     private class Deck {
