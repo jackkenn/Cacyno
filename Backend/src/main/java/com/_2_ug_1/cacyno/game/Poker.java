@@ -3,6 +3,10 @@ package com._2_ug_1.cacyno.game;
 import com._2_ug_1.cacyno.models.Game;
 import com._2_ug_1.cacyno.models.User;
 
+import com._2_ug_1.cacyno.game.Hands;
+import com._2_ug_1.cacyno.game.HandChecker;
+import com._2_ug_1.cacyno.game.HandComparator;
+
 import java.util.*;
 
 /**
@@ -108,18 +112,17 @@ public class Poker {
         if (_toPlay.peek().getCurrent_game_money() < bet) { //can make play
             return false;
         }
-        if(_toPlay.peek().getCurrent_game_money() == bet){
+        if (_toPlay.peek().getCurrent_game_money() == bet) {
             _toPlay.peek().setAllIn(true);
         }
 
         if (bet >= 0) {
             _toPlay.peek().setBet(_toPlay.peek().getBet() + bet);
             if (_toPlay.peek().getBet() < _game.getHighest_bet()) {
-                if(_toPlay.peek().isAllIn()){
+                if (_toPlay.peek().isAllIn()) {
                     _toPlay.peek().setCurrent_game_money(_toPlay.poll().getCurrent_game_money() - bet);
                     _game.setPot(_game.getPot() + bet);
-                }
-                else{
+                } else {
                     return false;
                 }
             } else if (_toPlay.peek().getBet() == _game.getHighest_bet()) {//Call
@@ -131,11 +134,11 @@ public class Poker {
                 tempList.clear();
                 tempList.addAll(_turnOrder);
 
-                while(tempList.peek().getId().equals(_toPlay.peek().getId())){//should never infinite loop
+                while (tempList.peek().getId().equals(_toPlay.peek().getId())) {//should never infinite loop
                     tempList.add(tempList.poll());
                 }
 
-                tempList.removeIf(x->_toPlay.contains(x) || x.getFolded() || x.isAllIn());
+                tempList.removeIf(x -> _toPlay.contains(x) || x.getFolded() || x.isAllIn());
 
                 _toPlay.addAll(tempList);
 
@@ -181,6 +184,55 @@ public class Poker {
             _deck.dealPublicCards();
         }
         //TODO: add pot to winning hand
+        HandComparator compare = new HandComparator();
+
+        ArrayList<Integer> currentCards = new ArrayList<>();
+        ArrayList<Integer> bestCards = new ArrayList<>();
+
+        ArrayList<User> bestHand = new ArrayList<>();
+        bestHand.add(_turnOrder.get(0));
+        for(int i = 1; i < _turnOrder.size(); i++){
+            bestCards.add(bestHand.get(0).getCard1());
+            bestCards.add(bestHand.get(0).getCard2());
+            bestCards.add(_game.getPublic_card1());
+            bestCards.add(_game.getPublic_card2());
+            bestCards.add(_game.getPublic_card3());
+            bestCards.add(_game.getPublic_card4());
+            bestCards.add(_game.getPublic_card5());
+
+            currentCards.add(_turnOrder.get(i).getCard1());
+            currentCards.add(_turnOrder.get(i).getCard2());
+            currentCards.add(_game.getPublic_card1());
+            currentCards.add(_game.getPublic_card2());
+            currentCards.add(_game.getPublic_card3());
+            currentCards.add(_game.getPublic_card4());
+            currentCards.add(_game.getPublic_card5());
+            if(compare.compareHands(currentCards.stream().mapToInt(j->j).toArray(),bestCards.stream().mapToInt(j->j).toArray()) > 0){
+                bestHand = new ArrayList<>();
+                bestHand.add(_turnOrder.get(i));
+            }
+            else if(compare.compareHands(currentCards.stream().mapToInt(j->j).toArray(),bestCards.stream().mapToInt(j->j).toArray()) == 0){
+                bestHand.add(_turnOrder.get(i));
+            }
+            else{
+                continue;
+            }
+
+        }
+        if(bestHand.size() == 1){
+            //winner winner chicken dinner
+            bestHand.get(0).setCurrent_game_money(bestHand.get(0).getCurrent_game_money() + _game.getPot());
+            _game.setPot(0);
+        }
+        else{
+            int money = _game.getPot()/bestHand.size();
+            for(int i = 0; i < bestHand.size(); i++){
+                bestHand.get(i).setCurrent_game_money(bestHand.get(i).getCurrent_game_money() + money);
+            }
+            _game.setPot(0);
+        }
+        //System.out.println(cards.length);
+
 
         _game.setRound(0);
         _players.forEach(x -> x.setFolded(false));

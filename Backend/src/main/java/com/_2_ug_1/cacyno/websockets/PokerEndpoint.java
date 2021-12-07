@@ -75,6 +75,8 @@ public class PokerEndpoint {
         if (g == null) {
             throw new NullPointerException();
         }
+        g.setActive(true);
+        _gameRepo.save(g);
         u.setGame(g);
         if (!_gamesMap.containsKey(u.getGame().getId())) {
             Poker poker = new Poker(g);
@@ -123,12 +125,15 @@ public class PokerEndpoint {
         _gamesMap.get(toRemove.getGame().getId()).removePlayer(toRemove);
         _sessionUserMap.remove(session);
         if (_gameSessionMap.get(toRemove.getGame().getId()).size() <= 1) {
+            p.getGame().setActive(false);
+            _gameRepo.save(p.getGame());
             _gameSessionMap.remove(toRemove.getGame().getId());
             _gamesMap.remove(toRemove.getGame().getId());
         } else {
             _gameSessionMap.get(toRemove.getGame().getId()).removeIf(x -> x.equals(session));
             sendGameMessage(toRemove.getGame().getId(), toRemove.getUsername() + ": Has Left");
         }
+        _userRepo.save(toRemove);
     }
 
     /*
