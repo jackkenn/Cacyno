@@ -103,6 +103,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         chatlayout = findViewById(R.id.linearchat);
         scroll = chatplz.findViewById(R.id.chat_scroll);
         slider.setStepSize(1);
+        slider.setValueFrom(0);
 
         bringToFront();
         setIdle();
@@ -221,6 +222,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         findViewById(R.id.money_tag).bringToFront();
         findViewById(R.id.pot_tag).bringToFront();
         findViewById(R.id.your_greendot).bringToFront();
+        findViewById(R.id.your_bet).bringToFront();
 
         findViewById(R.id.slider_amount).bringToFront();
 
@@ -230,6 +232,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         findViewById(R.id.player1_money).bringToFront();
         findViewById(R.id.player1_username).bringToFront();
         findViewById(R.id.player1_greendot).bringToFront();
+        findViewById(R.id.player1_bet).bringToFront();
 
         findViewById(R.id.player2_card1).bringToFront();
         findViewById(R.id.player2_card2).bringToFront();
@@ -237,6 +240,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         findViewById(R.id.player2_money).bringToFront();
         findViewById(R.id.player2_username).bringToFront();
         findViewById(R.id.player2_greendot).bringToFront();
+        findViewById(R.id.player2_bet).bringToFront();
 
         findViewById(R.id.player3_card1).bringToFront();
         findViewById(R.id.player3_card2).bringToFront();
@@ -244,6 +248,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         findViewById(R.id.player3_money).bringToFront();
         findViewById(R.id.player3_username).bringToFront();
         findViewById(R.id.player3_greendot).bringToFront();
+        findViewById(R.id.player3_bet).bringToFront();
 
         findViewById(R.id.player4_card1).bringToFront();
         findViewById(R.id.player4_card2).bringToFront();
@@ -251,6 +256,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         findViewById(R.id.player4_money).bringToFront();
         findViewById(R.id.player4_username).bringToFront();
         findViewById(R.id.player4_greendot).bringToFront();
+        findViewById(R.id.player4_bet).bringToFront();
 
         findViewById(R.id.player5_card1).bringToFront();
         findViewById(R.id.player5_card2).bringToFront();
@@ -258,6 +264,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         findViewById(R.id.player5_money).bringToFront();
         findViewById(R.id.player5_username).bringToFront();
         findViewById(R.id.player5_greendot).bringToFront();
+        findViewById(R.id.player5_bet).bringToFront();
 
         findViewById(R.id.yourCard_1).bringToFront();
         findViewById(R.id.yourCard_2).bringToFront();

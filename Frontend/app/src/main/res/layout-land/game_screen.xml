@@ -427,7 +427,7 @@
             android:id="@+id/slider"
             android:layout_width="153dp"
             android:layout_height="24dp"
-            android:valueFrom="0f"
+            android:valueFrom="0"
             android:valueTo="70f"
             android:stepSize="1"
             app:thumbRadius="10dp"
