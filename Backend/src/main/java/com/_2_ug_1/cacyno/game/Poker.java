@@ -183,14 +183,14 @@ public class Poker {
                 notFoldedOrAllIn++;
         }
 
-
+        _game.setHighest_round_bet(0);
         if (_toPlay.size() > 0 && notFoldedOrAllIn > 1) //dont end if people need to play
             return;
         if (_game.getRound() > 3 || notFoldedOrAllIn < 2) {
             endGame(); //infinite loop if everyone folds, should never happen
             return;
         }
-        _game.setHighest_round_bet(0);
+
         _deck.dealPublicCards();
         _game.setRound(_game.getRound() + 1);
         for (int i = 0; i < _turnOrder.size(); i++) { //should be clear
@@ -213,7 +213,7 @@ public class Poker {
 
         ArrayList<User> bestHand = new ArrayList<>();
         bestHand.add(_turnOrder.get(0));
-        for(int i = 1; i < _turnOrder.size(); i++){
+        for (int i = 1; i < _turnOrder.size(); i++) {
             bestCards.add(bestHand.get(0).getCard1());
             bestCards.add(bestHand.get(0).getCard2());
             bestCards.add(_game.getPublic_card1());
@@ -229,31 +229,32 @@ public class Poker {
             currentCards.add(_game.getPublic_card3());
             currentCards.add(_game.getPublic_card4());
             currentCards.add(_game.getPublic_card5());
-            if(compare.compareHands(currentCards.stream().mapToInt(j->j).toArray(),bestCards.stream().mapToInt(j->j).toArray()) > 0){
-                bestHand = new ArrayList<>();
+
+            if (compare.compareHands(currentCards.stream().mapToInt(j -> j).toArray(), bestCards.stream().mapToInt(j -> j).toArray()) > 0) {
+                if (_turnOrder.get(i).getFolded()) {
+                    continue;
+                } else {
+                    bestHand = new ArrayList<>();
+                    bestHand.add(_turnOrder.get(i));
+                }
+            } else if (compare.compareHands(currentCards.stream().mapToInt(j -> j).toArray(), bestCards.stream().mapToInt(j -> j).toArray()) == 0) {
                 bestHand.add(_turnOrder.get(i));
-            }
-            else if(compare.compareHands(currentCards.stream().mapToInt(j->j).toArray(),bestCards.stream().mapToInt(j->j).toArray()) == 0){
-                bestHand.add(_turnOrder.get(i));
-            }
-            else{
+            } else {
                 continue;
             }
 
         }
-        if(bestHand.size() == 1){
+        if (bestHand.size() == 1) {
             //winner winner chicken dinner
             bestHand.get(0).setCurrent_game_money(bestHand.get(0).getCurrent_game_money() + _game.getPot());
             _game.setPot(0);
-        }
-        else{
-            int money = _game.getPot()/bestHand.size();
-            for(int i = 0; i < bestHand.size(); i++){
+        } else {
+            int money = _game.getPot() / bestHand.size();
+            for (int i = 0; i < bestHand.size(); i++) {
                 bestHand.get(i).setCurrent_game_money(bestHand.get(i).getCurrent_game_money() + money);
             }
             _game.setPot(0);
         }
-
 
 
         _game.setRound(0);
@@ -263,21 +264,29 @@ public class Poker {
         _toPlay.clear();
         _toPlay.addAll(_turnOrder);
         boolean blindsReady = false;
+        int prevGamesize = _turnOrder.size();
         while (!blindsReady) {
+            for (int i = 0; i < prevGamesize; i++) {
+                if (_players.size() < 2) { //not enough players to play
+                    _gameInit = false;
+                    return;
+                }
+                if (_toPlay.peek().getCurrent_game_money() < _blind) {
+                    _tooPoor.add(_toPlay.peek());
+                    removePlayer(_toPlay.poll());
+                } else if (_toPlay.peek().getCurrent_game_money() < _blind * 2) {
+                    //_turnOrder.poll(); //get #2
+                    _tooPoor.add(_toPlay.peek());
+                    removePlayer(_toPlay.poll());
+                } else {
+                    _toPlay.remove();
+                }
+            }
             if (_players.size() < 2) { //not enough players to play
                 _gameInit = false;
                 return;
             }
-            if (_toPlay.peek().getCurrent_game_money() < _blind) {
-                _tooPoor.add(_turnOrder.peek());
-                removePlayer(_turnOrder.poll());
-            } else if (_toPlay.peek().getCurrent_game_money() < _blind * 2) {
-                _turnOrder.poll(); //get #2
-                _tooPoor.add(_turnOrder.peek());
-                removePlayer(_turnOrder.poll());
-            } else {
-                blindsReady = true;
-            }
+            blindsReady = true;
         }
         _toPlay.clear();
         _toPlay.addAll(_turnOrder);
@@ -349,6 +358,10 @@ public class Poker {
 
     public List getPlayers() {
         return _players;
+    }
+
+    public String getToPlayNextId(){
+        return _toPlay.peek().getId();
     }
 
     private class Deck {
