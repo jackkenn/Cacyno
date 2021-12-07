@@ -22,6 +22,10 @@ import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
+
+
+
+
 /*
  * TODO: add admin for resets and starting
  */
@@ -75,6 +79,9 @@ public class PokerEndpoint {
         if (g == null) {
             sendErrorString(session, u, "Game could not be found in repo");
         }
+        g.setActive(true);
+        _gameRepo.save(g);
+        u.setGame(g);
         if (!_gamesMap.containsKey(u.getGame().getId())) {
             Poker poker = new Poker(g);
             if (!poker.addPlayer(u)) {//TODO: assuming they joining to play
@@ -120,15 +127,23 @@ public class PokerEndpoint {
             return;
         _userSessionMap.remove(_sessionUserMap.get(session));
         User toRemove = getUser(_sessionUserMap.get(session));
+        Poker p = _gamesMap.get(toRemove.getGame().getId());
+        if (p.TooPoor().contains(toRemove)) {
+            sendUserMessage(toRemove.getId(), toRemove.getUsername() + "Has Been Kicked Due To Insufficient Funds");
+        }
+        _userSessionMap.remove(_sessionUserMap.get(session));
         _gamesMap.get(toRemove.getGame().getId()).removePlayer(toRemove);
         _sessionUserMap.remove(session);
         if (_gameSessionMap.get(toRemove.getGame().getId()).size() <= 1) {
+            p.getGame().setActive(false);
+            _gameRepo.save(p.getGame());
             _gameSessionMap.remove(toRemove.getGame().getId());
             _gamesMap.remove(toRemove.getGame().getId());
         } else {
             _gameSessionMap.get(toRemove.getGame().getId()).removeIf(x -> x.equals(session));
             sendGameMessage(toRemove.getGame().getId(), toRemove.getUsername() + ": Has Left");
         }
+        _userRepo.save(toRemove);
     }
 
     /*
@@ -169,6 +184,7 @@ public class PokerEndpoint {
         }
     }
 
+
     /**
      * reports errors
      *
@@ -195,6 +211,15 @@ public class PokerEndpoint {
                 }
             }
         });
+    }
+
+    private void sendUserMessage(String userId, String message) {
+        try {
+            _userSessionMap.get(userId).getBasicRemote().sendText(message);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private User getUser(String userId) {

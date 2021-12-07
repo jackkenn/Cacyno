@@ -47,6 +47,9 @@ public class Game {
     @ApiModelProperty(notes = "keeps track of if the game is active or not", name = "active")
     @Column(name = "active", nullable = false, columnDefinition = "boolean default false")
     private boolean active;
+    @ApiModelProperty(notes = "keeps track of the highest bet of the game", name = "highest_bet")
+    @Column(name = "highest_bet")
+    private int highest_bet;
 
     /**
      * @return the id of the game
@@ -224,5 +227,23 @@ public class Game {
      */
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    /**
+     * gets the highest bet of the game
+     *
+     * @return
+     */
+    public int getHighest_bet() {
+        return highest_bet;
+    }
+
+    /**
+     * sets the highest bet of the game
+     *
+     * @param bet
+     */
+    public void setHighest_bet(int bet) {
+        this.highest_bet = bet;
     }
 }
