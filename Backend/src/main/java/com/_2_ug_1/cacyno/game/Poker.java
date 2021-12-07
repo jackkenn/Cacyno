@@ -2,6 +2,7 @@ package com._2_ug_1.cacyno.game;
 
 import com._2_ug_1.cacyno.models.Game;
 import com._2_ug_1.cacyno.models.User;
+import com.google.gson.Gson;
 
 import com._2_ug_1.cacyno.game.Hands;
 import com._2_ug_1.cacyno.game.HandChecker;
@@ -18,7 +19,7 @@ public class Poker {
     private LinkedList<User> _turnOrder;
     private int _blind = 50;
     private Deck _deck;
-    private final int _maxPlayers = 12;
+    private final int _maxPlayers = 6;
     private boolean _gameInit;
     private Game _game;
     private List<User> _tooPoor;
@@ -36,6 +37,25 @@ public class Poker {
         _players = new LinkedList<>();
         game.setHighest_bet(0);
         _tooPoor = new ArrayList<>();
+    }
+
+    /**
+     * returns a list of internal objects
+     *
+     * @return poker as a string
+     */
+    public String toString() {
+        Gson gson = new Gson();
+        String poker = new String("");
+        poker += "@_players: size:" + _players.size() + "\n" + gson.toJson(_players) + ", ";
+        poker += "@_toPlay: \n" + gson.toJson(_toPlay) + ", ";
+        poker += "@_turnOrder: \n" + gson.toJson(_turnOrder) + ", ";
+        poker += "@_blind: \n" + _blind + ", ";
+        poker += "@_deck: \n" + _deck.toString() + ", ";
+        poker += "@_maxPlayers: \n" + _maxPlayers + ", ";
+        poker += "@_gameInit: \n" + _gameInit + ", ";
+        poker += "@_game: \n" + gson.toJson(_game);
+        return poker;
     }
 
     /**
@@ -150,7 +170,6 @@ public class Poker {
         } else {
             _toPlay.poll().setFolded(true);
         }
-
         endRound();
         return true;
     }
@@ -364,6 +383,10 @@ public class Poker {
                     _poker._game.setPublic_card5(_cards.remove(_rand.nextInt(_cards.size())));
                     break;
             }
+        }
+
+        public String toString() {
+            return _cards.toString();
         }
     }
 }

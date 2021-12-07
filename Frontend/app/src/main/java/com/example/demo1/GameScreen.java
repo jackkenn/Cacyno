@@ -1,6 +1,8 @@
 package com.example.demo1;
 
+import Models.GameInstance;
 import Models.User;
+import Utilities.ImageIdHashMap;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -15,41 +17,53 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import com.google.android.material.slider.Slider;
 import com.google.firebase.auth.FirebaseAuth;
+import interfaces.ITextViews;
 import interfaces.IUser;
 import lombok.SneakyThrows;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
 import org.json.JSONException;
-
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.HashMap;
 import java.util.Objects;
 import java.util.Random;
 
 
-public class GameScreen extends AppCompatActivity {
+public class GameScreen extends AppCompatActivity implements ITextViews {
     private User user;
     private TextView ingame_money;
     private TextView username;
+
     private ImageButton backout;
     private ImageButton chat;
-    private ConstraintLayout gameScreen;
-    private WebSocketClient mWebSocketClient;
     private ImageButton raise;
     private ImageButton fold;
     private ImageButton check;
-    private TextView pot;
     private Slider slider;
+
+    private ConstraintLayout gameScreen;
+    private WebSocketClient mWebSocketClient;
+
+    private TextView pot;
     private TextView sliderAmount;
+
     private LinearLayout chatlayout;
+    private ImageView yourCard1;
+    private ImageView yourCard2;
+    ImageIdHashMap imageIdsHashMap = new ImageIdHashMap();
     ScrollView scroll;
+
+    private GameInstance game;
+
     int randForUsername = 0;
 
     @SuppressLint("RtlHardcoded")
     @SneakyThrows
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
+        HashMap<Integer, Integer> ImageIds = imageIdsHashMap.getImageIds();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_screen);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
@@ -65,6 +79,10 @@ public class GameScreen extends AppCompatActivity {
         pot = findViewById(R.id.pot);
         slider = findViewById(R.id.slider);
         sliderAmount = findViewById(R.id.slider_amount);
+        yourCard1 = findViewById(R.id.yourCard_1);
+        yourCard2 = findViewById(R.id.yourCard_2);
+
+
 
         //the constraint layout to add chat view
         gameScreen = findViewById(R.id.ActualGame);
@@ -78,24 +96,32 @@ public class GameScreen extends AppCompatActivity {
         TextView message = findViewById(R.id.message_type);
         chatlayout = findViewById(R.id.linearchat);
         scroll = chatplz.findViewById(R.id.chat_scroll);
+        slider.setStepSize(1);
         bringToFront();
 
         user = new User();
         user.getUser(GameScreen.this, new IUser() {
             @Override
             public int onSuccess() throws JSONException, URISyntaxException {
-                ingame_money.append(user.getCurrent_game_money()+"");
-                randForUsername = new Random().nextInt(10000)+1;
+                System.out.println("Success Getting User");
+                ingame_money.append(user.getCurrent_game_money() + "");
+                randForUsername = new Random().nextInt(10000) + 1;
                 username.append((user.getDisplayName()) ? user.getUsername() : "user" + randForUsername);
+                slider.setValueFrom(0);
+                slider.setValueTo(user.getCurrent_game_money());
+                yourCard1.setImageResource(R.drawable.card40);
+                yourCard2.setImageResource(R.drawable.card35);
                 connectWebSocket();
+                game = new GameInstance(user, GameScreen.this);
                 return 0;
             }
-
             @Override
             public int onError() {
+                System.out.println("Failed Getting User");
                 return -1;
             }
         }, Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid(), true);
+
 
 
         backout.setOnClickListener(v -> {
@@ -104,6 +130,7 @@ public class GameScreen extends AppCompatActivity {
                 @Override
                 public int onSuccess() {
                     mWebSocketClient.close();
+                    game.closeWebsocket();
                     startActivity(new Intent(GameScreen.this, UserHome.class));
                     return 0;
                 }
@@ -144,7 +171,14 @@ public class GameScreen extends AppCompatActivity {
             });
 
         });
+        slider.setOnChangeListener(new Slider.OnChangeListener() {
+            @Override
+            public void onValueChange(Slider slider, float value) {
+                sliderAmount.setText("$" + (int)value);
+            }
+        });
     }
+
 
     /**
      * this method brings everything except the chatview to the front
@@ -161,6 +195,8 @@ public class GameScreen extends AppCompatActivity {
         username.bringToFront();
         ingame_money.bringToFront();
         pot.bringToFront();
+        slider.bringToFront();
+        sliderAmount.bringToFront();
 
         findViewById(R.id.user_tag).bringToFront();
         findViewById(R.id.user_tag).bringToFront();
@@ -168,7 +204,6 @@ public class GameScreen extends AppCompatActivity {
         findViewById(R.id.pot_tag).bringToFront();
 
         findViewById(R.id.your_money_sign).bringToFront();
-        findViewById(R.id.slider_moneysign).bringToFront();
         findViewById(R.id.slider_amount).bringToFront();
 
         findViewById(R.id.player1_card1).bringToFront();
@@ -211,11 +246,16 @@ public class GameScreen extends AppCompatActivity {
         findViewById(R.id.middlecard_5).bringToFront();
     }
 
-    private void connectWebSocket() throws URISyntaxException {
+    /**
+     * connecting to chat websocket
+     * @throws URISyntaxException
+     * @throws JSONException
+     */
+    private void connectWebSocket() throws URISyntaxException, JSONException {
         URI uri;
 
         //need to change to remote
-        uri = new URI("ws://coms-309-046.cs.iastate.edu:8080/chat/1"+"/"+user.getUsername());
+        uri = new URI("ws://coms-309-046.cs.iastate.edu:8080/chat/"+user.getGameId().getString("id")+"/"+user.getUsername());
         //uri = new URI("ws://192.168.1.2:8080/chat/1/2");
 
         mWebSocketClient = new WebSocketClient(uri) {
@@ -280,5 +320,76 @@ public class GameScreen extends AppCompatActivity {
             }
         };
         mWebSocketClient.connect();
+    }
+
+    @Override
+    public void Player1Username(String username) {
+        TextView temp = findViewById(R.id.player1_username);
+        temp.setText(username);
+    }
+
+    @Override
+    public void Player1Money(String money) {
+        TextView temp = findViewById(R.id.player1_money);
+        temp.setText(money);
+    }
+
+    @Override
+    public void Player2Username(String username) {
+        TextView temp = findViewById(R.id.player2_username);
+        temp.setText(username);
+    }
+
+    @Override
+    public void Player2Money(String money) {
+        TextView temp = findViewById(R.id.player2_money);
+        temp.setText(money);
+    }
+
+    @Override
+    public void Player3Username(String username) {
+        TextView temp = findViewById(R.id.player3_username);
+        temp.setText(username);
+    }
+
+    @Override
+    public void Player3Money(String money) {
+        TextView temp = findViewById(R.id.player3_money);
+        temp.setText(money);
+    }
+
+    @Override
+    public void Player4Username(String username) {
+        TextView temp = findViewById(R.id.player4_username);
+        temp.setText(username);
+    }
+
+    @Override
+    public void Player4Money(String money) {
+        TextView temp = findViewById(R.id.player4_money);
+        temp.setText(money);
+    }
+
+    @Override
+    public void Player5Username(String username) {
+        TextView temp = findViewById(R.id.player5_username);
+        temp.setText(username);
+    }
+
+    @Override
+    public void Player5Money(String money) {
+        TextView temp = findViewById(R.id.player5_money);
+        temp.setText(money);
+    }
+
+    /**
+     * sends user to home when websocket is closed.
+     * @param msg
+     */
+    @Override
+    public void ToastComments(String msg){
+        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+        user.resetUser();
+        startActivity(new Intent(GameScreen.this, UserHome.class));
     }
 }
