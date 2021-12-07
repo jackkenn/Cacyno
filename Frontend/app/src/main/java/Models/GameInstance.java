@@ -113,7 +113,7 @@ public class GameInstance{
                             users.add(i);
                             i.setIndexOnScreen(users.size()-1);
                             if (users.size() == 2)
-                                mWebSocketClient.send("START THIS SHIT");
+                                mWebSocketClient.send("initGame");
 
                             currentPlayerIndex++;
                             toView(i);
