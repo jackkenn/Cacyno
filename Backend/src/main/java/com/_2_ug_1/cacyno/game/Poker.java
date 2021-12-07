@@ -360,6 +360,10 @@ public class Poker {
         return _players;
     }
 
+    public String getToPlayNextId(){
+        return _toPlay.peek().getId();
+    }
+
     private class Deck {
         private List<Integer> _cards = new ArrayList<>();
         private final Random _rand = new Random();
