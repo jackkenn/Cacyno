@@ -184,7 +184,7 @@ public class GameInstance{
                         if(users.get(i).getFolded())
                             indiciesOfFolded.add(users.get(i).getIndexOnScreen());
                     }
-                    new Handler(Looper.getMainLooper()).post(() -> views.setFolded(indiciesOfFolded));
+                    //new Handler(Looper.getMainLooper()).post(() -> views.setFolded(indiciesOfFolded));
 
                     //set player green
                     String userID = msg.split("\\*\\*")[INDEX_OF_CURRENT_PLAYER];

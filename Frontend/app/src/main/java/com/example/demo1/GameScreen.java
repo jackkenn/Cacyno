@@ -624,6 +624,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
      * resets all players dots to white before updating certain ones to folded or the person that will be the green dot
      */
     public void setWhite(ArrayList<Integer> indicesOfCurrentPlayers){
+        /*
         for(Integer i : indicesOfCurrentPlayers){
             switch(i){
                 case 0:
@@ -648,6 +649,14 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
 
             }
         }
+
+         */
+        ((ImageView) findViewById(R.id.your_greendot)).setImageResource(R.drawable.white_dot);
+        ((ImageView) findViewById(R.id.player1_greendot)).setImageResource(R.drawable.white_dot);
+        ((ImageView) findViewById(R.id.player2_greendot)).setImageResource(R.drawable.white_dot);
+        ((ImageView) findViewById(R.id.player3_greendot)).setImageResource(R.drawable.white_dot);
+        ((ImageView) findViewById(R.id.player4_greendot)).setImageResource(R.drawable.white_dot);
+        ((ImageView) findViewById(R.id.player5_greendot)).setImageResource(R.drawable.white_dot);
     }
 
     /**
