@@ -167,7 +167,6 @@ public class GameInstance{
                             views.TableCard3(gameJSON.getInt("public_card3"));
                             views.TableCard4(gameJSON.getInt("public_card4"));
                             views.TableCard5(gameJSON.getInt("public_card5"));
-                            views.raiseAmount(gameJSON.getInt("highest_gameRound_bet"));
                             views.pot(gameJSON.getInt("pot"));
                             views.setHighestBet(gameJSON.getInt("highest_bet"));
 
