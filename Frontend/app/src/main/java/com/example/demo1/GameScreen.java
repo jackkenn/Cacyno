@@ -682,6 +682,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     }
 
 
+
     /**
      * finds the player on screen to set green dot
      *
@@ -813,10 +814,8 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     @Override
     public void raiseAmount(int highest_bet) {
         runOnUiThread(() -> {
-            if (highest_bet != 0) {
                 slider.setValueFrom(highest_bet * 2);
                 sliderAmount.setText("$" + (highest_bet * 2));
-            }
         });
     }
 

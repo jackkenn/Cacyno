@@ -78,6 +78,8 @@ public interface ITextViews {
 
     void setSliderTo(int to);
 
+    void setSliderFrom(int from);
+
     void setGreen(int player);
 
     void setFolded(ArrayList<Integer> indicesOfFolded);
