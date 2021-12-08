@@ -104,7 +104,7 @@ public class GameInstance{
                     for (User i : list) {
                         switch(findIndexOfUserID(i.id)){
                             case 0:
-                                if(gameJSON.getInt("highest_gameRound_bet") != i.getBet()) {
+                                if(gameJSON.getInt("highest_bet") != i.getBet()) {
                                     views.setCallButton();
                                 } else {
                                     views.setCheckButton();
@@ -112,8 +112,7 @@ public class GameInstance{
                                 views.MyCard1(i.getCard1());
                                 views.MyCard2(i.getCard2());
                                 views.MyMoney(i.getCurrent_game_money());
-                                currentGameMoney = i.getCurrent_game_money();
-                                views.setSliderTo(i.current_game_money);
+                                views.setSliderTo(100);
                                 views.setBet(i.bet);
                                 break;
                             case 1:
