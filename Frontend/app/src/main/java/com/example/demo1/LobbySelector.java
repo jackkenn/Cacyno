@@ -191,6 +191,7 @@ public class LobbySelector extends AppCompatActivity{
             joinGame.setOnClickListener(v1 -> {
                 if(ops.checkMoneyAmount(amount.getText().toString(), amount, user)){
                     user.setGameId(opsLob.lobbyToJSON(i));
+                    user.setMoney(user.getMoney() - Integer.parseInt(amount.getText().toString()));
                     user.setCurrent_game_money(Integer.parseInt(amount.getText().toString()));
                     user.updateUser(LobbySelector.this, new IUser() {
                         @Override

@@ -84,7 +84,7 @@ public class CreateGame extends AppCompatActivity {
                     newLobby.newLobby(CreateGame.this, new ILobby() {
                         @Override
                         public int onSuccess() {
-
+                            user.setMoney(user.getMoney() - Integer.parseInt(money));
                             user.setCurrent_game_money(Integer.parseInt(money));
                             user.setGameId(ops.lobbyToJSON(newLobby));
 
