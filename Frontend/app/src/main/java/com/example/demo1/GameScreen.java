@@ -160,11 +160,11 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         });
 
         call.setOnClickListener(v -> {
-            System.out.println("THIS IS THE CALL Bet: " + (highest_bet-bet));
+            System.out.println("THIS IS THE CALL Bet: " + (highest_bet - bet));
             if (bet == highest_bet) {
                 game.send("Bet: 0");
             } else {
-                game.send("Bet: " + (highest_bet-bet));
+                game.send("Bet: " + (highest_bet - bet));
             }
         });
 
@@ -397,7 +397,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     public void Player1Username(String username, boolean removeDot) {
         runOnUiThread(() -> {
             findViewById(R.id.player1_greendot).setVisibility(View.VISIBLE);
-            if(removeDot)
+            if (removeDot)
                 findViewById(R.id.player1_greendot).setVisibility(View.INVISIBLE);
 
             TextView temp = findViewById(R.id.player1_username);
@@ -410,7 +410,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     @Override
     public void Player1Money(String money) {
         runOnUiThread(() -> {
-            System.out.println("money-> "+money);
+            System.out.println("money-> " + money);
             TextView temp = findViewById(R.id.player1_money);
             temp.setText(money);
         });
@@ -428,7 +428,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     public void Player2Username(String username, boolean removeDot) {
         runOnUiThread(() -> {
             ((ImageView) findViewById(R.id.player2_greendot)).setVisibility(View.VISIBLE);
-            if(removeDot)
+            if (removeDot)
                 findViewById(R.id.player2_greendot).setVisibility(View.INVISIBLE);
 
             TextView temp = findViewById(R.id.player2_username);
@@ -456,7 +456,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     public void Player3Username(String username, boolean removeDot) {
         runOnUiThread(() -> {
             ((ImageView) findViewById(R.id.player3_greendot)).setVisibility(View.VISIBLE);
-            if(removeDot)
+            if (removeDot)
                 findViewById(R.id.player3_greendot).setVisibility(View.INVISIBLE);
 
             TextView temp = findViewById(R.id.player3_username);
@@ -484,7 +484,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     public void Player4Username(String username, boolean removeDot) {
         runOnUiThread(() -> {
             ((ImageView) findViewById(R.id.player4_greendot)).setVisibility(View.VISIBLE);
-            if(removeDot)
+            if (removeDot)
                 findViewById(R.id.player4_greendot).setVisibility(View.INVISIBLE);
 
             TextView temp = findViewById(R.id.player4_username);
@@ -512,7 +512,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     public void Player5Username(String username, boolean removeDot) {
         runOnUiThread(() -> {
             ((ImageView) findViewById(R.id.player5_greendot)).setVisibility(View.VISIBLE);
-            if(removeDot)
+            if (removeDot)
                 findViewById(R.id.player5_greendot).setVisibility(View.INVISIBLE);
 
             TextView temp = findViewById(R.id.player5_username);
@@ -579,7 +579,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
 
     @Override
     public void TableCard5(int card) {
-        runOnUiThread(() ->{
+        runOnUiThread(() -> {
             ImageView temp = findViewById(R.id.middlecard_5);
             if (card == -1) {
                 temp.setImageResource(R.drawable.backcard);
@@ -605,12 +605,13 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
 
     /**
      * finds the player on screen to set green dot
+     *
      * @param player the player will have the green dot
      */
     @Override
-    public void setGreen(int player){
+    public void setGreen(int player) {
         runOnUiThread(() -> {
-            switch(player){
+            switch (player) {
                 case 0:
                     ((ImageView) findViewById(R.id.your_greendot)).setImageResource(R.drawable.green_dot);
                     break;
@@ -644,7 +645,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     /**
      * resets all players dots to white before updating certain ones to folded or the person that will be the green dot
      */
-    public void setWhite(ArrayList<Integer> indicesOfCurrentPlayers){
+    public void setWhite(ArrayList<Integer> indicesOfCurrentPlayers) {
         /*
         for(Integer i : indicesOfCurrentPlayers){
             switch(i){
@@ -682,47 +683,48 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
 
     /**
      * find all people that have folded and set their dot to grey
+     *
      * @param indices the list of indices of where the player is display on screen
      */
     @Override
-    public void setFolded(ArrayList<Integer> indices){
+    public void setFolded(ArrayList<Integer> indices) {
         runOnUiThread(() -> {
-            for(Integer i : indices)
-            switch(i){
-                case 0:
-                    ((ImageView) findViewById(R.id.your_greendot)).setImageResource(R.drawable.grey_dot);
-                    break;
+            for (Integer i : indices)
+                switch (i) {
+                    case 0:
+                        ((ImageView) findViewById(R.id.your_greendot)).setImageResource(R.drawable.grey_dot);
+                        break;
 
-                case 1:
-                    ((ImageView) findViewById(R.id.player1_greendot)).setImageResource(R.drawable.grey_dot);
-                    break;
+                    case 1:
+                        ((ImageView) findViewById(R.id.player1_greendot)).setImageResource(R.drawable.grey_dot);
+                        break;
 
-                case 2:
-                    ((ImageView) findViewById(R.id.player2_greendot)).setImageResource(R.drawable.grey_dot);
-                    break;
+                    case 2:
+                        ((ImageView) findViewById(R.id.player2_greendot)).setImageResource(R.drawable.grey_dot);
+                        break;
 
-                case 3:
-                    ((ImageView) findViewById(R.id.player3_greendot)).setImageResource(R.drawable.grey_dot);
-                    break;
+                    case 3:
+                        ((ImageView) findViewById(R.id.player3_greendot)).setImageResource(R.drawable.grey_dot);
+                        break;
 
-                case 4:
-                    ((ImageView) findViewById(R.id.player4_greendot)).setImageResource(R.drawable.grey_dot);
-                    break;
+                    case 4:
+                        ((ImageView) findViewById(R.id.player4_greendot)).setImageResource(R.drawable.grey_dot);
+                        break;
 
-                case 5:
-                    ((ImageView) findViewById(R.id.player5_greendot)).setImageResource(R.drawable.grey_dot);
-                    break;
+                    case 5:
+                        ((ImageView) findViewById(R.id.player5_greendot)).setImageResource(R.drawable.grey_dot);
+                        break;
 
-                default:
-                    break;
-            }
+                    default:
+                        break;
+                }
         });
     }
 
     /**
      * setting all dots to white and invisible when the game is created
      */
-    public void setIdle(){
+    public void setIdle() {
         runOnUiThread(() -> {
             ((ImageView) findViewById(R.id.your_greendot)).setImageResource(R.drawable.white_dot);
             ((ImageView) findViewById(R.id.player1_greendot)).setImageResource(R.drawable.white_dot);
@@ -742,7 +744,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
 
     @Override
     public void raiseAmount(int highest_bet) {
-        if(highest_bet != 0)
+        if (highest_bet != 0)
             slider.setValueFrom(highest_bet * 2);
     }
 
@@ -753,22 +755,27 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
 
     @Override
     public void setBet(int bet) {
-        this.bet = bet;
-        if(bet==highest_bet) {
-            check.setImageResource(R.drawable.call);
-        } else {
-            check.setImageResource(R.drawable.check);
-        }
+//        this.bet = bet;
+//        if(bet==highest_bet) {
+//            check.setImageResource(R.drawable.call);
+//        } else {
+//            check.setImageResource(R.drawable.check);
+//        }
     }
 
     @Override
-    public void setWinner(String username){
+    public void setWinner(String username) {
         runOnUiThread(() -> {
             TextView winner = findViewById(R.id.winner_username);
             winner.setText(username);
             winner.bringToFront();
             findViewById(R.id.winnerImage).bringToFront();
         });
+    }
+
+    @Override
+    public void setButton(int button) {
+        check.setImageResource(button);
     }
 
     /**

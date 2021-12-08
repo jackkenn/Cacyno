@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import androidx.annotation.RequiresApi;
+import com.example.demo1.R;
 import com.google.firebase.auth.FirebaseAuth;
 import interfaces.ITextViews;
 import lombok.SneakyThrows;
@@ -111,6 +112,11 @@ public class GameInstance{
                     for (User i : list) {
                         switch(findIndexOfUserID(i.id)){
                             case 0:
+                                if(gameJSON.getInt("highest_gameRound_bet") != i.getBet()) {
+                                    views.setButton(R.drawable.call);
+                                } else {
+                                    views.setButton(R.drawable.check);
+                                }
                                 views.MyCard1(i.getCard1());
                                 views.MyCard2(i.getCard2());
                                 views.MyMoney(i.getCurrent_game_money());
