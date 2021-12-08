@@ -14,55 +14,55 @@ import javax.persistence.*;
 public class User {
     @ApiModelProperty(notes = "The id of the user", name = "id")
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false, columnDefinition = "varchar(255) default ''")
     /**
      * holds the ID of the user
      */
     private String id;
     @ApiModelProperty(notes = "the name of the user", name = "username")
-    @Column(name = "username")
+    @Column(name = "username", nullable = false, columnDefinition = "varchar(255) default ''")
     /**
      * holds the name of the user
      */
     private String username;
     @ApiModelProperty(notes = "the amount of money the user has", name = "money")
-    @Column(name = "money")
+    @Column(name = "money", nullable = false, columnDefinition = "varchar(255) default ''")
     /**
      * keeps track of how much money the user has
      */
     private int money;
     @ApiModelProperty(notes = "The name of the user that is displayed", name = "displayname")
-    @Column(name = "displayname")
+    @Column(name = "displayname", nullable = false, columnDefinition = "int default 1000")
     /**
      * holds the value of the name the user wants to be called
      */
     private Boolean displayname;
     @ApiModelProperty(notes = "the amount of money that the user has in the current game that they are playing", name = "current_game_money")
-    @Column(name = "current_game_money")
+    @Column(name = "current_game_money", nullable = false, columnDefinition = "boolean default false")
     /**
      * The amount of money that the user has in the current game that they are playing
      */
     private int current_game_money;
     @ApiModelProperty(notes = "keeps track of the first card the user is holding", name = "card1")
-    @Column(name = "card1")
+    @Column(name = "card1", nullable = false, columnDefinition = "int default 0")
     /**
      * keeps track of the first card the user is holding
      */
     private int card1;
     @ApiModelProperty(notes = "keeps track of the second card the user is holding", name = "card2")
-    @Column(name = "card2")
+    @Column(name = "card2", nullable = false, columnDefinition = "int default 0")
     /**
      * keeps track of the second card the user is holding
      */
     private int card2;
     @ApiModelProperty(notes = "keeps track if the user has folded or not", name = "folded")
-    @Column(name = "folded")
+    @Column(name = "folded", nullable = false, columnDefinition = "int default 0")
     /**
      * keeps track if the user has folded or not
      */
     private boolean folded;
     @ApiModelProperty(notes = "keeps track if the user has played their turn yet that round", name = "hasPlayed")
-    @Column(name = "hasPlayed")
+    @Column(name = "hasPlayed", nullable = false, columnDefinition = "boolean default false")
     /**
      * keeps track if the user has played their turn yet that round
      */
@@ -70,21 +70,25 @@ public class User {
     @Column(name = "position")
     private int position;
     @ApiModelProperty(notes = "keeps track if the user is a spectator or a player in the game", name = "isSpectator")
-    @Column(name = "isSpectator")
+    @Column(name = "isSpectator", nullable = false, columnDefinition = "boolean default false")
     /**
      * keeps track if the user is a spectator or a player in the game
      */
     private boolean isSpectator;
     @ApiModelProperty(notes = "holds the amount of how much the user is betting that round", name = "bet")
-    @Column(name = "bet")
+    @Column(name = "bet", nullable = false, columnDefinition = "int default 0")
     /**
      * holds the amount of how much the user is betting that round
      */
     private int bet;
 
     @ApiModelProperty(notes = "gets if the user has all-inned", name = "allIn")
-    @Column(name = "allIn")
+    @Column(name = "allIn", nullable = false, columnDefinition = "boolean default false")
     private boolean allIn;
+
+    @ApiModelProperty(notes = "keeps track of the highest bet in the round", name = "highest_round_bet")
+    @Column(name = "highest_round_bet", nullable = false, columnDefinition = "int default 0")
+    private int highest_round_bet;
 
     @ApiModelProperty(notes = "gets the id of the game the user is in", name = "gameId")
     @ManyToOne(targetEntity = Game.class)
@@ -327,6 +331,7 @@ public class User {
 
     /**
      * sets the player to all-in
+     *
      * @param allIn
      */
     public void setAllIn(boolean allIn) {
@@ -335,9 +340,28 @@ public class User {
 
     /**
      * gets if the player is all-in
+     *
      * @return
      */
     public boolean isAllIn() {
         return allIn;
+    }
+
+    /**
+     * gets the highest bet of the round
+     *
+     * @return highest_round_bet
+     */
+    public int getHighest_round_bet() {
+        return highest_round_bet;
+    }
+
+    /**
+     * sets the highest bet of the round
+     *
+     * @param highest_round_bet
+     */
+    public void setHighest_round_bet(int highest_round_bet) {
+        this.highest_round_bet = highest_round_bet;
     }
 }
