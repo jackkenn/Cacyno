@@ -486,7 +486,7 @@ public class Poker {
         String gameState = new String(gson.toJson(_players) + "**" + gson.toJson(_game)
                 + "**" + getToPlayNextId() + "**null**null");
         if(!(_showHands.isEmpty() || _oldHands.isEmpty() || _winner.isEmpty() || _showDownGame.isEmpty())) {
-            gameState = new String(gson.toJson(_oldHands) + "**" + _showDownGame
+            gameState = new String(_oldHands + "**" + _showDownGame
                     + "**" + getToPlayNextId() + "**" + _showHands
                     + "**" + _winner.get(0));
             _showDownGame = null;
