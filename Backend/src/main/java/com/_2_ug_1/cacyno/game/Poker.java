@@ -206,9 +206,9 @@ public class Poker {
                     _game.setHighest_gameRound_bet(_toPlay.peek().getHighest_round_bet());
                 }
 
+                _game.setHighest_bet(_toPlay.peek().getBet());
                 _toPlay.peek().setCurrent_game_money(_toPlay.poll().getCurrent_game_money() - bet);
                 _game.setPot(_game.getPot() + bet);
-                _game.setHighest_bet(_toPlay.peek().getBet());
             } else {//New highest bet
 
                 if (_toPlay.peek().getHighest_round_bet() + bet > _toPlay.peek().getHighest_round_bet()) {
