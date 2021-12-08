@@ -46,7 +46,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     private ImageButton fold;
     private ImageButton call;
     private ImageButton check;
-    private Slider slider;
+    private EditText bet_input;
 
     private ConstraintLayout gameScreen;
     private WebSocketClient mWebSocketClient;
@@ -87,7 +87,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         call = findViewById(R.id.call);
         check = findViewById(R.id.check);
         pot = findViewById(R.id.pot);
-        slider = findViewById(R.id.slider);
+        bet_input = findViewById(R.id.betInput);
         sliderAmount = findViewById(R.id.slider_amount);
         yourCard1 = findViewById(R.id.yourCard_1);
         yourCard2 = findViewById(R.id.yourCard_2);
@@ -109,8 +109,6 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         TextView message = findViewById(R.id.message_type);
         chatlayout = findViewById(R.id.linearchat);
         scroll = chatplz.findViewById(R.id.chat_scroll);
-        slider.setStepSize(1);
-        slider.setValueFrom(0);
 
         bringToFront();
         setIdle();
@@ -123,7 +121,6 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
                 ingame_money.setText("$" + user.getCurrent_game_money());
                 randForUsername = new Random().nextInt(10000) + 1;
                 username.append((user.getDisplayName()) ? user.getUsername() : "user" + randForUsername);
-                slider.setValueFrom(0);
                 connectWebSocket();
                 game = new GameInstance(user, GameScreen.this, false);
                 return 0;
@@ -156,7 +153,8 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         });
 
         raise.setOnClickListener(v -> {
-            game.send("Bet: " + sliderAmount.getText().toString().substring(1));
+            game.send("Bet: " + bet_input.getText().toString());
+            bet_input.setText("");
         });
 
         call.setOnClickListener(v -> {
@@ -201,7 +199,6 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
             });
 
         });
-        slider.setOnChangeListener((slider, value) -> sliderAmount.setText("$" + (int) value));
     }
 
 
@@ -221,8 +218,9 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         username.bringToFront();
         ingame_money.bringToFront();
         pot.bringToFront();
-        slider.bringToFront();
+        bet_input.bringToFront();
         sliderAmount.bringToFront();
+
 
         findViewById(R.id.user_tag).bringToFront();
         findViewById(R.id.user_tag).bringToFront();
@@ -232,6 +230,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         findViewById(R.id.your_bet).bringToFront();
 
         findViewById(R.id.slider_amount).bringToFront();
+        findViewById(R.id.betinput_moneySign).bringToFront();
 
         findViewById(R.id.player1_card1).bringToFront();
         findViewById(R.id.player1_card2).bringToFront();
@@ -677,8 +676,9 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
 
     @Override
     public void setSliderTo(int to) {
-        slider.setValueTo(to);
-
+        runOnUiThread(() -> {
+            bet_input.setText(to+"");
+        });
     }
 
 
@@ -814,7 +814,6 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     @Override
     public void raiseAmount(int highest_bet) {
         runOnUiThread(() -> {
-                slider.setValueFrom(highest_bet * 2);
                 sliderAmount.setText("$" + (highest_bet * 2));
         });
     }
