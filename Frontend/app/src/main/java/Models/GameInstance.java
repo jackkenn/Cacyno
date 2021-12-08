@@ -86,7 +86,7 @@ public class GameInstance{
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
             @Override
             public void onMessage(String msg) {
-                System.out.println();
+                System.out.println("AAAAAAAAAAAA" + msg);
                 if (msg.startsWith("[{")){
 
                     String getPlayersOnly = msg.split("\\*\\*")[INDEX_OF_LIST_PLAYERS];
@@ -131,10 +131,10 @@ public class GameInstance{
                             views.TableCard3(gameJSON.getInt("public_card3"));
                             views.TableCard4(gameJSON.getInt("public_card4"));
                             views.TableCard5(gameJSON.getInt("public_card5"));
-                            views.raiseAmount( gameJSON.getInt("highest_bet"));
+                            views.raiseAmount( gameJSON.getInt("highest_round_bet"));
                             views.pot(gameJSON.getInt("pot"));
                             views.MyMoney(users.get(0).current_game_money);
-                            views.setHighestBet(gameJSON.getInt("highest_bet"));
+                            views.setHighestBet(gameJSON.getInt("highest_round_bet"));
 
                             if(gameJSON.getInt("round") == 6) //round 6 is to present winner
                                 views.setWinner(finalWinner);
