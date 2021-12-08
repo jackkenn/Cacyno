@@ -156,8 +156,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         });
 
         raise.setOnClickListener(v -> {
-            System.out.println("THIS IS THE CALL Bet: " + sliderAmount.toString());
-            game.send("Bet: " + sliderAmount.toString());
+            game.send("Bet: " + sliderAmount.getText().toString());
         });
 
         call.setOnClickListener(v -> {
