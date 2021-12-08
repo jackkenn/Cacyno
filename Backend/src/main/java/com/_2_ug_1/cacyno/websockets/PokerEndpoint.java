@@ -142,7 +142,6 @@ public class PokerEndpoint {
             _gamesMap.remove(toRemove.getGame().getId());
         } else {
             _gameSessionMap.get(toRemove.getGame().getId()).removeIf(x -> x.equals(session));
-            sendGameMessage(toRemove.getGame().getId(), toRemove.getUsername() + ": Has Left");
         }
         _userRepo.save(toRemove);
     }
@@ -167,7 +166,6 @@ public class PokerEndpoint {
         User u = getUser(_sessionUserMap.get(session));
         Poker p = _gamesMap.get(u.getGame().getId());
         String next = p.getToPlayNextId();
-        sendGameMessage(u.getGame().getId(), getJsonPlayers(p) + "**" + getJsonGame(p) + "**" + next);
         if (message.equalsIgnoreCase("initGame") && !p.initGame())
             p.initGame();
         if (p.getInitialized()) {
@@ -175,13 +173,8 @@ public class PokerEndpoint {
                 String tmp = message.split(" ")[1];
                 int bet = Integer.parseInt(tmp); //read only int
                 if (p.bet(u, bet)) {
-                    sendGameMessage(u.getGame().getId(), u.getUsername() + " has " + message);
-                    sendGameMessage(u.getGame().getId(), "Round: " + p.getGame().getRound() + "\n Pot: "
-                            + p.getGame().getPot());
+                    sendGameMessage(u.getGame().getId(), getJsonPlayers(p) + "**" + getJsonGame(p) + "**" + next);
                 }
-
-            } else {
-                sendGameMessage(u.getGame().getId(), u.getUsername() + ": " + message);
             }
         }
     }
