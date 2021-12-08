@@ -232,56 +232,32 @@ public class GameInstance{
      * @param user the user data
      */
     private void toView(User user){
-        switch(currentPlayerIndex){
-            case 1:
-                views.Player1Username(user.getUsername(), false);
-                views.Player1Money("$" + user.getCurrent_game_money() + "");
-                views.Player1Bet(user.bet);
-                break;
-            case 2:
-                views.Player2Username(user.getUsername(), false);
-                views.Player2Money("$" + user.getCurrent_game_money() + "");
-                views.Player2Bet(user.bet);
-                break;
-            case 3:
-                views.Player3Username(user.getUsername(), false);
-                views.Player3Money("$" + user.getCurrent_game_money() + "");
-                views.Player3Bet(user.bet);
-                break;
-            case 4:
-                views.Player4Username(user.getUsername(), false);
-                views.Player4Money("$" + user.getCurrent_game_money() + "");
-                views.Player4Bet(user.bet);
-                break;
-            case 5:
-                views.Player5Username(user.getUsername(), false);
-                views.Player5Money("$" + user.getCurrent_game_money() + "");
-                views.Player5Bet(user.bet);
-                break;
-            default:
-                break;
-        }
         new Handler(Looper.getMainLooper()).post(() -> {
             switch(currentPlayerIndex){
                 case 1:
                     views.Player1Username(user.getUsername(), false);
-                    views.Player1Money("$"+user.getCurrent_game_money()+"");
+                    views.Player1Money("$" + user.getCurrent_game_money() + "");
+                    views.Player1Bet(user.bet);
                     break;
                 case 2:
                     views.Player2Username(user.getUsername(), false);
-                    views.Player2Money("$"+user.getCurrent_game_money()+"");
+                    views.Player2Money("$" + user.getCurrent_game_money() + "");
+                    views.Player2Bet(user.bet);
                     break;
                 case 3:
                     views.Player3Username(user.getUsername(), false);
-                    views.Player3Money("$"+user.getCurrent_game_money()+"");
+                    views.Player3Money("$" + user.getCurrent_game_money() + "");
+                    views.Player3Bet(user.bet);
                     break;
                 case 4:
                     views.Player4Username(user.getUsername(), false);
-                    views.Player4Money("$"+user.getCurrent_game_money()+"");
+                    views.Player4Money("$" + user.getCurrent_game_money() + "");
+                    views.Player4Bet(user.bet);
                     break;
                 case 5:
                     views.Player5Username(user.getUsername(), false);
-                    views.Player5Money("$"+user.getCurrent_game_money()+"");
+                    views.Player5Money("$" + user.getCurrent_game_money() + "");
+                    views.Player5Bet(user.bet);
                     break;
                 default:
                     break;
@@ -299,22 +275,27 @@ public class GameInstance{
                 case 1:
                     views.Player1Username("waiting...", true);
                     views.Player1Money("");
+                    views.Player1Bet(0);
                     break;
                 case 2:
                     views.Player2Username("waiting...", true);
                     views.Player2Money("");
+                    views.Player2Bet(0);
                     break;
                 case 3:
                     views.Player3Username("waiting..", true);
                     views.Player3Money("");
+                    views.Player3Bet(0);
                     break;
                 case 4:
                     views.Player4Username("waiting...", true);
                     views.Player4Money("");
+                    views.Player4Bet(0);
                     break;
                 case 5:
                     views.Player5Username("waiting...", true);
                     views.Player5Money("");
+                    views.Player5Bet(0);
                     break;
                 default:
                     break;
