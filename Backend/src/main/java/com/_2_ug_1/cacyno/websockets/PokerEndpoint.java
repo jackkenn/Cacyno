@@ -166,7 +166,7 @@ public class PokerEndpoint {
         User u = getUser(_sessionUserMap.get(session));
         Poker p = _gamesMap.get(u.getGame().getId());
         String next = p.getToPlayNextId();
-        sendUserMessage(u ,message);
+        sendUserMessage(u.getId() ,message);
         if (message.equalsIgnoreCase("initGame") && p.initGame()) {
             sendGameMessage(u.getGame().getId(), getJsonPlayers(p) + "**" + getJsonGame(p) + "**" + next);
         }
