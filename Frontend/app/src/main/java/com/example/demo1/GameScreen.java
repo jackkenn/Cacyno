@@ -752,8 +752,8 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
             winner.setText(username);
             winner.bringToFront();
             findViewById(R.id.winnerImage).bringToFront();
-            //wait(5000);
-            //bringToFront();
+            wait(5000);
+            bringToFront();
         });
     }
 
@@ -770,8 +770,6 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
             call.bringToFront();
         });
     }
-
-
     /**
      * sends user to home when websocket is closed.
      *
@@ -786,7 +784,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         });
     }
 
-    public static void wait(int ms)
+    public void wait(int ms)
     {
         try
         {
