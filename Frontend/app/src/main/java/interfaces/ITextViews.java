@@ -85,7 +85,6 @@ public interface ITextViews {
     void setWhite();
 
 
-    void raiseAmount(int highest_bet);
 
     void setHighestBet(int highest_bet);
 

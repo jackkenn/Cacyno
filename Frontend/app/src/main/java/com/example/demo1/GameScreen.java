@@ -52,7 +52,6 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     private WebSocketClient mWebSocketClient;
 
     private TextView pot;
-    private TextView sliderAmount;
 
     private LinearLayout chatlayout;
     private ImageView yourCard1;
@@ -220,7 +219,6 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         ingame_money.bringToFront();
         pot.bringToFront();
         bet_input.bringToFront();
-        sliderAmount.bringToFront();
 
 
         findViewById(R.id.user_tag).bringToFront();
@@ -811,12 +809,6 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         ((ImageView) findViewById(R.id.player5_card2)).setImageResource(R.drawable.backcard);
     }
 
-    @Override
-    public void raiseAmount(int highest_bet) {
-        runOnUiThread(() -> {
-                sliderAmount.setText("$" + (highest_bet * 2));
-        });
-    }
 
     @Override
     public void setHighestBet(int highest_bet) {
