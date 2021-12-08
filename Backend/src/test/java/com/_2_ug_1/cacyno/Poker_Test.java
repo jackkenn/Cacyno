@@ -130,6 +130,83 @@ public class Poker_Test {
         assertTrue(_sut.bet(_users.get(1), 1)); //new leader
     }
 
+    @Test
+    public void check_winner_money() {
+        int size = _users.size();
+        int beforeBets = _users.get(0).getCurrent_game_money();
+        int rounds = 0;
+        int Pot = 0;
+        for (int i = 0; i < 5; i++) {//goes through entire game
+            assertEquals(_sut.getGame().getRound(), i);
+            for (int j = 0; j < size; j++) {
+
+                if (_users.peek().getId() != _sut.getToPlayNextId()) {
+                    int tmp = 0;
+                }
+                if (i == 0 && _users.size() == 2) {//first round buffer/call for small blind
+                    assertTrue(_sut.bet(_users.poll(), 50));
+                } else if (i == 0 && _users.size() == 1) {//first round buffer/call for big blind
+                    assertTrue(_sut.bet(_users.poll(), 0));
+                } else {
+                    assertTrue(_sut.bet(_users.poll(), 100));
+                    if (i == 4 && _users.size() == 1) {
+                        Pot = _sut.getGame().getPot();
+                        Pot += 100;
+                    }
+                }
+                rounds = i + 1;
+            }
+            _users.addAll(_sut.getPlayers());
+        }//should be done here
+        assertEquals(_sut.getGame().getRound(), 0);//check to make sure game is actually over
+        User u = new User();
+        if (_sut.getWinner().size() == 1) {//Only one winner
+            for (int i = 0; i < size; i++) {//get winner
+                if (_users.get(i).getId() == _sut.getWinner().get(0)) {
+                    u = _users.get(i);
+                    break;
+                }
+            }
+            assertEquals(beforeBets - (100 * rounds) + Pot, u.getCurrent_game_money(), 100);//player bets 100 per round (100*rounds) //buffer of 100 due to the blinds
+
+        } else {//Multiple Winners
+            Pot = Pot/_sut.getWinner().size();
+            for (int i = 0; i < _sut.getWinner().size(); i++) {//get winner
+                for(int j = 0; j < size; j++){
+                    if(_users.get(j).getId() == _sut.getWinner().get(i)){
+                        u = _users.get(j);
+                        assertEquals(beforeBets - (100 * rounds) + Pot, u.getCurrent_game_money(),100);//buffer for blind
+                    }
+                }
+            }
+
+        }
+
+    }
+
+    @Test
+    public void poker_test_rounds() {//tests if all of the rounds work in a game and if all of the players can bet in order with the blinds
+        int size = _users.size();
+        for (int i = 0; i < 5; i++) {
+            assertEquals(_sut.getGame().getRound(), i);
+            for (int j = 0; j < size; j++) {
+
+                if (_users.peek().getId() != _sut.getToPlayNextId()) {
+                    int tmp = 0;
+                }
+                if (i == 0 && _users.size() == 2) {//first round buffer/call for small blind
+                    assertTrue(_sut.bet(_users.poll(), 50));
+                } else if (i == 0 && _users.size() == 1) {//first round buffer/call for big blind
+                    assertTrue(_sut.bet(_users.poll(), 0));
+                } else {
+                    assertTrue(_sut.bet(_users.poll(), 100));
+                }
+            }
+            _users.addAll(_sut.getPlayers());
+        }
+
+    }
+
     /**
      * tests all combinations of players folding
      * TODO: remove player and add player can be tested in a very similar way
