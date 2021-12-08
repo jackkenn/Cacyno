@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import androidx.annotation.RequiresApi;
+import com.example.demo1.R;
 import com.google.firebase.auth.FirebaseAuth;
 import interfaces.ITextViews;
 import lombok.SneakyThrows;
@@ -31,6 +32,13 @@ public class GameInstance{
     private ArrayList<Integer> indiciesOfFolded;
     private ArrayList<Integer> indiciesOfCurrentPlayers;
 
+    private final int INDEX_OF_LIST_PLAYERS = 0;
+    private final int INDEX_OF_GAME_STATE = 1;
+    private final int INDEX_OF_CURRENT_PLAYER = 2;
+    private final int INDEX_OF_WINNER = 3;
+
+    private final int MAX_PLAYERS = 6;
+
     /**
      * this constructor makes a game instance object for each player.
      * @param user the user that is using the device
@@ -42,8 +50,8 @@ public class GameInstance{
         if(!testing)
             connectWebSocket(user);
         users = new ArrayList<>();
+        user.setFolded(false);
         users.add(user);
-
         user.setIndexOnScreen(0);
 
         this.views = views;
@@ -63,16 +71,9 @@ public class GameInstance{
     }
 
     private void connectWebSocket(User user) throws URISyntaxException, JSONException {
-        URI uri = null;
+        URI uri;
 
-        //need to change to remote
-        try {
-            uri = new URI("ws://coms-309-046.cs.iastate.edu:8080/poker/" + FirebaseAuth.getInstance().getUid());
-        }catch (ExceptionInInitializerError e){
-            System.out.println("no user");
-        }
-//        uri = new URI("ws://coms-309-046.cs.iastate.edu:8080/poker/1");
-        //uri = new URI("ws://192.168.1.2:8080/chat/1/2");
+        uri = new URI("ws://coms-309-046.cs.iastate.edu:8080/poker/" + FirebaseAuth.getInstance().getUid());
 
         mWebSocketClient = new WebSocketClient(Objects.requireNonNull(uri)) {
 
@@ -86,29 +87,82 @@ public class GameInstance{
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
             @Override
             public void onMessage(String msg) {
+                System.out.println("-------------"+msg);
                 if (msg.startsWith("[{")){
-                    String getPlayersOnly = msg.split("\\*\\*")[0];
-                    String gameStatus = msg.split("\\*\\*")[1];
+
+                    String getPlayersOnly = msg.split("\\*\\*")[INDEX_OF_LIST_PLAYERS];
+                    String gameStatus = msg.split("\\*\\*")[INDEX_OF_GAME_STATE];
                     JSONArray stringToJSON = new JSONArray(getPlayersOnly);
                     JSONObject gameJSON = new JSONObject(gameStatus);
-
                     String winner = "";
-                    if(msg.split("\\*\\*").length == 3){
-                       winner = msg.split("\\*\\*")[2];
+                    /**
+                     * format that will be sent during game
+                     *              <listOfPlayers>**<gameState>**<userID>
+                     *
+                     * format that will be sent when game is over
+                     *              <listOfPlayers>**<gameState>**<userID>**<GameWinner>
+                     */
+                    if(msg.split("\\*\\*").length == 4){
+                       winner = msg.split("\\*\\*")[INDEX_OF_WINNER];
                     }
 
+                    ArrayList<User> list = user.JSONtolist(stringToJSON);
 
-                    //finding new users to add to screen
-                    for (User i : user.JSONtolist(stringToJSON)) {
-                        if (!user.getId().equals(i.getId()) && !checkObjects(i) && users.size() != 6) {
-
+                    //finding new users to add to screen and updating current users on screen
+                    for (User i : list) {
+                        switch(findIndexOfUserID(i.id)){
+                            case 0:
+                                if(gameJSON.getInt("highest_gameRound_bet") != i.getBet()) {
+                                    views.setCallButton();
+                                } else {
+                                    views.setCheckButton();
+                                }
+                                views.MyCard1(i.getCard1());
+                                views.MyCard2(i.getCard2());
+                                views.MyMoney(i.getCurrent_game_money());
+                                views.setSliderTo(i.current_game_money);
+                                views.setBet(i.bet);
+                                break;
+                            case 1:
+                                views.Player1Username(i.getUsername(), false);
+                                views.Player1Money("$" + i.getCurrent_game_money() + "");
+                                views.Player1Bet(i.bet);
+                                break;
+                            case 2:
+                                views.Player2Username(i.getUsername(), false);
+                                views.Player2Money("$" + i.getCurrent_game_money() + "");
+                                views.Player2Bet(i.bet);
+                                break;
+                            case 3:
+                                views.Player3Username(i.getUsername(), false);
+                                views.Player3Money("$" + i.getCurrent_game_money() + "");
+                                views.Player3Bet(i.bet);
+                                break;
+                            case 4:
+                                views.Player4Username(i.getUsername(), false);
+                                views.Player4Money("$" + i.getCurrent_game_money() + "");
+                                views.Player4Bet(i.bet);
+                                break;
+                            case 5:
+                                views.Player5Username(i.getUsername(), false);
+                                views.Player5Money("$" + i.getCurrent_game_money() + "");
+                                views.Player5Bet(i.bet);
+                                break;
+                            default:
+                                break;
+                        }
+                        if (!user.getId().equals(i.getId()) && !checkObjects(i) && users.size() != MAX_PLAYERS) {
                             users.add(i);
+                            System.out.println("---------------------");
+                            System.out.println("PLAYER: " + i.getUsername());
+                            System.out.println(i.getCurrent_game_money());
+                            System.out.println("---------------------");
                             i.setIndexOnScreen(users.size()-1);
-                            if (users.size() == 2)
-                                mWebSocketClient.send("START THIS SHIT");
+                            if (users.size() == 2 && list.get(0).getId().equals(user.getId()))
+                                mWebSocketClient.send("initGame");
 
                             currentPlayerIndex++;
-                            toView(i);
+                            new Handler(Looper.getMainLooper()).post(() -> toView(i));
                             indiciesOfCurrentPlayers.add(i.getIndexOnScreen());
                         }
                     }
@@ -116,26 +170,37 @@ public class GameInstance{
                     String finalWinner = winner;
                     new Handler(Looper.getMainLooper()).post(() -> {
                         try {
-                            views.MyCard1( gameJSON.getInt("card1"));
-                            views.MyCard2( gameJSON.getInt("card2"));
                             views.TableCard1(gameJSON.getInt("public_card1"));
                             views.TableCard2(gameJSON.getInt("public_card2"));
                             views.TableCard3(gameJSON.getInt("public_card3"));
                             views.TableCard4(gameJSON.getInt("public_card4"));
                             views.TableCard5(gameJSON.getInt("public_card5"));
-                            views.raiseAmount( gameJSON.getInt("highest_bet"));
+                            views.raiseAmount(gameJSON.getInt("highest_gameRound_bet"));
                             views.pot(gameJSON.getInt("pot"));
-                            views.MyMoney(users.get(0).current_game_money);
-                            views.setHighestBet(gameJSON.getInt("highest_bet"));
+                            views.setHighestBet(gameJSON.getInt("highest_gameRound_bet"));
 
-                            if(gameJSON.getInt("round") == 6)
+                            if(gameJSON.getInt("round") == 6) //round 6 is to present winner
                                 views.setWinner(finalWinner);
 
-                            views.setBet(user.bet);
                         }catch (JSONException e){
                             e.printStackTrace();
                         }
                     });
+                    //set the players to white dot
+                    new Handler(Looper.getMainLooper()).post(() -> views.setWhite(indiciesOfCurrentPlayers));
+
+                    //find players who folded and set their dot to grey
+                    for(int i = 0; i < users.size(); i++){
+                        if(users.get(i).getFolded())
+                            indiciesOfFolded.add(users.get(i).getIndexOnScreen());
+                    }
+                    //new Handler(Looper.getMainLooper()).post(() -> views.setFolded(indiciesOfFolded));
+
+                    //set player green
+                    String userID = msg.split("\\*\\*")[INDEX_OF_CURRENT_PLAYER];
+                    if(!userID.equals("null"))
+                        new Handler(Looper.getMainLooper()).post(() -> views.setGreen(findIndexOfUserID(userID)));
+
                 }
                 //removes user who left from screen
                 else if(msg.contains("Has Left")){
@@ -152,19 +217,6 @@ public class GameInstance{
                     }
 
                 }
-
-                //set players to white dot
-                new Handler(Looper.getMainLooper()).post(() -> views.setWhite(indiciesOfCurrentPlayers));
-
-                //set player green
-                new Handler(Looper.getMainLooper()).post(() -> views.setGreen(currentPlayerIndex));
-
-                //find players who folded and set their dot to grey
-                for(int i = 0; i < users.size(); i++){
-                    if(users.get(i).getFolded())
-                        indiciesOfFolded.add(users.get(i).getIndexOnScreen());
-                }
-                new Handler(Looper.getMainLooper()).post(() -> views.setFolded(indiciesOfFolded));
             }
 
             @Override
@@ -190,56 +242,32 @@ public class GameInstance{
      * @param user the user data
      */
     private void toView(User user){
-        switch(currentPlayerIndex){
-            case 1:
-                views.Player1Username(user.getUsername(), false);
-                views.Player1Money("$" + user.getCurrent_game_money() + "");
-                views.Player1Bet(user.bet);
-                break;
-            case 2:
-                views.Player2Username(user.getUsername(), false);
-                views.Player2Money("$" + user.getCurrent_game_money() + "");
-                views.Player2Bet(user.bet);
-                break;
-            case 3:
-                views.Player3Username(user.getUsername(), false);
-                views.Player3Money("$" + user.getCurrent_game_money() + "");
-                views.Player3Bet(user.bet);
-                break;
-            case 4:
-                views.Player4Username(user.getUsername(), false);
-                views.Player4Money("$" + user.getCurrent_game_money() + "");
-                views.Player4Bet(user.bet);
-                break;
-            case 5:
-                views.Player5Username(user.getUsername(), false);
-                views.Player5Money("$" + user.getCurrent_game_money() + "");
-                views.Player5Bet(user.bet);
-                break;
-            default:
-                break;
-        }
         new Handler(Looper.getMainLooper()).post(() -> {
             switch(currentPlayerIndex){
                 case 1:
                     views.Player1Username(user.getUsername(), false);
-                    views.Player1Money("$"+user.getCurrent_game_money()+"");
+                    views.Player1Money("$" + user.getCurrent_game_money() + "");
+                    views.Player1Bet(user.bet);
                     break;
                 case 2:
                     views.Player2Username(user.getUsername(), false);
-                    views.Player2Money("$"+user.getCurrent_game_money()+"");
+                    views.Player2Money("$" + user.getCurrent_game_money() + "");
+                    views.Player2Bet(user.bet);
                     break;
                 case 3:
                     views.Player3Username(user.getUsername(), false);
-                    views.Player3Money("$"+user.getCurrent_game_money()+"");
+                    views.Player3Money("$" + user.getCurrent_game_money() + "");
+                    views.Player3Bet(user.bet);
                     break;
                 case 4:
                     views.Player4Username(user.getUsername(), false);
-                    views.Player4Money("$"+user.getCurrent_game_money()+"");
+                    views.Player4Money("$" + user.getCurrent_game_money() + "");
+                    views.Player4Bet(user.bet);
                     break;
                 case 5:
                     views.Player5Username(user.getUsername(), false);
-                    views.Player5Money("$"+user.getCurrent_game_money()+"");
+                    views.Player5Money("$" + user.getCurrent_game_money() + "");
+                    views.Player5Bet(user.bet);
                     break;
                 default:
                     break;
@@ -257,22 +285,27 @@ public class GameInstance{
                 case 1:
                     views.Player1Username("waiting...", true);
                     views.Player1Money("");
+                    views.Player1Bet(0);
                     break;
                 case 2:
                     views.Player2Username("waiting...", true);
                     views.Player2Money("");
+                    views.Player2Bet(0);
                     break;
                 case 3:
                     views.Player3Username("waiting..", true);
                     views.Player3Money("");
+                    views.Player3Bet(0);
                     break;
                 case 4:
                     views.Player4Username("waiting...", true);
                     views.Player4Money("");
+                    views.Player4Bet(0);
                     break;
                 case 5:
                     views.Player5Username("waiting...", true);
                     views.Player5Money("");
+                    views.Player5Bet(0);
                     break;
                 default:
                     break;
@@ -292,6 +325,21 @@ public class GameInstance{
                 return true;
         }
         return false;
+    }
+
+    /**
+     * finds the matching userID in the list of current players
+     * @param userID the ID to match with
+     * @return the index of the User On screen
+     */
+    private int findIndexOfUserID(String userID){
+        for(User i : users){
+            if(i.getId().equals(userID)) {
+                System.out.println(i.getUsername());
+                return i.getIndexOnScreen();
+            }
+        }
+        return -1;
     }
 
     public void send(String message) {

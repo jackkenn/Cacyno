@@ -140,7 +140,7 @@
             android:text="waiting..."
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/player1_username"
-            android:fontFamily="@font/aqua" android:textSize="18dp"
+            android:fontFamily="@font/aqua" android:textSize="17dp"
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="@+id/player1_line"
             app:layout_constraintEnd_toEndOf="@+id/player1_line"
@@ -168,7 +168,7 @@
             android:layout_height="19dp" app:srcCompat="@drawable/green_dot" android:id="@+id/player1_greendot"
             android:scaleType="fitCenter" app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="264dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="156dp" android:layout_marginStart="156dp"/>
+            android:layout_marginLeft="160dp" android:layout_marginStart="160dp"/>
     <ImageView
             android:layout_width="61dp"
             android:layout_height="76dp" app:srcCompat="@drawable/backcard" android:id="@+id/player2_card2"
@@ -179,7 +179,7 @@
             android:text="waiting..."
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/player2_username"
-            android:fontFamily="@font/aqua" android:textSize="18dp"
+            android:fontFamily="@font/aqua" android:textSize="17dp"
             android:textColor="@color/white"
             app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="160dp"
             app:layout_constraintEnd_toEndOf="@+id/player2_line"
@@ -212,7 +212,7 @@
             android:layout_height="19dp" app:srcCompat="@drawable/green_dot" android:id="@+id/player2_greendot"
             android:scaleType="fitCenter" app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="152dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="272dp" android:layout_marginStart="272dp"/>
+            android:layout_marginLeft="280dp" android:layout_marginStart="280dp"/>
     <ImageView
             android:layout_width="61dp"
             android:layout_height="76dp" app:srcCompat="@drawable/backcard" android:id="@+id/player3_card2"
@@ -234,7 +234,7 @@
             android:text="waiting..."
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/player3_username"
-            android:fontFamily="@font/aqua" android:textSize="18dp"
+            android:fontFamily="@font/aqua" android:textSize="17dp"
             android:textColor="@color/white"
             app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="128dp"
             app:layout_constraintStart_toStartOf="@+id/player3_line"
@@ -259,7 +259,7 @@
             android:layout_height="19dp" app:srcCompat="@drawable/green_dot" android:id="@+id/player3_greendot"
             android:scaleType="fitCenter" app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="116dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="420dp" android:layout_marginStart="420dp"/>
+            android:layout_marginLeft="425dp" android:layout_marginStart="425dp"/>
     <ImageView
             android:layout_width="61dp"
             android:layout_height="76dp" app:srcCompat="@drawable/backcard" android:id="@+id/player4_card2"
@@ -276,7 +276,7 @@
             android:text="waiting..."
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/player4_username"
-            android:fontFamily="@font/aqua" android:textSize="18dp"
+            android:fontFamily="@font/aqua" android:textSize="17dp"
             android:textColor="@color/white"
             app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="160dp"
             app:layout_constraintStart_toStartOf="@+id/player4_line"
@@ -324,7 +324,7 @@
             android:text="waiting..."
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/player5_username"
-            android:fontFamily="@font/aqua" android:textSize="18dp"
+            android:fontFamily="@font/aqua" android:textSize="17dp"
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="@+id/player5_line"
             app:layout_constraintEnd_toEndOf="@+id/player5_line"
@@ -444,7 +444,7 @@
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="83dp"
-            android:layout_marginEnd="219dp" android:layout_marginRight="219dp"
+            android:layout_marginEnd="235dp" android:layout_marginRight="235dp"
             app:layout_constraintEnd_toEndOf="parent"/>
     <ImageButton
             android:layout_width="53dp"

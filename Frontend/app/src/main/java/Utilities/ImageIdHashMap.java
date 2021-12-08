@@ -7,6 +7,7 @@ import java.util.HashMap;
 public class ImageIdHashMap {
     HashMap<Integer, Integer> ImageIds = new HashMap<>();
     public ImageIdHashMap() {
+        ImageIds.put(-1, R.drawable.backcard);
         ImageIds.put(0, R.drawable.card0);
         ImageIds.put(1, R.drawable.card1);
         ImageIds.put(2, R.drawable.card2);
