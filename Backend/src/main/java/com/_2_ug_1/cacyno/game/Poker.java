@@ -184,7 +184,7 @@ public class Poker {
                     _toPlay.peek().setCurrent_game_money(_toPlay.poll().getCurrent_game_money() - bet);
                     _game.setPot(_game.getPot() + bet);
 
-                    if (bet > _toPlay.peek().getHighest_round_bet()) {
+                    if (_toPlay.peek().getHighest_round_bet() + bet > _toPlay.peek().getHighest_round_bet()) {
                         _toPlay.peek().setHighest_round_bet(_toPlay.peek().getHighest_round_bet() + bet);
                     }
                     if (_toPlay.peek().getHighest_round_bet() > _game.getHighest_gameRound_bet()) {
@@ -196,7 +196,7 @@ public class Poker {
                 }
             } else if (_toPlay.peek().getBet() == _game.getHighest_bet()) {//Call
 
-                if (bet > _toPlay.peek().getHighest_round_bet()) {
+                if (_toPlay.peek().getHighest_round_bet() + bet > _toPlay.peek().getHighest_round_bet()) {
                     _toPlay.peek().setHighest_round_bet(_toPlay.peek().getHighest_round_bet() + bet);
                 }
                 if (_toPlay.peek().getHighest_round_bet() > _game.getHighest_gameRound_bet()) {
@@ -207,7 +207,7 @@ public class Poker {
                 _game.setPot(_game.getPot() + bet);
             } else {//New highest bet
 
-                if (bet > _toPlay.peek().getHighest_round_bet()) {
+                if (_toPlay.peek().getHighest_round_bet() + bet > _toPlay.peek().getHighest_round_bet()) {
                     _toPlay.peek().setHighest_round_bet(_toPlay.peek().getHighest_round_bet() + bet);
                 }
                 if (_toPlay.peek().getHighest_round_bet() > _game.getHighest_gameRound_bet()) {
