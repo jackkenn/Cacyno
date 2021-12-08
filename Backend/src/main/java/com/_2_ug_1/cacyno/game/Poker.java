@@ -5,6 +5,7 @@ import com._2_ug_1.cacyno.models.User;
 import com.google.gson.Gson;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * calculates game states based on user input
@@ -20,6 +21,10 @@ public class Poker {
     private Game _game;
     private List<User> _tooPoor;
     private List<String> _winner;
+
+    private String _showHands;
+    private String _oldHands;
+    private String _showDownGame;
 
     public static void main(String Args[]) {
         Game g = new Game();
@@ -59,6 +64,9 @@ public class Poker {
         _players = new LinkedList<>();
         _tooPoor = new ArrayList<>();
         _winner = new LinkedList<>();
+        _showHands = new String();
+        _oldHands = new String();
+        _showDownGame = new String();
     }
 
     /**
@@ -145,6 +153,9 @@ public class Poker {
         _game.setPublic_card5(-1);
         _game.setPot(_blind + _blind * 2);
         _deck.deal();
+        _showDownGame = null;
+        _showHands = new String();
+        _oldHands = new String();
         _gameInit = true;
         return true;
     }
@@ -255,11 +266,14 @@ public class Poker {
             _deck.dealPublicCards();
         }
 
-        HandComparator compare = new HandComparator();
+        Gson gson = new Gson();
+        _showDownGame = gson.toJson(_game);
+        _oldHands = gson.toJson(_players);
+        _showHands = gson.toJson(_players.stream().filter(x -> !x.getFolded()).collect(Collectors.toList()));
 
+        HandComparator compare = new HandComparator();
         ArrayList<Integer> currentCards = new ArrayList<>();
         ArrayList<Integer> bestCards = new ArrayList<>();
-
         ArrayList<User> bestHand = new ArrayList<>();
         bestHand.add(_turnOrder.get(0));
         for (int i = 1; i < _turnOrder.size(); i++) {
@@ -306,6 +320,9 @@ public class Poker {
             }
             _game.setPot(0);
         }
+
+        _showHands = gson.toJson(_winner.get(0)); //TODO: Remove
+
         _game.setRound(0);
         _players.forEach(x -> {
             x.setFolded(false);
@@ -462,6 +479,21 @@ public class Poker {
      */
     public List<String> getWinner() {
         return _winner;
+    }
+
+    public String sendGameState() {
+        Gson gson = new Gson();
+        String gameState = new String(gson.toJson(_players) + "**" + gson.toJson(_game)
+                + "**" + gson.toJson(getToPlayNextId()) + "**null**null");
+        if(!(_showHands.isEmpty() || _oldHands.isEmpty() || _winner.isEmpty() || _showDownGame.isEmpty())) {
+            gameState = new String(gson.toJson(_oldHands) + "**" + gson.toJson(_showDownGame)
+                    + "**" + gson.toJson(getToPlayNextId()) + "**" + gson.toJson(_showHands)
+                    + "**" + gson.toJson(_winner.get(0)));
+            _showDownGame = null;
+            _showHands = new String();
+            _oldHands = new String();
+        }
+        return gameState;
     }
 
     private class Deck {
