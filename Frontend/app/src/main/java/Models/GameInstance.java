@@ -170,6 +170,11 @@ public class GameInstance{
                             if(!msg.split("\\*\\*")[INDEX_OF_WINNER].equals("null")){
                                 String finalWinner = msg.split("\\*\\*")[INDEX_OF_WINNER];
                                 JSONObject players_to_show_cards = new JSONObject(msg.split("\\*\\*")[INDEX_OF_WINNER_CARDS]);
+                                /*
+                                JSONArray players_to_show_cards = new JSONArray(msg.split("\\*\\*")[INDEX_OF_WINNER_CARDS]);
+                                ArrayList<User> winnersHands = user.JSONtolist(players_to_show_cards);
+
+                                */
                                 views.setWinner(finalWinner);
                             }
 

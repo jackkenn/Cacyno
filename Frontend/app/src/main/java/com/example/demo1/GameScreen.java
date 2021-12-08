@@ -796,6 +796,20 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         });
     }
 
+    public void resetAllCards(){
+        ((ImageView) findViewById(R.id.player1_card1)).setImageResource(R.drawable.backcard);
+        ((ImageView) findViewById(R.id.player2_card1)).setImageResource(R.drawable.backcard);
+        ((ImageView) findViewById(R.id.player3_card1)).setImageResource(R.drawable.backcard);
+        ((ImageView) findViewById(R.id.player4_card1)).setImageResource(R.drawable.backcard);
+        ((ImageView) findViewById(R.id.player5_card1)).setImageResource(R.drawable.backcard);
+
+        ((ImageView) findViewById(R.id.player1_card2)).setImageResource(R.drawable.backcard);
+        ((ImageView) findViewById(R.id.player2_card2)).setImageResource(R.drawable.backcard);
+        ((ImageView) findViewById(R.id.player3_card2)).setImageResource(R.drawable.backcard);
+        ((ImageView) findViewById(R.id.player4_card2)).setImageResource(R.drawable.backcard);
+        ((ImageView) findViewById(R.id.player5_card2)).setImageResource(R.drawable.backcard);
+    }
+
     @Override
     public void raiseAmount(int highest_bet) {
         runOnUiThread(() -> {
@@ -832,8 +846,11 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
             winner.setText(username);
             winner.bringToFront();
             findViewById(R.id.winnerImage).bringToFront();
+            //display for 5 seconds
             wait(5000);
+            //bring all views to front except winning screen and reset cards
             bringToFront();
+            resetAllCards();
         });
     }
 
