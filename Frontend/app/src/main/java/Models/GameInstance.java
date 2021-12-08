@@ -40,6 +40,7 @@ public class GameInstance{
     private final int MAX_PLAYERS = 6;
 
     public boolean callOnce = true;
+    private int currentGameMoney = 0;
 
     /**
      * this constructor makes a game instance object for each player.
@@ -111,6 +112,7 @@ public class GameInstance{
                                 views.MyCard1(i.getCard1());
                                 views.MyCard2(i.getCard2());
                                 views.MyMoney(i.getCurrent_game_money());
+                                currentGameMoney = i.getCurrent_game_money();
                                 views.setSliderTo(100);
                                 views.setBet(i.bet);
                                 break;
@@ -347,8 +349,9 @@ public class GameInstance{
     /**
      * called from game screen class when back button is clicked
      */
-    public void closeWebsocket(){
+    public int closeWebsocket(){
         mWebSocketClient.close();
+        return currentGameMoney;
     }
 
 }

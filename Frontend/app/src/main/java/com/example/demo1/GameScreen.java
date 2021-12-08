@@ -135,12 +135,13 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
 
 
         backout.setOnClickListener(v -> {
+            int gameMoney = game.closeWebsocket();
             user.resetUser();
+            user.setMoney(user.getMoney() + gameMoney);
             user.updateUser(GameScreen.this, new IUser() {
                 @Override
                 public int onSuccess() {
                     mWebSocketClient.close();
-                    game.closeWebsocket();
                     startActivity(new Intent(GameScreen.this, UserHome.class));
                     return 0;
                 }
