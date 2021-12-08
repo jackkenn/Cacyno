@@ -106,7 +106,8 @@ public class GameInstance{
                     }
 
                     ArrayList<User> list = user.JSONtolist(stringToJSON);
-                    //finding new users to add to screen
+
+                    //finding new users to add to screen and updating current users on screen
                     for (User i : list) {
                         switch(findIndexOfUserID(i.id)){
                             case 0:
