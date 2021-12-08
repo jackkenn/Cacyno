@@ -41,12 +41,14 @@ public class Poker {
         Poker p = new Poker(g);
         users.forEach(x -> p.addPlayer(x));
         p.initGame();
-        for (int i = 0; i < 5; i++) {
-            users.forEach(x -> p.bet(x, g.getHighest_gameRound_bet() - x.getHighest_round_bet()));
-        }
-        users.add(users.poll());
-        for (int i = 0; i < 5; i++) {
-            users.forEach(x -> p.bet(x, g.getHighest_bet() - x.getBet()));
+        for (int i = 0; i < 20; i++) {
+            users.forEach(x -> {
+                p.bet(x, g.getHighest_bet() - x.getBet());
+                if(g.getHighest_bet() - x.getBet() != 0) {
+                    System.out.println(g.getHighest_bet() - x.getBet());
+                }
+            });
+            System.out.println(g.getRound());
         }
         int tmp = 0;
     }
@@ -181,8 +183,9 @@ public class Poker {
             _toPlay.peek().setBet(_toPlay.peek().getBet() + bet);
             if (_toPlay.peek().getBet() < _game.getHighest_bet()) {
                 if (_toPlay.peek().isAllIn()) {
-                    _toPlay.peek().setCurrent_game_money(_toPlay.poll().getCurrent_game_money() - bet);
+                    _toPlay.peek().setCurrent_game_money(0);
                     _game.setPot(_game.getPot() + bet);
+                    _game.setHighest_bet(_toPlay.peek().getBet());
 
                     if (_toPlay.peek().getHighest_round_bet() + bet > _toPlay.peek().getHighest_round_bet()) {
                         _toPlay.peek().setHighest_round_bet(_toPlay.peek().getHighest_round_bet() + bet);
@@ -205,6 +208,7 @@ public class Poker {
 
                 _toPlay.peek().setCurrent_game_money(_toPlay.poll().getCurrent_game_money() - bet);
                 _game.setPot(_game.getPot() + bet);
+                _game.setHighest_bet(_toPlay.peek().getBet());
             } else {//New highest bet
 
                 if (_toPlay.peek().getHighest_round_bet() + bet > _toPlay.peek().getHighest_round_bet()) {
@@ -365,7 +369,7 @@ public class Poker {
         _toPlay.peek().setBet(_blind);
         _toPlay.peek().setHighest_round_bet(_blind);
         _toPlay.peek().setCurrent_game_money(_toPlay.poll().getCurrent_game_money() - _blind);
-        _toPlay.peek().setBet(_blind);
+        _toPlay.peek().setBet(_blind * 2);
         _toPlay.peek().setHighest_round_bet(_blind * 2);
         _toPlay.peek().setCurrent_game_money(_toPlay.poll().getCurrent_game_money() - _blind * 2);
         _game.setPublic_card1(-1);
