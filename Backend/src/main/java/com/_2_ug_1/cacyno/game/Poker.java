@@ -20,6 +20,31 @@ public class Poker {
     private Game _game;
     private List<User> _tooPoor;
 
+    public static void main(String Args[]) {
+        Game g = new Game();
+        g.setId("1");
+        g.setRound(-1);
+        LinkedList<User> users = new LinkedList<>();
+        for (int i = 0; i < 2; i++) {
+            User u = new User();
+            u.setId(Integer.toString(users.size()));
+            u.setGame(g);
+            u.setCurrent_game_money(10000);
+            users.add(u);
+        }
+        Poker p = new Poker(g);
+        users.forEach(x -> p.addPlayer(x));
+        p.initGame();
+        for(int i = 0 ; i < 5; i++) {
+            users.forEach(x -> p.bet(x, g.getHighest_gameRound_bet() - x.getHighest_round_bet()));
+        }
+        users.add(users.poll());
+        for(int i = 0 ; i < 5; i++) {
+            users.forEach(x -> p.bet(x, g.getHighest_bet() - x.getBet()));
+        }
+        int tmp = 0 ;
+    }
+
     /**
      * constructor for Poker
      *
@@ -90,7 +115,6 @@ public class Poker {
             _toPlay.poll(); //get #2
             _tooPoor.add(_toPlay.peek());
             removePlayer(_toPlay.poll());
-
             return initGame();
         }
         _toPlay.clear();
@@ -146,31 +170,39 @@ public class Poker {
                 if (_toPlay.peek().isAllIn()) {
                     _toPlay.peek().setCurrent_game_money(_toPlay.poll().getCurrent_game_money() - bet);
                     _game.setPot(_game.getPot() + bet);
+
                     if (bet > _toPlay.peek().getHighest_round_bet()) {
-                        _toPlay.peek().setHighest_round_bet(bet);
+                        _toPlay.peek().setHighest_round_bet(_toPlay.peek().getHighest_round_bet() + bet);
                     }
                     if (_toPlay.peek().getHighest_round_bet() > _game.getHighest_gameRound_bet()) {
                         _game.setHighest_gameRound_bet(_toPlay.peek().getHighest_round_bet());
                     }
+
                 } else {
                     return false;
                 }
             } else if (_toPlay.peek().getBet() == _game.getHighest_bet()) {//Call
+
                 if (bet > _toPlay.peek().getHighest_round_bet()) {
-                    _toPlay.peek().setHighest_round_bet(bet);
+                    _toPlay.peek().setHighest_round_bet(_toPlay.peek().getHighest_round_bet() + bet);
                 }
                 if (_toPlay.peek().getHighest_round_bet() > _game.getHighest_gameRound_bet()) {
                     _game.setHighest_gameRound_bet(_toPlay.peek().getHighest_round_bet());
                 }
+
                 _toPlay.peek().setCurrent_game_money(_toPlay.poll().getCurrent_game_money() - bet);
                 _game.setPot(_game.getPot() + bet);
             } else {//New highest bet
+
                 if (bet > _toPlay.peek().getHighest_round_bet()) {
-                    _toPlay.peek().setHighest_round_bet(bet);
+                    _toPlay.peek().setHighest_round_bet(_toPlay.peek().getHighest_round_bet() + bet);
                 }
                 if (_toPlay.peek().getHighest_round_bet() > _game.getHighest_gameRound_bet()) {
                     _game.setHighest_gameRound_bet(_toPlay.peek().getHighest_round_bet());
                 }
+
+                _game.setHighest_bet(_toPlay.peek().getBet());
+
                 LinkedList<User> tempList = new LinkedList<>();
                 tempList.clear();
                 tempList.addAll(_turnOrder);
@@ -178,12 +210,8 @@ public class Poker {
                 while (tempList.peek().getId().equals(_toPlay.peek().getId())) {//should never infinite loop
                     tempList.add(tempList.poll());
                 }
-
                 tempList.removeIf(x -> _toPlay.contains(x) || x.getFolded() || x.isAllIn());
-
                 _toPlay.addAll(tempList);
-
-                _game.setHighest_bet(_toPlay.peek().getBet());
 
                 _toPlay.peek().setCurrent_game_money(_toPlay.poll().getCurrent_game_money() - bet);
                 _game.setPot(_game.getPot() + bet);

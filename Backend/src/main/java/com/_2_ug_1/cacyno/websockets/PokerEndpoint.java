@@ -84,14 +84,17 @@ public class PokerEndpoint {
         u.setGame(g);
         if (!_gamesMap.containsKey(u.getGame().getId())) {
             Poker poker = new Poker(g);
-            if (!poker.addPlayer(u)) {//TODO: assuming they joining to play
+            if(!poker.addPlayer(u)) {
                 sendErrorString(session, u, "Failed to join game: " + poker.toString());
             }
             _gamesMap.put(g.getId(), poker);
         } else {
-            if (!_gamesMap.get(u.getGame().getId()).addPlayer(u)) { //TODO: let them know it is full/better error detection
-                sendErrorString(session, u, "Failed to join game: " + _gamesMap.get(u.getGame().getId()).toString());
+            synchronized (_gamesMap.get(u.getGame().getId())) {
+                _gamesMap.get(u.getGame().getId()).addPlayer(u);
             }
+            /*if (!_gamesMap.get(u.getGame().getId()).addPlayer(u)) { //TODO: let them know it is full/better error detection
+                sendErrorString(session, u, "Failed to join game: " + _gamesMap.get(u.getGame().getId()).toString());
+            }*/
         }
         _userRepo.save(u);
         if (_gameSessionMap.containsKey(u.getGame().getId())) {
@@ -105,8 +108,7 @@ public class PokerEndpoint {
         if (_userSessionMap.containsKey(userId)) {
             sendErrorString(session, u, "User is already in a session: " + poker.toString());
         }
-        String next = poker.getToPlayNextId();
-        sendGameMessage(u.getGame().getId(), getJsonPlayers(poker) + "**" + getJsonGame(poker) + "**" + next);
+        sendGameMessage(u);
         _sessionUserMap.put(session, userId);
         _userSessionMap.put(userId, session);
     }
@@ -165,18 +167,20 @@ public class PokerEndpoint {
         _logger.info("Entered into Message: " + _sessionUserMap.get(session) + ". Got Message: " + message);
         User u = getUser(_sessionUserMap.get(session));
         Poker p = _gamesMap.get(u.getGame().getId());
-        String next = p.getToPlayNextId();
-        sendUserMessage(u.getId() ,message);
-        if (message.equalsIgnoreCase("initGame") && p.initGame()) {
-            sendGameMessage(u.getGame().getId(), getJsonPlayers(p) + "**" + getJsonGame(p) + "**" + next);
+        if (message.equalsIgnoreCase("initGame")) {
+            synchronized (p) {
+                p.initGame();
+            }
+            sendGameMessage(u);
         }
         if (p.getInitialized()) {
             if (message.substring(0, 3).equalsIgnoreCase("Bet")) {
                 String tmp = message.split(" ")[1];
                 int bet = Integer.parseInt(tmp); //read only int
-                if (p.bet(u, bet)) {
-                    sendGameMessage(u.getGame().getId(), getJsonPlayers(p) + "**" + getJsonGame(p) + "**" + next);
+                synchronized (_gamesMap.get(u.getGame().getId())) {
+                    p.bet(u, bet);
                 }
+                sendGameMessage(u);
             }
         }
     }
@@ -198,16 +202,21 @@ public class PokerEndpoint {
         }
     }
 
-    private void sendGameMessage(String gameId, String message) {
-        _gameSessionMap.get(gameId).forEach(x -> {
-            synchronized (x) {
-                try {
-                    x.getBasicRemote().sendText(message);
-                } catch (IOException e) {
-                    e.printStackTrace();
+    private void sendGameMessage(User u) {
+        synchronized (_gamesMap.get(u.getGame().getId())) {
+            Poker p = _gamesMap.get(u.getGame().getId());
+            String next = p.getToPlayNextId();
+            String message = getJsonPlayers(p) + "**" + getJsonGame(p) + "**" + next;
+            _gameSessionMap.get(u.getGame().getId()).forEach(x -> {
+                synchronized (x) {
+                    try {
+                        x.getBasicRemote().sendText(message);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     private void sendUserMessage(String userId, String message) {
@@ -278,15 +287,15 @@ public class PokerEndpoint {
         }
         try {
             Gson gson = new Gson();
-            session.getBasicRemote().sendText(message + ": \n" + gson.toJson(u));
+            session.getBasicRemote().sendText(message + ": \n" + _gamesMap.get(u.getGame().getId()).toString());
         } catch (IOException e) {
             e.printStackTrace();
         }
-        try {
-            onClose(session);
+        /*try {
+            //onClose(session);
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
 }
