@@ -365,7 +365,7 @@ public class Poker {
         _toPlay.peek().setBet(_blind);
         _toPlay.peek().setHighest_round_bet(_blind);
         _toPlay.peek().setCurrent_game_money(_toPlay.poll().getCurrent_game_money() - _blind);
-        _toPlay.peek().setBet(_blind);
+        _toPlay.peek().setBet(_blind * 2);
         _toPlay.peek().setHighest_round_bet(_blind * 2);
         _toPlay.peek().setCurrent_game_money(_toPlay.poll().getCurrent_game_money() - _blind * 2);
         _game.setPublic_card1(-1);
