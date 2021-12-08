@@ -72,4 +72,6 @@ public interface ITextViews {
     void setBet(int bet);
 
     void setWinner(String username);
+
+    void setButton(int check);
 }
