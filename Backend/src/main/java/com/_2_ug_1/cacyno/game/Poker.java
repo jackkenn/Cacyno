@@ -484,11 +484,11 @@ public class Poker {
     public String sendGameState() {
         Gson gson = new Gson();
         String gameState = new String(gson.toJson(_players) + "**" + gson.toJson(_game)
-                + "**" + gson.toJson(getToPlayNextId()) + "**null**null");
+                + "**" + getToPlayNextId() + "**null**null");
         if(!(_showHands.isEmpty() || _oldHands.isEmpty() || _winner.isEmpty() || _showDownGame.isEmpty())) {
-            gameState = new String(gson.toJson(_oldHands) + "**" + gson.toJson(_showDownGame)
-                    + "**" + gson.toJson(getToPlayNextId()) + "**" + gson.toJson(_showHands)
-                    + "**" + gson.toJson(_winner.get(0)));
+            gameState = new String(gson.toJson(_oldHands) + "**" + _showDownGame
+                    + "**" + getToPlayNextId() + "**" + _showHands
+                    + "**" + _winner.get(0));
             _showDownGame = null;
             _showHands = new String();
             _oldHands = new String();
