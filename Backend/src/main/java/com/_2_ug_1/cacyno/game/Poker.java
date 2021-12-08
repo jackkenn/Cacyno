@@ -251,8 +251,8 @@ public class Poker {
         }
         _players.forEach(x -> x.setHighest_round_bet(0));
         _game.setHighest_gameRound_bet(0);
-        _deck.dealPublicCards();
         _game.setRound(_game.getRound() + 1);
+        _deck.dealPublicCards();
         for (int i = 0; i < _turnOrder.size(); i++) { //should be clear
             if (!_turnOrder.get(i).getFolded() && !_turnOrder.get(i).isAllIn()) {
                 _toPlay.add(_turnOrder.get(i));
