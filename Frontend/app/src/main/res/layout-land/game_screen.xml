@@ -423,29 +423,16 @@
             android:layout_marginEnd="100dp" android:layout_marginRight="100dp"
             app:layout_constraintEnd_toEndOf="parent"
     />
-    <com.google.android.material.slider.Slider
-            android:id="@+id/slider"
-            android:layout_width="153dp"
-            android:layout_height="24dp"
-            android:valueFrom="0"
-            android:valueTo="70f"
-            android:stepSize="1"
-            app:thumbRadius="10dp"
-            app:thumbColor="@color/white"
-            app:trackColor="@android:color/darker_gray"
-            android:background="@android:color/transparent" app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="50dp" android:layout_marginEnd="183dp" android:layout_marginRight="183dp"
-            app:layout_constraintEnd_toEndOf="parent"/>
     <TextView
-            android:text="$0"
+            android:text="0"
             android:layout_width="wrap_content"
             android:layout_height="20dp" android:id="@+id/slider_amount"
             android:textColor="@color/white" android:fontFamily="@font/aqua"
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="83dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="505dp"
-            android:layout_marginStart="505dp"/>
+            android:layout_marginBottom="92dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="512dp"
+            android:layout_marginStart="512dp"/>
     <ImageButton
             android:layout_width="53dp"
             android:layout_height="42dp" app:srcCompat="@drawable/chat_but" android:id="@+id/chat_but"
@@ -476,4 +463,22 @@
             app:layout_constraintEnd_toEndOf="@+id/winnerImage" android:textColor="@color/white"
             android:fontFamily="@font/aqua" android:textSize="25dp" app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="70dp"/>
+    <EditText
+            android:layout_width="93dp"
+            android:layout_height="34dp"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/betInput"
+            android:fontFamily="@font/aqua" android:textSize="12dp"
+            android:paddingBottom="10dp" android:textColor="@color/white" android:hint="enter money"
+            android:textColorHint="@color/white" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="487dp" android:layout_marginStart="487dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="58dp"/>
+    <ImageView
+            android:layout_width="15dp"
+            android:layout_height="20dp" app:srcCompat="@drawable/moneysign" android:id="@+id/betinput_moneySign"
+            android:scaleType="fitCenter"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="470dp"
+            android:layout_marginStart="470dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="66dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
