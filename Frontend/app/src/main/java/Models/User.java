@@ -224,7 +224,7 @@ public class User {
         try {
             postData.put("id", FirebaseAuth.getInstance().getCurrentUser().getUid());
             postData.put("username", "");
-            postData.put("money", "1000");
+            postData.put("money", "20000");
             postData.put("displayname", true);
             postData.put("current_game_money", 0);
             postData.put("bet", 0);

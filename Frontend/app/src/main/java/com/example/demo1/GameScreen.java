@@ -156,7 +156,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         });
 
         raise.setOnClickListener(v -> {
-            game.send("Bet: " + sliderAmount.getText().toString());
+            game.send("Bet: " + sliderAmount.getText().toString().substring(1));
         });
 
         call.setOnClickListener(v -> {
@@ -508,6 +508,86 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     }
 
     @Override
+    public void Player1Card1(int card) {
+        runOnUiThread(() -> {
+            ImageView temp = findViewById(R.id.player1_card1);
+            temp.setImageResource(imageIds.get(card));
+        });
+    }
+
+    @Override
+    public void Player1Card2(int card) {
+        runOnUiThread(() -> {
+            ImageView temp = findViewById(R.id.player1_card2);
+            temp.setImageResource(imageIds.get(card));
+        });
+    }
+
+    @Override
+    public void Player2Card1(int card) {
+        runOnUiThread(() -> {
+            ImageView temp = findViewById(R.id.player2_card1);
+            temp.setImageResource(imageIds.get(card));
+        });
+    }
+
+    @Override
+    public void Player2Card2(int card) {
+        runOnUiThread(() -> {
+            ImageView temp = findViewById(R.id.player2_card2);
+            temp.setImageResource(imageIds.get(card));
+        });
+    }
+
+    @Override
+    public void Player3Card1(int card) {
+        runOnUiThread(() -> {
+            ImageView temp = findViewById(R.id.player3_card1);
+            temp.setImageResource(imageIds.get(card));
+        });
+    }
+
+    @Override
+    public void Player3Card2(int card) {
+        runOnUiThread(() -> {
+            ImageView temp = findViewById(R.id.player3_card2);
+            temp.setImageResource(imageIds.get(card));
+        });
+    }
+
+    @Override
+    public void Player4Card1(int card) {
+        runOnUiThread(() -> {
+            ImageView temp = findViewById(R.id.player4_card1);
+            temp.setImageResource(imageIds.get(card));
+        });
+    }
+
+    @Override
+    public void Player4Card2(int card) {
+        runOnUiThread(() -> {
+            ImageView temp = findViewById(R.id.player4_card2);
+            temp.setImageResource(imageIds.get(card));
+        });
+    }
+
+    @Override
+    public void Player5Card1(int card) {
+        runOnUiThread(() -> {
+            ImageView temp = findViewById(R.id.player5_card1);
+            temp.setImageResource(imageIds.get(card));
+        });
+    }
+
+    @Override
+    public void Player5Card2(int card) {
+        runOnUiThread(() -> {
+            ImageView temp = findViewById(R.id.player5_card2);
+            temp.setImageResource(imageIds.get(card));
+        });
+    }
+
+    @Override
     public void Player5Username(String username, boolean removeDot) {
         runOnUiThread(() -> {
             ((ImageView) findViewById(R.id.player5_greendot)).setVisibility(View.VISIBLE);
@@ -600,6 +680,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         slider.setValueTo(to);
 
     }
+
 
 
     /**
@@ -716,13 +797,25 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         });
     }
 
+    public void resetAllCards(){
+        ((ImageView) findViewById(R.id.player1_card1)).setImageResource(R.drawable.backcard);
+        ((ImageView) findViewById(R.id.player2_card1)).setImageResource(R.drawable.backcard);
+        ((ImageView) findViewById(R.id.player3_card1)).setImageResource(R.drawable.backcard);
+        ((ImageView) findViewById(R.id.player4_card1)).setImageResource(R.drawable.backcard);
+        ((ImageView) findViewById(R.id.player5_card1)).setImageResource(R.drawable.backcard);
+
+        ((ImageView) findViewById(R.id.player1_card2)).setImageResource(R.drawable.backcard);
+        ((ImageView) findViewById(R.id.player2_card2)).setImageResource(R.drawable.backcard);
+        ((ImageView) findViewById(R.id.player3_card2)).setImageResource(R.drawable.backcard);
+        ((ImageView) findViewById(R.id.player4_card2)).setImageResource(R.drawable.backcard);
+        ((ImageView) findViewById(R.id.player5_card2)).setImageResource(R.drawable.backcard);
+    }
+
     @Override
     public void raiseAmount(int highest_bet) {
         runOnUiThread(() -> {
-            if (highest_bet != 0) {
                 slider.setValueFrom(highest_bet * 2);
                 sliderAmount.setText("$" + (highest_bet * 2));
-            }
         });
     }
 
@@ -748,12 +841,17 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     @Override
     public void setWinner(String username) {
         runOnUiThread(() -> {
+            System.out.println("DISPLAY WINNER");
             TextView winner = findViewById(R.id.winner_username);
             winner.setText(username);
             winner.bringToFront();
             findViewById(R.id.winnerImage).bringToFront();
-            //wait(5000);
-            //bringToFront();
+            //display for 5 seconds
+            wait(5000);
+            System.out.println("DONE DISPLAYING");
+            //bring all views to front except winning screen and reset cards
+            bringToFront();
+            resetAllCards();
         });
     }
 
@@ -770,8 +868,6 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
             call.bringToFront();
         });
     }
-
-
     /**
      * sends user to home when websocket is closed.
      *
@@ -786,7 +882,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         });
     }
 
-    public static void wait(int ms)
+    public void wait(int ms)
     {
         try
         {

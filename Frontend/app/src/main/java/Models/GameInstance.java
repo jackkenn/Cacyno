@@ -30,12 +30,12 @@ public class GameInstance{
     private ITextViews views;
     private int currentPlayerIndex;
     private ArrayList<Integer> indiciesOfFolded;
-    private ArrayList<Integer> indiciesOfCurrentPlayers;
 
     private final int INDEX_OF_LIST_PLAYERS = 0;
     private final int INDEX_OF_GAME_STATE = 1;
     private final int INDEX_OF_CURRENT_PLAYER = 2;
     private final int INDEX_OF_WINNER = 3;
+    private final int INDEX_OF_WINNER_CARDS = 4;
 
     private final int MAX_PLAYERS = 6;
 
@@ -56,18 +56,14 @@ public class GameInstance{
 
         this.views = views;
         indiciesOfFolded = new ArrayList<>();
-        indiciesOfCurrentPlayers = new ArrayList<>();
     }
 
     public ArrayList<User> getuserList(){
         return users;
     }
 
-    public ArrayList<Integer> getBothList(int i){
-        if(i == 0)
+    public ArrayList<Integer> getFoldedList(){
             return indiciesOfFolded;
-        else
-            return indiciesOfCurrentPlayers;
     }
 
     private void connectWebSocket(User user) throws URISyntaxException, JSONException {
@@ -87,26 +83,20 @@ public class GameInstance{
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
             @Override
             public void onMessage(String msg) {
-                System.out.println("-------------"+msg);
+                System.out.println("MESSSSAGEEEEEEEEEEEEEEEE\n"+msg+"\nEND MESSSSSSSSSSSAGE");
                 if (msg.startsWith("[{")){
-
                     String getPlayersOnly = msg.split("\\*\\*")[INDEX_OF_LIST_PLAYERS];
                     String gameStatus = msg.split("\\*\\*")[INDEX_OF_GAME_STATE];
-                    JSONArray stringToJSON = new JSONArray(getPlayersOnly);
+                    JSONArray usersJSON = new JSONArray(getPlayersOnly);
                     JSONObject gameJSON = new JSONObject(gameStatus);
-                    String winner = "";
                     /**
                      * format that will be sent during game
-                     *              <listOfPlayers>**<gameState>**<userID>
+                     *              <listOfPlayers>**<gameState>**<userID>**null**null
                      *
                      * format that will be sent when game is over
-                     *              <listOfPlayers>**<gameState>**<userID>**<GameWinner>
+                     *              <listOfPlayers>**<gameState>**<userID>**<GameWinner>**<ListOfWinnersToShow>
                      */
-                    if(msg.split("\\*\\*").length == 4){
-                       winner = msg.split("\\*\\*")[INDEX_OF_WINNER];
-                    }
-
-                    ArrayList<User> list = user.JSONtolist(stringToJSON);
+                    ArrayList<User> list = user.JSONtolist(usersJSON);
 
                     //finding new users to add to screen and updating current users on screen
                     for (User i : list) {
@@ -163,11 +153,8 @@ public class GameInstance{
 
                             currentPlayerIndex++;
                             new Handler(Looper.getMainLooper()).post(() -> toView(i));
-                            indiciesOfCurrentPlayers.add(i.getIndexOnScreen());
                         }
                     }
-
-                    String finalWinner = winner;
                     new Handler(Looper.getMainLooper()).post(() -> {
                         try {
                             views.TableCard1(gameJSON.getInt("public_card1"));
@@ -179,8 +166,17 @@ public class GameInstance{
                             views.pot(gameJSON.getInt("pot"));
                             views.setHighestBet(gameJSON.getInt("highest_gameRound_bet"));
 
-                            if(gameJSON.getInt("round") == 6) //round 6 is to present winner
-                               new Handler(Looper.getMainLooper()).post(() -> views.setWinner(finalWinner));
+                            //checks if there is a winner and will display
+                            if(!msg.split("\\*\\*")[INDEX_OF_WINNER].equals("null")){
+                                String finalWinner = msg.split("\\*\\*")[INDEX_OF_WINNER];
+                                JSONObject players_to_show_cards = new JSONObject(msg.split("\\*\\*")[INDEX_OF_WINNER_CARDS]);
+                                /*
+                                JSONArray players_to_show_cards = new JSONArray(msg.split("\\*\\*")[INDEX_OF_WINNER_CARDS]);
+                                ArrayList<User> winnersHands = user.JSONtolist(players_to_show_cards);
+
+                                */
+                                //views.setWinner(finalWinner);
+                            }
 
                         }catch (JSONException e){
                             e.printStackTrace();
@@ -206,13 +202,10 @@ public class GameInstance{
                 else if(msg.contains("Has Left")){
                     String playerUsername = msg.split(":")[1];
 
-
                     for(int i = 0; i < users.size(); i++){
                         if(users.get(i).getUsername().equals(playerUsername)){
-
                             removePlayer(users.get(i).getIndexOnScreen());
                             users.remove(i);
-                            indiciesOfCurrentPlayers.remove(i);
                             currentPlayerIndex = users.get(i).getIndexOnScreen();
 
                         }
