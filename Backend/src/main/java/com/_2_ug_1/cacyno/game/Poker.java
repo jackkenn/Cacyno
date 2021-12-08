@@ -77,13 +77,12 @@ public class Poker {
                 _toPlay.remove();
             }
         }
-
         if (_toPlay.peek().getCurrent_game_money() < _blind) {
             _tooPoor.add(_toPlay.peek());
             removePlayer(_toPlay.poll());
-
             return initGame();
         }
+        _toPlay.poll();
         if (_toPlay.peek().getCurrent_game_money() < _blind * 2) {
             _toPlay.poll(); //get #2
             _tooPoor.add(_toPlay.peek());
@@ -95,7 +94,9 @@ public class Poker {
         _toPlay.addAll(_turnOrder);
         for (int i = 0; i < _turnOrder.size(); i++) {
             if (_toPlay.size() == 2) {
+                _toPlay.peek().setHighest_round_bet(_blind);
                 _toPlay.peek().setCurrent_game_money(_toPlay.poll().getCurrent_game_money() - _blind);
+                _toPlay.peek().setHighest_round_bet(_blind * 2);
                 _toPlay.peek().setCurrent_game_money(_toPlay.poll().getCurrent_game_money() - _blind * 2);
                 break;
             } else {
@@ -301,6 +302,14 @@ public class Poker {
             }
             blindsReady = true;
         }
+        _toPlay.addAll(_turnOrder);
+        while (_toPlay.size() > 2) {
+            _toPlay.poll();
+        }
+        _toPlay.peek().setHighest_round_bet(_blind);
+        _toPlay.peek().setCurrent_game_money(_toPlay.poll().getCurrent_game_money() - _blind);
+        _toPlay.peek().setHighest_round_bet(_blind * 2);
+        _toPlay.peek().setCurrent_game_money(_toPlay.poll().getCurrent_game_money() - _blind * 2);
         _game.setPublic_card1(-1);
         _game.setPublic_card2(-1);
         _game.setPublic_card3(-1);

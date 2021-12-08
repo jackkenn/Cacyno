@@ -21,19 +21,19 @@ public class Game {
     @Column(name = "id")
     private String id;
     @ApiModelProperty(notes = "holds the data of the first card on the table", name = "public_card1")
-    @Column(name = "public_card1", nullable = false, columnDefinition = "int default 0")
+    @Column(name = "public_card1", nullable = false, columnDefinition = "int default -1")
     private int public_card1;
     @ApiModelProperty(notes = "holds the data of the second card on the table", name = "public_card2")
-    @Column(name = "public_card2", nullable = false, columnDefinition = "int default 0")
+    @Column(name = "public_card2", nullable = false, columnDefinition = "int default -1")
     private int public_card2;
     @ApiModelProperty(notes = "holds the data of the third card on the table", name = "public_card3")
-    @Column(name = "public_card3", nullable = false, columnDefinition = "int default 0")
+    @Column(name = "public_card3", nullable = false, columnDefinition = "int default -1")
     private int public_card3;
     @ApiModelProperty(notes = "holds the data of the fourth card on the table", name = "public_card4")
-    @Column(name = "public_card4", nullable = false, columnDefinition = "int default 0")
+    @Column(name = "public_card4", nullable = false, columnDefinition = "int default -1")
     private int public_card4;
     @ApiModelProperty(notes = "holds the data of the fifth card on the table", name = "public_card5")
-    @Column(name = "public_card5", nullable = false, columnDefinition = "int default 0")
+    @Column(name = "public_card5", nullable = false, columnDefinition = "int default -1")
     private int public_card5;
     @ApiModelProperty(notes = "holds the data of the total money in the round", name = "pot")
     @Column(name = "pot", nullable = false, columnDefinition = "int default 0")
