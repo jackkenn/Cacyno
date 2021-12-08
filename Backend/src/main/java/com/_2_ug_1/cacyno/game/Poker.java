@@ -19,6 +19,7 @@ public class Poker {
     private boolean _gameInit;
     private Game _game;
     private List<User> _tooPoor;
+    private List<String> _winner;
 
     public static void main(String Args[]) {
         Game g = new Game();
@@ -35,14 +36,14 @@ public class Poker {
         Poker p = new Poker(g);
         users.forEach(x -> p.addPlayer(x));
         p.initGame();
-        for(int i = 0 ; i < 5; i++) {
+        for (int i = 0; i < 5; i++) {
             users.forEach(x -> p.bet(x, g.getHighest_gameRound_bet() - x.getHighest_round_bet()));
         }
         users.add(users.poll());
-        for(int i = 0 ; i < 5; i++) {
+        for (int i = 0; i < 5; i++) {
             users.forEach(x -> p.bet(x, g.getHighest_bet() - x.getBet()));
         }
-        int tmp = 0 ;
+        int tmp = 0;
     }
 
     /**
@@ -57,6 +58,7 @@ public class Poker {
         _toPlay = new LinkedList<>();
         _players = new LinkedList<>();
         _tooPoor = new ArrayList<>();
+        _winner = new LinkedList<>();
     }
 
     /**
@@ -293,11 +295,13 @@ public class Poker {
         }
         if (bestHand.size() == 1) {
             //winner winner chicken dinner
+            _winner.add(bestHand.get(0).getId());
             bestHand.get(0).setCurrent_game_money(bestHand.get(0).getCurrent_game_money() + _game.getPot());
             _game.setPot(0);
         } else {
             int money = _game.getPot() / bestHand.size();
             for (int i = 0; i < bestHand.size(); i++) {
+                _winner.add(bestHand.get(i).getId());
                 bestHand.get(i).setCurrent_game_money(bestHand.get(i).getCurrent_game_money() + money);
             }
             _game.setPot(0);
@@ -420,20 +424,44 @@ public class Poker {
         return _game;
     }
 
+    /**
+     * gets a list of players that were too poor and had to be removed
+     *
+     * @return
+     */
     public List TooPoor() {
         return _tooPoor;
     }
 
+    /**
+     * gets a list of players in the poker game
+     *
+     * @return
+     */
     public List getPlayers() {
         return _players;
     }
 
+    /**
+     * gets the current player's ID
+     *
+     * @return
+     */
     public String getToPlayNextId() {
         if (_toPlay.peek() != null) {
             return _toPlay.peek().getId();
         } else {
             return null;
         }
+    }
+
+    /**
+     * gets a List that contains the winner(s)'s id
+     *
+     * @return
+     */
+    public List<String> getWinner() {
+        return _winner;
     }
 
     private class Deck {
