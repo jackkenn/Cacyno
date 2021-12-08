@@ -38,7 +38,6 @@ public class MoreTests {
 
         GameInstance instance = new GameInstance(user, views, true);
 
-        assertNotNull(instance.getBothList(0));
-        assertNotNull(instance.getBothList(1));
+        assertNotNull(instance.getuserList());
     }
 }
