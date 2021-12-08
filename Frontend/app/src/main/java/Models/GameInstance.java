@@ -164,7 +164,7 @@ public class GameInstance{
                             views.TableCard5(gameJSON.getInt("public_card5"));
                             views.raiseAmount(gameJSON.getInt("highest_gameRound_bet"));
                             views.pot(gameJSON.getInt("pot"));
-                            views.setHighestBet(gameJSON.getInt("highest_gameRound_bet"));
+                            views.setHighestBet(gameJSON.getInt("highest_bet"));
 
                             //checks if there is a winner and will display
                             if(!msg.split("\\*\\*")[INDEX_OF_WINNER].equals("null")){
