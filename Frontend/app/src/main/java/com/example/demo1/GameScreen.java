@@ -775,7 +775,9 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
 
     @Override
     public void setButton(int button) {
-        check.setImageResource(button);
+        runOnUiThread(() -> {
+            check.setImageResource(button);
+        });
     }
 
     /**
