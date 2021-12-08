@@ -166,8 +166,10 @@ public class PokerEndpoint {
         User u = getUser(_sessionUserMap.get(session));
         Poker p = _gamesMap.get(u.getGame().getId());
         String next = p.getToPlayNextId();
-        if (message.equalsIgnoreCase("initGame") && !p.initGame())
+        if (message.equalsIgnoreCase("initGame") && !p.initGame()) {
             p.initGame();
+            sendGameMessage(u.getGame().getId(), getJsonPlayers(p) + "**" + getJsonGame(p) + "**" + next);
+        }
         if (p.getInitialized()) {
             if (message.substring(0, 3).equalsIgnoreCase("Bet")) {
                 String tmp = message.split(" ")[1];
