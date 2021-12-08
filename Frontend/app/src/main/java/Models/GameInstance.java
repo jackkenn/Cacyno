@@ -105,9 +105,9 @@ public class GameInstance{
                        winner = msg.split("\\*\\*")[INDEX_OF_WINNER];
                     }
 
-
+                    ArrayList<User> list = user.JSONtolist(stringToJSON);
                     //finding new users to add to screen
-                    for (User i : user.JSONtolist(stringToJSON)) {
+                    for (User i : list) {
                         switch (findIndexOfUserID(i.id)) {
                             case 0:
                                 views.MyCard1(i.getCard1());
@@ -148,7 +148,7 @@ public class GameInstance{
                         if (!user.getId().equals(i.getId()) && !checkObjects(i) && users.size() != MAX_PLAYERS) {
                             users.add(i);
                             i.setIndexOnScreen(users.size()-1);
-                            if (users.size() == 2)
+                            if (users.size() == 2 && list.get(0).getId().equals(user.getId()))
                                 mWebSocketClient.send("initGame");
 
                             currentPlayerIndex++;
