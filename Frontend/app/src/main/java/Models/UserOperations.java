@@ -77,7 +77,7 @@ public class UserOperations {
         user.setGameId(null);
         user.setCurrent_game_money(0);
         user.setPosition(0);
-        user.setFolded(false);
+        user.setFolded(true);
         user.setCard1(0);
         user.setCard2(0);
         user.setBet(0);

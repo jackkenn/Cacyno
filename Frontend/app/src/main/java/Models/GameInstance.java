@@ -147,7 +147,6 @@ public class GameInstance{
                     });
                     //set players to white dot
                     new Handler(Looper.getMainLooper()).post(() -> views.setWhite(indiciesOfCurrentPlayers));
-                    System.out.println(indiciesOfCurrentPlayers.toString() + "");
 
                     //set player green
                     String userID = msg.split("\\*\\*")[INDEX_OF_CURRENT_PLAYER];
