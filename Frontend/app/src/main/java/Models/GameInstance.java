@@ -180,21 +180,21 @@ public class GameInstance{
                             views.setHighestBet(gameJSON.getInt("highest_gameRound_bet"));
 
                             if(gameJSON.getInt("round") == 6) //round 6 is to present winner
-                                views.setWinner(finalWinner);
+                               new Handler(Looper.getMainLooper()).post(() -> views.setWinner(finalWinner));
 
                         }catch (JSONException e){
                             e.printStackTrace();
                         }
                     });
-                    //set the players to white dot
-                    new Handler(Looper.getMainLooper()).post(() -> views.setWhite(indiciesOfCurrentPlayers));
+                    //set all players who have visible dot to white
+                    new Handler(Looper.getMainLooper()).post(() -> views.setWhite());
 
                     //find players who folded and set their dot to grey
                     for(int i = 0; i < users.size(); i++){
                         if(users.get(i).getFolded())
                             indiciesOfFolded.add(users.get(i).getIndexOnScreen());
                     }
-                    //new Handler(Looper.getMainLooper()).post(() -> views.setFolded(indiciesOfFolded));
+                       // new Handler(Looper.getMainLooper()).post(() -> views.setFolded(indiciesOfFolded));
 
                     //set player green
                     String userID = msg.split("\\*\\*")[INDEX_OF_CURRENT_PLAYER];
@@ -204,7 +204,9 @@ public class GameInstance{
                 }
                 //removes user who left from screen
                 else if(msg.contains("Has Left")){
-                    String playerUsername = msg.split(":")[0];
+                    String playerUsername = msg.split(":")[1];
+
+
                     for(int i = 0; i < users.size(); i++){
                         if(users.get(i).getUsername().equals(playerUsername)){
 

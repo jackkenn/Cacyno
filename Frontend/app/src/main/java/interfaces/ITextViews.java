@@ -62,7 +62,7 @@ public interface ITextViews {
 
     void setFolded(ArrayList<Integer> indicesOfFolded);
 
-    void setWhite(ArrayList<Integer> indicesOfCurrentPlayers);
+    void setWhite();
 
 
     void raiseAmount(int highest_bet);

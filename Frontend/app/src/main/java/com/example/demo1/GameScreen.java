@@ -644,34 +644,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     /**
      * resets all players dots to white before updating certain ones to folded or the person that will be the green dot
      */
-    public void setWhite(ArrayList<Integer> indicesOfCurrentPlayers) {
-        /*
-        for(Integer i : indicesOfCurrentPlayers){
-            switch(i){
-                case 0:
-                    ((ImageView) findViewById(R.id.your_greendot)).setImageResource(R.drawable.white_dot);
-                    break;
-                case 1:
-                    ((ImageView) findViewById(R.id.player1_greendot)).setImageResource(R.drawable.white_dot);
-                    break;
-                case 2:
-                    ((ImageView) findViewById(R.id.player2_greendot)).setImageResource(R.drawable.white_dot);
-                    break;
-                case 3:
-                    ((ImageView) findViewById(R.id.player3_greendot)).setImageResource(R.drawable.white_dot);
-                    break;
-                case 4:
-                    ((ImageView) findViewById(R.id.player4_greendot)).setImageResource(R.drawable.white_dot);
-                    break;
-                case 5:
-                    ((ImageView) findViewById(R.id.player5_greendot)).setImageResource(R.drawable.white_dot);
-                    break;
-                default:
-
-            }
-        }
-
-         */
+    public void setWhite() {
         runOnUiThread(() -> {
             ((ImageView) findViewById(R.id.your_greendot)).setImageResource(R.drawable.white_dot);
             ((ImageView) findViewById(R.id.player1_greendot)).setImageResource(R.drawable.white_dot);
@@ -779,6 +752,8 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
             winner.setText(username);
             winner.bringToFront();
             findViewById(R.id.winnerImage).bringToFront();
+            //wait(5000);
+            //bringToFront();
         });
     }
 
@@ -809,6 +784,18 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
             user.resetUser();
             startActivity(new Intent(GameScreen.this, UserHome.class));
         });
+    }
+
+    public static void wait(int ms)
+    {
+        try
+        {
+            Thread.sleep(ms);
+        }
+        catch(InterruptedException ex)
+        {
+            Thread.currentThread().interrupt();
+        }
     }
 
 

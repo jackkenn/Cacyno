@@ -444,8 +444,8 @@
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="83dp"
-            android:layout_marginEnd="235dp" android:layout_marginRight="235dp"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="505dp"
+            android:layout_marginStart="505dp"/>
     <ImageButton
             android:layout_width="53dp"
             android:layout_height="42dp" app:srcCompat="@drawable/chat_but" android:id="@+id/chat_but"
