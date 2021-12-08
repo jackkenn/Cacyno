@@ -108,7 +108,7 @@ public class GameInstance{
                     ArrayList<User> list = user.JSONtolist(stringToJSON);
                     //finding new users to add to screen
                     for (User i : list) {
-                        switch (findIndexOfUserID(i.id)) {
+                        switch(findIndexOfUserID(i.id)){
                             case 0:
                                 views.MyCard1(i.getCard1());
                                 views.MyCard2(i.getCard2());
@@ -117,34 +117,33 @@ public class GameInstance{
                                 views.setSliderTo(i.current_game_money);
                                 break;
                             case 1:
-                                views.Player1Money(i.current_game_money+"");
-                                views.Player1Bet(i.bet);
+                                views.Player1Username(user.getUsername(), false);
+                                views.Player1Money("$" + user.getCurrent_game_money() + "");
+                                views.Player1Bet(user.bet);
                                 break;
                             case 2:
-                                views.Player2Money(i.current_game_money+"");
-                                views.Player2Bet(i.bet);
+                                views.Player2Username(user.getUsername(), false);
+                                views.Player2Money("$" + user.getCurrent_game_money() + "");
+                                views.Player2Bet(user.bet);
                                 break;
                             case 3:
-                                views.Player3Money(i.current_game_money+"");
-                                views.Player3Bet(i.bet);
+                                views.Player3Username(user.getUsername(), false);
+                                views.Player3Money("$" + user.getCurrent_game_money() + "");
+                                views.Player3Bet(user.bet);
                                 break;
                             case 4:
-                                views.Player4Money(i.current_game_money+"");
-                                views.Player4Bet(i.bet);
+                                views.Player4Username(user.getUsername(), false);
+                                views.Player4Money("$" + user.getCurrent_game_money() + "");
+                                views.Player4Bet(user.bet);
                                 break;
                             case 5:
-                                views.Player5Money(i.current_game_money+"");
-                                views.Player5Bet(i.bet);
+                                views.Player5Username(user.getUsername(), false);
+                                views.Player5Money("$" + user.getCurrent_game_money() + "");
+                                views.Player5Bet(user.bet);
+                                break;
+                            default:
                                 break;
                         }
-                        if(findIndexOfUserID(i.id) == 0){
-                            views.MyCard1(i.getCard1());
-                            views.MyCard2(i.getCard2());
-                            views.MyMoney(i.getCurrent_game_money());
-                            views.setBet(i.bet);
-                            views.setSliderTo(i.current_game_money);
-                        }
-
                         if (!user.getId().equals(i.getId()) && !checkObjects(i) && users.size() != MAX_PLAYERS) {
                             users.add(i);
                             i.setIndexOnScreen(users.size()-1);
