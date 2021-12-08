@@ -113,15 +113,15 @@ public class GameInstance{
                         switch(findIndexOfUserID(i.id)){
                             case 0:
                                 if(gameJSON.getInt("highest_gameRound_bet") != i.getBet()) {
-                                    views.setButton(R.drawable.call);
+                                    views.setCallButton();
                                 } else {
-                                    views.setButton(R.drawable.check);
+                                    views.setCheckButton();
                                 }
                                 views.MyCard1(i.getCard1());
                                 views.MyCard2(i.getCard2());
                                 views.MyMoney(i.getCurrent_game_money());
-                                views.setBet(i.bet);
                                 views.setSliderTo(i.current_game_money);
+                                views.setBet(i.bet);
                                 break;
                             case 1:
                                 views.Player1Username(i.getUsername(), false);

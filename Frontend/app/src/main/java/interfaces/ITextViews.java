@@ -73,5 +73,7 @@ public interface ITextViews {
 
     void setWinner(String username);
 
-    void setButton(int check);
+    void setCheckButton();
+
+    void setCallButton();
 }

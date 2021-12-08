@@ -160,12 +160,11 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         });
 
         call.setOnClickListener(v -> {
-            System.out.println("THIS IS THE CALL Bet: " + (highest_bet - bet));
-            if (bet == highest_bet) {
-                game.send("Bet: 0");
-            } else {
                 game.send("Bet: " + (highest_bet - bet));
-            }
+        });
+
+        check.setOnClickListener(v -> {
+            game.send("Bet: 0");
         });
 
         fold.setOnClickListener(v -> {
@@ -744,10 +743,12 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
 
     @Override
     public void raiseAmount(int highest_bet) {
-        if (highest_bet != 0) {
-            slider.setValueFrom(highest_bet * 2);
-            sliderAmount.setText("$" + (highest_bet * 2));
-        }
+        runOnUiThread(() -> {
+            if (highest_bet != 0) {
+                slider.setValueFrom(highest_bet * 2);
+                sliderAmount.setText("$" + (highest_bet * 2));
+            }
+        });
     }
 
     @Override
@@ -778,11 +779,19 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     }
 
     @Override
-    public void setButton(int button) {
+    public void setCheckButton() {
         runOnUiThread(() -> {
-            check.setImageResource(button);
+            check.bringToFront();
         });
     }
+
+    @Override
+    public void setCallButton() {
+        runOnUiThread(() -> {
+            call.bringToFront();
+        });
+    }
+
 
     /**
      * sends user to home when websocket is closed.
