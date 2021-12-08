@@ -106,11 +106,11 @@ public class Poker {
         _toPlay.addAll(_turnOrder);
         _game.setHighest_bet(_blind * 2);
         _game.setHighest_gameRound_bet(_blind * 2);
-        _game.setPublic_card1(0);
-        _game.setPublic_card2(0);
-        _game.setPublic_card3(0);
-        _game.setPublic_card4(0);
-        _game.setPublic_card5(0);
+        _game.setPublic_card1(-1);
+        _game.setPublic_card2(-1);
+        _game.setPublic_card3(-1);
+        _game.setPublic_card4(-1);
+        _game.setPublic_card5(-1);
         _game.setPot(_blind + _blind * 2);
         _deck.deal();
         _gameInit = true;
@@ -301,11 +301,11 @@ public class Poker {
             }
             blindsReady = true;
         }
-        _game.setPublic_card1(0);
-        _game.setPublic_card2(0);
-        _game.setPublic_card3(0);
-        _game.setPublic_card4(0);
-        _game.setPublic_card5(0);
+        _game.setPublic_card1(-1);
+        _game.setPublic_card2(-1);
+        _game.setPublic_card3(-1);
+        _game.setPublic_card4(-1);
+        _game.setPublic_card5(-1);
         _toPlay.clear();
         _toPlay.addAll(_turnOrder);
         _game.setHighest_bet(_blind * 2);
@@ -328,8 +328,8 @@ public class Poker {
             }
         }
         if (_players.size() < _maxPlayers) {
-            u.setCard1(0);
-            u.setCard2(0);
+            u.setCard1(-1);
+            u.setCard2(-1);
             u.setHighest_round_bet(0);
             u.setFolded(true);
             _turnOrder.add(u);
