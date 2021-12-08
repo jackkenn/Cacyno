@@ -186,7 +186,7 @@ public class GameInstance{
                             e.printStackTrace();
                         }
                     });
-                    //set players to white dot
+                    //set the players to white dot
                     new Handler(Looper.getMainLooper()).post(() -> views.setWhite(indiciesOfCurrentPlayers));
 
                     //find players who folded and set their dot to grey
