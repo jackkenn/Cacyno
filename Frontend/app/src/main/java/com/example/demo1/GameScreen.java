@@ -744,8 +744,10 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
 
     @Override
     public void raiseAmount(int highest_bet) {
-        if (highest_bet != 0)
+        if (highest_bet != 0) {
             slider.setValueFrom(highest_bet * 2);
+            sliderAmount.setText("$" + (highest_bet * 2));
+        }
     }
 
     @Override
@@ -755,12 +757,14 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
 
     @Override
     public void setBet(int bet) {
-//        this.bet = bet;
-//        if(bet==highest_bet) {
-//            check.setImageResource(R.drawable.call);
-//        } else {
-//            check.setImageResource(R.drawable.check);
-//        }
+        TextView temp = findViewById(R.id.your_bet);
+        temp.setText("$" + bet);
+        this.bet = bet;
+        if(bet==highest_bet) {
+            check.setImageResource(R.drawable.call);
+        } else {
+            check.setImageResource(R.drawable.check);
+        }
     }
 
     @Override
@@ -775,7 +779,9 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
 
     @Override
     public void setButton(int button) {
-        check.setImageResource(button);
+        runOnUiThread(() -> {
+            check.setImageResource(button);
+        });
     }
 
     /**
