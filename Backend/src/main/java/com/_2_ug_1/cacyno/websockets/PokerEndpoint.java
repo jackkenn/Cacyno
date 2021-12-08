@@ -129,13 +129,14 @@ public class PokerEndpoint {
         if (!_sessionUserMap.containsKey(session))
             return;
         User toRemove = getUser(_sessionUserMap.get(session));
-
         Poker p = _gamesMap.get(toRemove.getGame().getId());
         if (p.TooPoor().contains(toRemove)) {
             sendUserMessage(toRemove.getId(), toRemove.getUsername() + "Has Been Kicked Due To Insufficient Funds");
         }
         _userSessionMap.remove(_sessionUserMap.get(session));
-        _gamesMap.get(toRemove.getGame().getId()).removePlayer(toRemove);
+        synchronized (_gamesMap.get(toRemove.getGame().getId())) {
+            _gamesMap.get(toRemove.getGame().getId()).removePlayer(toRemove);
+        }
         _sessionUserMap.remove(session);
         if (_gameSessionMap.get(toRemove.getGame().getId()).size() <= 1) {
             p.getGame().setActive(false);
@@ -145,6 +146,7 @@ public class PokerEndpoint {
         } else {
             _gameSessionMap.get(toRemove.getGame().getId()).removeIf(x -> x.equals(session));
         }
+        sendGameMessage(toRemove);
         _userRepo.save(toRemove);
     }
 
@@ -168,7 +170,7 @@ public class PokerEndpoint {
         User u = getUser(_sessionUserMap.get(session));
         Poker p = _gamesMap.get(u.getGame().getId());
         if (message.equalsIgnoreCase("initGame")) {
-            synchronized (p) {
+            synchronized (_gamesMap.get(u.getGame().getId())) {
                 p.initGame();
             }
             sendGameMessage(u);
@@ -205,8 +207,7 @@ public class PokerEndpoint {
     private void sendGameMessage(User u) {
         synchronized (_gamesMap.get(u.getGame().getId())) {
             Poker p = _gamesMap.get(u.getGame().getId());
-            String next = p.getToPlayNextId();
-            String message = getJsonPlayers(p) + "**" + getJsonGame(p) + "**" + next;
+            String message = p.sendGameState();
             _gameSessionMap.get(u.getGame().getId()).forEach(x -> {
                 synchronized (x) {
                     try {
@@ -260,20 +261,6 @@ public class PokerEndpoint {
             e.printStackTrace();
         }
         return null;
-    }
-
-    private String getJsonPlayers(Poker p) {
-        List players = p.getPlayers();
-        Gson gson = new Gson();
-        String playersJson = gson.toJson(players);
-        return playersJson;
-    }
-
-    private String getJsonGame(Poker p) {
-        Game game = p.getGame();
-        Gson gson = new Gson();
-        String gameJson = gson.toJson(game);
-        return gameJson;
     }
 
     private void sendErrorString(Session session, User u, String message) {
