@@ -120,8 +120,8 @@ public class GameInstance{
                                 views.MyCard1(i.getCard1());
                                 views.MyCard2(i.getCard2());
                                 views.MyMoney(i.getCurrent_game_money());
-                                views.setBet(i.bet);
                                 views.setSliderTo(i.current_game_money);
+                                views.setBet(i.bet);
                                 break;
                             case 1:
                                 views.Player1Username(i.getUsername(), false);

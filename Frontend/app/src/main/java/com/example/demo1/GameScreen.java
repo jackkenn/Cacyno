@@ -156,6 +156,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         });
 
         raise.setOnClickListener(v -> {
+            System.out.println("THIS IS THE CALL Bet: " + sliderAmount.toString());
             game.send("Bet: " + sliderAmount.toString());
         });
 
@@ -744,10 +745,12 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
 
     @Override
     public void raiseAmount(int highest_bet) {
-        if (highest_bet != 0) {
-            slider.setValueFrom(highest_bet * 2);
-            sliderAmount.setText("$" + (highest_bet * 2));
-        }
+        runOnUiThread(() -> {
+            if (highest_bet != 0) {
+                slider.setValueFrom(highest_bet * 2);
+                sliderAmount.setText("$" + (highest_bet * 2));
+            }
+        });
     }
 
     @Override
@@ -760,7 +763,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         TextView temp = findViewById(R.id.your_bet);
         temp.setText("$" + bet);
         this.bet = bet;
-        if(bet==highest_bet) {
+        if (bet == highest_bet) {
             check.setImageResource(R.drawable.call);
         } else {
             check.setImageResource(R.drawable.check);
