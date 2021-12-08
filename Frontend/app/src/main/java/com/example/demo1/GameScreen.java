@@ -160,6 +160,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         });
 
         call.setOnClickListener(v -> {
+            System.out.println("THIS IS THE CALL Bet: " + (highest_bet-bet));
             if (bet == highest_bet) {
                 game.send("Bet: 0");
             } else {
