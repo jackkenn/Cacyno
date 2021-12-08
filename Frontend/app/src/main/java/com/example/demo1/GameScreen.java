@@ -158,8 +158,8 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         });
 
         call.setOnClickListener(v -> {
-
                 game.send("Bet: " + (highest_bet - bet));
+                System.out.println("CALL METHOD BY " + user.getUsername() + " " + (highest_bet - bet));
         });
 
         check.setOnClickListener(v -> {
