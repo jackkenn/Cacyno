@@ -744,3 +744,9 @@ Caused by: org.hibernate.HibernateException: Access to DialectResolutionInfo can
 2021-12-07 13:43:37.913  INFO 27092 --- [http-nio-8080-exec-2] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 2. Got Message: bet: 100
 2021-12-07 13:43:47.746  INFO 27092 --- [http-nio-8080-exec-3] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 1. Got Message: bet: -1
 2021-12-07 13:44:31.719  INFO 27092 --- [http-nio-8080-exec-4] c._.cacyno.websockets.PokerEndpoint      : Entered into Message: 1. Got Message: bet: 50
+2021-12-07 23:11:04.593  INFO 13776 --- [main] c._2_ug_1.cacyno.CacynoApplicationTests  : Starting CacynoApplicationTests using Java 14.0.2 on DESKTOP-HT30KV5 with PID 13776 (started by Jack in C:\Users\Jack\IdeaProjects\1_ug_1\Backend)
+2021-12-07 23:11:04.595  INFO 13776 --- [main] c._2_ug_1.cacyno.CacynoApplicationTests  : No active profile set, falling back to default profiles: default
+2021-12-07 23:11:04.815  INFO 13776 --- [main] c._2_ug_1.cacyno.CacynoApplicationTests  : Started CacynoApplicationTests in 0.46 seconds (JVM running for 1.183)
+2021-12-07 23:26:09.837  INFO 27264 --- [main] c._2_ug_1.cacyno.CacynoApplicationTests  : Starting CacynoApplicationTests using Java 14.0.2 on DESKTOP-HT30KV5 with PID 27264 (started by Jack in C:\Users\Jack\IdeaProjects\1_ug_1\Backend)
+2021-12-07 23:26:09.840  INFO 27264 --- [main] c._2_ug_1.cacyno.CacynoApplicationTests  : No active profile set, falling back to default profiles: default
+2021-12-07 23:26:10.055  INFO 27264 --- [main] c._2_ug_1.cacyno.CacynoApplicationTests  : Started CacynoApplicationTests in 0.459 seconds (JVM running for 1.129)

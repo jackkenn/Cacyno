@@ -44,13 +44,13 @@ public class User {
      */
     private int current_game_money;
     @ApiModelProperty(notes = "keeps track of the first card the user is holding", name = "card1")
-    @Column(name = "card1", nullable = false, columnDefinition = "int default 0")
+    @Column(name = "card1", nullable = false, columnDefinition = "int default -1")
     /**
      * keeps track of the first card the user is holding
      */
     private int card1;
     @ApiModelProperty(notes = "keeps track of the second card the user is holding", name = "card2")
-    @Column(name = "card2", nullable = false, columnDefinition = "int default 0")
+    @Column(name = "card2", nullable = false, columnDefinition = "int default -1")
     /**
      * keeps track of the second card the user is holding
      */
