@@ -37,6 +37,26 @@ public interface ITextViews {
     void Player5Username(String username, boolean removeDot);
     void Player4Bet(int bet);
 
+    void Player1Card1(int card);
+
+    void Player1Card2(int card);
+
+    void Player2Card1(int card);
+
+    void Player2Card2(int card);
+
+    void Player3Card1(int card);
+
+    void Player3Card2(int card);
+
+    void Player4Card1(int card);
+
+    void Player4Card2(int card);
+
+    void Player5Card1(int card);
+
+    void Player5Card2(int card);
+
 
     void Player5Money(String money);
 

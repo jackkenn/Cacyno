@@ -508,6 +508,86 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     }
 
     @Override
+    public void Player1Card1(int card) {
+        runOnUiThread(() -> {
+            ImageView temp = findViewById(R.id.player1_card1);
+            temp.setImageResource(imageIds.get(card));
+        });
+    }
+
+    @Override
+    public void Player1Card2(int card) {
+        runOnUiThread(() -> {
+            ImageView temp = findViewById(R.id.player1_card2);
+            temp.setImageResource(imageIds.get(card));
+        });
+    }
+
+    @Override
+    public void Player2Card1(int card) {
+        runOnUiThread(() -> {
+            ImageView temp = findViewById(R.id.player2_card1);
+            temp.setImageResource(imageIds.get(card));
+        });
+    }
+
+    @Override
+    public void Player2Card2(int card) {
+        runOnUiThread(() -> {
+            ImageView temp = findViewById(R.id.player2_card2);
+            temp.setImageResource(imageIds.get(card));
+        });
+    }
+
+    @Override
+    public void Player3Card1(int card) {
+        runOnUiThread(() -> {
+            ImageView temp = findViewById(R.id.player3_card1);
+            temp.setImageResource(imageIds.get(card));
+        });
+    }
+
+    @Override
+    public void Player3Card2(int card) {
+        runOnUiThread(() -> {
+            ImageView temp = findViewById(R.id.player3_card2);
+            temp.setImageResource(imageIds.get(card));
+        });
+    }
+
+    @Override
+    public void Player4Card1(int card) {
+        runOnUiThread(() -> {
+            ImageView temp = findViewById(R.id.player4_card1);
+            temp.setImageResource(imageIds.get(card));
+        });
+    }
+
+    @Override
+    public void Player4Card2(int card) {
+        runOnUiThread(() -> {
+            ImageView temp = findViewById(R.id.player4_card2);
+            temp.setImageResource(imageIds.get(card));
+        });
+    }
+
+    @Override
+    public void Player5Card1(int card) {
+        runOnUiThread(() -> {
+            ImageView temp = findViewById(R.id.player5_card1);
+            temp.setImageResource(imageIds.get(card));
+        });
+    }
+
+    @Override
+    public void Player5Card2(int card) {
+        runOnUiThread(() -> {
+            ImageView temp = findViewById(R.id.player5_card2);
+            temp.setImageResource(imageIds.get(card));
+        });
+    }
+
+    @Override
     public void Player5Username(String username, boolean removeDot) {
         runOnUiThread(() -> {
             ((ImageView) findViewById(R.id.player5_greendot)).setVisibility(View.VISIBLE);
