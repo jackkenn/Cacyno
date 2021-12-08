@@ -241,15 +241,20 @@ public class Poker {
     }
 
     private void endRound() {
-        int notFoldedOrAllIn = 0;
+        int notFolded = 0;
+        int notFoldedorAllIn = 0;
+        for (User u : _players) {
+            if (!u.getFolded())
+                notFolded++;
+        }
         for (User u : _players) {
             if (!u.getFolded() && !u.isAllIn())
-                notFoldedOrAllIn++;
+                notFoldedorAllIn++;
         }
 
-        if (_toPlay.size() > 0 && notFoldedOrAllIn > 1) //dont end if people need to play
+        if (_toPlay.size() > 0 && notFolded > 1) //dont end if people need to play
             return;
-        if (_game.getRound() > 3 || notFoldedOrAllIn < 2) {
+        if (_game.getRound() > 3 || notFolded < 2 || notFoldedorAllIn < 2) {
             endGame(); //infinite loop if everyone folds, should never happen
             return;
         }

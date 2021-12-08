@@ -36,12 +36,12 @@ import java.util.concurrent.Future;
 @ServerEndpoint("/poker/{userId}")
 @Component
 public class PokerEndpoint {
-    private static Map<String, Poker> _gamesMap = new HashMap<>();
-    private static Map<String, List<Session>> _gameSessionMap = new HashMap<>();
-    private static Map<String, Session> _userSessionMap = new HashMap<>();
-    private static Map<Session, String> _sessionUserMap = new HashMap<>();
+    private static final Map<String, Poker> _gamesMap = new HashMap<>();
+    private static final Map<String, List<Session>> _gameSessionMap = new HashMap<>();
+    private static final Map<String, Session> _userSessionMap = new HashMap<>();
+    private static final Map<Session, String> _sessionUserMap = new HashMap<>();
     private final Logger _logger = LoggerFactory.getLogger(PokerEndpoint.class);
-    private static String _errorStrings = new String("");
+    private static String _errorStrings = "";
 
     private static IGameRepo _gameRepo;
     private static IUserRepo _userRepo;
@@ -69,7 +69,7 @@ public class PokerEndpoint {
     public void onOpen(Session session
             , @PathParam("userId") String userId) throws IOException {
         _logger.info("Entered into Open: " + userId);
-        if(userId.equals("0")) {
+        if (userId.equals("0")) {
             _sessionUserMap.put(session, userId);
             _userSessionMap.put(userId, session);
             sendUserMessage("0", _errorStrings);
@@ -91,8 +91,8 @@ public class PokerEndpoint {
         u.setGame(g);
         if (!_gamesMap.containsKey(u.getGame().getId())) {
             Poker poker = new Poker(g);
-            if(!poker.addPlayer(u)) {
-                sendErrorString(session, u, "Failed to join game: " + poker.toString());
+            if (!poker.addPlayer(u)) {
+                sendErrorString(session, u, "Failed to join game: " + poker);
             }
             _gamesMap.put(g.getId(), poker);
         } else {
@@ -136,25 +136,24 @@ public class PokerEndpoint {
         if (!_sessionUserMap.containsKey(session))
             return;
         User toRemove = getUser(_sessionUserMap.get(session));
-        sendGameMessage(toRemove);
-        synchronized (_gamesMap.get(toRemove.getGame())) {
+        synchronized (_gamesMap.get(toRemove.getGame().getId())) {
             Poker p = _gamesMap.get(toRemove.getGame().getId());
+            sendGameMessage(toRemove, "Has Left:" + toRemove.getUsername());
             if (p.TooPoor().contains(toRemove)) {
                 sendUserMessage(toRemove.getId(), toRemove.getUsername() + "Has Been Kicked Due To Insufficient Funds");
             }
             _userSessionMap.remove(_sessionUserMap.get(session));
-            synchronized (_gamesMap.get(toRemove.getGame().getId())) {
-                _gamesMap.get(toRemove.getGame().getId()).removePlayer(toRemove);
-                                _sessionUserMap.remove(session);
-                if (_gameSessionMap.get(toRemove.getGame().getId()).size() <= 1) {
-                    p.getGame().setActive(false);
-                    _gameRepo.save(p.getGame());
-                    _gameSessionMap.remove(toRemove.getGame().getId());
-                    _gamesMap.remove(toRemove.getGame().getId());
-                } else {
-                    _gameSessionMap.get(toRemove.getGame().getId()).removeIf(x -> x.equals(session));
-                }
+            _gamesMap.get(toRemove.getGame().getId()).removePlayer(toRemove);
+            _sessionUserMap.remove(session);
+            if (_gameSessionMap.get(toRemove.getGame().getId()).size() <= 1) {
+                p.getGame().setActive(false);
+                _gameRepo.save(p.getGame());
+                _gameSessionMap.remove(toRemove.getGame().getId());
+                _gamesMap.remove(toRemove.getGame().getId());
+            } else {
+                _gameSessionMap.get(toRemove.getGame().getId()).removeIf(x -> x.equals(session));
             }
+            toRemove.setCurrent_game_money(toRemove.getMoney() + toRemove.getCurrent_game_money());
             _userRepo.save(toRemove);
         }
     }
@@ -226,6 +225,22 @@ public class PokerEndpoint {
                 synchronized (x) {
                     try {
                         x.getBasicRemote().sendText(message);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        }
+    }
+
+    private void sendGameMessage(User u, String message) {
+        synchronized (_gamesMap.get(u.getGame().getId())) {
+            _gameSessionMap.get(u.getGame().getId()).forEach(x -> {
+                synchronized (x) {
+                    try {
+                        if (!_sessionUserMap.get(x).equals(u.getId())) {
+                            x.getBasicRemote().sendText(message);
+                        }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
