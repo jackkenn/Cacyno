@@ -4,10 +4,6 @@ import com._2_ug_1.cacyno.models.Game;
 import com._2_ug_1.cacyno.models.User;
 import com.google.gson.Gson;
 
-import com._2_ug_1.cacyno.game.Hands;
-import com._2_ug_1.cacyno.game.HandChecker;
-import com._2_ug_1.cacyno.game.HandComparator;
-
 import java.util.*;
 
 /**
@@ -35,7 +31,6 @@ public class Poker {
         _turnOrder = new LinkedList<>();
         _toPlay = new LinkedList<>();
         _players = new LinkedList<>();
-        game.setHighest_bet(0);
         _tooPoor = new ArrayList<>();
     }
 
@@ -109,11 +104,13 @@ public class Poker {
         }
         _toPlay.clear();
         _toPlay.addAll(_turnOrder);
-
         _game.setHighest_bet(_blind * 2);
-        _game.setHighest_round_bet(_blind * 2);
-
-
+        _game.setHighest_gameRound_bet(_blind * 2);
+        _game.setPublic_card1(-1);
+        _game.setPublic_card2(-1);
+        _game.setPublic_card3(-1);
+        _game.setPublic_card4(-1);
+        _game.setPublic_card5(-1);
         _game.setPot(_blind + _blind * 2);
         _deck.deal();
         _gameInit = true;
@@ -143,14 +140,31 @@ public class Poker {
                 if (_toPlay.peek().isAllIn()) {
                     _toPlay.peek().setCurrent_game_money(_toPlay.poll().getCurrent_game_money() - bet);
                     _game.setPot(_game.getPot() + bet);
+                    if (bet > _toPlay.peek().getHighest_round_bet()) {
+                        _toPlay.peek().setHighest_round_bet(bet);
+                    }
+                    if (_toPlay.peek().getHighest_round_bet() > _game.getHighest_gameRound_bet()) {
+                        _game.setHighest_gameRound_bet(_toPlay.peek().getHighest_round_bet());
+                    }
                 } else {
                     return false;
                 }
             } else if (_toPlay.peek().getBet() == _game.getHighest_bet()) {//Call
+                if (bet > _toPlay.peek().getHighest_round_bet()) {
+                    _toPlay.peek().setHighest_round_bet(bet);
+                }
+                if (_toPlay.peek().getHighest_round_bet() > _game.getHighest_gameRound_bet()) {
+                    _game.setHighest_gameRound_bet(_toPlay.peek().getHighest_round_bet());
+                }
                 _toPlay.peek().setCurrent_game_money(_toPlay.poll().getCurrent_game_money() - bet);
                 _game.setPot(_game.getPot() + bet);
             } else {//New highest bet
-
+                if (bet > _toPlay.peek().getHighest_round_bet()) {
+                    _toPlay.peek().setHighest_round_bet(bet);
+                }
+                if (_toPlay.peek().getHighest_round_bet() > _game.getHighest_gameRound_bet()) {
+                    _game.setHighest_gameRound_bet(_toPlay.peek().getHighest_round_bet());
+                }
                 LinkedList<User> tempList = new LinkedList<>();
                 tempList.clear();
                 tempList.addAll(_turnOrder);
@@ -164,7 +178,6 @@ public class Poker {
                 _toPlay.addAll(tempList);
 
                 _game.setHighest_bet(_toPlay.peek().getBet());
-                _game.setHighest_round_bet(_toPlay.peek().getBet());
 
                 _toPlay.peek().setCurrent_game_money(_toPlay.poll().getCurrent_game_money() - bet);
                 _game.setPot(_game.getPot() + bet);
@@ -183,14 +196,14 @@ public class Poker {
                 notFoldedOrAllIn++;
         }
 
-        _game.setHighest_round_bet(0);
         if (_toPlay.size() > 0 && notFoldedOrAllIn > 1) //dont end if people need to play
             return;
         if (_game.getRound() > 3 || notFoldedOrAllIn < 2) {
             endGame(); //infinite loop if everyone folds, should never happen
             return;
         }
-
+        _players.forEach(x -> x.setHighest_round_bet(0));
+        _game.setHighest_gameRound_bet(0);
         _deck.dealPublicCards();
         _game.setRound(_game.getRound() + 1);
         for (int i = 0; i < _turnOrder.size(); i++) { //should be clear
@@ -256,7 +269,7 @@ public class Poker {
             _game.setPot(0);
         }
 
-
+        _players.forEach(x -> x.setHighest_round_bet(0));
         _game.setRound(0);
         _players.forEach(x -> x.setFolded(false));
         _players.forEach(x -> x.setAllIn(false));
@@ -288,9 +301,15 @@ public class Poker {
             }
             blindsReady = true;
         }
+        _game.setPublic_card1(-1);
+        _game.setPublic_card2(-1);
+        _game.setPublic_card3(-1);
+        _game.setPublic_card4(-1);
+        _game.setPublic_card5(-1);
         _toPlay.clear();
         _toPlay.addAll(_turnOrder);
         _game.setHighest_bet(_blind * 2);
+        _game.setHighest_gameRound_bet(_blind * 2);
         _game.setPot(_blind + _blind * 2);
         _deck.deal();
     }
@@ -309,6 +328,9 @@ public class Poker {
             }
         }
         if (_players.size() < _maxPlayers) {
+            u.setCard1(-1);
+            u.setCard2(-1);
+            u.setHighest_round_bet(0);
             u.setFolded(true);
             _turnOrder.add(u);
             _players.add(u);
@@ -360,11 +382,10 @@ public class Poker {
         return _players;
     }
 
-    public String getToPlayNextId(){
-        if(_toPlay.peek() != null){
+    public String getToPlayNextId() {
+        if (_toPlay.peek() != null) {
             return _toPlay.peek().getId();
-        }
-        else{
+        } else {
             return null;
         }
     }
