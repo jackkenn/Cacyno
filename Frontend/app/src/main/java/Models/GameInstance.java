@@ -108,6 +108,35 @@ public class GameInstance{
 
                     //finding new users to add to screen
                     for (User i : user.JSONtolist(stringToJSON)) {
+                        switch (findIndexOfUserID(i.id)) {
+                            case 0:
+                                views.MyCard1(i.getCard1());
+                                views.MyCard2(i.getCard2());
+                                views.MyMoney(i.getCurrent_game_money());
+                                views.setBet(i.bet);
+                                views.setSliderTo(i.current_game_money);
+                                break;
+                            case 1:
+                                views.Player1Money(i.current_game_money+"");
+                                views.Player1Bet(i.bet);
+                                break;
+                            case 2:
+                                views.Player2Money(i.current_game_money+"");
+                                views.Player2Bet(i.bet);
+                                break;
+                            case 3:
+                                views.Player3Money(i.current_game_money+"");
+                                views.Player3Bet(i.bet);
+                                break;
+                            case 4:
+                                views.Player4Money(i.current_game_money+"");
+                                views.Player4Bet(i.bet);
+                                break;
+                            case 5:
+                                views.Player5Money(i.current_game_money+"");
+                                views.Player5Bet(i.bet);
+                                break;
+                        }
                         if(findIndexOfUserID(i.id) == 0){
                             views.MyCard1(i.getCard1());
                             views.MyCard2(i.getCard2());
@@ -115,6 +144,7 @@ public class GameInstance{
                             views.setBet(i.bet);
                             views.setSliderTo(i.current_game_money);
                         }
+
                         if (!user.getId().equals(i.getId()) && !checkObjects(i) && users.size() != MAX_PLAYERS) {
                             users.add(i);
                             i.setIndexOnScreen(users.size()-1);
