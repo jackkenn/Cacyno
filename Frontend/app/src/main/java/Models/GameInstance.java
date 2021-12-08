@@ -144,6 +144,22 @@ public class GameInstance{
                             e.printStackTrace();
                         }
                     });
+                    //set players to white dot
+                    new Handler(Looper.getMainLooper()).post(() -> views.setWhite(indiciesOfCurrentPlayers));
+                    System.out.println(indiciesOfCurrentPlayers.toString() + "");
+
+                    //set player green
+                    String userID = msg.split("\\*\\*")[INDEX_OF_CURRENT_PLAYER];
+                    if(!userID.equals("null"))
+                        new Handler(Looper.getMainLooper()).post(() -> views.setGreen(findIndexOfUserID(userID)));
+
+                    //find players who folded and set their dot to grey
+                    for(int i = 0; i < users.size(); i++){
+                        if(users.get(i).getFolded())
+                            indiciesOfFolded.add(users.get(i).getIndexOnScreen());
+                    }
+                    new Handler(Looper.getMainLooper()).post(() -> views.setFolded(indiciesOfFolded));
+
                 }
                 //removes user who left from screen
                 else if(msg.contains("Has Left")){
@@ -160,22 +176,6 @@ public class GameInstance{
                     }
 
                 }
-
-                //set players to white dot
-                new Handler(Looper.getMainLooper()).post(() -> views.setWhite(indiciesOfCurrentPlayers));
-                System.out.println(indiciesOfCurrentPlayers.toString() + "");
-
-                //set player green
-                String userID = msg.split("\\*\\*")[INDEX_OF_CURRENT_PLAYER];
-                if(!userID.equals("null"))
-                    new Handler(Looper.getMainLooper()).post(() -> views.setGreen(findIndexOfUserID(userID)));
-
-                //find players who folded and set their dot to grey
-                for(int i = 0; i < users.size(); i++){
-                    if(users.get(i).getFolded())
-                        indiciesOfFolded.add(users.get(i).getIndexOnScreen());
-                }
-                new Handler(Looper.getMainLooper()).post(() -> views.setFolded(indiciesOfFolded));
             }
 
             @Override
