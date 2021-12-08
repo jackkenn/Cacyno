@@ -88,7 +88,6 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         check = findViewById(R.id.check);
         pot = findViewById(R.id.pot);
         bet_input = findViewById(R.id.betInput);
-        sliderAmount = findViewById(R.id.slider_amount);
         yourCard1 = findViewById(R.id.yourCard_1);
         yourCard2 = findViewById(R.id.yourCard_2);
 
@@ -231,7 +230,6 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         findViewById(R.id.your_greendot).bringToFront();
         findViewById(R.id.your_bet).bringToFront();
 
-        findViewById(R.id.slider_amount).bringToFront();
         findViewById(R.id.betinput_moneySign).bringToFront();
 
         findViewById(R.id.player1_card1).bringToFront();

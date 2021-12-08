@@ -113,7 +113,7 @@ public class GameInstance{
                                 views.MyCard2(i.getCard2());
                                 views.MyMoney(i.getCurrent_game_money());
                                 currentGameMoney = i.getCurrent_game_money();
-                                views.setSliderTo(100);
+                                views.setSliderTo(0);
                                 views.setBet(i.bet);
                                 break;
                             case 1:
