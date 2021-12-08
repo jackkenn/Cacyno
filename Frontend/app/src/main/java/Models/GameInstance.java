@@ -87,7 +87,7 @@ public class GameInstance{
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
             @Override
             public void onMessage(String msg) {
-                System.out.println("AAAAAAAAAAAA" + msg);
+                System.out.println("-------------"+msg);
                 if (msg.startsWith("[{")){
 
                     String getPlayersOnly = msg.split("\\*\\*")[INDEX_OF_LIST_PLAYERS];
@@ -153,12 +153,16 @@ public class GameInstance{
                         }
                         if (!user.getId().equals(i.getId()) && !checkObjects(i) && users.size() != MAX_PLAYERS) {
                             users.add(i);
+                            System.out.println("---------------------");
+                            System.out.println("PLAYER: " + i.getUsername());
+                            System.out.println(i.getCurrent_game_money());
+                            System.out.println("---------------------");
                             i.setIndexOnScreen(users.size()-1);
                             if (users.size() == 2 && list.get(0).getId().equals(user.getId()))
                                 mWebSocketClient.send("initGame");
 
                             currentPlayerIndex++;
-                            toView(i);
+                            new Handler(Looper.getMainLooper()).post(() -> toView(i));
                             indiciesOfCurrentPlayers.add(i.getIndexOnScreen());
                         }
                     }

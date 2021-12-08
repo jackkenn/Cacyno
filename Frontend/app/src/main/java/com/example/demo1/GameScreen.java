@@ -409,7 +409,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     @Override
     public void Player1Money(String money) {
         runOnUiThread(() -> {
-            System.out.println("money-> " + money);
+            System.out.println("money player 1-> " + money);
             TextView temp = findViewById(R.id.player1_money);
             temp.setText(money);
         });
@@ -672,12 +672,14 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         }
 
          */
-        ((ImageView) findViewById(R.id.your_greendot)).setImageResource(R.drawable.white_dot);
-        ((ImageView) findViewById(R.id.player1_greendot)).setImageResource(R.drawable.white_dot);
-        ((ImageView) findViewById(R.id.player2_greendot)).setImageResource(R.drawable.white_dot);
-        ((ImageView) findViewById(R.id.player3_greendot)).setImageResource(R.drawable.white_dot);
-        ((ImageView) findViewById(R.id.player4_greendot)).setImageResource(R.drawable.white_dot);
-        ((ImageView) findViewById(R.id.player5_greendot)).setImageResource(R.drawable.white_dot);
+        runOnUiThread(() -> {
+            ((ImageView) findViewById(R.id.your_greendot)).setImageResource(R.drawable.white_dot);
+            ((ImageView) findViewById(R.id.player1_greendot)).setImageResource(R.drawable.white_dot);
+            ((ImageView) findViewById(R.id.player2_greendot)).setImageResource(R.drawable.white_dot);
+            ((ImageView) findViewById(R.id.player3_greendot)).setImageResource(R.drawable.white_dot);
+            ((ImageView) findViewById(R.id.player4_greendot)).setImageResource(R.drawable.white_dot);
+            ((ImageView) findViewById(R.id.player5_greendot)).setImageResource(R.drawable.white_dot);
+        });
     }
 
     /**
@@ -758,14 +760,16 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
 
     @Override
     public void setBet(int bet) {
-        TextView temp = findViewById(R.id.your_bet);
-        temp.setText("$" + bet);
-        this.bet = bet;
-        if (bet == highest_bet) {
-            check.setImageResource(R.drawable.call);
-        } else {
-            check.setImageResource(R.drawable.check);
-        }
+        runOnUiThread(() -> {
+            TextView temp = findViewById(R.id.your_bet);
+            temp.setText("$" + bet);
+            this.bet = bet;
+            if (bet == highest_bet) {
+                check.setImageResource(R.drawable.call);
+            } else {
+                check.setImageResource(R.drawable.check);
+            }
+        });
     }
 
     @Override
