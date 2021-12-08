@@ -113,6 +113,7 @@ public class GameInstance{
                             views.MyCard2(i.getCard2());
                             views.MyMoney(i.getCurrent_game_money());
                             views.setBet(i.bet);
+                            views.setSliderTo(i.current_game_money);
                         }
                         if (!user.getId().equals(i.getId()) && !checkObjects(i) && users.size() != MAX_PLAYERS) {
                             users.add(i);

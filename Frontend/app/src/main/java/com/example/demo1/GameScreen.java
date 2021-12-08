@@ -124,7 +124,6 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
                 randForUsername = new Random().nextInt(10000) + 1;
                 username.append((user.getDisplayName()) ? user.getUsername() : "user" + randForUsername);
                 slider.setValueFrom(0);
-                slider.setValueTo(user.getCurrent_game_money());
                 connectWebSocket();
                 game = new GameInstance(user, GameScreen.this, false);
                 return 0;
@@ -574,6 +573,13 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
             temp.setText("$" + pot);
         });
     }
+
+    @Override
+    public void setSliderTo(int to) {
+        slider.setValueTo(to);
+
+    }
+
 
     /**
      * finds the player on screen to set green dot
