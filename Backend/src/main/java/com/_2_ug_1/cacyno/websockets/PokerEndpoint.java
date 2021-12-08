@@ -137,7 +137,7 @@ public class PokerEndpoint {
             return;
         User toRemove = getUser(_sessionUserMap.get(session));
         sendGameMessage(toRemove);
-        synchronized (_gamesMap.get(toRemove.getGame()) {
+        synchronized (_gamesMap.get(toRemove.getGame())) {
             Poker p = _gamesMap.get(toRemove.getGame().getId());
             if (p.TooPoor().contains(toRemove)) {
                 sendUserMessage(toRemove.getId(), toRemove.getUsername() + "Has Been Kicked Due To Insufficient Funds");
