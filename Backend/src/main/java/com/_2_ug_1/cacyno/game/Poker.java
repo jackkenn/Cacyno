@@ -251,8 +251,8 @@ public class Poker {
         }
         _players.forEach(x -> x.setHighest_round_bet(0));
         _game.setHighest_gameRound_bet(0);
-        _deck.dealPublicCards();
         _game.setRound(_game.getRound() + 1);
+        _deck.dealPublicCards();
         for (int i = 0; i < _turnOrder.size(); i++) { //should be clear
             if (!_turnOrder.get(i).getFolded() && !_turnOrder.get(i).isAllIn()) {
                 _toPlay.add(_turnOrder.get(i));
@@ -321,7 +321,7 @@ public class Poker {
             _game.setPot(0);
         }
 
-        _showHands = gson.toJson(_winner.get(0)); //TODO: Remove
+        _showHands = gson.toJson(_players.stream().filter(x -> x.getId().equals(_winner.get(0))).findFirst().get()); //TODO: Remove
 
         _game.setRound(0);
         _players.forEach(x -> {
@@ -484,15 +484,15 @@ public class Poker {
     public String sendGameState() {
         Gson gson = new Gson();
         String gameState = new String(gson.toJson(_players) + "**" + gson.toJson(_game)
-                + "**" + gson.toJson(getToPlayNextId()) + "**null**null");
-        if(!(_showHands.isEmpty() || _oldHands.isEmpty() || _winner.isEmpty() || _showDownGame.isEmpty())) {
-            gameState = new String(gson.toJson(_oldHands) + "**" + gson.toJson(_showDownGame)
-                    + "**" + gson.toJson(getToPlayNextId()) + "**" + gson.toJson(_showHands)
-                    + "**" + gson.toJson(_winner.get(0)));
+                + "**" + getToPlayNextId() + "**null**null");
+        /*if(!(_showHands.isEmpty() || _oldHands.isEmpty() || _winner.isEmpty() || _showDownGame.isEmpty())) {
+            gameState = new String(_oldHands + "**" + _showDownGame
+                    + "**" + getToPlayNextId() + "**" + _players.stream().filter(x -> x.getId().equals(_winner.get(0))).findFirst().get().getId()
+                    + "**" + _showHands);
             _showDownGame = null;
             _showHands = new String();
             _oldHands = new String();
-        }
+        }*/
         return gameState;
     }
 

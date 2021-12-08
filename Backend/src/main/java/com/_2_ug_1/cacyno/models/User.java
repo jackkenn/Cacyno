@@ -32,7 +32,7 @@ public class User {
      */
     private int money;
     @ApiModelProperty(notes = "The name of the user that is displayed", name = "displayname")
-    @Column(name = "displayname", nullable = false, columnDefinition = "int default 1000")
+    @Column(name = "displayname", nullable = false, columnDefinition = "int default 20000")
     /**
      * holds the value of the name the user wants to be called
      */
