@@ -8,6 +8,24 @@
                                                    android:background="#62D126"
                                                    android:id="@+id/lobbyView" tools:ignore="ExtraText">
 
+    <EditText
+            android:layout_width="93dp"
+            android:layout_height="34dp"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/betInput"
+            android:fontFamily="@font/aqua" android:textSize="12dp"
+            android:paddingBottom="10dp" android:textColor="@color/white" android:hint="enter money"
+            android:textColorHint="@color/white" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="487dp" android:layout_marginStart="487dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="58dp"/>
+    <ImageView
+            android:layout_width="15dp"
+            android:layout_height="20dp" app:srcCompat="@drawable/moneysign" android:id="@+id/betinput_moneySign"
+            android:scaleType="fitCenter"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="470dp"
+            android:layout_marginStart="470dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="66dp"/>
     <ImageView
             android:layout_width="182dp"
             android:layout_height="109dp" app:srcCompat="@drawable/winner" android:id="@+id/winnerImage"
@@ -467,19 +485,6 @@
             android:textSize="20dp" android:gravity="center_vertical" app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="63dp" android:layout_marginRight="63dp"
-            app:layout_constraintEnd_toEndOf="parent"/>
-    <com.google.android.material.slider.Slider
-            android:id="@+id/slider"
-            android:layout_width="153dp"
-            android:layout_height="24dp"
-            android:valueFrom="20f"
-            android:valueTo="70f"
-            android:stepSize="10"
-            app:thumbRadius="10dp"
-            app:thumbColor="@color/white"
-            app:trackColor="@android:color/darker_gray"
-            android:background="@android:color/transparent" app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="50dp" android:layout_marginEnd="183dp" android:layout_marginRight="183dp"
             app:layout_constraintEnd_toEndOf="parent"/>
     <TextView
             android:text="0"
