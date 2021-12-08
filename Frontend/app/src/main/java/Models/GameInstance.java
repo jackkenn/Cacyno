@@ -134,7 +134,7 @@ public class GameInstance{
                             views.TableCard3(gameJSON.getInt("public_card3"));
                             views.TableCard4(gameJSON.getInt("public_card4"));
                             views.TableCard5(gameJSON.getInt("public_card5"));
-                            views.raiseAmount( gameJSON.getInt("highest_gameRound_bet"));
+                            views.raiseAmount(gameJSON.getInt("highest_gameRound_bet"));
                             views.pot(gameJSON.getInt("pot"));
                             views.setHighestBet(gameJSON.getInt("highest_gameRound_bet"));
 
@@ -148,17 +148,17 @@ public class GameInstance{
                     //set players to white dot
                     new Handler(Looper.getMainLooper()).post(() -> views.setWhite(indiciesOfCurrentPlayers));
 
-                    //set player green
-                    String userID = msg.split("\\*\\*")[INDEX_OF_CURRENT_PLAYER];
-                    if(!userID.equals("null"))
-                        new Handler(Looper.getMainLooper()).post(() -> views.setGreen(findIndexOfUserID(userID)));
-
                     //find players who folded and set their dot to grey
                     for(int i = 0; i < users.size(); i++){
                         if(users.get(i).getFolded())
                             indiciesOfFolded.add(users.get(i).getIndexOnScreen());
                     }
                     new Handler(Looper.getMainLooper()).post(() -> views.setFolded(indiciesOfFolded));
+
+                    //set player green
+                    String userID = msg.split("\\*\\*")[INDEX_OF_CURRENT_PLAYER];
+                    if(!userID.equals("null"))
+                        new Handler(Looper.getMainLooper()).post(() -> views.setGreen(findIndexOfUserID(userID)));
 
                 }
                 //removes user who left from screen

@@ -705,7 +705,8 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
 
     @Override
     public void raiseAmount(int highest_bet) {
-        slider.setValueFrom(highest_bet * 2);
+        if(highest_bet != 0)
+            slider.setValueFrom(highest_bet * 2);
     }
 
     @Override
