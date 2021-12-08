@@ -175,7 +175,7 @@ public class GameInstance{
                                 ArrayList<User> winnersHands = user.JSONtolist(players_to_show_cards);
 
                                 */
-                                views.setWinner(finalWinner);
+                                //views.setWinner(finalWinner);
                             }
 
                         }catch (JSONException e){

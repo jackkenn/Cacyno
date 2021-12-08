@@ -841,12 +841,14 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     @Override
     public void setWinner(String username) {
         runOnUiThread(() -> {
+            System.out.println("DISPLAY WINNER");
             TextView winner = findViewById(R.id.winner_username);
             winner.setText(username);
             winner.bringToFront();
             findViewById(R.id.winnerImage).bringToFront();
             //display for 5 seconds
             wait(5000);
+            System.out.println("DONE DISPLAYING");
             //bring all views to front except winning screen and reset cards
             bringToFront();
             resetAllCards();
