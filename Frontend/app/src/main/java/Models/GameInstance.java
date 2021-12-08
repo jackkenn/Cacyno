@@ -39,6 +39,8 @@ public class GameInstance{
 
     private final int MAX_PLAYERS = 6;
 
+    public boolean callOnce = true;
+
     /**
      * this constructor makes a game instance object for each player.
      * @param user the user that is using the device
@@ -68,7 +70,6 @@ public class GameInstance{
 
     private void connectWebSocket(User user) throws URISyntaxException, JSONException {
         URI uri;
-
         uri = new URI("ws://coms-309-046.cs.iastate.edu:8080/poker/" + FirebaseAuth.getInstance().getUid());
 
         mWebSocketClient = new WebSocketClient(Objects.requireNonNull(uri)) {
@@ -148,8 +149,10 @@ public class GameInstance{
                             System.out.println(i.getCurrent_game_money());
                             System.out.println("---------------------");
                             i.setIndexOnScreen(users.size()-1);
-                            if (users.size() == 2 && list.get(0).getId().equals(user.getId()))
+                            if (users.size() == 2 && list.get(0).getId().equals(user.getId()) && callOnce) {
                                 mWebSocketClient.send("initGame");
+                                callOnce = false;
+                            }
 
                             currentPlayerIndex++;
                             new Handler(Looper.getMainLooper()).post(() -> toView(i));
