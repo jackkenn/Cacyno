@@ -50,6 +50,9 @@ public class Game {
     @ApiModelProperty(notes = "keeps track of the highest bet of the game", name = "highest_bet")
     @Column(name = "highest_bet", nullable = false, columnDefinition = "int default 0")
     private int highest_bet;
+    @ApiModelProperty(notes = "keeps track of the highest bet in the round", name = "highest_gameRound_bet")
+    @Column(name = "highest_gameRound_bet", nullable = false, columnDefinition = "int default 0")
+    private int highest_gameRound_bet;
 
     /**
      * @return the id of the game
@@ -245,5 +248,21 @@ public class Game {
      */
     public void setHighest_bet(int bet) {
         this.highest_bet = bet;
+    }
+
+    /**
+     * gets the highest bet of the round
+     * @return
+     */
+    public int getHighest_gameRound_bet() {
+        return highest_gameRound_bet;
+    }
+
+    /**
+     * sets the highest bet of the round
+     * @param highest_gameRound_bet
+     */
+    public void setHighest_gameRound_bet(int highest_gameRound_bet) {
+        this.highest_gameRound_bet = highest_gameRound_bet;
     }
 }

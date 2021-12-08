@@ -31,7 +31,6 @@ public class Poker {
         _turnOrder = new LinkedList<>();
         _toPlay = new LinkedList<>();
         _players = new LinkedList<>();
-        game.setHighest_bet(0);
         _tooPoor = new ArrayList<>();
     }
 
@@ -106,6 +105,7 @@ public class Poker {
         _toPlay.clear();
         _toPlay.addAll(_turnOrder);
         _game.setHighest_bet(_blind * 2);
+        _game.setHighest_gameRound_bet(_blind * 2);
         _game.setPublic_card1(0);
         _game.setPublic_card2(0);
         _game.setPublic_card3(0);
@@ -143,6 +143,9 @@ public class Poker {
                     if (bet > _toPlay.peek().getHighest_round_bet()) {
                         _toPlay.peek().setHighest_round_bet(bet);
                     }
+                    if (_toPlay.peek().getHighest_round_bet() > _game.getHighest_gameRound_bet()) {
+                        _game.setHighest_gameRound_bet(_toPlay.peek().getHighest_round_bet());
+                    }
                 } else {
                     return false;
                 }
@@ -150,11 +153,17 @@ public class Poker {
                 if (bet > _toPlay.peek().getHighest_round_bet()) {
                     _toPlay.peek().setHighest_round_bet(bet);
                 }
+                if (_toPlay.peek().getHighest_round_bet() > _game.getHighest_gameRound_bet()) {
+                    _game.setHighest_gameRound_bet(_toPlay.peek().getHighest_round_bet());
+                }
                 _toPlay.peek().setCurrent_game_money(_toPlay.poll().getCurrent_game_money() - bet);
                 _game.setPot(_game.getPot() + bet);
             } else {//New highest bet
                 if (bet > _toPlay.peek().getHighest_round_bet()) {
                     _toPlay.peek().setHighest_round_bet(bet);
+                }
+                if (_toPlay.peek().getHighest_round_bet() > _game.getHighest_gameRound_bet()) {
+                    _game.setHighest_gameRound_bet(_toPlay.peek().getHighest_round_bet());
                 }
                 LinkedList<User> tempList = new LinkedList<>();
                 tempList.clear();
@@ -194,6 +203,7 @@ public class Poker {
             return;
         }
         _players.forEach(x -> x.setHighest_round_bet(0));
+        _game.setHighest_gameRound_bet(0);
         _deck.dealPublicCards();
         _game.setRound(_game.getRound() + 1);
         for (int i = 0; i < _turnOrder.size(); i++) { //should be clear
@@ -299,6 +309,7 @@ public class Poker {
         _toPlay.clear();
         _toPlay.addAll(_turnOrder);
         _game.setHighest_bet(_blind * 2);
+        _game.setHighest_gameRound_bet(_blind * 2);
         _game.setPot(_blind + _blind * 2);
         _deck.deal();
     }
