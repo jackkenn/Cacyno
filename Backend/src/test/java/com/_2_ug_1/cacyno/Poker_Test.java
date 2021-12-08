@@ -167,7 +167,7 @@ public class Poker_Test {
                     break;
                 }
             }
-            assertEquals(beforeBets - (100 * rounds) + Pot, u.getCurrent_game_money(), 100);//player bets 100 per round (100*rounds) //buffer of 50 due to the blinds
+            assertEquals(beforeBets - (100 * rounds) + Pot, u.getCurrent_game_money(), 100);//player bets 100 per round (100*rounds) //buffer of 100 due to the blinds
 
         } else {//Multiple Winners
             Pot = Pot/_sut.getWinner().size();
