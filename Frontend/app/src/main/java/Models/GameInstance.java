@@ -49,8 +49,8 @@ public class GameInstance{
         if(!testing)
             connectWebSocket(user);
         users = new ArrayList<>();
+        user.setFolded(false);
         users.add(user);
-
         user.setIndexOnScreen(0);
 
         this.views = views;

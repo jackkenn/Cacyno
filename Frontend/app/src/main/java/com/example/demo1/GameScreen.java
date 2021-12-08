@@ -169,6 +169,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         });
 
         fold.setOnClickListener(v -> {
+            user.setFolded(true);
             game.send("Bet: -1");
         });
 
