@@ -417,8 +417,10 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
 
     @Override
     public void Player1Bet(int bet) {
-        TextView temp = findViewById(R.id.player1_bet);
-        temp.setText("$" + bet);
+        runOnUiThread(() -> {
+            TextView temp = findViewById(R.id.player1_bet);
+            temp.setText("$" + bet);
+        });
     }
 
     @Override
@@ -443,8 +445,10 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
 
     @Override
     public void Player2Bet(int bet) {
-        TextView temp = findViewById(R.id.player2_bet);
-        temp.setText("$" + bet);
+        runOnUiThread(() -> {
+            TextView temp = findViewById(R.id.player2_bet);
+            temp.setText("$" + bet);
+        });
     }
 
     @Override
@@ -469,8 +473,10 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
 
     @Override
     public void Player3Bet(int bet) {
-        TextView temp = findViewById(R.id.player3_bet);
-        temp.setText("$" + bet);
+        runOnUiThread(() -> {
+            TextView temp = findViewById(R.id.player3_bet);
+            temp.setText("$" + bet);
+        });
     }
 
     @Override
@@ -495,8 +501,10 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
 
     @Override
     public void Player4Bet(int bet) {
-        TextView temp = findViewById(R.id.player4_bet);
-        temp.setText("$" + bet);
+        runOnUiThread(() -> {
+            TextView temp = findViewById(R.id.player4_bet);
+            temp.setText("$" + bet);
+        });
     }
 
     @Override
@@ -521,50 +529,62 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
 
     @Override
     public void Player5Bet(int bet) {
-        TextView temp = findViewById(R.id.player5_bet);
-        temp.setText("$" + bet);
+        runOnUiThread(() -> {
+            TextView temp = findViewById(R.id.player5_bet);
+            temp.setText("$" + bet);
+        });
     }
 
     @Override
     public void TableCard1(int card) {
-        ImageView temp = findViewById(R.id.middlecard_1);
-        temp.setImageResource(imageIds.get(card));
+        runOnUiThread(() -> {
+            ImageView temp = findViewById(R.id.middlecard_1);
+            temp.setImageResource(imageIds.get(card));
+        });
     }
 
     @Override
     public void TableCard2(int card) {
-        ImageView temp = findViewById(R.id.middlecard_2);
-        if (card == -1) {
-            temp.setImageResource(R.drawable.backcard);
-        }
-        temp.setImageResource(imageIds.get(card));
+        runOnUiThread(() -> {
+            ImageView temp = findViewById(R.id.middlecard_2);
+            if (card == -1) {
+                temp.setImageResource(R.drawable.backcard);
+            }
+            temp.setImageResource(imageIds.get(card));
+        });
     }
 
     @Override
     public void TableCard3(int card) {
-        ImageView temp = findViewById(R.id.middlecard_3);
-        if (card == -1) {
-            temp.setImageResource(R.drawable.backcard);
-        }
-        temp.setImageResource(imageIds.get(card));
+        runOnUiThread(() -> {
+            ImageView temp = findViewById(R.id.middlecard_3);
+            if (card == -1) {
+                temp.setImageResource(R.drawable.backcard);
+            }
+            temp.setImageResource(imageIds.get(card));
+        });
     }
 
     @Override
     public void TableCard4(int card) {
-        ImageView temp = findViewById(R.id.middlecard_4);
-        if (card == -1) {
-            temp.setImageResource(R.drawable.backcard);
-        }
-        temp.setImageResource(imageIds.get(card));
+        runOnUiThread(() -> {
+            ImageView temp = findViewById(R.id.middlecard_4);
+            if (card == -1) {
+                temp.setImageResource(R.drawable.backcard);
+            }
+            temp.setImageResource(imageIds.get(card));
+        });
     }
 
     @Override
     public void TableCard5(int card) {
-        ImageView temp = findViewById(R.id.middlecard_5);
-        if (card == -1) {
-            temp.setImageResource(R.drawable.backcard);
-        }
-        temp.setImageResource(imageIds.get(card));
+        runOnUiThread(() ->{
+            ImageView temp = findViewById(R.id.middlecard_5);
+            if (card == -1) {
+                temp.setImageResource(R.drawable.backcard);
+            }
+            temp.setImageResource(imageIds.get(card));
+        });
     }
 
     @Override
