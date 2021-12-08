@@ -130,6 +130,31 @@ public class Poker_Test {
         assertTrue(_sut.bet(_users.get(1), 1)); //new leader
     }
 
+    @Test
+    public void poker_test_rounds() {//tests if all of the rounds work and if all of the players can bet in order with the blinds
+        int size = _users.size();
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < size; j++) {
+
+                if(_users.peek().getId() != _sut.getToPlayNextId()){
+                    int tmp = 0;
+                }
+                if(i == 0 && _users.size() == 2){//first round buffer/call for small blind
+                    assertTrue(_sut.bet(_users.poll(), 50));
+                }
+                else if(i == 0 && _users.size() == 1){//first round buffer/call for big blind
+                    assertTrue(_sut.bet(_users.poll(), 0));
+                }
+                else{
+                    assertTrue(_sut.bet(_users.poll(), 100));
+                }
+            }
+            _users.addAll(_sut.getPlayers());
+            assertEquals(_sut.getGame().getRound(),i+1);
+        }
+
+    }
+
     /**
      * tests all combinations of players folding
      * TODO: remove player and add player can be tested in a very similar way
