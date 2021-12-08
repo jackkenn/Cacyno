@@ -4,6 +4,7 @@ import com._2_ug_1.cacyno.game.Poker;
 import com._2_ug_1.cacyno.models.Game;
 import com._2_ug_1.cacyno.models.User;
 import com.google.common.collect.Sets;
+import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -76,7 +77,6 @@ public class Poker_Test {
         assertFalse(_sut.initGame());
     }
 
-    @Test
     public void poker_bet_BasicTest() {
         String oldCards = new String("");
         for (User u : _users) {
@@ -89,7 +89,7 @@ public class Poker_Test {
                     User u = _users.get(k);
                     if (j != k) { //not turn to play
                         int beforeBet = u.getCurrent_game_money();
-                        assertFalse(_sut.bet(u, 100));
+                        assertFalse(_sut.bet(u, _game.getHighest_bet() - u.getBet()));
                         assertEquals(beforeBet, u.getCurrent_game_money());
                     }
                 }
@@ -116,7 +116,7 @@ public class Poker_Test {
             }
             if (i < 4) {
                 assertEquals(blind + (blind * 2) + (i + 100) * _users.size(), _game.getPot());
-                assertEquals(i + 1, _game.getRound());
+                assertEquals(i, _game.getRound());
             }
         }
         assertEquals(blind + (blind * 2), _game.getPot());

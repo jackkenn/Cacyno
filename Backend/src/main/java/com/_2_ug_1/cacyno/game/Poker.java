@@ -66,6 +66,9 @@ public class Poker {
         _game.setRound(0);
         _players.forEach(x -> {
             x.setFolded(false);
+            x.setAllIn(false);
+            x.setBet(0);
+            x.setHighest_round_bet(0);
             _turnOrder.add(x);
         });
         _toPlay.addAll(_turnOrder);
@@ -94,8 +97,10 @@ public class Poker {
         _toPlay.addAll(_turnOrder);
         for (int i = 0; i < _turnOrder.size(); i++) {
             if (_toPlay.size() == 2) {
+                _toPlay.peek().setBet(_blind);
                 _toPlay.peek().setHighest_round_bet(_blind);
                 _toPlay.peek().setCurrent_game_money(_toPlay.poll().getCurrent_game_money() - _blind);
+                _toPlay.peek().setBet(_blind * 2);
                 _toPlay.peek().setHighest_round_bet(_blind * 2);
                 _toPlay.peek().setCurrent_game_money(_toPlay.poll().getCurrent_game_money() - _blind * 2);
                 break;
@@ -269,11 +274,13 @@ public class Poker {
             }
             _game.setPot(0);
         }
-
-        _players.forEach(x -> x.setHighest_round_bet(0));
         _game.setRound(0);
-        _players.forEach(x -> x.setFolded(false));
-        _players.forEach(x -> x.setAllIn(false));
+        _players.forEach(x -> {
+            x.setFolded(false);
+            x.setAllIn(false);
+            x.setBet(0);
+            x.setHighest_round_bet(0);
+        });
         _turnOrder.add(_turnOrder.poll()); //change big blind
         _toPlay.clear();
         _toPlay.addAll(_turnOrder);
@@ -306,8 +313,10 @@ public class Poker {
         while (_toPlay.size() > 2) {
             _toPlay.poll();
         }
+        _toPlay.peek().setBet(_blind);
         _toPlay.peek().setHighest_round_bet(_blind);
         _toPlay.peek().setCurrent_game_money(_toPlay.poll().getCurrent_game_money() - _blind);
+        _toPlay.peek().setBet(_blind);
         _toPlay.peek().setHighest_round_bet(_blind * 2);
         _toPlay.peek().setCurrent_game_money(_toPlay.poll().getCurrent_game_money() - _blind * 2);
         _game.setPublic_card1(-1);
