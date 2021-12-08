@@ -108,8 +108,12 @@ public class GameInstance{
 
                     //finding new users to add to screen
                     for (User i : user.JSONtolist(stringToJSON)) {
+                        if(findIndexOfUserID(i.id) == 0){
+                            views.MyCard1(i.getCard1());
+                            views.MyCard2(i.getCard2());
+                            views.MyMoney(i.getCurrent_game_money());
+                        }
                         if (!user.getId().equals(i.getId()) && !checkObjects(i) && users.size() != MAX_PLAYERS) {
-
                             users.add(i);
                             i.setIndexOnScreen(users.size()-1);
                             if (users.size() == 2)
@@ -124,8 +128,6 @@ public class GameInstance{
                     String finalWinner = winner;
                     new Handler(Looper.getMainLooper()).post(() -> {
                         try {
-                            views.MyCard1( users.get(0).getCard1());
-                            views.MyCard2( users.get(0).getCard2());
                             views.TableCard1(gameJSON.getInt("public_card1"));
                             views.TableCard2(gameJSON.getInt("public_card2"));
                             views.TableCard3(gameJSON.getInt("public_card3"));
@@ -133,7 +135,6 @@ public class GameInstance{
                             views.TableCard5(gameJSON.getInt("public_card5"));
                             views.raiseAmount( gameJSON.getInt("highest_round_bet"));
                             views.pot(gameJSON.getInt("pot"));
-                            views.MyMoney(users.get(0).current_game_money);
                             views.setHighestBet(gameJSON.getInt("highest_round_bet"));
 
                             if(gameJSON.getInt("round") == 6) //round 6 is to present winner
@@ -163,6 +164,7 @@ public class GameInstance{
 
                 //set players to white dot
                 new Handler(Looper.getMainLooper()).post(() -> views.setWhite(indiciesOfCurrentPlayers));
+                System.out.println(indiciesOfCurrentPlayers.toString() + "");
 
                 //set player green
                 String userID = msg.split("\\*\\*")[INDEX_OF_CURRENT_PLAYER];
@@ -311,8 +313,10 @@ public class GameInstance{
      */
     private int findIndexOfUserID(String userID){
         for(User i : users){
-            if(i.getId().equals(userID))
+            if(i.getId().equals(userID)) {
+                System.out.println(i.getUsername());
                 return i.getIndexOnScreen();
+            }
         }
         return -1;
     }

@@ -363,25 +363,33 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
 
     @Override
     public void MyMoney(int money) {
-        ingame_money.setText("$" + money);
+        runOnUiThread(() -> {
+            ingame_money.setText("$" + money);
+        });
     }
 
     @Override
     public void MyCard1(int card) {
-        ImageView temp = findViewById(R.id.yourCard_1);
-        temp.setImageResource(imageIds.get(card));
+        runOnUiThread(() -> {
+            ImageView temp = findViewById(R.id.yourCard_1);
+            temp.setImageResource(imageIds.get(card));
+        });
     }
 
     @Override
     public void MyCard2(int card) {
-        ImageView temp = findViewById(R.id.yourCard_2);
-        temp.setImageResource(imageIds.get(card));
+        runOnUiThread(() -> {
+            ImageView temp = findViewById(R.id.yourCard_2);
+            temp.setImageResource(imageIds.get(card));
+        });
     }
 
     @Override
     public void MyBet(int bet) {
-        TextView temp = findViewById(R.id.your_bet);
-        temp.setText("$" + bet);
+        runOnUiThread(() -> {
+            TextView temp = findViewById(R.id.your_bet);
+            temp.setText("$" + bet);
+        });
     }
 
     @Override
