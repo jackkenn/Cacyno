@@ -112,6 +112,7 @@ public class GameInstance{
                             views.MyCard1(i.getCard1());
                             views.MyCard2(i.getCard2());
                             views.MyMoney(i.getCurrent_game_money());
+                            views.setBet(i.bet);
                         }
                         if (!user.getId().equals(i.getId()) && !checkObjects(i) && users.size() != MAX_PLAYERS) {
                             users.add(i);
@@ -133,14 +134,13 @@ public class GameInstance{
                             views.TableCard3(gameJSON.getInt("public_card3"));
                             views.TableCard4(gameJSON.getInt("public_card4"));
                             views.TableCard5(gameJSON.getInt("public_card5"));
-                            views.raiseAmount( gameJSON.getInt("highest_round_bet"));
+                            views.raiseAmount( gameJSON.getInt("highest_gameRound_bet"));
                             views.pot(gameJSON.getInt("pot"));
-                            views.setHighestBet(gameJSON.getInt("highest_round_bet"));
+                            views.setHighestBet(gameJSON.getInt("highest_gameRound_bet"));
 
                             if(gameJSON.getInt("round") == 6) //round 6 is to present winner
                                 views.setWinner(finalWinner);
 
-                            views.setBet(user.bet);
                         }catch (JSONException e){
                             e.printStackTrace();
                         }

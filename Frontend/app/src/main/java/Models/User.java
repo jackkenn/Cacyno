@@ -48,7 +48,7 @@ public class User {
     boolean is_spectator;
     @SerializedName("game_id")
     JSONObject gameId;
-    @SerializedName("bet")
+    @SerializedName("highest_round_bet")
     int bet;
     @SerializedName("card1")
     int card1;
