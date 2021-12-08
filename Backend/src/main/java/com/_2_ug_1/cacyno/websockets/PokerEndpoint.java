@@ -128,7 +128,6 @@ public class PokerEndpoint {
         _logger.info("Entered into Close: " + _sessionUserMap.get(session));
         if (!_sessionUserMap.containsKey(session))
             return;
-        _userSessionMap.remove(_sessionUserMap.get(session));
         User toRemove = getUser(_sessionUserMap.get(session));
         Poker p = _gamesMap.get(toRemove.getGame().getId());
         if (p.TooPoor().contains(toRemove)) {
