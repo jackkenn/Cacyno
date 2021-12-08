@@ -118,29 +118,29 @@ public class GameInstance{
                                 views.setSliderTo(i.current_game_money);
                                 break;
                             case 1:
-                                views.Player1Username(user.getUsername(), false);
-                                views.Player1Money("$" + user.getCurrent_game_money() + "");
-                                views.Player1Bet(user.bet);
+                                views.Player1Username(i.getUsername(), false);
+                                views.Player1Money("$" + i.getCurrent_game_money() + "");
+                                views.Player1Bet(i.bet);
                                 break;
                             case 2:
-                                views.Player2Username(user.getUsername(), false);
-                                views.Player2Money("$" + user.getCurrent_game_money() + "");
-                                views.Player2Bet(user.bet);
+                                views.Player2Username(i.getUsername(), false);
+                                views.Player2Money("$" + i.getCurrent_game_money() + "");
+                                views.Player2Bet(i.bet);
                                 break;
                             case 3:
-                                views.Player3Username(user.getUsername(), false);
-                                views.Player3Money("$" + user.getCurrent_game_money() + "");
-                                views.Player3Bet(user.bet);
+                                views.Player3Username(i.getUsername(), false);
+                                views.Player3Money("$" + i.getCurrent_game_money() + "");
+                                views.Player3Bet(i.bet);
                                 break;
                             case 4:
-                                views.Player4Username(user.getUsername(), false);
-                                views.Player4Money("$" + user.getCurrent_game_money() + "");
-                                views.Player4Bet(user.bet);
+                                views.Player4Username(i.getUsername(), false);
+                                views.Player4Money("$" + i.getCurrent_game_money() + "");
+                                views.Player4Bet(i.bet);
                                 break;
                             case 5:
-                                views.Player5Username(user.getUsername(), false);
-                                views.Player5Money("$" + user.getCurrent_game_money() + "");
-                                views.Player5Bet(user.bet);
+                                views.Player5Username(i.getUsername(), false);
+                                views.Player5Money("$" + i.getCurrent_game_money() + "");
+                                views.Player5Bet(i.bet);
                                 break;
                             default:
                                 break;
