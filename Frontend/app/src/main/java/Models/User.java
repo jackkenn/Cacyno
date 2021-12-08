@@ -230,7 +230,7 @@ public class User {
             postData.put("bet", 0);
             postData.put("card1", 0);
             postData.put("card2", 0);
-            postData.put("folded", false);
+            postData.put("folded", true);
             postData.put("hasPlayed", false);
             postData.put("isSpectator", false);
             postData.put("position", 0);
