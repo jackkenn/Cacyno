@@ -41,6 +41,7 @@ public class PokerEndpoint {
     private static Map<String, Session> _userSessionMap = new HashMap<>();
     private static Map<Session, String> _sessionUserMap = new HashMap<>();
     private final Logger _logger = LoggerFactory.getLogger(PokerEndpoint.class);
+    private static String _errorStrings = new String("");
 
     private static IGameRepo _gameRepo;
     private static IUserRepo _userRepo;
@@ -68,6 +69,12 @@ public class PokerEndpoint {
     public void onOpen(Session session
             , @PathParam("userId") String userId) throws IOException {
         _logger.info("Entered into Open: " + userId);
+        if(userId.equals("0")) {
+            _sessionUserMap.put(session, userId);
+            _userSessionMap.put(userId, session);
+            sendUserMessage("0", _errorStrings);
+            return;
+        }
         User u = getUser(userId);
         if (u == null) {//let them know
             sendErrorString(session, u, "User could not be found in repo");
@@ -197,7 +204,12 @@ public class PokerEndpoint {
     @OnError
     public void onError(Session session, Throwable throwable) {
         _logger.info("Entered into Error. " + throwable.getMessage());
+
         try {
+            User u = getUser(_sessionUserMap.get(session));
+            Poker p = _gamesMap.get(u.getGame().getId());
+            _errorStrings += _sessionUserMap.get(session) + ": " + throwable.getMessage() + ": \n";
+            _errorStrings += p.toString() + "\n";
             onClose(session);
         } catch (IOException e) {
             e.printStackTrace();
