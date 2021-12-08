@@ -321,7 +321,7 @@ public class Poker {
             _game.setPot(0);
         }
 
-        _showHands = gson.toJson(_winner.get(0)); //TODO: Remove
+        _showHands = gson.toJson(_players.stream().filter(x -> x.getId().equals(_winner.get(0))).findFirst().get()); //TODO: Remove
 
         _game.setRound(0);
         _players.forEach(x -> {
@@ -487,8 +487,8 @@ public class Poker {
                 + "**" + getToPlayNextId() + "**null**null");
         if(!(_showHands.isEmpty() || _oldHands.isEmpty() || _winner.isEmpty() || _showDownGame.isEmpty())) {
             gameState = new String(_oldHands + "**" + _showDownGame
-                    + "**" + getToPlayNextId() + "**" + _showHands
-                    + "**" + _winner.get(0));
+                    + "**" + getToPlayNextId() + "**" + _players.stream().filter(x -> x.getId().equals(_winner.get(0))).findFirst().get().getId()
+                    + "**" + _showHands);
             _showDownGame = null;
             _showHands = new String();
             _oldHands = new String();
