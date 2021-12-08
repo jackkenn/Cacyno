@@ -131,7 +131,7 @@ public class Poker_Test {
     }
 
     @Test
-    public void poker_test_rounds() {//tests if all of the rounds work and if all of the players can bet in order with the blinds
+    public void poker_test_rounds() {//tests if all of the rounds work in a game and if all of the players can bet in order with the blinds
         int size = _users.size();
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < size; j++) {
