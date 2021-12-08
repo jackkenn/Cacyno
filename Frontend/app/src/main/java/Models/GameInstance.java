@@ -116,7 +116,7 @@ public class GameInstance{
                             users.add(i);
                             i.setIndexOnScreen(users.size()-1);
                             if (users.size() == 2)
-                                mWebSocketClient.send("START THIS SHIT");
+                                mWebSocketClient.send("initGame");
 
                             currentPlayerIndex++;
                             toView(i);
@@ -163,6 +163,7 @@ public class GameInstance{
 
                 //set players to white dot
                 new Handler(Looper.getMainLooper()).post(() -> views.setWhite(indiciesOfCurrentPlayers));
+                System.out.println(indiciesOfCurrentPlayers.toString() + "");
 
                 //set player green
                 String userID = msg.split("\\*\\*")[INDEX_OF_CURRENT_PLAYER];
@@ -311,8 +312,10 @@ public class GameInstance{
      */
     private int findIndexOfUserID(String userID){
         for(User i : users){
-            if(i.getId().equals(userID))
+            if(i.getId().equals(userID)) {
+                System.out.println(i.getUsername());
                 return i.getIndexOnScreen();
+            }
         }
         return -1;
     }
