@@ -62,6 +62,8 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     int highest_bet;
     int bet;
 
+    private boolean chatViewOpen;
+
     private GameInstance game;
 
     int randForUsername = 0;
@@ -109,6 +111,7 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
         scroll = chatplz.findViewById(R.id.chat_scroll);
 
         bringToFront();
+        chatViewOpen = false;
         setIdle();
 
         user = new User();
@@ -173,8 +176,12 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
 
         chat.setOnClickListener(v -> {
             findViewById(R.id.chat_view_remove).bringToFront();
+            chatViewOpen = true;
 
-            x.setOnClickListener(v1 -> bringToFront());
+            x.setOnClickListener(v1 -> {
+                bringToFront();
+                chatViewOpen = false;
+            });
 
             send.setOnClickListener(v2 -> {
                 //adding new message row
@@ -850,6 +857,8 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     public void setCheckButton() {
         runOnUiThread(() -> {
             check.bringToFront();
+            if(chatViewOpen) //if chat was open, bring chat to front
+                findViewById(R.id.chat_view_remove).bringToFront();
         });
     }
 
@@ -857,6 +866,8 @@ public class GameScreen extends AppCompatActivity implements ITextViews {
     public void setCallButton() {
         runOnUiThread(() -> {
             call.bringToFront();
+            if(chatViewOpen) //if chat was open, bring chat to front
+                findViewById(R.id.chat_view_remove).bringToFront();
         });
     }
     /**
