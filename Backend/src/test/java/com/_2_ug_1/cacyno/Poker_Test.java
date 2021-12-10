@@ -27,6 +27,7 @@ public class Poker_Test {
     private Game _baseGame;
     private Game _mockGame;
     private Poker _msut;
+    private LinkedList<User>_musers;
     private int blind = 50;
 
     @BeforeEach
@@ -42,8 +43,7 @@ public class Poker_Test {
         _game.setPot(-1);
         _users = new LinkedList<>();
         _sut = new Poker(_game);
-        _mockGame = new Game();
-        _msut = new Poker(_mockGame);
+
         for (int i = 0; i < 7; i++) {
             User user = new User();
             user.setId(Integer.toString(_users.size()));
@@ -59,6 +59,35 @@ public class Poker_Test {
             }
         }
         _sut.initGame();
+
+
+        _mockGame = new Game();
+        _mockGame.setId("1");
+        _mockGame.setRound(-1);
+        _mockGame.setPublic_card1(-1);
+        _mockGame.setPublic_card2(-1);
+        _mockGame.setPublic_card3(-1);
+        _mockGame.setPublic_card4(-1);
+        _mockGame.setPublic_card5(-1);
+        _mockGame.setPot(-1);
+        _musers = new LinkedList<>();
+        _msut = new Poker(_mockGame);
+
+        for (int i = 0; i < 7; i++) {
+            User user = new User();
+            user.setId(Integer.toString(_musers.size()));
+            user.setGame(_mockGame);
+            user.setCurrent_game_money(10000);
+            user.setCard1(-1);
+            user.setCard2(-1);
+            if (i < 6) {
+                _musers.add(user);
+                _msut.addPlayer(user);
+            } else {
+                _baseUser = user;
+            }
+        }
+        _msut.initGame();
     }
 
     @Test
@@ -140,8 +169,7 @@ public class Poker_Test {
 
     @Test
     public void check_round_poker() {
-        _mockGame.setRound(3);
-        assertEquals(3,_msut.getGame().getRound());
+        assertEquals(0,_msut.getGame().getRound());
     }
 
     @Test
@@ -151,32 +179,32 @@ public class Poker_Test {
         int rounds = 0;
         int Pot = 0;
         for (int i = 0; i < 5; i++) {//goes through entire game
-            assertEquals(_sut.getGame().getRound(), i);
+            assertEquals(_msut.getGame().getRound(), i);
             for (int j = 0; j < size; j++) {
 
-                if (_users.peek().getId() != _sut.getToPlayNextId()) {
+                if (_users.peek().getId() != _msut.getToPlayNextId()) {
                     int tmp = 0;
                 }
                 if (i == 0 && _users.size() == 2) {//first round buffer/call for small blind
-                    assertTrue(_sut.bet(_users.poll(), 50));
+                    assertTrue(_msut.bet(_users.poll(), 50));
                 } else if (i == 0 && _users.size() == 1) {//first round buffer/call for big blind
-                    assertTrue(_sut.bet(_users.poll(), 0));
+                    assertTrue(_msut.bet(_users.poll(), 0));
                 } else {
-                    assertTrue(_sut.bet(_users.poll(), 100));
+                    assertTrue(_msut.bet(_users.poll(), 100));
                     if (i == 4 && _users.size() == 1) {
-                        Pot = _sut.getGame().getPot();
+                        Pot = _msut.getGame().getPot();
                         Pot += 100;
                     }
                 }
                 rounds = i + 1;
             }
-            _users.addAll(_sut.getPlayers());
+            _users.addAll(_msut.getPlayers());
         }//should be done here
-        assertEquals(_sut.getGame().getRound(), 0);//check to make sure game is actually over
+        assertEquals(_msut.getGame().getRound(), 0);//check to make sure game is actually over
         User u = new User();
-        if (_sut.getWinner().size() == 1) {//Only one winner
+        if (_msut.getWinner().size() == 1) {//Only one winner
             for (int i = 0; i < size; i++) {//get winner
-                if (_users.get(i).getId() == _sut.getWinner().get(0)) {
+                if (_users.get(i).getId() == _msut.getWinner().get(0)) {
                     u = _users.get(i);
                     break;
                 }
@@ -184,10 +212,10 @@ public class Poker_Test {
             assertEquals(beforeBets - (100 * rounds) + Pot, u.getCurrent_game_money(), 100);//player bets 100 per round (100*rounds) //buffer of 100 due to the blinds
 
         } else {//Multiple Winners
-            Pot = Pot / _sut.getWinner().size();
-            for (int i = 0; i < _sut.getWinner().size(); i++) {//get winner
+            Pot = Pot / _msut.getWinner().size();
+            for (int i = 0; i < _msut.getWinner().size(); i++) {//get winner
                 for (int j = 0; j < size; j++) {
-                    if (_users.get(j).getId() == _sut.getWinner().get(i)) {
+                    if (_users.get(j).getId() == _msut.getWinner().get(i)) {
                         u = _users.get(j);
                         assertEquals(beforeBets - (100 * rounds) + Pot, u.getCurrent_game_money(), 100);//buffer for blind
                     }
@@ -202,21 +230,21 @@ public class Poker_Test {
     public void poker_test_rounds() {//tests if all of the rounds work in a game and if all of the players can bet in order with the blinds
         int size = _users.size();
         for (int i = 0; i < 5; i++) {
-            assertEquals(_sut.getGame().getRound(), i);
+            assertEquals(_msut.getGame().getRound(), i);
             for (int j = 0; j < size; j++) {
 
-                if (_users.peek().getId() != _sut.getToPlayNextId()) {
+                if (_users.peek().getId() != _msut.getToPlayNextId()) {
                     int tmp = 0;
                 }
                 if (i == 0 && _users.size() == 2) {//first round buffer/call for small blind
-                    assertTrue(_sut.bet(_users.poll(), 50));
+                    assertTrue(_msut.bet(_users.poll(), 50));
                 } else if (i == 0 && _users.size() == 1) {//first round buffer/call for big blind
-                    assertTrue(_sut.bet(_users.poll(), 0));
+                    assertTrue(_msut.bet(_users.poll(), 0));
                 } else {
-                    assertTrue(_sut.bet(_users.poll(), 100));
+                    assertTrue(_msut.bet(_users.poll(), 100));
                 }
             }
-            _users.addAll(_sut.getPlayers());
+            _users.addAll(_msut.getPlayers());
         }
 
     }
