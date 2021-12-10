@@ -4,9 +4,12 @@ import com._2_ug_1.cacyno.game.Poker;
 import com._2_ug_1.cacyno.models.Game;
 import com._2_ug_1.cacyno.models.User;
 import com.google.common.collect.Sets;
+
 import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -22,6 +25,8 @@ public class Poker_Test {
     private User _baseUser;
     private Game _game;
     private Game _baseGame;
+    private Game _mockGame;
+    private Poker _msut;
     private int blind = 50;
 
     @BeforeEach
@@ -37,6 +42,8 @@ public class Poker_Test {
         _game.setPot(-1);
         _users = new LinkedList<>();
         _sut = new Poker(_game);
+        _mockGame = new Game();
+        _msut = new Poker(_mockGame);
         for (int i = 0; i < 7; i++) {
             User user = new User();
             user.setId(Integer.toString(_users.size()));
@@ -130,6 +137,13 @@ public class Poker_Test {
         assertTrue(_sut.bet(_users.get(1), 1)); //new leader
     }
 
+
+    @Test
+    public void check_round_poker() {
+        _mockGame.setRound(3);
+        assertEquals(3,_msut.getGame().getRound());
+    }
+
     @Test
     public void check_winner_money() {
         int size = _users.size();
@@ -170,12 +184,12 @@ public class Poker_Test {
             assertEquals(beforeBets - (100 * rounds) + Pot, u.getCurrent_game_money(), 100);//player bets 100 per round (100*rounds) //buffer of 100 due to the blinds
 
         } else {//Multiple Winners
-            Pot = Pot/_sut.getWinner().size();
+            Pot = Pot / _sut.getWinner().size();
             for (int i = 0; i < _sut.getWinner().size(); i++) {//get winner
-                for(int j = 0; j < size; j++){
-                    if(_users.get(j).getId() == _sut.getWinner().get(i)){
+                for (int j = 0; j < size; j++) {
+                    if (_users.get(j).getId() == _sut.getWinner().get(i)) {
                         u = _users.get(j);
-                        assertEquals(beforeBets - (100 * rounds) + Pot, u.getCurrent_game_money(),100);//buffer for blind
+                        assertEquals(beforeBets - (100 * rounds) + Pot, u.getCurrent_game_money(), 100);//buffer for blind
                     }
                 }
             }
