@@ -157,7 +157,7 @@ public class GameInstance{
                             }
 
                             currentPlayerIndex++;
-                            new Handler(Looper.getMainLooper()).post(() -> toView(i));
+                            new Handler(Looper.getMainLooper()).post(() -> toView(i, false));
                         }
                     }
                     new Handler(Looper.getMainLooper()).post(() -> {
@@ -208,7 +208,7 @@ public class GameInstance{
 
                     for(int i = 0; i < users.size(); i++){
                         if(users.get(i).getUsername().equals(playerUsername)){
-                            removePlayer(users.get(i).getIndexOnScreen());
+                            removePlayer(users.get(i).getIndexOnScreen(), false);
                             users.remove(i);
                             currentPlayerIndex = users.get(i).getIndexOnScreen();
 
@@ -240,9 +240,42 @@ public class GameInstance{
      * players
      * @param user the user data
      */
-    private void toView(User user){
-        new Handler(Looper.getMainLooper()).post(() -> {
-            switch(currentPlayerIndex){
+    public void toView(User user, boolean test){
+        if(!test) {
+            new Handler(Looper.getMainLooper()).post(() -> {
+                switch (currentPlayerIndex) {
+                    case 1:
+                        views.Player1Username(user.getUsername(), false);
+                        views.Player1Money("$" + user.getCurrent_game_money() + "");
+                        views.Player1Bet(user.bet);
+                        break;
+                    case 2:
+                        views.Player2Username(user.getUsername(), false);
+                        views.Player2Money("$" + user.getCurrent_game_money() + "");
+                        views.Player2Bet(user.bet);
+                        break;
+                    case 3:
+                        views.Player3Username(user.getUsername(), false);
+                        views.Player3Money("$" + user.getCurrent_game_money() + "");
+                        views.Player3Bet(user.bet);
+                        break;
+                    case 4:
+                        views.Player4Username(user.getUsername(), false);
+                        views.Player4Money("$" + user.getCurrent_game_money() + "");
+                        views.Player4Bet(user.bet);
+                        break;
+                    case 5:
+                        views.Player5Username(user.getUsername(), false);
+                        views.Player5Money("$" + user.getCurrent_game_money() + "");
+                        views.Player5Bet(user.bet);
+                        break;
+                    default:
+                        break;
+                }
+            });
+        }
+        else{
+            switch (currentPlayerIndex) {
                 case 1:
                     views.Player1Username(user.getUsername(), false);
                     views.Player1Money("$" + user.getCurrent_game_money() + "");
@@ -271,16 +304,49 @@ public class GameInstance{
                 default:
                     break;
             }
-        });
+        }
     }
 
     /**
      * removes the player from view and their corresponding dot
      * @param index the index of the player
      */
-    private void removePlayer(int index){
-        new Handler(Looper.getMainLooper()).post(() -> {
-            switch(index){
+    public void removePlayer(int index, boolean test){
+        if(!test) {
+            new Handler(Looper.getMainLooper()).post(() -> {
+                switch (index) {
+                    case 1:
+                        views.Player1Username("waiting...", true);
+                        views.Player1Money("");
+                        views.Player1Bet(0);
+                        break;
+                    case 2:
+                        views.Player2Username("waiting...", true);
+                        views.Player2Money("");
+                        views.Player2Bet(0);
+                        break;
+                    case 3:
+                        views.Player3Username("waiting..", true);
+                        views.Player3Money("");
+                        views.Player3Bet(0);
+                        break;
+                    case 4:
+                        views.Player4Username("waiting...", true);
+                        views.Player4Money("");
+                        views.Player4Bet(0);
+                        break;
+                    case 5:
+                        views.Player5Username("waiting...", true);
+                        views.Player5Money("");
+                        views.Player5Bet(0);
+                        break;
+                    default:
+                        break;
+                }
+            });
+        }
+        else {
+            switch (index) {
                 case 1:
                     views.Player1Username("waiting...", true);
                     views.Player1Money("");
@@ -309,7 +375,7 @@ public class GameInstance{
                 default:
                     break;
             }
-        });
+        }
     }
 
     /**
@@ -343,6 +409,10 @@ public class GameInstance{
 
     public void send(String message) {
         mWebSocketClient.send(message);
+    }
+
+    public void setCurrentPlayerIndex(int currentPlayerIndex){
+        this.currentPlayerIndex = currentPlayerIndex;
     }
 
     /**
